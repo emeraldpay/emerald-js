@@ -7,7 +7,8 @@
     "test": "jest",
     "prepublish": "npm run babel-prepublish && npm run flow-prepublish",
     "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
-    "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i *.test.js"
+    "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i *.test.js",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,13 @@
   "homepage": "https://github.com/gagarin55/emerald-js#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
     "flow-bin": "^0.54.0",
     "flow-copy-source": "^1.2.1",
     "jest": "^20.0.4"

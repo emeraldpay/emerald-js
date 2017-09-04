@@ -1,10 +1,6 @@
 // @flow
-import { toNumber } from './convert';
-
-const convert = {
-    toNumber
-};
+import convert from './convert';
 
 export default {
-    convert
-}
+  convert,
+};
