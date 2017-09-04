@@ -1,0 +1,36 @@
+{
+  "name": "emerald-js",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "prepublish": "npm run babel-prepublish && npm run flow-prepublish",
+    "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
+    "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i *.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gagarin55/emerald-js.git"
+  },
+  "keywords": [
+    "emerald",
+    "ethereum classic",
+    "ethereum"
+  ],
+  "author": "gagarin55",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/gagarin55/emerald-js/issues"
+  },
+  "homepage": "https://github.com/gagarin55/emerald-js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.54.0",
+    "flow-copy-source": "^1.2.1",
+    "jest": "^20.0.4"
+  }
+}
