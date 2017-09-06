@@ -9,6 +9,13 @@ test('toNumber should convert hex string to number', () => {
   expect(toNumber('0xF')).toBe(15);
 });
 
+test('toNumber should convert number to number', () => {
+  expect(toNumber(1)).toBe(1);
+  expect(toNumber(0)).toBe(0);
+  expect(toNumber(15)).toBe(15);
+});
+
+
 test('format number with separated thousands', () => {
   expect(separateThousands(123456789, ' ')).toEqual('123 456 789');
   expect(separateThousands(123456789, '*')).toEqual('123*456*789');

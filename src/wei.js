@@ -60,8 +60,10 @@ export default class Wei {
     return new Wei(this.value().sub(another.value()));
   }
 
-  getFiat(r: number = 0, decimals: number = 2): string {
-    const rate = new BigNumber(r.toString());
+  getFiat(r: number, decimals: number = 2): string {
+    const rate = (r === null || typeof r === 'undefined') ?
+      ZERO :
+      new BigNumber(r);
     return this.value().dividedBy(ETHER).mul(rate).toFixed(decimals);
   }
 }

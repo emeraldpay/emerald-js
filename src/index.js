@@ -1,8 +1,3 @@
 // @flow
-import convert from './convert';
-import Wei from './wei';
-
-export default {
-  convert,
-  Wei,
-};
+export { default as convert } from './convert';
+export { default as Wei } from './wei';

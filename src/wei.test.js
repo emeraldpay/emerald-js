@@ -14,3 +14,8 @@ test('getEther uses 5 decimals as default', () => {
   expect(new Wei(1000010000000000000).getEther(null)).toEqual('1.00001');
 });
 
+test('getFiat() default rate is 0', () => {
+  expect(new Wei(1000010000000000000).getFiat()).toEqual('0.00');
+  expect(new Wei(1000010000000000000).getFiat(null)).toEqual('0.00');
+});
+
