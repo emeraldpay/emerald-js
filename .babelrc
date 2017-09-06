@@ -1,5 +1,5 @@
 {
-  "presets": ["env", "flow"],
+  "presets": ["env", "stage-2", "flow"],
   "plugins": ["transform-es2015-modules-umd"]
 }
 

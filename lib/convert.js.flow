@@ -29,8 +29,16 @@ function toHex(val: number | string | BigNumber): string {
   return `0x${(hex.length % 2 !== 0 ? `0${hex}` : hex)}`;
 }
 
+function hexToBigNumber(val: string, defaultValue: BigNumber): BigNumber {
+  if (val === null || val === '0x') {
+    return defaultValue;
+  }
+  return new BigNumber(val, 16);
+}
+
 export default {
   toNumber,
   separateThousands,
   toHex,
+  hexToBigNumber,
 };

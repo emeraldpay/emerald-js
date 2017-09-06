@@ -1,0 +1,67 @@
+// @flow
+import BigNumber from 'bignumber.js';
+
+import convert from './convert';
+
+const ETHER = new BigNumber(10).pow(18);
+const MWEI = new BigNumber(10).pow(6);
+const ZERO = new BigNumber(0);
+
+/**
+ * Immutable Wei value
+ */
+export default class Wei {
+  getValue: () => BigNumber;
+
+  static ZERO: Wei = new Wei(0);
+
+  constructor(val: number | string | BigNumber) {
+    // private member
+    let value: BigNumber = ZERO;
+
+    if (typeof val === 'string' || val === null) {
+      // TODO: think, should we convert hex here ?
+      value = convert.hexToBigNumber(val, ZERO);
+    } else if (typeof val === 'number') {
+      value = new BigNumber(val);
+    } else {
+      value = val;
+    }
+
+    if (value.lessThan(1)) {
+      value = new BigNumber(1);
+    }
+
+    // privileged getter
+    this.getValue = () => value;
+  }
+
+  value(): BigNumber {
+    return this.getValue();
+  }
+
+  getEther(decimals: number = 5): string {
+    return this.value().dividedBy(ETHER).toFixed(decimals);
+  }
+
+  getMwei(): string {
+    return this.value().dividedBy(MWEI).toFixed(5);
+  }
+
+  mul(bigNumber: BigNumber): Wei {
+    return new Wei(this.value().mul(bigNumber));
+  }
+
+  plus(another: Wei): Wei {
+    return new Wei(this.value().plus(another.value()));
+  }
+
+  sub(another: Wei): Wei {
+    return new Wei(this.value().sub(another.value()));
+  }
+
+  getFiat(r: number = 0, decimals: number = 2): string {
+    const rate = new BigNumber(r.toString());
+    return this.value().dividedBy(ETHER).mul(rate).toFixed(decimals);
+  }
+}
