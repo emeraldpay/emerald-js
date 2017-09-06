@@ -7,10 +7,15 @@ import BigNumber from 'bignumber.js';
  * @param value
  * @returns {number}
  */
-function toNumber(value: string): number {
+function toNumber(value: string | number): number {
   if (value === null) {
     return 0;
   }
+
+  if (typeof value === 'number') {
+    return value;
+  }
+
   if (typeof value !== 'string') {
     throw new Error(`Invalid argument type ${typeof value}`);
   }
