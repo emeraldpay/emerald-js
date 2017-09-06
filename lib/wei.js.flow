@@ -29,7 +29,7 @@ export default class Wei {
     }
 
     if (value.lessThan(1)) {
-      value = new BigNumber(1);
+      value = ZERO;
     }
 
     // privileged getter
