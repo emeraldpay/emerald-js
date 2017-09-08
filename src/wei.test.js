@@ -21,5 +21,10 @@ test('getFiat() default rate is 0', () => {
 
 test('getFiat() when rate has more than 15 s.d.', () => {
   expect(new Wei(100000000000000000).getFiat(114.12768558799999)).toEqual('11.41');
-})
+});
+
+test('equals() compares values', () => {
+  expect(new Wei(1).equals(new Wei(1))).toBeTruthy();
+  expect(new Wei(0).equals(Wei.ZERO)).toBeTruthy();
+});
 
