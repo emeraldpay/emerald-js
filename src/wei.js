@@ -66,4 +66,8 @@ export default class Wei {
       new BigNumber(r.toString());
     return this.value().dividedBy(ETHER).mul(rate).toFixed(decimals);
   }
+
+  equals(another: Wei): Wei {
+    return this.value().equals(another.value());
+  }
 }
