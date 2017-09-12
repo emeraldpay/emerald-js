@@ -1,6 +1,6 @@
 {
   "name": "emerald-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "jest",
     "prepublish": "npm run babel-prepublish && npm run flow-prepublish",
     "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
-    "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i *.test.js",
+    "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i '**/*.test.js'",
     "lint": "eslint src"
   },
   "repository": {
@@ -43,6 +43,7 @@
     "jest": "^20.0.4"
   },
   "dependencies": {
-    "bignumber.js": "^4.0.4"
+    "bignumber.js": "^4.0.4",
+    "isomorphic-fetch": "^2.2.1"
   }
 }
