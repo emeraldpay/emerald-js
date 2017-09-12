@@ -8,7 +8,7 @@
     "test": "jest",
     "prepublish": "npm run babel-prepublish && npm run flow-prepublish",
     "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
-    "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i *.test.js",
+    "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i '**/*.test.js'",
     "lint": "eslint src"
   },
   "repository": {

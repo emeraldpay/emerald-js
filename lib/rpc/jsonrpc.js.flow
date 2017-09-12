@@ -7,6 +7,19 @@ export type JsonRpcRequest = {
     id: number,
 };
 
+export type JsonRpcResponse = {
+    jsonrpc: string,
+    result?: any,
+    error?: any,
+}
+
+export type ResponseHandler = (response: JsonRpcResponse) => void;
+
+export type BatchRequest = {
+    request: JsonRpcRequest,
+    handler?: ResponseHandler,
+}
+
 export interface Transport {
     request(req: JsonRpcRequest | Array<JsonRpcRequest>): Promise<any>;
 }
@@ -57,9 +70,40 @@ export default class JsonRpc {
      * @param requests
      * @returns {Promise.<any>}
      */
-    batch(requests: Array<JsonRpcRequest>): Promise<any> {
-      return this.transport.request(requests)
+    batch(requests: Array<BatchRequest>): Promise<any> {
+      // build map id -> handler
+      const handlers = {};
+      requests.forEach((r) => {
+        handlers[r.request.id] = r.handler;
+      });
+
+      return this.transport
+        .request(requests.map(r => r.request))
+        .then((responses) => {
+          // call handler associated with request
+          responses.forEach((response) => {
+            if (typeof handlers[response.id] === 'function') {
+              handlers[response.id](response);
+            }
+          });
+          return responses;
+        })
         .catch((error) => { throw error; });
+    }
+
+    /**
+     * Creates new JSON RPC request with associated handler which can be used in batch request
+     *
+     * @param method
+     * @param params
+     * @param handler
+     * @returns {{request: JsonRpcRequest, handler: ResponseHandler}}
+     */
+    newBatchRequest(method: string, params: any, handler?: ResponseHandler): BatchRequest {
+      return {
+        request: this.newRequest(method, params),
+        handler,
+      };
     }
 
     newRequest(method: string, params: any): JsonRpcRequest {
