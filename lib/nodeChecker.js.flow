@@ -5,7 +5,7 @@ import convert from './convert';
 type NodeInfo = {
     chain: string,
     chainId: number,
-    client: string,
+    clientVersion: string,
 }
 
 export default class NodeChecker {
@@ -18,6 +18,19 @@ export default class NodeChecker {
 
     constructor(ethRpc: EthRpc) {
       this.ethRpc = ethRpc;
+    }
+
+    check() {
+      return this.exists()
+        .then(clientVersion => this.getChain()
+          .then(chain => ({
+            ...chain,
+            clientVersion,
+          })));
+    }
+
+    exists() {
+      return this.ethRpc.web3.clientVersion();
     }
 
     getChain(): Promise<any> {
