@@ -20,7 +20,7 @@ export default class NodeChecker {
       this.ethRpc = ethRpc;
     }
 
-    check() {
+    check(): Promise<NodeInfo> {
       return this.exists()
         .then(clientVersion => this.getChain()
           .then(chain => ({

@@ -74,17 +74,14 @@ class Web3Api {
     }
 }
 
-export default class EthRpc {
+/**
+ * Extended API
+ */
+class ExtApi {
     rpc: JsonRpc;
-    eth: EthApi;
-    net: NetApi;
-    web3: Web3Api;
 
-    constructor(jsonRpc: JsonRpc) {
+    constructor(jsonRpc) {
       this.rpc = jsonRpc;
-      this.eth = new EthApi(jsonRpc);
-      this.net = new NetApi(jsonRpc);
-      this.web3 = new Web3Api(jsonRpc);
     }
 
     getBalances(addresses: Array<string>, blockNumber: number | string = 'latest') {
@@ -93,6 +90,22 @@ export default class EthRpc {
         this.rpc.newBatchRequest('eth_getBalance', [a, blockNumber], (resp) => { balances[a] = resp.result; }));
 
       return this.rpc.batch(requests).then(() => balances);
+    }
+}
+
+export default class EthRpc {
+    rpc: JsonRpc;
+    eth: EthApi;
+    net: NetApi;
+    web3: Web3Api;
+    ext: ExtApi;
+
+    constructor(jsonRpc: JsonRpc) {
+      this.rpc = jsonRpc;
+      this.eth = new EthApi(jsonRpc);
+      this.net = new NetApi(jsonRpc);
+      this.web3 = new Web3Api(jsonRpc);
+      this.ext = new ExtApi(jsonRpc);
     }
 
 
