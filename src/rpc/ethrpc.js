@@ -24,7 +24,9 @@ class EthApi {
       return this.rpc.call('eth_call', [{ to, data }, blockNumber]);
     }
 
-
+    /**
+     * Returns the number of most recent block
+     */
     blockNumber() {
       return this.rpc.call('eth_blockNumber', []);
     }
@@ -33,8 +35,14 @@ class EthApi {
       return this.rpc.call('eth_getBlockByNumber', [blockNumber, full]);
     }
 
-    getTransactionCount(address: string) {
-      return this.rpc.call('eth_getTransactionCount', [address, 'latest']);
+    /**
+     * Returns the number of transactions sent from an address
+     * @param address
+     * @param blockNumber - integer block number, or the string 'latest', 'earliest' or 'pending'
+     * @returns {*}
+     */
+    getTransactionCount(address: string, blockNumber: number | string = 'latest') {
+      return this.rpc.call('eth_getTransactionCount', [address, blockNumber]);
     }
 
     sendRawTransaction(signed) {
