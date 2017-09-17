@@ -47,7 +47,7 @@ export default class JsonRpc {
         if (json.result || json.result === false || json.result === null) {
           return json.result;
         } else if (json.error) {
-          throw new Error(json);
+          throw new Error(json.error);
         } else {
           throw new Error(`Unknown JSON RPC response: ${JSON.stringify(json)},
                      method: ${method},
