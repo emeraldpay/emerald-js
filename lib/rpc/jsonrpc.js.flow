@@ -29,7 +29,7 @@ export class JsonRpcError extends Error {
     constructor(error: {code: number, message: string}) {
       super(error.message);
       this.message = error.message;
-      this.name = 'JsonRpcError';
+      this.name = this.constructor.name;
       this.code = error.code;
     }
 }
