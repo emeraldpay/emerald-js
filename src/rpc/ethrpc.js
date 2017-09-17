@@ -44,6 +44,13 @@ class EthApi {
     getTransactionByHash(hash: string) {
       return this.rpc.call('eth_getTransactionByHash', [hash]);
     }
+
+    /**
+     * Returns the current ethereum protocol version.
+     */
+    protocolVersion() {
+      return this.rpc.call('eth_protocolVersion');
+    }
 }
 
 class NetApi {
