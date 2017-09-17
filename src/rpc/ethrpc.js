@@ -8,18 +8,30 @@ class EthApi {
       this.rpc = jsonRpc;
     }
 
+    /**
+     * Returns the balance of the account of given address.
+     */
     getBalance(address: string, blockNumber: number | string = 'latest') {
       return this.rpc.call('eth_getBalance', [address, blockNumber]);
     }
 
+    /**
+     * Returns the current price per gas in wei.
+     */
     gasPrice() {
       return this.rpc.call('eth_gasPrice', []);
     }
 
+    /**
+     * Returns an object with data about the sync status or false.
+     */
     syncing() {
       return this.rpc.call('eth_syncing', []);
     }
 
+    /**
+     * Executes a new message call immediately without creating a transaction on the block chain
+     */
     call(to: string, data: string, blockNumber: number | string = 'latest') {
       return this.rpc.call('eth_call', [{ to, data }, blockNumber]);
     }
@@ -31,6 +43,9 @@ class EthApi {
       return this.rpc.call('eth_blockNumber', []);
     }
 
+    /**
+     * Returns information about a block by block number.
+     */
     getBlockByNumber(blockNumber: number | string = 'latest', full: boolean = false) {
       return this.rpc.call('eth_getBlockByNumber', [blockNumber, full]);
     }
@@ -45,10 +60,16 @@ class EthApi {
       return this.rpc.call('eth_getTransactionCount', [address, blockNumber]);
     }
 
-    sendRawTransaction(signed) {
+    /**
+     * Creates new message call transaction or a contract creation for signed transactions.
+     */
+    sendRawTransaction(signed: string) {
       return this.rpc.call('eth_sendRawTransaction', [signed]);
     }
 
+    /**
+     * Returns the information about a transaction requested by transaction hash.
+     */
     getTransactionByHash(hash: string) {
       return this.rpc.call('eth_getTransactionByHash', [hash]);
     }
@@ -68,10 +89,16 @@ class NetApi {
       this.rpc = jsonRpc;
     }
 
+    /**
+     * Returns the current network id.
+     */
     version() {
       return this.rpc.call('net_version', []);
     }
 
+    /**
+     * Returns number of peers currently connected to the client.
+     */
     peerCount() {
       return this.rpc.call('net_peerCount', []);
     }
@@ -84,6 +111,9 @@ class Web3Api {
       this.rpc = jsonRpc;
     }
 
+    /**
+     * Returns the current client version.
+     */
     clientVersion() {
       return this.rpc.call('web3_clientVersion', []);
     }
