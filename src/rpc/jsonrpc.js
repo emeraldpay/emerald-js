@@ -24,6 +24,15 @@ export interface Transport {
     request(req: JsonRpcRequest | Array<JsonRpcRequest>): Promise<any>;
 }
 
+export class JsonRpcError extends Error {
+    code: number;
+    constructor(error: {code: number, message: string}) {
+      super(error.message);
+      this.name = 'JsonRpcError';
+      this.code = error.code;
+    }
+}
+
 export default class JsonRpc {
     requestSeq: number;
     transport: Transport;
@@ -47,7 +56,7 @@ export default class JsonRpc {
         if (json.result || json.result === false || json.result === null) {
           return json.result;
         } else if (json.error) {
-          throw new Error(json.error);
+          throw new JsonRpcError(json.error);
         } else {
           throw new Error(`Unknown JSON RPC response: ${JSON.stringify(json)},
                      method: ${method},
