@@ -1,5 +1,10 @@
 {
   "presets": ["env", "stage-2", "flow"],
-  "plugins": ["transform-es2015-modules-umd"]
+  "plugins": [
+    "transform-es2015-modules-umd",
+    ["babel-plugin-transform-builtin-extend", {
+      "globals": ["Error", "Array"]
+    }]
+  ]
 }
 
