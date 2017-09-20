@@ -54,7 +54,7 @@ export default class NodeChecker {
           } else if (result.hash === NodeChecker.ETC_MAINNET_GENESIS) {
             resolve({ chain: 'morden', chainId: 62 });
           } else {
-            reject(new Error(`Unknown chain ${result.hash}`));
+            resolve({ chain: 'unknown', chainId: 0 });
           }
         }).catch((error) => {
           reject(error);
