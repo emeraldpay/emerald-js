@@ -7,3 +7,5 @@ export { HttpTransport } from './rpc/transport';
 
 export { default as EthRpc } from './rpc/ethrpc';
 export { default as NodeChecker } from './nodeChecker';
+
+export { default as Address } from './address';
