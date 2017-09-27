@@ -154,7 +154,7 @@ export default class EthRpc {
     }
 
 
-    raw(method: string, params) {
+    raw(method: string, params: any) {
       return this.rpc.call(method, params);
     }
 }

@@ -1,7 +1,9 @@
 import BigNumber from 'bignumber.js';
 import convert from './convert';
 
-const { toNumber, separateThousands, toHex } = convert;
+const {
+  toNumber, separateThousands, toHex, hexToBigNumber,
+} = convert;
 
 test('toNumber should convert hex string to number', () => {
   expect(toNumber('0x01')).toBe(1);
@@ -29,5 +31,15 @@ describe('toHex', () => {
 
   it('convert BigNumber to hex', () => {
     expect(toHex(new BigNumber(21000))).toEqual('0x5208');
+  });
+
+  it('convert hex to hex', () => {
+    expect(toHex('0x01')).toEqual('0x01');
+  });
+});
+
+describe('hexToBigNumber', () => {
+  it('convert 0x to zero', () => {
+    expect(hexToBigNumber('0x')).toEqual(new BigNumber(0));
   });
 });
