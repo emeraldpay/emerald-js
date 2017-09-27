@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import JsonRpc from './jsonrpc';
 
 class EthApi {
@@ -58,6 +58,13 @@ class EthApi {
      */
     getTransactionCount(address: string, blockNumber: number | string = 'latest') {
       return this.rpc.call('eth_getTransactionCount', [address, blockNumber]);
+    }
+
+    /**
+     * Returns the receipt of a transaction by transaction hash.
+     */
+    getTransactionReceipt(hash: string) {
+      return this.rpc.call('eth_getTransactionReceipt', [hash]);
     }
 
     /**
