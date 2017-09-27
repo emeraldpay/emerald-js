@@ -35,8 +35,11 @@ function toHex(val: number | string | BigNumber): string {
 }
 
 function hexToBigNumber(val: string, defaultValue: BigNumber): BigNumber {
-  if (val === null || val === '0x') {
+  if (val === null) {
     return defaultValue;
+  }
+  if (val === '0x') {
+    return new BigNumber(0);
   }
   return new BigNumber(val, 16);
 }

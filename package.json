@@ -1,6 +1,6 @@
 {
   "name": "emerald-js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "prepublish": "npm run babel-prepublish && npm run flow-prepublish",
     "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
     "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i '**/*.test.js'",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "flow": "flow"
   },
   "repository": {
     "type": "git",
