@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import JsonRpc from './jsonrpc';
 
 class EthApi {
@@ -11,42 +11,42 @@ class EthApi {
     /**
      * Returns the balance of the account of given address.
      */
-    getBalance(address: string, blockNumber: number | string = 'latest') {
+    getBalance(address: string, blockNumber: number | string = 'latest'): Promise<any> {
       return this.rpc.call('eth_getBalance', [address, blockNumber]);
     }
 
     /**
      * Returns the current price per gas in wei.
      */
-    gasPrice() {
+    gasPrice(): Promise<any> {
       return this.rpc.call('eth_gasPrice', []);
     }
 
     /**
      * Returns an object with data about the sync status or false.
      */
-    syncing() {
+    syncing(): Promise<any> {
       return this.rpc.call('eth_syncing', []);
     }
 
     /**
      * Executes a new message call immediately without creating a transaction on the block chain
      */
-    call(to: string, data: string, blockNumber: number | string = 'latest') {
+    call(to: string, data: string, blockNumber: number | string = 'latest'): Promise<any> {
       return this.rpc.call('eth_call', [{ to, data }, blockNumber]);
     }
 
     /**
      * Returns the number of most recent block
      */
-    blockNumber() {
+    blockNumber(): Promise<any> {
       return this.rpc.call('eth_blockNumber', []);
     }
 
     /**
      * Returns information about a block by block number.
      */
-    getBlockByNumber(blockNumber: number | string = 'latest', full: boolean = false) {
+    getBlockByNumber(blockNumber: number | string = 'latest', full: boolean = false): Promise<any> {
       return this.rpc.call('eth_getBlockByNumber', [blockNumber, full]);
     }
 
@@ -56,28 +56,35 @@ class EthApi {
      * @param blockNumber - integer block number, or the string 'latest', 'earliest' or 'pending'
      * @returns {*}
      */
-    getTransactionCount(address: string, blockNumber: number | string = 'latest') {
+    getTransactionCount(address: string, blockNumber: number | string = 'latest'): Promise<any> {
       return this.rpc.call('eth_getTransactionCount', [address, blockNumber]);
+    }
+
+    /**
+     * Returns the receipt of a transaction by transaction hash.
+     */
+    getTransactionReceipt(hash: string): Promise<any> {
+      return this.rpc.call('eth_getTransactionReceipt', [hash]);
     }
 
     /**
      * Creates new message call transaction or a contract creation for signed transactions.
      */
-    sendRawTransaction(signed: string) {
+    sendRawTransaction(signed: string): Promise<any> {
       return this.rpc.call('eth_sendRawTransaction', [signed]);
     }
 
     /**
      * Returns the information about a transaction requested by transaction hash.
      */
-    getTransactionByHash(hash: string) {
+    getTransactionByHash(hash: string): Promise<any> {
       return this.rpc.call('eth_getTransactionByHash', [hash]);
     }
 
     /**
-     * Returns the current ethereum protocol version.
+     * Returns the current Ethereum protocol version.
      */
-    protocolVersion() {
+    protocolVersion(): Promise<any> {
       return this.rpc.call('eth_protocolVersion');
     }
 }
@@ -92,14 +99,14 @@ class NetApi {
     /**
      * Returns the current network id.
      */
-    version() {
+    version(): Promise<any> {
       return this.rpc.call('net_version', []);
     }
 
     /**
      * Returns number of peers currently connected to the client.
      */
-    peerCount() {
+    peerCount(): Promise<any> {
       return this.rpc.call('net_peerCount', []);
     }
 }
@@ -114,7 +121,7 @@ class Web3Api {
     /**
      * Returns the current client version.
      */
-    clientVersion() {
+    clientVersion(): Promise<any> {
       return this.rpc.call('web3_clientVersion', []);
     }
 }
@@ -153,8 +160,7 @@ export default class EthRpc {
       this.ext = new ExtApi(jsonRpc);
     }
 
-
-    raw(method: string, params: any) {
+    raw(method: string, params: any): Promise<any> {
       return this.rpc.call(method, params);
     }
 }
