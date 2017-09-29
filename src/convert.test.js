@@ -35,6 +35,7 @@ describe('toHex', () => {
 describe('toBigNumber', () => {
   it('convert 0x to zero', () => {
     expect(toBigNumber('0x')).toEqual(new BigNumber(0));
+    expect(toBigNumber(undefined)).toEqual(new BigNumber(0));
   });
 });
 

@@ -30,7 +30,7 @@ const ZERO = new BigNumber(0);
  * Converts number, string or hex string into BigNumber
  */
 function toBigNumber(value: string|number|BigNumber, defaultValue: BigNumber = ZERO): BigNumber {
-  if (value === null) {
+  if (!value) {
     return defaultValue;
   }
   if (value instanceof BigNumber) {
