@@ -18,16 +18,7 @@ export default class Wei {
   constructor(val: number | string | BigNumber) {
     // private member
     let value: BigNumber = ZERO;
-
-    if (typeof val === 'string' || val === null) {
-      // TODO: think, should we convert hex here ?
-      value = convert.hexToBigNumber(val, ZERO);
-    } else if (typeof val === 'number') {
-      value = new BigNumber(val);
-    } else {
-      value = val;
-    }
-
+    value = convert.toBigNumber(val);
     if (value.lessThan(1)) {
       value = ZERO;
     }

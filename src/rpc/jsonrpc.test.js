@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import JsonRpc, { Transport, JsonRpcError } from './jsonrpc';
 
 test('JsonRpcError constructor', () => {
