@@ -30,6 +30,7 @@ describe('isValid() validates addresses', () => {
     const addressParam = '0x6ebeb2af2e734fbba2b58c5b922628af442527ce';
     const isValidSpy = jest.spyOn(Address, 'isValid');
     const ethUtilSpy = jest.spyOn(ethUtil, 'isValidAddress');
+
     const isValidAddress = Address.isValid(addressParam);
 
     expect(isValidSpy).toHaveBeenCalled();
