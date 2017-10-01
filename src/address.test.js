@@ -1,13 +1,27 @@
 import Address from './address';
 
-test('isValid() validates addresses', () => {
-  expect(Address.isValid('0x6ebeb2af2e734fbba2b58c5b922628af442527ce')).toBeTruthy();
-  expect(Address.isValid('0x0E7C045110B8dbF29765047380898919C5CB56F4')).toBeTruthy();
-  expect(Address.isValid('0x6ebeb2af2e734fbba2b58c5b922628af442527cefa')).toBeFalsy();
-  expect(Address.isValid('0x0E7C045110B8dbF29765047380898919C5CB56F4C2')).toBeFalsy();
-  expect(Address.isValid('0x6ebeb2af2e734fbba2b58c5b922628af442527')).toBeFalsy();
-  expect(Address.isValid('0E7C045110B8dbF29765047380898919C5CB56F4')).toBeFalsy();
-  expect(Address.isValid('')).toBeFalsy();
-  expect(Address.isValid(null)).toBeFalsy();
-  expect(Address.isValid()).toBeFalsy();
+describe('isValid() validates addresses', () => {
+  test('41-character alphanumeric hash preceded by 0x is valid', () => {
+    expect(Address.isValid('0x6ebeb2af2e734fbba2b58c5b922628af442527ce')).toBeTruthy();
+    expect(Address.isValid('0x0E7C045110B8dbF29765047380898919C5CB56F4')).toBeTruthy();
+  });
+
+  test('long hashes are not valid', () => {
+    expect(Address.isValid('0x6ebeb2af2e734fbba2b58c5b922628af442527cefa')).toBeFalsy();
+    expect(Address.isValid('0x0E7C045110B8dbF29765047380898919C5CB56F4C2')).toBeFalsy();
+  });
+
+  test('short hashes are not valid', () => {
+    expect(Address.isValid('0x6ebeb2af2e734fbba2b58c5b922628af442527')).toBeFalsy();
+  });
+
+  test('hashes not preceded by 0x are not valid', () => {
+    expect(Address.isValid('0E7C045110B8dbF29765047380898919C5CB56F4')).toBeFalsy();
+  });
+
+  test('empty hashes are not valid', () => {
+    expect(Address.isValid('')).toBeFalsy();
+    expect(Address.isValid(null)).toBeFalsy();
+    expect(Address.isValid()).toBeFalsy();
+  });
 });
