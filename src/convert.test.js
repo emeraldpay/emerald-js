@@ -2,6 +2,12 @@
 // Find out how native JS methods are tested.
 // See if BigNumber at https://github.com/MikeMcl/bignumber.js/ has tests
 
+// toBeNull matches only null
+// toBeUndefined matches only undefined
+// toBeDefined is the opposite of toBeUndefined
+// toBeTruthy matches anything that an if statement treats as true
+// toBeFalsy matches anything that an if statement treats as false
+
 import BigNumber from 'bignumber.js';
 import convert from './convert';
 
