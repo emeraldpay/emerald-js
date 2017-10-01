@@ -27,13 +27,15 @@ describe('isValid() validates addresses', () => {
   });
 
   test('validates addresses using ethereumjs-util.isValidAddress', () => {
+    const addressParam = '0x6ebeb2af2e734fbba2b58c5b922628af442527ce';
     const isValidSpy = jest.spyOn(Address, 'isValid');
     const ethUtilSpy = jest.spyOn(ethUtil, 'isValidAddress');
-    const isValidAddress = Address.isValid('0x6ebeb2af2e734fbba2b58c5b922628af442527ce');
+    const isValidAddress = Address.isValid(addressParam);
 
     expect(isValidSpy).toHaveBeenCalled();
     expect(isValidAddress).toBeTruthy();
     expect(ethUtilSpy).toHaveBeenCalledTimes(1);
+    expect(ethUtilSpy).toHaveBeenCalledWith(addressParam);
 
     isValidSpy.mockReset();
     isValidSpy.mockRestore();
