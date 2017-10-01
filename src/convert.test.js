@@ -1,3 +1,7 @@
+// TODO:
+// Find out how native JS methods are tested.
+// See if BigNumber at https://github.com/MikeMcl/bignumber.js/ has tests
+
 import BigNumber from 'bignumber.js';
 import convert from './convert';
 
@@ -5,6 +9,7 @@ const {
   toNumber, toHex, toBigNumber, toBaseUnits, fromBaseUnits,
 } = convert;
 
+// this is testing parseInt(string, 16)
 test('toNumber should convert hex string to number', () => {
   expect(toNumber('0x01')).toBe(1);
   expect(toNumber('0x')).toBe(0);
@@ -17,6 +22,7 @@ test('toNumber should convert number to number', () => {
   expect(toNumber(15)).toBe(15);
 });
 
+// this is testing the BigNumber library
 describe('toHex', () => {
   it('convert decimal number to hex', () => {
     expect(toHex(10000000000)).toEqual('0x02540be400');
@@ -39,6 +45,8 @@ describe('toBigNumber', () => {
   });
 });
 
+// this is testing methods within the BigNumber library
+// if BigNumber has tests, then we should reference those tests
 describe('toBaseUnits / fromBaseUnits', () => {
   it('convert to base units', () => {
     expect(toBaseUnits(new BigNumber(1234), 8).toString()).toEqual('123400000000');
