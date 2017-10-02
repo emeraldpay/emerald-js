@@ -1,8 +1,11 @@
 # emerald-js
 [![Build Status](https://travis-ci.org/ethereumproject/emerald-js.svg?branch=master)](https://travis-ci.org/ethereumproject/emerald-js)
+[![codecov](https://codecov.io/gh/ethereumproject/emerald-js/branch/master/graph/badge.svg)](https://codecov.io/gh/ethereumproject/emerald-js)
+
+
+
 [![Join the chat at https://gitter.im/ethereumproject/emerald-js](https://badges.gitter.im/ethereumproject/emerald-js.svg)](https://gitter.im/ethereumproject/emerald-js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-`npm run setup`
 
 # How to use
 As long as this is unstable library and there is no npm package you should depend on particular version.
