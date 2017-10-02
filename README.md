@@ -21,3 +21,7 @@ emerald-js uses [Jest](http://facebook.github.io/jest/) for its test suite. To r
 ```
 npm run test
 ```
+
+# Contribution
+
+We use [AirBnB JavaScript Style Guide](https://github.com/airbnb/javascript) and [Flow](https://flow.org/) for static type checking.
