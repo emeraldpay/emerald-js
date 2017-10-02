@@ -14,3 +14,10 @@ npm install -S https://github.com/ethereumproject/emerald-js.git#v0.0.4
 
 ```
 This will link v0.0.4
+
+# Test suite
+emerald-js uses [Jest](http://facebook.github.io/jest/) for its test suite. To run tests in the console:
+
+```
+npm run test
+```
