@@ -9,3 +9,5 @@ export { default as EthRpc } from './rpc/ethrpc';
 export { default as NodeChecker } from './nodeChecker';
 
 export { default as Address } from './address';
+
+export { default as Vault } from './vault';
