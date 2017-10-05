@@ -1,5 +1,5 @@
 {
-  "presets": ["env", "stage-2", "flow"],
+  "presets": ["env", "stage-2", "flow", "react"],
   "plugins": [
     "transform-es2015-modules-umd",
     ["babel-plugin-transform-builtin-extend", {
