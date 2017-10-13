@@ -51,7 +51,7 @@ export default class NodeChecker {
                 resolve({ chain: 'mainnet', chainId: 61 });
               }
             });
-          } else if (result.hash === NodeChecker.ETC_MAINNET_GENESIS) {
+          } else if (result.hash === NodeChecker.ETC_MORDEN_GENESIS) {
             resolve({ chain: 'morden', chainId: 62 });
           } else {
             resolve({ chain: 'unknown', chainId: 0 });
