@@ -37,6 +37,12 @@ describe('toBigNumber', () => {
     expect(toBigNumber('0x')).toEqual(new BigNumber(0));
     expect(toBigNumber(undefined)).toEqual(new BigNumber(0));
   });
+
+  it('convert hex string to BigNumber', () => {
+    expect(toBigNumber('0xA')).toEqual(new BigNumber(10));
+    expect(toBigNumber('0x0A')).toEqual(new BigNumber(10));
+    expect(toBigNumber('0x1A')).toEqual(new BigNumber(26));
+  });
 });
 
 describe('toBaseUnits / fromBaseUnits', () => {
