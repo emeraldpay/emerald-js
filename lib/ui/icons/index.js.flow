@@ -6,3 +6,4 @@ export { default as Edit } from './Edit';
 export { default as Close } from './Close';
 export { default as Copy } from './Copy';
 export { default as Gear } from './Gear';
+export { default as Add } from './Add';
