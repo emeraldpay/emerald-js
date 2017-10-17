@@ -9,9 +9,15 @@ export default class Vault {
       this.rpc = jsonRpc;
     }
 
-    listAccounts(chain: string) {
+    /**
+     * Returns the list of all not hidden (by default) accounts from the keystore.
+     * @param chain - chain name
+     * @param showHidden - also show hidden accounts
+     * @returns {*}
+     */
+    listAccounts(chain: string, showHidden: boolean = false) {
       this.notNull(chain, 'chain');
-      return this.rpc.call('emerald_listAccounts', [{ chain }]);
+      return this.rpc.call('emerald_listAccounts', [{ chain, show_hidden: showHidden }]);
     }
 
     signTransaction(tx, passphrase: string, chain: string) {
