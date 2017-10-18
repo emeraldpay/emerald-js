@@ -81,6 +81,9 @@ export default class JsonRpc {
      * @returns {Promise.<any>}
      */
     batch(requests: Array<BatchRequest>): Promise<any> {
+      if (requests && requests.length === 0) {
+        return Promise.resolve([]);
+      }
       // build map id -> handler
       const handlers = {};
       requests.forEach((r) => {

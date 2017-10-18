@@ -53,3 +53,16 @@ test('batch request without handlers', () => {
   return promise
     .then(response => expect(JSON.stringify(balancesResponse)).toEqual(JSON.stringify(response)));
 });
+
+test('empty batch request', () => {
+  const balancesResponse = [
+    { id: 3, result: '0x300' },
+    { id: 2, result: '0x200' },
+    { id: 1, result: '0x100' },
+  ];
+  const transport: Transport = {
+    request: () => Promise.resolve(balancesResponse),
+  };
+  const rpc = new JsonRpc(transport);
+  return rpc.batch([]).then(response => expect(response).toHaveLength(0));
+});
