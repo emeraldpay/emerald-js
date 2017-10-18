@@ -1,6 +1,5 @@
 // @flow
 import BigNumber from 'bignumber.js';
-
 import convert from './convert';
 
 const ETHER = new BigNumber(10).pow(18);

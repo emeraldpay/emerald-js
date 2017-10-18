@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import EthRpc from './rpc/ethrpc';
 import convert from './convert';
 
