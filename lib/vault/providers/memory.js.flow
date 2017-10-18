@@ -48,8 +48,13 @@ export default class InMemoryProvider implements IVaultProvider {
       return Promise.resolve(true);
     }
 
-    exportAccount(address: string, chain: string): Promise<any> {
-      return Promise.resolve();
+    exportAccount(address: string, chain: string): Promise<string> {
+      const accounts = this.accounts[chain] || [];
+      const idx = accounts.findIndex(elem => elem.address === address);
+      if (idx >= 0) {
+        return Promise.resolve(this.accounts[chain][idx].V3);
+      }
+      return Promise.resolve('');
     }
 
     updateAccount(address: string, name: string, description: string = '', chain: string): Promise<any> {
