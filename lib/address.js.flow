@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import ethUtil from 'ethereumjs-util';
 
 export default class Address {
