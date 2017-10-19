@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "bignumber.js": "^4.0.4",
-    "ethereumjs-util": "^5.1.1",
+    "ethereumjs-util": "^5.1.2",
     "ethereumjs-wallet": "^0.6.0",
     "isomorphic-fetch": "^2.2.1"
   },
