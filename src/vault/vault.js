@@ -30,6 +30,11 @@ export default class Vault {
       return this.provider.importAccount(data, chain);
     }
 
+    unhideAccount(address: string, chain: string) {
+      this.notNull(chain, 'chain');
+      return this.provider.unhideAccount(address, chain);
+    }
+
     hideAccount(address: string, chain: string) {
       this.notNull(chain, 'chain');
       return this.provider.hideAccount(address, chain);
