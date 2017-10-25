@@ -55,10 +55,14 @@ export default class Vault {
       return this.provider.newAccount(passphrase, name, description, chain);
     }
 
-    addContract(address: string, name: string, chain: string): Promise<string> {
+    importContract(address: string, name: string, abi: any, chain: string): Promise<string> {
       this.notNull(chain, 'chain');
-      return Promise.resolve(address);
-      // TODO: return this.rpc.call('emerald_addContract', [{address, name }]);
+      return this.provider.importContract(address, name, abi, chain);
+    }
+
+    listContracts(chain: string): Promise<any> {
+      this.notNull(chain, 'chain');
+      return this.provider.listContracts(chain);
     }
 
     notNull(value: any, param: string) {

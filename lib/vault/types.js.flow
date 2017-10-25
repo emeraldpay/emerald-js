@@ -17,5 +17,7 @@ export interface IVaultProvider {
     unhideAccount(address: string, chain: string): Promise<any>;
     updateAccount(address: string, name: string, description: string, chain: string): Promise<any>;
     exportAccount(address: string, chain: string): Promise<any>;
+    importContract(address: string, name: string, abi: any, chain: string): Promise<any>;
+    listContracts(chain: string): Promise<any>;
 }
 

@@ -32,23 +32,22 @@ describe('Vault with InMemoryProvider', () => {
     const chain = 'mainnet';
     return vault.newAccount('passPhrase', 'name1', 'desc', chain)
       .then(address => vault.hideAccount(address, chain)
-        .then(() => vault.listAccounts(chain).then((list) => {
+        .then(() => vault.listAccounts(chain))
+        .then((list) => {
           expect(list).toHaveLength(0);
-        })));
+        }));
   });
 
   it('should unhide account', () => {
     const vault = new Vault(newProvider());
     const chain = 'mainnet';
     return vault.newAccount('passPhrase', 'name1', 'desc', chain)
-      .then((address) =>  {
-        return vault.hideAccount(address, chain)
-          .then(() => vault.listAccounts(chain))
-          .then(list => expect(list).toHaveLength(0))
-          .then(() => vault.unhideAccount(address, chain))
-          .then(() => vault.listAccounts(chain))
-          .then(list => expect(list).toHaveLength(1))
-      });
+      .then(address => vault.hideAccount(address, chain)
+        .then(() => vault.listAccounts(chain))
+        .then(list => expect(list).toHaveLength(0))
+        .then(() => vault.unhideAccount(address, chain))
+        .then(() => vault.listAccounts(chain))
+        .then(list => expect(list).toHaveLength(1)));
   });
 
   it('should list hidden accounts', () => {
@@ -75,5 +74,13 @@ describe('Vault with InMemoryProvider', () => {
           expect(keyFile.version).toEqual(3);
           expect(keyFile.address).toEqual(address.substring(2));
         }));
+  });
+
+  it('should import contract', () => {
+    const vault = new Vault(newProvider());
+    const chain = 'mainnet';
+    return vault.importContract('0xContract1', 'Contract1', '', chain)
+      .then(() => vault.listContracts(chain))
+      .then(list => expect(list).toHaveLength(1));
   });
 });
