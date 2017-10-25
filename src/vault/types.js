@@ -14,6 +14,7 @@ export interface IVaultProvider {
     signTransaction(tx, passphrase: string, chain: string): Promise<any>;
     importAccount(data, chain: string): Promise<any>;
     hideAccount(address: string, chain: string): Promise<any>;
+    unhideAccount(address: string, chain: string): Promise<any>;
     updateAccount(address: string, name: string, description: string, chain: string): Promise<any>;
     exportAccount(address: string, chain: string): Promise<any>;
 }

@@ -37,6 +37,20 @@ describe('Vault with InMemoryProvider', () => {
         })));
   });
 
+  it('should unhide account', () => {
+    const vault = new Vault(newProvider());
+    const chain = 'mainnet';
+    return vault.newAccount('passPhrase', 'name1', 'desc', chain)
+      .then((address) =>  {
+        return vault.hideAccount(address, chain)
+          .then(() => vault.listAccounts(chain))
+          .then(list => expect(list).toHaveLength(0))
+          .then(() => vault.unhideAccount(address, chain))
+          .then(() => vault.listAccounts(chain))
+          .then(list => expect(list).toHaveLength(1))
+      });
+  });
+
   it('should list hidden accounts', () => {
     const vault = new Vault(newProvider());
     const chain = 'mainnet';

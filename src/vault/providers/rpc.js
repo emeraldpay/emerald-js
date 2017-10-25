@@ -39,6 +39,11 @@ export default class JsonRpcProvider implements IVaultProvider {
       return this.rpc.call('emerald_importAccount', [data, { chain }]);
     }
 
+    unhideAccount(address: string, chain: string) {
+      this.notNull(chain, 'chain');
+      return this.rpc.call('emerald_unhideAccount', [{ address }, { chain }]);
+    }
+
     hideAccount(address: string, chain: string) {
       this.notNull(chain, 'chain');
       return this.rpc.call('emerald_hideAccount', [{ address }, { chain }]);

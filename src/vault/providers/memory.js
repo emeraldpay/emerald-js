@@ -39,6 +39,15 @@ export default class InMemoryProvider implements IVaultProvider {
       return Promise.resolve();
     }
 
+    unhideAccount(address: string, chain: string): Promise<any> {
+      const accounts = this.accounts[chain] || [];
+      const idx = accounts.findIndex(elem => elem.address === address);
+      if (idx >= 0) {
+        this.accounts[chain][idx].hidden = false;
+      }
+      return Promise.resolve(true);
+    }
+
     hideAccount(address: string, chain: string): Promise<any> {
       const accounts = this.accounts[chain] || [];
       const idx = accounts.findIndex(elem => elem.address === address);

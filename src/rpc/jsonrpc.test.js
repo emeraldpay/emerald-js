@@ -4,7 +4,7 @@ import JsonRpc, { Transport, JsonRpcError } from './jsonrpc';
 test('JsonRpcError constructor', () => {
   const err = new JsonRpcError({ code: 1, message: 'errmsg' });
   expect(err.message).toEqual('errmsg');
-  expect(err.name).toEqual('JsonRpcError');
+  expect(err.name).toEqual('Error');
   expect(err.code).toEqual(1);
 });
 
