@@ -65,9 +65,14 @@ export default class JsonRpcProvider implements IVaultProvider {
       return this.rpc.call('emerald_newAccount', params);
     }
 
-    addContract(address: string, name: string, chain: string): Promise<string> {
-      return Promise.resolve(address);
-      // TODO: return this.rpc.call('emerald_addContract', [{address, name }]);
+    importContract(address: string, name: string, abi: any, chain: string): Promise<boolean> {
+      this.notNull(chain, 'chain');
+      return this.rpc.call('emerald_importContract', [{ address, name }, { chain }]);
+    }
+
+    listContracts(chain: string): Promise<any> {
+      this.notNull(chain, 'chain');
+      return this.rpc.call('emerald_listContracts', [{ chain }]);
     }
 
     notNull(value: any, param: string) {

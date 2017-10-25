@@ -7,8 +7,13 @@ export default class InMemoryProvider implements IVaultProvider {
         [chain: string] : Array<any>
     };
 
+    contracts: {
+        [chain: string] : Array<any>
+    };
+
     constructor() {
       this.accounts = {};
+      this.contracts = {};
     }
 
   /**
@@ -88,7 +93,23 @@ export default class InMemoryProvider implements IVaultProvider {
       return Promise.resolve(address);
     }
 
-    addContract(address: string, name: string, chain: string): Promise<string> {
-      return Promise.resolve('');
+    importContract(address: string, name: string, abi: any, chain: string): Promise<boolean> {
+      const contractData = {
+        address,
+        name,
+      };
+      this.contracts[chain] = this.contracts[chain] || [];
+      this.contracts[chain].push(contractData);
+      return Promise.resolve(true);
+    }
+
+    listContracts(chain: string): Promise<any> {
+      const contracts = this.contracts[chain] || [];
+      const result = contracts
+        .map(a => ({
+          address: a.address,
+          name: a.name,
+        }));
+      return Promise.resolve(result);
     }
 }
