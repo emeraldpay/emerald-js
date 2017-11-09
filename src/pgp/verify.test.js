@@ -174,4 +174,10 @@ describe('Verify', () => {
     expect.assertions(1);
     return expect(v.verify(signedMessage, invalidSignature)).rejects.toBeDefined();
   });
+
+  it('should reject with error if init() had not been called', () => {
+    const v = new Verify();
+    expect.assertions(1);
+    return expect(v.verify(signedMessage, validSignature)).rejects.toBeDefined();
+  });
 });
