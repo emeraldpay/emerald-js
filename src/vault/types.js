@@ -20,5 +20,6 @@ export interface IVaultProvider {
     importContract(address: string, name: string, abi: any, chain: string): Promise<any>;
     listContracts(chain: string): Promise<any>;
     generateMnemonic(): Promise<string>;
+    importMnemonic(mnemonic: string, chain: string): Promise<any>;
 }
 

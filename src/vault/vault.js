@@ -69,6 +69,11 @@ export default class Vault {
       return this.provider.generateMnemonic();
     }
 
+    importMnemonic(mnemonic: string, chain: string): Promise<any> {
+      this.notNull(chain, 'chain');
+      return this.provider.importMnemonic(mnemonic, chain);
+    }
+
     notNull(value: any, param: string) {
       return assert.assert(value, `${param} must not be null`);
     }
