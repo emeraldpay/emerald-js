@@ -69,9 +69,9 @@ export default class Vault {
       return this.provider.generateMnemonic();
     }
 
-    importMnemonic(mnemonic: string, chain: string): Promise<any> {
+    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<any> {
       this.notNull(chain, 'chain');
-      return this.provider.importMnemonic(mnemonic, chain);
+      return this.provider.importMnemonic(passphrase, name, description, mnemonic, chain);
     }
 
     notNull(value: any, param: string) {
