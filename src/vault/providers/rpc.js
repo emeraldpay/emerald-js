@@ -76,7 +76,7 @@ export default class JsonRpcProvider implements IVaultProvider {
     }
 
     generateMnemonic(): Promise<string> {
-      return this.rpc.call('emerald_generateMnemonic');
+      return this.rpc.call('emerald_generateMnemonic', []);
     }
 
     notNull(value: any, param: string) {
