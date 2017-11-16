@@ -19,5 +19,6 @@ export interface IVaultProvider {
     exportAccount(address: string, chain: string): Promise<any>;
     importContract(address: string, name: string, abi: any, chain: string): Promise<any>;
     listContracts(chain: string): Promise<any>;
+    generateMnemonic(): Promise<string>;
 }
 

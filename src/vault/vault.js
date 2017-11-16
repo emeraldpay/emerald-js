@@ -65,6 +65,10 @@ export default class Vault {
       return this.provider.listContracts(chain);
     }
 
+    generateMnemonic(): Promise<string> {
+      return this.provider.generateMnemonic();
+    }
+
     notNull(value: any, param: string) {
       return assert.assert(value, `${param} must not be null`);
     }

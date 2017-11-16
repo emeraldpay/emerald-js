@@ -75,6 +75,10 @@ export default class JsonRpcProvider implements IVaultProvider {
       return this.rpc.call('emerald_listContracts', [{ chain }]);
     }
 
+    generateMnemonic(): Promise<string> {
+      return this.rpc.call('emerald_generateMnemonic');
+    }
+
     notNull(value: any, param: string) {
       return assert.assert(value, `${param} must not be null`);
     }

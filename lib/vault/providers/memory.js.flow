@@ -93,6 +93,10 @@ export default class InMemoryProvider implements IVaultProvider {
       return Promise.resolve(address);
     }
 
+    generateMnemonic(): Promise<string> {
+      return Promise.reject(new Error('NOT IMPLEMENTED'));
+    }
+
     importContract(address: string, name: string, abi: any, chain: string): Promise<boolean> {
       const contractData = {
         address,
