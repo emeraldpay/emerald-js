@@ -14,6 +14,13 @@ describe('Vault with InMemoryProvider', () => {
       });
   });
 
+  it('should not import mnemonic with empty passphrase', () => {
+    const vault = new Vault(newProvider());
+    const chain = 'mainnet';
+    expect.assertions(1);
+    return expect(vault.importMnemonic('', 'name1', 'desc', 'mnemonic', chain)).rejects.toBeDefined();
+  });
+
   it('should list not hidden accounts', () => {
     const vault = new Vault(newProvider());
     const chain = 'mainnet';

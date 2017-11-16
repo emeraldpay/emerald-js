@@ -70,11 +70,20 @@ export default class Vault {
     }
 
     importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<any> {
-      this.notNull(chain, 'chain');
-      return this.provider.importMnemonic(passphrase, name, description, mnemonic, chain);
+      try {
+        this.notNull(chain, 'chain');
+        this.notEmpty(passphrase, 'passphrase');
+        return this.provider.importMnemonic(passphrase, name, description, mnemonic, chain);
+      } catch (error) {
+        return Promise.reject(error);
+      }
     }
 
     notNull(value: any, param: string) {
       return assert.assert(value, `${param} must not be null`);
+    }
+
+    notEmpty(value: string, param: string) {
+      return assert.assert(value !== null && value.length > 0, `${param} must not be empty`);
     }
 }
