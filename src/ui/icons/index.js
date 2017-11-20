@@ -8,3 +8,4 @@ export { default as Copy } from './Copy';
 export { default as Gear } from './Gear';
 export { default as Add } from './Add';
 export { default as Search } from './Search';
+export { default as Ledger } from './Ledger';
