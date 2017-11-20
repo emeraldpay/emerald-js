@@ -86,7 +86,7 @@ export default class Vault {
       return assert.assert(value, `${param} must not be null`);
     }
 
-    notEmpty(value: string, param: string) {
-      return assert.assert(value !== null && value.length > 0, `${param} must not be empty`);
+    notEmpty(value: any, param: string) {
+      return assert.assert(value && (value.length > 0), `${param} must not be empty`);
     }
 }
