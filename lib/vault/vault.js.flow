@@ -1,6 +1,6 @@
 // @flow
 import assert from '../assert';
-import type { IVaultProvider, Account } from './types';
+import type { IVaultProvider, Account, TxSignRequest } from './types';
 
 export default class Vault {
     provider: IVaultProvider;
@@ -20,7 +20,7 @@ export default class Vault {
       return this.provider.listAccounts(chain, showHidden);
     }
 
-    signTransaction(tx, passphrase: string, chain: string) {
+    signTransaction(tx: TxSignRequest, passphrase: string, chain: string) {
       this.notNull(chain, 'chain');
       return this.provider.signTransaction(tx, passphrase, chain);
     }
@@ -65,7 +65,28 @@ export default class Vault {
       return this.provider.listContracts(chain);
     }
 
+    generateMnemonic(): Promise<string> {
+      return this.provider.generateMnemonic();
+    }
+
+    /**
+     * Creates new account in the vault and returns address of it
+     */
+    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<string> {
+      try {
+        this.notNull(chain, 'chain');
+        this.notEmpty(passphrase, 'passphrase');
+        return this.provider.importMnemonic(passphrase, name, description, mnemonic, chain);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+
     notNull(value: any, param: string) {
       return assert.assert(value, `${param} must not be null`);
+    }
+
+    notEmpty(value: string, param: string) {
+      return assert.assert(value !== null && value.length > 0, `${param} must not be empty`);
     }
 }

@@ -1,7 +1,7 @@
 // @flow
 import JsonRpc from '../../rpc/jsonrpc';
 import assert from '../../assert';
-import type { IVaultProvider, Account } from '../types';
+import type { IVaultProvider, Account, TxSignRequest } from '../types';
 
 export default class JsonRpcProvider implements IVaultProvider {
     rpc: JsonRpc;
@@ -28,7 +28,7 @@ export default class JsonRpcProvider implements IVaultProvider {
         })));
     }
 
-    signTransaction(tx, passphrase: string, chain: string) {
+    signTransaction(tx: TxSignRequest, passphrase: string, chain: string) {
       this.notNull(chain, 'chain');
       const withPass = { ...tx, passphrase };
       return this.rpc.call('emerald_signTransaction', [withPass, { chain }]);
@@ -73,6 +73,21 @@ export default class JsonRpcProvider implements IVaultProvider {
     listContracts(chain: string): Promise<any> {
       this.notNull(chain, 'chain');
       return this.rpc.call('emerald_listContracts', [{ chain }]);
+    }
+
+    generateMnemonic(): Promise<string> {
+      return this.rpc.call('emerald_generateMnemonic', []);
+    }
+
+    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<string> {
+      this.notNull(chain, 'chain');
+      const params = {
+        name,
+        description,
+        password: passphrase,
+        mnemonic_sentence: mnemonic,
+      };
+      return this.rpc.call('emerald_importMnemonic', [params, { chain }]);
     }
 
     notNull(value: any, param: string) {

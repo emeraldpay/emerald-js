@@ -1,6 +1,6 @@
 // @flow
 import Wallet from 'ethereumjs-wallet';
-import type { IVaultProvider, Account } from '../types';
+import type { IVaultProvider, Account, TxSignRequest } from '../types';
 
 export default class InMemoryProvider implements IVaultProvider {
     accounts: {
@@ -36,8 +36,8 @@ export default class InMemoryProvider implements IVaultProvider {
       return Promise.resolve(result);
     }
 
-    signTransaction(tx, passphrase: string, chain: string): Promise<any> {
-      return Promise.resolve();
+    signTransaction(tx: TxSignRequest, passphrase: string, chain: string): Promise<any> {
+      return Promise.reject(new Error('NOT IMPLEMENTED'));
     }
 
     importAccount(data, chain: string): Promise<any> {
@@ -91,6 +91,14 @@ export default class InMemoryProvider implements IVaultProvider {
       this.accounts[chain].push(accountData);
 
       return Promise.resolve(address);
+    }
+
+    generateMnemonic(): Promise<string> {
+      return Promise.reject(new Error('NOT IMPLEMENTED'));
+    }
+
+    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<string> {
+      return Promise.reject(new Error('NOT IMPLEMENTED'));
     }
 
     importContract(address: string, name: string, abi: any, chain: string): Promise<boolean> {
