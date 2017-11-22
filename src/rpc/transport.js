@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import 'isomorphic-fetch';
 import { Transport, type JsonRpcRequest } from './jsonrpc';
 

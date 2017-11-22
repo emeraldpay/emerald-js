@@ -1,5 +1,8 @@
 // @flow
+import BigNumber from 'bignumber.js';
+import convert from '../convert';
 import JsonRpc from './jsonrpc';
+import type { CallObject } from './types';
 
 class EthApi {
     rpc: JsonRpc;
@@ -34,6 +37,13 @@ class EthApi {
      */
     call(to: string, data: string, blockNumber: number | string = 'latest'): Promise<any> {
       return this.rpc.call('eth_call', [{ to, data }, blockNumber]);
+    }
+
+    /**
+     * Executes a message call or transaction and returns the amount of the gas used
+     */
+    estimateGas(call: CallObject): Promise<BigNumber> {
+      return this.rpc.call('eth_estimateGas', [call]).then(gas => convert.toBigNumber(gas));
     }
 
     /**
