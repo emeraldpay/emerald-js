@@ -97,7 +97,7 @@ export default class InMemoryProvider implements IVaultProvider {
       return Promise.reject(new Error('NOT IMPLEMENTED'));
     }
 
-    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<string> {
+    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, path: string, chain: string): Promise<string> {
       return Promise.reject(new Error('NOT IMPLEMENTED'));
     }
 

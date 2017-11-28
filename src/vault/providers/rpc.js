@@ -79,13 +79,17 @@ export default class JsonRpcProvider implements IVaultProvider {
       return this.rpc.call('emerald_generateMnemonic', []);
     }
 
-    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<string> {
+    importMnemonic(
+      passphrase: string, name: string, description: string,
+      mnemonic: string, path: string, chain: string,
+    ): Promise<string> {
       this.notNull(chain, 'chain');
       const params = {
         name,
         description,
         password: passphrase,
-        mnemonic_sentence: mnemonic,
+        mnemonic: mnemonic,
+        hd_path: path,
       };
       return this.rpc.call('emerald_importMnemonic', [params, { chain }]);
     }

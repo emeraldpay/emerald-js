@@ -72,11 +72,14 @@ export default class Vault {
     /**
      * Creates new account in the vault and returns address of it
      */
-    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<string> {
+    importMnemonic(
+      passphrase: string, name: string, description: string,
+      mnemonic: string, path: string, chain: string,
+    ): Promise<string> {
       try {
         this.notNull(chain, 'chain');
         this.notEmpty(passphrase, 'passphrase');
-        return this.provider.importMnemonic(passphrase, name, description, mnemonic, chain);
+        return this.provider.importMnemonic(passphrase, name, description, mnemonic, path, chain);
       } catch (error) {
         return Promise.reject(error);
       }
