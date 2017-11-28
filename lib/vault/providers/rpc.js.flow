@@ -1,4 +1,5 @@
 // @flow
+import assert from 'assert';
 import JsonRpc from '../../rpc/jsonrpc';
 import type { IVaultProvider, Account, TxSignRequest } from '../types';
 
