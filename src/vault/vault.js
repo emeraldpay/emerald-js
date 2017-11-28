@@ -1,5 +1,5 @@
 // @flow
-import assert from '../assert';
+import assert from 'assert';
 import type { IVaultProvider, Account, TxSignRequest } from './types';
 
 export default class Vault {
@@ -86,10 +86,10 @@ export default class Vault {
     }
 
     notNull(value: any, param: string) {
-      return assert.assert(value, `${param} must not be null`);
+      return assert(value, `${param} must not be null`);
     }
 
     notEmpty(value: any, param: string) {
-      return assert.assert(value && (value.length > 0), `${param} must not be empty`);
+      return assert(value && (value.length > 0), `${param} must not be empty`);
     }
 }
