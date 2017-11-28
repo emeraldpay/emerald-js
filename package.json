@@ -1,6 +1,6 @@
 {
   "name": "emerald-js",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -49,6 +49,7 @@
     "jest": "^20.0.4"
   },
   "dependencies": {
+    "assert": "^1.4.1",
     "bignumber.js": "^4.0.4",
     "ethereumjs-util": "^5.1.2",
     "ethereumjs-wallet": "^0.6.0",

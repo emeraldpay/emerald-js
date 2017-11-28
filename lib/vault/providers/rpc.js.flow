@@ -1,6 +1,6 @@
 // @flow
+import assert from 'assert';
 import JsonRpc from '../../rpc/jsonrpc';
-import assert from '../../assert';
 import type { IVaultProvider, Account, TxSignRequest } from '../types';
 
 export default class JsonRpcProvider implements IVaultProvider {
@@ -79,18 +79,22 @@ export default class JsonRpcProvider implements IVaultProvider {
       return this.rpc.call('emerald_generateMnemonic', []);
     }
 
-    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, chain: string): Promise<string> {
+    importMnemonic(
+      passphrase: string, name: string, description: string,
+      mnemonic: string, path: string, chain: string,
+    ): Promise<string> {
       this.notNull(chain, 'chain');
       const params = {
         name,
         description,
+        mnemonic,
         password: passphrase,
-        mnemonic_sentence: mnemonic,
+        hd_path: path,
       };
       return this.rpc.call('emerald_importMnemonic', [params, { chain }]);
     }
 
     notNull(value: any, param: string) {
-      return assert.assert(value, `${param} must not be null`);
+      return assert(value, `${param} must not be null`);
     }
 }
