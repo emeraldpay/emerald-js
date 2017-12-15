@@ -51,14 +51,18 @@
   "dependencies": {
     "assert": "^1.4.1",
     "bignumber.js": "^4.0.4",
+    "decompress-zip": "^0.3.0",
     "ethereumjs-util": "^5.1.2",
     "ethereumjs-wallet": "^0.6.0",
+    "follow-redirects": "^1.2.6",
     "isomorphic-fetch": "^2.2.1",
     "kbpgp": "^2.0.76",
-    "material-ui": "^0.19.3",
-    "react": "^15.6.1"
+    "mz": "^2.7.0"
   },
   "jest": {
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ],
     "coverageDirectory": "./coverage/",
     "collectCoverageFrom": [
       "src/**/*.js"
