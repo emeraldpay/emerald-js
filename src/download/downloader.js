@@ -28,13 +28,18 @@ export default class Downloader extends EventEmitter {
     this.signerKeys = signerKeys;
   }
 
+  /**
+   * If binary does not found will download archive, unpack and check signature.
+   * If binary found - do nothing.
+   * @returns {Promise}
+   */
   downloadIfNotExists(): Promise<any> {
     return new Promise((resolve, reject) => {
       const target = path.join(this.basedir, this.name);
 
       checkExists(target).then((isExists) => {
         if (isExists) {
-          reject(new Error(`File ${this.name} exists`));
+          resolve('exists');
         } else {
           this.backup()
             .then(this.downloadArchive.bind(this))
@@ -50,8 +55,15 @@ export default class Downloader extends EventEmitter {
     });
   }
 
+  /**
+   * Returns promise which resolves to file path of downloaded archive
+   * @returns {Promise.<string>}
+   */
   downloadArchive(): Promise<string> {
     const targetBinary = this.config.binaries.find(x => x.type === 'https' && x.pack === 'zip');
+    if (!targetBinary) {
+      return Promise.reject(new Error('Invalid config - could not find zip binaries with https'));
+    }
     const targetUrl = targetBinary.url;
 
     const tmpDir = path.join(os.tmpdir(), `download-${this.name}-`);
@@ -82,7 +94,10 @@ export default class Downloader extends EventEmitter {
 
   downloadPgp(): Promise<string> {
     const pgp = this.config.signatures.find(x => x.type === 'pgp');
-    const url = pgp.url;
+    if (!pgp) {
+      return Promise.reject(new Error('Invalid config - could not found pgp signature'));
+    }
+    const { url } = pgp;
     return new Promise((resolve, reject) => {
       this.emit('notify', `Downloading PGP keys from ${url}`);
 
@@ -113,11 +128,11 @@ export default class Downloader extends EventEmitter {
 
   prepareDirectory(x): Promise<any> {
     return new Promise((resolve, reject) => {
-      fs.access(this.basedir, (err) => {
-        if (err) {
-          fs.mkdir(this.basedir, 0o777, (err) => {
-            if (err) {
-              reject(err);
+      fs.access(this.basedir, (accessError) => {
+        if (accessError) {
+          fs.mkdir(this.basedir, 0o777, (error) => {
+            if (error) {
+              reject(error);
             } else {
               resolve(x);
             }

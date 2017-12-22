@@ -134,4 +134,10 @@ describe('Downloader', () => {
       downloader.downloadIfNotExists(),
     120000,
   );
+
+  it('downloadPgp returns rejected promise for invalid config', () => {
+    const wrongConfig = { ...getPlatformConfig(config), signatures: [] };
+    const dldr = new Downloader(wrongConfig, 'emerald', './', signers);
+    return expect(dldr.downloadPgp()).rejects.toBeInstanceOf(Error);
+  }, 120000);
 });
