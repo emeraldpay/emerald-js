@@ -14,7 +14,7 @@ export declare class JsonRpc {
 }
 
 export declare class EthApi {
-    getBalance(address: string, blockNumber: number | string = 'latest'): Promise<BigNumber>
+    getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>
 }
 
 export declare class EthRpc {
