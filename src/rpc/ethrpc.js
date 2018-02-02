@@ -14,8 +14,9 @@ class EthApi {
     /**
      * Returns the balance of the account of given address.
      */
-    getBalance(address: string, blockNumber: number | string = 'latest'): Promise<any> {
-      return this.rpc.call('eth_getBalance', [address, blockNumber]);
+    getBalance(address: string, blockNumber: number | string = 'latest'): Promise<BigNumber> {
+      return this.rpc.call('eth_getBalance', [address, blockNumber])
+        .then(hexBalance => convert.toBigNumber(hexBalance));
     }
 
     /**
