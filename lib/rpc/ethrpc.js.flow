@@ -49,8 +49,11 @@ class EthApi {
 
     /**
      * Returns the number of most recent block
+     *
+     * Note: It should be called blockNumber() but to be web3 compatible
+     *       we call it getBlockNumber(), FEF
      */
-    blockNumber(): Promise<any> {
+    getBlockNumber(): Promise<number> {
       return this.rpc.call('eth_blockNumber', []);
     }
 
