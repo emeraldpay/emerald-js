@@ -3,6 +3,7 @@
   "version": "0.0.23",
   "description": "",
   "main": "lib/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "setup": "npm install && flow-typed install",
     "test": "jest",
