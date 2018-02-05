@@ -15,9 +15,9 @@ export declare class JsonRpc {
 
 export interface CallData {
     to?: string;
-    value?: number | string | BigNumber.BigNumber;
-    gas?: number | string | BigNumber.BigNumber;
-    gasPrice?: number | string | BigNumber.BigNumber;
+    value?: number | string | BigNumber;
+    gas?: number | string | BigNumber;
+    gasPrice?: number | string | BigNumber;
     data?: string;
     nonce?: number;
     from?: string;
