@@ -13,9 +13,20 @@ export declare class JsonRpc {
     constructor(transport: Transport)
 }
 
+export interface CallData {
+    to?: string;
+    value?: number | string | BigNumber.BigNumber;
+    gas?: number | string | BigNumber.BigNumber;
+    gasPrice?: number | string | BigNumber.BigNumber;
+    data?: string;
+    nonce?: number;
+    from?: string;
+}
+
 export declare class EthApi {
     getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
     getBlockNumber(): Promise<number>;
+    estimateGas(callData: CallData): Promise<number>;
 }
 
 export declare class EthRpc {
