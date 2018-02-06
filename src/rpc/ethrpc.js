@@ -168,10 +168,15 @@ class ExtApi {
     /**
      * Many calls in one request
      */
-    batchCall(calls: Array<{to: string, data: string}>, blockNumber: number | string = 'latest'): Promise<Array<any>> {
+    batchCall(calls: Array<{id: string, to: string, data: string}>, blockNumber: number | string = 'latest'): Promise<any> {
+        const results = {};
         const requests = calls.map(c =>
-            this.rpc.newBatchRequest('eth_call', [c, blockNumber]));
-        return this.rpc.batch(requests);
+            this.rpc.newBatchRequest(
+                'eth_call',
+                [{to: c.to, data: c.data}, blockNumber],
+                (resp) => { results[c.id] = resp })
+        );
+        return this.rpc.batch(requests).then(() => results);
     }
 }
 
