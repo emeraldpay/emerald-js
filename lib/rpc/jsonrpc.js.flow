@@ -80,7 +80,7 @@ export default class JsonRpc {
      * @param requests
      * @returns {Promise.<any>}
      */
-    batch(requests: Array<BatchRequest>): Promise<any> {
+    batch(requests: Array<BatchRequest>): Promise<Array<any>> {
       if (requests && requests.length === 0) {
         return Promise.resolve([]);
       }

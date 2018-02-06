@@ -164,6 +164,15 @@ class ExtApi {
         this.rpc.newBatchRequest('eth_getTransactionByHash', [h]));
       return this.rpc.batch(requests);
     }
+
+    /**
+     * Many calls in one request
+     */
+    batchCall(calls: Array<{to: string, data: string}>, blockNumber: number | string = 'latest'): Promise<Array<any>> {
+        const requests = calls.map(c =>
+            this.rpc.newBatchRequest('eth_call', [c, blockNumber]));
+        return this.rpc.batch(requests);
+    }
 }
 
 export default class EthRpc {
