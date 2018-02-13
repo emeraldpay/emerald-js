@@ -54,7 +54,8 @@ class EthApi {
      *       we call it getBlockNumber(), FEF
      */
     getBlockNumber(): Promise<number> {
-      return this.rpc.call('eth_blockNumber', []);
+      return this.rpc.call('eth_blockNumber', [])
+        .then(result => convert.toNumber(result));
     }
 
     /**
