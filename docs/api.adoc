@@ -5,11 +5,36 @@
 === ethrpc.net.version 
 Returns the current network id
 
+==== Parameters
+none
+
 ==== Returns
+`Promise` returns `String` :  The current network id.
+
+* `"1"` - Ethereum Classic mainnet
+* `"2"` - Morden Testnet
 
 ==== Example
-[source,js]
+[source,javascript]
 ----
 ethrpc.net.version()
     .then(console.log)
+> 1
+----
+
+=== ethrpc.net.listening 
+Returns `true` if client is actively listening for network connections.
+
+==== Parameters
+none
+
+==== Returns
+`Promise` returns `Boolean`
+
+==== Example
+[source,javascript]
+----
+ethrpc.net.listening()
+    .then(console.log)
+> true
 ----

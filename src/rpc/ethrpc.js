@@ -118,6 +118,14 @@ class NetApi {
     }
 
     /**
+     * Returns `true` if client is actively listening for network connections.
+     */
+    listening(): Promise<boolean> {
+      return this.rpc.call('net_listening', [])
+        .then(result => (result === 'true'));
+    }
+
+    /**
      * Returns number of peers currently connected to the client.
      */
     peerCount(): Promise<any> {

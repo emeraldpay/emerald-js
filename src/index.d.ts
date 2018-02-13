@@ -24,19 +24,20 @@ export interface CallData {
 }
 
 export declare class EthApi {
-    getBalance(address: string, blockNumber?: number | string): Promise<BigNum.eslintrc ignore path.eslintrc ignore pathber>;
+    getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
     getBlockNumber(): Promise<number>;
     estimateGas(callData: CallData): Promise<number>;
 }
 
 export declare class NetApi {
     version(): Promise<string>;
+    listening(): Promise<boolean>;
 }
 
 export declare class EthRpc {
 
     public eth: EthApi;
     public net: NetApi;
-    
+
     constructor(jsonRpc: JsonRpc);
 }
