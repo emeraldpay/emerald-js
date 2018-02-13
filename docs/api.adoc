@@ -1,0 +1,15 @@
+= API Reference
+
+== ethrpc.net
+
+=== ethrpc.net.version 
+Returns the current network id
+
+==== Returns
+
+==== Example
+[source,js]
+----
+ethrpc.net.version()
+    .then(console.log)
+----

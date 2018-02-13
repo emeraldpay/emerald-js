@@ -113,7 +113,7 @@ class NetApi {
     /**
      * Returns the current network id.
      */
-    version(): Promise<any> {
+    version(): Promise<string> {
       return this.rpc.call('net_version', []);
     }
 
@@ -173,16 +173,16 @@ class ExtApi {
      * Many calls in one request
      */
     batchCall(calls: Array<{id: string, to: string, data: string}>, blockNumber: number | string = 'latest'): Promise<any> {
-        const results = {};
-        const responseHandler = (id) => (resp) => { results[id] = resp };
+      const results = {};
+      const responseHandler = id => (resp) => { results[id] = resp; };
 
-        const requests = calls.map(c =>
-            this.rpc.newBatchRequest(
-                'eth_call',
-                [{to: c.to, data: c.data}, blockNumber],
-                responseHandler(c.id))
-        );
-        return this.rpc.batch(requests).then(() => results);
+      const requests = calls.map(c =>
+        this.rpc.newBatchRequest(
+          'eth_call',
+          [{ to: c.to, data: c.data }, blockNumber],
+          responseHandler(c.id),
+        ));
+      return this.rpc.batch(requests).then(() => results);
     }
 }
 
