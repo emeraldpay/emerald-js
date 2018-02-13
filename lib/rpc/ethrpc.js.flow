@@ -121,8 +121,7 @@ class NetApi {
      * Returns `true` if client is actively listening for network connections.
      */
     listening(): Promise<boolean> {
-      return this.rpc.call('net_listening', [])
-        .then(result => (result === 'true'));
+      return this.rpc.call('net_listening', []);
     }
 
     /**
