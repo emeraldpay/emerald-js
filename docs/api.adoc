@@ -1,5 +1,7 @@
 = API Reference
 
+:toc:
+
 == ethrpc.net
 
 === ethrpc.net.version 
@@ -56,3 +58,22 @@ ethrpc.net.peerCount()
 > 33
 ----
 
+
+== ethrpc.eth
+
+=== ethrpc.eth.protocolVersion 
+Returns the current Ethereum protocol version
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `String` :  The current ethereum protocol version
+
+.Example
+[source,javascript]
+----
+ethrpc.eth.protocolVersion()
+    .then(console.log)
+> 1
+----

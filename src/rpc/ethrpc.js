@@ -12,6 +12,13 @@ class EthApi {
     }
 
     /**
+     * Returns the current ethereum protocol version
+     */
+    protocolVersion(): Promise<String> {
+      return this.rpc.call('eth_protocolVersion', []);
+    }
+
+    /**
      * Returns the balance of the account of given address.
      */
     getBalance(address: string, blockNumber: number | string = 'latest'): Promise<BigNumber> {
