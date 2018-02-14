@@ -32,6 +32,7 @@ export declare class EthApi {
 export declare class NetApi {
     version(): Promise<string>;
     listening(): Promise<boolean>;
+    peerCount(): Promise<number>;
 }
 
 export declare class EthRpc {

@@ -128,8 +128,9 @@ class NetApi {
     /**
      * Returns number of peers currently connected to the client.
      */
-    peerCount(): Promise<any> {
-      return this.rpc.call('net_peerCount', []);
+    peerCount(): Promise<number> {
+      return this.rpc.call('net_peerCount', [])
+        .then(result => convert.toNumber(result));
     }
 }
 

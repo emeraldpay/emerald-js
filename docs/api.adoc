@@ -5,16 +5,16 @@
 === ethrpc.net.version 
 Returns the current network id
 
-==== Parameters
+.Parameters
 none
 
-==== Returns
+.Returns
 `Promise` returns `String` :  The current network id.
 
 * `"1"` - Ethereum Classic mainnet
 * `"2"` - Morden Testnet
 
-==== Example
+.Example
 [source,javascript]
 ----
 ethrpc.net.version()
@@ -25,16 +25,34 @@ ethrpc.net.version()
 === ethrpc.net.listening 
 Returns `true` if client is actively listening for network connections.
 
-==== Parameters
+.Parameters
 none
 
-==== Returns
+.Returns
 `Promise` returns `Boolean`
 
-==== Example
+.Example
 [source,javascript]
 ----
 ethrpc.net.listening()
     .then(console.log)
 > true
 ----
+
+=== ethrpc.net.peerCount 
+Returns number of peers currently connected to the client.
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `number`
+
+.Example
+[source,javascript]
+----
+ethrpc.net.peerCount()
+    .then(console.log)
+> 33
+----
+
