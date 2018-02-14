@@ -12,7 +12,7 @@ class EthApi {
     }
 
     /**
-     * Returns the current ethereum protocol version
+     * Returns the current Ethereum protocol version
      */
     protocolVersion(): Promise<String> {
       return this.rpc.call('eth_protocolVersion', []);
@@ -101,13 +101,6 @@ class EthApi {
      */
     getTransactionByHash(hash: string): Promise<any> {
       return this.rpc.call('eth_getTransactionByHash', [hash]);
-    }
-
-    /**
-     * Returns the current Ethereum protocol version.
-     */
-    protocolVersion(): Promise<any> {
-      return this.rpc.call('eth_protocolVersion');
     }
 }
 
