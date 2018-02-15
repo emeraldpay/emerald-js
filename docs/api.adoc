@@ -102,3 +102,26 @@ ethrpc.eth.getBalance('0x0000000000000000000000000000000000000000')
     console.log(balance.toNumber()); // 7.226493586402063e+21
   });
 ----
+
+=== ethrpc.eth.gasPrice
+```
+gasPrice() 
+```
+
+Returns the current gas price oracle. The gas price is determined by the last few blocks median gas price.
+
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `BigNumber` :  A BigNumber instance of the current gas price in wei
+
+.Example
+[source,javascript]
+----
+ethrpc.eth.gasPrice()
+  .then(price => {
+    console.log(price.toString(10)); // 7226493586402062545566
+  });
+----

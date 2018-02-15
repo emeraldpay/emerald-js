@@ -27,6 +27,7 @@ export declare class EthApi {
     protocolVersion(): Promise<String>;
     getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
     getBlockNumber(): Promise<number>;
+    gasPrice(): Promise<BigNumber>;
     estimateGas(callData: CallData): Promise<number>;
 }
 

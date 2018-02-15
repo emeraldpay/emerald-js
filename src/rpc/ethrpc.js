@@ -29,8 +29,9 @@ class EthApi {
     /**
      * Returns the current price per gas in wei.
      */
-    gasPrice(): Promise<any> {
-      return this.rpc.call('eth_gasPrice', []);
+    gasPrice(): Promise<BigNumber> {
+      return this.rpc.call('eth_gasPrice', [])
+        .then(hexPrice => convert.toBigNumber(hexPrice));
     }
 
     /**
