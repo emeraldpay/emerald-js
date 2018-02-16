@@ -108,7 +108,7 @@ ethrpc.eth.getBalance('0x0000000000000000000000000000000000000000')
 gasPrice() 
 ```
 
-Returns the current gas price oracle. The gas price is determined by the last few blocks median gas price.
+Returns the current gas price. The gas price is determined by the last few blocks median gas price.
 
 
 .Parameters
@@ -122,6 +122,34 @@ none
 ----
 ethrpc.eth.gasPrice()
   .then(price => {
-    console.log(price.toString(10)); // 7226493586402062545566
+    console.log(price.toString(10)); // 20000000000
+  });
+----
+
+=== ethrpc.eth.getSyncing()
+```
+getSyncing() 
+```
+
+Returns an object with data about the sync status or false.
+
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `Object|Boolean` :  A sync object as follows, when the node is currently syncing or `false`
+
+* `startingBlock: Number` - The block number where the sync started.
+* `currentBlock: Number` - The block number where at which block the node currently synced to already.
+* `highestBlock: Number` - The estimated block number to sync to.
+
+
+.Example
+[source,javascript]
+----
+ethrpc.eth.getSyncing()
+  .then(result => {
+  ...
   });
 ----

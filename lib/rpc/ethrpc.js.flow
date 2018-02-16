@@ -2,7 +2,7 @@
 import BigNumber from 'bignumber.js';
 import convert from '../convert';
 import JsonRpc from './jsonrpc';
-import type { CallObject } from './types';
+import type { CallObject, SyncingResult } from './types';
 
 class EthApi {
     rpc: JsonRpc;
@@ -37,8 +37,18 @@ class EthApi {
     /**
      * Returns an object with data about the sync status or false.
      */
-    syncing(): Promise<any> {
-      return this.rpc.call('eth_syncing', []);
+    getSyncing(): Promise<SyncingResult> {
+      return this.rpc.call('eth_syncing', [])
+        .then((result) => {
+          if (!result) {
+            return false;
+          }
+          return {
+            startingBlock: convert.toNumber(result.startingBlock),
+            currentBlock: convert.toNumber(result.currentBlock),
+            highestBlock: convert.toNumber(result.hightestBlock),
+          };
+        });
     }
 
     /**
