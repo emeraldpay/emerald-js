@@ -1,6 +1,7 @@
 // @flow
 import BigNumber from 'bignumber.js';
 import convert from '../convert';
+import format from './format';
 import JsonRpc from './jsonrpc';
 import type { CallObject, SyncingResult } from './types';
 
@@ -89,9 +90,15 @@ class EthApi {
     getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending', full: boolean = false) {
       const method = (typeof hashOrNumber === 'string' && hashOrNumber.indexOf('0x') === 0) ?
         'eth_getBlockByHash' : 'eth_getBlockByNumber';
-      const block = method === 'eth_getBlockByNumber' ? convert.toHex(hashOrNumber) : hashOrNumber;
+      let block = hashOrNumber;
+      if (method === 'eth_getBlockByNumber') {
+        if (!format.isPredefinedBlockNumber(hashOrNumber)) {
+          block = format.toHex(hashOrNumber);
+        }
+      }
       return this.rpc.call(method, [block, full]);
     }
+
     /**
      * Returns the number of transactions sent from an address
      * @param address

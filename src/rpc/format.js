@@ -10,6 +10,11 @@ function toHex(val: number | string | BigNumber): string {
   return `0x${hex}`;
 }
 
+function isPredefinedBlockNumber(blockNumber): boolean {
+  return blockNumber === 'latest' || blockNumber === 'pending' || blockNumber === 'earliest';
+}
+
 export default {
   toHex,
+  isPredefinedBlockNumber,
 };
