@@ -89,7 +89,8 @@ class EthApi {
     getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending', full: boolean = false) {
       const method = (typeof hashOrNumber === 'string' && hashOrNumber.indexOf('0x') === 0) ?
         'eth_getBlockByHash' : 'eth_getBlockByNumber';
-      return this.rpc.call(method, [hashOrNumber, full]);
+      const block = method === 'eth_getBlockByNumber' ? convert.toHex(hashOrNumber) : hashOrNumber;
+      return this.rpc.call(method, [block, full]);
     }
     /**
      * Returns the number of transactions sent from an address
