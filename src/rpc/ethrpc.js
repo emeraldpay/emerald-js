@@ -84,6 +84,14 @@ class EthApi {
     }
 
     /**
+     * Returns a block matching the block number or block hash.
+     */
+    getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending', full: boolean = false) {
+      const method = (typeof hashOrNumber === 'string' && hashOrNumber.indexOf('0x') === 0) ?
+        'eth_getBlockByHash' : 'eth_getBlockByNumber';
+      return this.rpc.call(method, [hashOrNumber, full]);
+    }
+    /**
      * Returns the number of transactions sent from an address
      * @param address
      * @param blockNumber - integer block number, or the string 'latest', 'earliest' or 'pending'

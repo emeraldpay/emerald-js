@@ -30,10 +30,35 @@ interface SyncingStatus {
 }
 type SyncingResult = false | SyncingStatus;
 
+interface Block {
+    number: number | null;
+    hash: string | null;
+    parentHash: string;
+    nonce: string | null;
+    sha3Uncles: string;
+    logsBloom: string | null;
+    transactionsRoot: string;
+    stateRoot: string;
+    miner: string;
+    difficulty: BigNumber;
+    totalDifficulty: BigNumber;
+    extraData: string;
+    size: number;
+    gasLimit: number;
+    gasUsed: number;
+    timestamp: number;
+    uncles: string[];
+}
+interface BlockWithoutTxData extends Block {
+    transactions: string[];
+}
+
 export declare class EthApi {
     protocolVersion(): Promise<String>;
     getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
     getBlockNumber(): Promise<number>;
+    getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending'): BlockWithoutTxData;
+
     gasPrice(): Promise<BigNumber>;
     estimateGas(callData: CallData): Promise<number>;
     getSyncing(): Promise<SyncingResult>;
