@@ -8,7 +8,7 @@
     "setup": "npm install && flow-typed install",
     "test": "jest",
     "test:coverage": "jest && codecov",
-    "prepublish": "npm run babel-prepublish && npm run flow-prepublish",
+    "prepublish": "rimraf lib/ && npm run babel-prepublish && npm run flow-prepublish",
     "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
     "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i '**/*.test.js'",
     "lint": "eslint src",
@@ -45,7 +45,8 @@
     "flow-bin": "^0.54.0",
     "flow-copy-source": "^1.2.1",
     "flow-typed": "^2.1.5",
-    "jest": "^20.0.4"
+    "jest": "^20.0.4",
+    "rimraf": "^2.6.2"
   },
   "dependencies": {
     "assert": "^1.4.1",

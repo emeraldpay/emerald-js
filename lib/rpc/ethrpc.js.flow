@@ -96,7 +96,11 @@ class EthApi {
           block = format.toHex(hashOrNumber);
         }
       }
-      return this.rpc.call(method, [block, full]);
+      return this.rpc.call(method, [block, full]).then(b => ({
+        ...b,
+        difficulty: convert.toBigNumber(b.difficulty),
+        totalDifficulty: convert.toBigNumber(b.totalDifficulty),
+      }));
     }
 
     /**

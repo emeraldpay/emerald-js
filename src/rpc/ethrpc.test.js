@@ -23,7 +23,8 @@ describe('ExtApi', () => {
         {
           jsonrpc: '2.0', method: 'eth_getTransactionByHash', params: ['0xA3'], id: 3,
         },
-      ])) });
+      ]));
+  });
 
   test('ExtApi.batchCall should bind results by id', () => {
     const ethRpc = new EthRpc(new JsonRpc(new FakeTransport()));
