@@ -2,6 +2,27 @@
 
 :toc:
 
+== ethrpc.web3
+
+=== ethrpc.web3.clientVersion
+
+Returns the current client version.
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `String` :  The current client version.
+
+
+.Example
+[source,javascript]
+----
+ethrpc.web3.clientVersion()
+    .then(console.log)
+> 1
+----
+
 == ethrpc.net
 
 === ethrpc.net.version 
@@ -156,7 +177,7 @@ ethrpc.eth.getSyncing()
 
 === ethrpc.eth.getBlock()
 ```
- getBlock(blockHashOrBlockNumber [, includeTxs])
+ getBlock(hashOrNumber [, includeTxs])
 
 ```
 
@@ -196,5 +217,6 @@ Returns a block matching the block number or block hash.
 .Example
 [source,javascript]
 ----
- TODO
+ ethrpc.eth.getBlock(500002)
+  .then(block => console.log(block));
 ----

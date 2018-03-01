@@ -53,6 +53,10 @@ interface BlockWithoutTxData extends Block {
     transactions: string[];
 }
 
+export declare class Web3Api {
+    clientVersion(): Promise<string>;
+}
+
 export declare class EthApi {
     protocolVersion(): Promise<String>;
     getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
@@ -74,6 +78,7 @@ export declare class EthRpc {
 
     public eth: EthApi;
     public net: NetApi;
+    public web3: Web3Api;
 
     constructor(jsonRpc: JsonRpc);
 }
