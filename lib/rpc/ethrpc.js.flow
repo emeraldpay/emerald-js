@@ -100,6 +100,11 @@ class EthApi {
         ...b,
         difficulty: convert.toBigNumber(b.difficulty),
         totalDifficulty: convert.toBigNumber(b.totalDifficulty),
+        gasLimit: convert.toNumber(b.gasLimit),
+        gasUsed: convert.toNumber(b.gasUsed),
+        size: convert.toNumber(b.size),
+        timestamp: convert.toNumber(b.timestamp),
+        number: convert.toNumber(b.number),
       }));
     }
 
