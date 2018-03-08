@@ -74,11 +74,16 @@ export declare class NetApi {
     peerCount(): Promise<number>;
 }
 
+export declare class ExtApi {
+    getBlocks(from: number, to: number): Promise<Array<BlockWithoutTxData>>;
+}
+
 export declare class EthRpc {
 
     public eth: EthApi;
     public net: NetApi;
     public web3: Web3Api;
+    public ext: ExtApi;
 
     constructor(jsonRpc: JsonRpc);
 }

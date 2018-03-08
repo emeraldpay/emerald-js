@@ -20,7 +20,7 @@ none
 ----
 ethrpc.web3.clientVersion()
     .then(console.log)
-> 1
+> Geth/v4.2.0-c999068/linux/go1.9.2
 ----
 
 == ethrpc.net

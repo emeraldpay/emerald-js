@@ -96,16 +96,7 @@ class EthApi {
           block = format.toHex(hashOrNumber);
         }
       }
-      return this.rpc.call(method, [block, full]).then(b => ({
-        ...b,
-        difficulty: convert.toBigNumber(b.difficulty),
-        totalDifficulty: convert.toBigNumber(b.totalDifficulty),
-        gasLimit: convert.toNumber(b.gasLimit),
-        gasUsed: convert.toNumber(b.gasUsed),
-        size: convert.toNumber(b.size),
-        timestamp: convert.toNumber(b.timestamp),
-        number: convert.toNumber(b.number),
-      }));
+      return this.rpc.call(method, [block, full]).then(b => format.block(b));
     }
 
     /**
@@ -180,7 +171,7 @@ class Web3Api {
     /**
      * Returns the current client version.
      */
-    clientVersion(): Promise<any> {
+    clientVersion(): Promise<string> {
       return this.rpc.call('web3_clientVersion', []);
     }
 }
@@ -193,6 +184,15 @@ class ExtApi {
 
     constructor(jsonRpc) {
       this.rpc = jsonRpc;
+    }
+
+    getBlocks(from: number, to: number) {
+      const requests = [];
+      for (let i = from; i <= to; i += 1) {
+        requests.push(this.rpc.newBatchRequest('eth_getBlockByNumber', [i, false]));
+      }
+      return this.rpc.batch(requests)
+        .then(responses => responses.map(r => format.block(r.result)));
     }
 
     getBalances(addresses: Array<string>, blockNumber: number | string = 'latest') {
