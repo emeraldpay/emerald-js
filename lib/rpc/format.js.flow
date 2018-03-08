@@ -15,7 +15,7 @@ function isPredefinedBlockNumber(blockNumber: number | string): boolean {
   return blockNumber === 'latest' || blockNumber === 'pending' || blockNumber === 'earliest';
 }
 
-function block(b) {
+function block(b: any) {
   return {
     ...b,
     difficulty: convert.toBigNumber(b.difficulty),
