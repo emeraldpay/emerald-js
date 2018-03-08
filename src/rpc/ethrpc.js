@@ -192,7 +192,7 @@ class ExtApi {
         requests.push(this.rpc.newBatchRequest('eth_getBlockByNumber', [format.toHex(i), false]));
       }
       return this.rpc.batch(requests)
-        .then(responses => responses.map(r => format.block(r)));
+        .then(responses => responses.filter(r => r.result).map(r => format.block(r.result)));
     }
 
     getBalances(addresses: Array<string>, blockNumber: number | string = 'latest') {
