@@ -189,7 +189,7 @@ class ExtApi {
     getBlocks(from: number, to: number) {
       const requests = [];
       for (let i = from; i <= to; i += 1) {
-        requests.push(this.rpc.newBatchRequest('eth_getBlockByNumber', [i, false]));
+        requests.push(this.rpc.newBatchRequest('eth_getBlockByNumber', [format.toHex(i), false]));
       }
       return this.rpc.batch(requests)
         .then(responses => responses.map(r => format.block(r)));
