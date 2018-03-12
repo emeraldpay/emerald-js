@@ -49,8 +49,27 @@ interface Block {
     timestamp: number;
     uncles: string[];
 }
+
 interface BlockWithoutTxData extends Block {
     transactions: string[];
+}
+
+interface BlockWithTxData extends AbstractBlock {
+    transactions: Transaction[];
+}
+
+interface Transaction {
+    hash: string;
+    nonce: number;
+    blockHash: string | null;
+    blockNumber: number | null;
+    transactionIndex: number | null;
+    from: string;
+    to: string | null;
+    value: BigNumber.BigNumber;
+    gasPrice: BigNumber.BigNumber;
+    gas: number;
+    input: string;
 }
 
 export declare class Web3Api {
@@ -62,6 +81,7 @@ export declare class EthApi {
     getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
     getBlockNumber(): Promise<number>;
     getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending'): Promise<BlockWithoutTxData>;
+    getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending', includeTxObjects: true): Promise<BlockWithTxData>;
 
     gasPrice(): Promise<BigNumber>;
     estimateGas(callData: CallData): Promise<number>;
