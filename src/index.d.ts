@@ -66,8 +66,8 @@ interface Transaction {
     transactionIndex: number | null;
     from: string;
     to: string | null;
-    value: BigNumber.BigNumber;
-    gasPrice: BigNumber.BigNumber;
+    value: BigNumber;
+    gasPrice: BigNumber;
     gas: number;
     input: string;
 }
