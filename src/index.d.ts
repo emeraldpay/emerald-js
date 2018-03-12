@@ -54,7 +54,7 @@ interface BlockWithoutTxData extends Block {
     transactions: string[];
 }
 
-interface BlockWithTxData extends AbstractBlock {
+interface BlockWithTxData extends Block {
     transactions: Transaction[];
 }
 
