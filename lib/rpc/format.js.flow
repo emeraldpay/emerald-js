@@ -31,6 +31,10 @@ function block(b: any) {
 function transaction(tx: any) {
   return {
     ...tx,
+    blockNumber: tx.blockNumber ? convert.toNumber(tx.blockNumber) : tx.blockNumber,
+    nonce: convert.toNumber(tx.nonce),
+    value: convert.toBigNumber(tx.value),
+    gasPrice: convert.toBigNumber(tx.gasPrice),
   };
 }
 

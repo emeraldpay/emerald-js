@@ -70,7 +70,7 @@ interface Transaction {
     gasPrice: BigNumber;
     gas: number;
     input: string;
-    replayProtected: boolean;
+    replayProtected?: boolean;
 }
 
 export declare class Web3Api {
