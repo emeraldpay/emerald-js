@@ -28,8 +28,15 @@ function block(b: any) {
   };
 }
 
+function transaction(tx: any) {
+  return {
+    ...tx,
+  };
+}
+
 export default {
   toHex,
   block,
+  transaction,
   isPredefinedBlockNumber,
 };

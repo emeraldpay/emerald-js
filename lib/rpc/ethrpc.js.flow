@@ -103,10 +103,10 @@ class EthApi {
      * Returns the number of transactions sent from an address
      * @param address
      * @param blockNumber - integer block number, or the string 'latest', 'earliest' or 'pending'
-     * @returns {*}
      */
     getTransactionCount(address: string, blockNumber: number | string = 'latest'): Promise<any> {
-      return this.rpc.call('eth_getTransactionCount', [address, blockNumber]);
+      return this.rpc.call('eth_getTransactionCount', [address, blockNumber])
+        .then(result => convert.toNumber(result));
     }
 
     /**
@@ -126,8 +126,9 @@ class EthApi {
     /**
      * Returns the information about a transaction requested by transaction hash.
      */
-    getTransactionByHash(hash: string): Promise<any> {
-      return this.rpc.call('eth_getTransactionByHash', [hash]);
+    getTransaction(hash: string): Promise<any> {
+      return this.rpc.call('eth_getTransactionByHash', [hash])
+        .then(tx => format.transaction(tx));
     }
 }
 

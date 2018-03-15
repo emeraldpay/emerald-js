@@ -70,6 +70,7 @@ interface Transaction {
     gasPrice: BigNumber;
     gas: number;
     input: string;
+    replayProtected: boolean;
 }
 
 export declare class Web3Api {
@@ -82,7 +83,8 @@ export declare class EthApi {
     getBlockNumber(): Promise<number>;
     getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending'): Promise<BlockWithoutTxData>;
     getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending', includeTxObjects: true): Promise<BlockWithTxData>;
-
+    getTransactionCount(address: string, atBlock?: number | 'earliest' | 'latest' | 'pending'): Promise<number>;
+    getTransaction(hash: string): Promise<Transaction>;
     gasPrice(): Promise<BigNumber>;
     estimateGas(callData: CallData): Promise<number>;
     getSyncing(): Promise<SyncingResult>;
