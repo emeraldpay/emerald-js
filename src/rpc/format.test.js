@@ -22,3 +22,17 @@ describe('toHex', () => {
     expect(toHex('0x01')).toEqual('0x1');
   });
 });
+
+describe('format', () => {
+  it('convert transaction data from json response', () => {
+    const txResponse = {
+      gas: '0x7a120',
+      nonce: '0x1',
+      transactionIndex: '0x1',
+    };
+
+    const formatted = format.transaction(txResponse);
+
+    expect(formatted.gas).toEqual(500000);
+  });
+});

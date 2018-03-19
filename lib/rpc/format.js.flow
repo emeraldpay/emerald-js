@@ -35,6 +35,7 @@ function transaction(tx: any) {
     nonce: convert.toNumber(tx.nonce),
     value: convert.toBigNumber(tx.value),
     gasPrice: convert.toBigNumber(tx.gasPrice),
+    gas: convert.toNumber(tx.gas),
     transactionIndex: convert.toNumber(tx.transactionIndex),
   };
 }
