@@ -71,6 +71,9 @@ interface Transaction {
     gas: number;
     input: string;
     replayProtected?: boolean;
+    v?: string;
+    r?: string;
+    s?: string;
 }
 
 export declare class Web3Api {
