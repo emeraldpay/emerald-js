@@ -1,7 +1,7 @@
 
 Imagine you are a Hacker!
 
-You've just found critical vulnarability in popular smart contract.
+You've just found critical vulnerability in popular smart contract.
 A bug allows you to withdraw all coins from contract. You did it for your friend's contract. 
 But you know that there are a planty of such contracts on the blockchain, a huge bunch of money, right?
 
@@ -61,7 +61,7 @@ Create RPC client:
 
 [source,javascript]
 ----
-const rpc = new EthRpc(new JsonRpc(new HttpTransport("https://web3.gastracker.io")));
+const rpc = new EthRpc(new JsonRpc(new HttpTransport("http://localhost:8545")));
 ----
 
 Because emerald-js API methods return promises in most cases we will be using `async/await` pair.
