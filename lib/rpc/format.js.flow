@@ -43,6 +43,10 @@ function transaction(tx: any) {
 function transactionReceipt(receipt: any) {
   return {
     ...receipt,
+    blockNumber: convert.toNumber(receipt.blockNumber),
+    gasUsed: convert.toNumber(receipt.gasUsed),
+    cumulativeGasUsed: convert.toNumber(receipt.cumulativeGasUsed),
+    transactionIndex: convert.toNumber(receipt.transactionIndex),
   };
 }
 
