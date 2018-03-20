@@ -2,8 +2,8 @@
 Imagine you are a Hacker!
 
 You've just found critical vulnerability in popular smart contract.
-A bug allows you to withdraw all coins from contract. You did it for your friend's contract. 
-But you know that there are a planty of such contracts on the blockchain, a huge bunch of money, right?
+A bug allows you to withdraw all coins from contract. You did it with your friend's contract
+but you know that there are a plenty of such contracts on the blockchain, a huge bunch of money, right?
 
 How to find them all? Let's try.
 
