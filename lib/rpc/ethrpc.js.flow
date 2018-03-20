@@ -106,14 +106,15 @@ class EthApi {
      */
     getTransactionCount(address: string, blockNumber: number | string = 'latest'): Promise<any> {
       return this.rpc.call('eth_getTransactionCount', [address, blockNumber])
-        .then(result => convert.toNumber(result));
+        .then(convert.toNumber);
     }
 
     /**
      * Returns the receipt of a transaction by transaction hash.
      */
     getTransactionReceipt(hash: string): Promise<any> {
-      return this.rpc.call('eth_getTransactionReceipt', [hash]);
+      return this.rpc.call('eth_getTransactionReceipt', [hash])
+        .then(format.transactionReceipt);
     }
 
     /**
@@ -128,7 +129,7 @@ class EthApi {
      */
     getTransaction(hash: string): Promise<any> {
       return this.rpc.call('eth_getTransactionByHash', [hash])
-        .then(tx => format.transaction(tx));
+        .then(format.transaction);
     }
 }
 

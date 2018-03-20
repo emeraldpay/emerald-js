@@ -300,3 +300,54 @@ Returns a transaction matching the given transaction hash.
   }
   */
 ----
+
+=== ethrpc.eth.getTransactionReceipt()
+```
+ getTransactionReceipt(hash)
+
+```
+
+Returns the receipt of a transaction by transaction hash.
+
+
+.Parameters
+
+1. `String` - The transaction hash.
+
+.Returns
+`Promise` returns `Object` : A transaction receipt object, or `null` when no receipt was found.
+
+
+* `blockHash`: `String`, 32 Bytes - hash of the block where this transaction was in.
+* `blockNumber`: `Number` - block number where this transaction was in.
+* `transactionHash`: `String`, 32 Bytes - hash of the transaction.
+* `transactionIndex`: `Number` - integer of the transactions index position in the block.
+* `from`: `String`, 20 Bytes - address of the sender.
+* `to`: `String`, 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
+* `cumulativeGasUsed`: `Number` - The total amount of gas used when this transaction was executed in the block.
+* `gasUsed`: `Number` - The amount of gas used by this specific transaction alone.
+* `contractAddress`: `String` - 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise null.
+* `logs`: `Array` - Array of log objects, which this transaction generated.
+* `status`: `Number` - 0 indicates transaction failure , 1 indicates transaction succeeded.
+
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getTransactionReceipt('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
+  .then(console.log); 
+  /*
+  { blockHash: '0xe81984d115ffeffcb4c3ff097caebbc0e1b53cf204307c7533ab10f76b6a1cb7',
+    blockNumber: 52592,
+    contractAddress: null,
+    cumulativeGasUsed: 1000000,
+    from: '0x54daeb3e8a6bbc797e4ad2b0339f134b186e4637',
+    gasUsed: 500000,
+    logs: [],
+    root: '79ac68de1971a954f60f1eea9689e1cf4b2a95bf20ae92828cead610888290b6',
+    to: '0xbaa54d6e90c3f4d7ebec11bd180134c7ed8ebb52',
+    transactionHash: '0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122',
+    transactionIndex: 1 }
+  */
+----

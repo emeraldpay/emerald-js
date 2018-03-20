@@ -40,9 +40,16 @@ function transaction(tx: any) {
   };
 }
 
+function transactionReceipt(receipt: any) {
+  return {
+    ...receipt,
+  };
+}
+
 export default {
   toHex,
   block,
   transaction,
+  transactionReceipt,
   isPredefinedBlockNumber,
 };

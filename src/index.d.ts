@@ -76,6 +76,31 @@ interface Transaction {
     s?: string;
 }
 
+interface TransactionReceipt {
+    blockHash: string;
+    blockNumber: number;
+    transactionHash: string;
+    transactionIndex: number;
+    from: string;
+    to: string;
+    status: null | string | 0 | 1;
+    cumulativeGasUsed: number;
+    gasUsed: number;
+    contractAddress: string | null;
+    logs: LogEntry[];
+}
+
+interface LogEntry {
+    logIndex: number | null;
+    transactionIndex: number | null;
+    transactionHash: string;
+    blockHash: string | null;
+    blockNumber: number | null;
+    address: string;
+    data: string;
+    topics: string[];
+}
+
 export declare class Web3Api {
     clientVersion(): Promise<string>;
 }
@@ -88,6 +113,7 @@ export declare class EthApi {
     getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending', includeTxObjects: true): Promise<BlockWithTxData>;
     getTransactionCount(address: string, atBlock?: number | 'earliest' | 'latest' | 'pending'): Promise<number>;
     getTransaction(hash: string): Promise<Transaction>;
+    getTransactionReceipt(hash: string): Promise<TransactionReceipt | null>;
     gasPrice(): Promise<BigNumber>;
     estimateGas(callData: CallData): Promise<number>;
     getSyncing(): Promise<SyncingResult>;
