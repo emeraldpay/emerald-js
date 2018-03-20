@@ -351,3 +351,28 @@ Returns the receipt of a transaction by transaction hash.
     transactionIndex: 1 }
   */
 ----
+
+=== ethrpc.eth.getCode()
+```
+ getCode(address)
+
+```
+
+Get the code at a specific address.
+
+
+.Parameters
+
+1. `String` - The address to get the code from.
+
+.Returns
+`Promise` returns `String` : The data at given address `address`.
+
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getCode('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
+  .then(console.log); // 0x6060604052361561020e5760e060020a600035...
+----

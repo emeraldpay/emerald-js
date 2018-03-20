@@ -67,6 +67,13 @@ class EthApi {
     }
 
     /**
+     * Returns code at a given address.
+     */
+    getCode(address: string, blockNumber: number | string = 'latest'): Promise<string> {
+      return this.rpc.call('eth_getCode', [address, blockNumber]);
+    }
+
+    /**
      * Returns the number of most recent block
      *
      * Note: It should be called blockNumber() but to be web3 compatible

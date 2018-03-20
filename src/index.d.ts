@@ -106,7 +106,8 @@ export declare class Web3Api {
 }
 
 export declare class EthApi {
-    protocolVersion(): Promise<String>;
+    protocolVersion(): Promise<string>;
+    getCode(address: string): Promise<string>;
     getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
     getBlockNumber(): Promise<number>;
     getBlock(hashOrNumber: string | number | 'earliest' | 'latest' | 'pending'): Promise<BlockWithoutTxData>;
