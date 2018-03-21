@@ -1,7 +1,6 @@
+= How to find all smart contracts with particular code
 
-Imagine you are a Hacker!
-
-You've just found critical vulnerability in popular smart contract.
+Imagine you've just found critical vulnerability in popular smart contract.
 A bug allows you to withdraw all coins from contract. You did it with your friend's contract
 but you know that there are a plenty of such contracts on the blockchain, a huge bunch of money, right?
 
