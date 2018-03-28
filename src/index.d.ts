@@ -1,5 +1,6 @@
 export {
     EthRpc,
+    JsonRpc,
     BlockWithoutTxData,
     BlockWithTxData,
     Transaction,
