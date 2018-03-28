@@ -11,14 +11,14 @@ So the simplest solution is to check all accounts and build a map `address` to `
 
 We will use `eth_getCode` JSON-RPC method to retrieve code for particular address.
 
-1. Local full node
+== Local full node
 
 Install you own full node. Without local instance you are on the risk to be banned by remote end point.
 
 Got to http://github.com/ethereumproject/go-ethereum and get latest version.
 
 
-2. Typescript
+== Requirements
 
 This tutorial uses Typescript. Let's prepare environment.
 
@@ -28,7 +28,9 @@ You need:
 * typescript - `sudo npm install -g typescript`
 * ts-node - `sudo npm install -g ts-node`
 
-3. Create simple npm project
+== Step 1
+
+Create simple npm project
 
 `mkdir all-contracts`
 
