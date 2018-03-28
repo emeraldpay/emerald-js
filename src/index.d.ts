@@ -1,1 +1,5 @@
-export { EthRpc } from './rpc';
+export {
+    EthRpc,
+    BlockWithoutTxData,
+    BlockWithTxData 
+} from './rpc';
