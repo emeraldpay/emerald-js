@@ -2,5 +2,6 @@ export {
     EthRpc,
     BlockWithoutTxData,
     BlockWithTxData,
-    Transaction
+    Transaction,
+    TransactionReceipt,
 } from './rpc';
