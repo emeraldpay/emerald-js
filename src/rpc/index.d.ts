@@ -118,6 +118,7 @@ export declare class EthApi {
     gasPrice(): Promise<BigNumber>;
     estimateGas(callData: CallData): Promise<number>;
     getSyncing(): Promise<SyncingResult>;
+    call(callData: CallData): Promise<string>;
 }
 
 export declare class NetApi {

@@ -376,3 +376,28 @@ Get the code at a specific address.
  ethrpc.eth.getCode('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
   .then(console.log); // 0x6060604052361561020e5760e060020a600035...
 ----
+
+=== ethrpc.eth.call()
+```
+ call(callObject)
+
+```
+
+Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
+
+
+.Parameters
+
+1. `Object`` - A transaction object see `sendTransaction`, with the difference that for calls the from property is optional as well
+
+.Returns
+`Promise` returns `String` - The returned data of the call, e.g. a codes functions return value
+
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getCode('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
+  .then(console.log); // 0x6060604052361561020e5760e060020a600035...
+----

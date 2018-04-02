@@ -55,8 +55,8 @@ class EthApi {
     /**
      * Executes a new message call immediately without creating a transaction on the block chain
      */
-    call(to: string, data: string, blockNumber: number | string = 'latest'): Promise<any> {
-      return this.rpc.call('eth_call', [{ to, data }, blockNumber]);
+    call(callData, blockNumber: number | string = 'latest'): Promise<any> {
+      return this.rpc.call('eth_call', [{ to: callData.to, data: callData.data }, blockNumber]);
     }
 
     /**
