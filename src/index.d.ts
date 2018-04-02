@@ -8,4 +8,5 @@ export {
     TransactionReceipt,
 } from './rpc';
 
-export import * as contracts from './contracts';
+import * as contracts from './contracts';
+export { contracts };
