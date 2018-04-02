@@ -8,4 +8,4 @@ export {
     TransactionReceipt,
 } from './rpc';
 
-export { default as contracts } from './contracts';
+export import * as contracts from './contracts';
