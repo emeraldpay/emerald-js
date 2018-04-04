@@ -10,3 +10,7 @@ export {
 
 import * as contracts from './contracts';
 export { contracts };
+
+export {
+    Wallet
+} from './wallet';
