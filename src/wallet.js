@@ -27,7 +27,7 @@ class WalletWrapper {
     }
 
     getAddress(): string {
-      return this.wallet.getAddress();
+      return this.wallet.getAddressString();
     }
 }
 
