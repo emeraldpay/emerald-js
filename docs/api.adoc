@@ -202,6 +202,7 @@ Returns a block matching the block number or block hash.
 * `logsBloom: String`, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
 * `transactionsRoot: String`, 32 Bytes - the root of the transaction trie of the block
 * `stateRoot: String`, 32 Bytes - the root of the final state trie of the block.
+* `receiptsRoot: String`, 32 Bytes - the root of the transaction's receipts trie.
 * `miner: String`, 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
 * `difficulty: BigNumber` - integer of the difficulty for this block.
 * `totalDifficulty: BigNumber` - integer of the total difficulty of the chain until this block.

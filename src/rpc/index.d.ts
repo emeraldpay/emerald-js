@@ -38,6 +38,7 @@ interface Block {
     sha3Uncles: string;
     logsBloom: string | null;
     transactionsRoot: string;
+    receiptsRoot: string;
     stateRoot: string;
     miner: string;
     difficulty: BigNumber;
