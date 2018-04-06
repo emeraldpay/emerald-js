@@ -1,6 +1,8 @@
 // @flow
 import Wallet from 'ethereumjs-wallet';
 import ethUtil from 'ethereumjs-util';
+import EthereumTx from 'ethereumjs-tx';
+import { toHex } from './convert';
 
 class WalletWrapper {
     wallet: Wallet;
@@ -28,6 +30,21 @@ class WalletWrapper {
 
     getAddress(): string {
       return this.wallet.getAddressString();
+    }
+
+    /**
+     * Returns RLP encoded signed transaction
+     */
+    signTx(txData): string {
+      const tx = new EthereumTx(null);
+      tx.gasLimit = txData.gasLimit;
+      tx.gasPrice = txData.gasPrice;
+      tx.nonce = txData.nonce;
+      tx.value = txData.value;
+      tx.data = txData.data;
+      tx.chainId = txData.chainId;
+      tx.sign(this.wallet.getPrivateKey());
+      return `0x${tx.serialize().toString('hex')}`;
     }
 }
 

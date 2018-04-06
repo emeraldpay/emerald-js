@@ -23,6 +23,16 @@ export interface CallData {
     from?: string;
 }
 
+export interface TxData {
+    from: string;
+    to?: string;
+    value?: number | string | BigNumber;
+    gas?: number | string | BigNumber;
+    gasPrice?: number | string | BigNumber;
+    data?: string;
+    nonce?: number;
+}
+
 interface SyncingStatus {
     startingBlock: number;
     currentBlock: number;
@@ -120,6 +130,7 @@ export declare class EthApi {
     estimateGas(callData: CallData): Promise<number>;
     getSyncing(): Promise<SyncingResult>;
     call(callData: CallData): Promise<string>;
+    sendTransaction(txData: TxData): Promise<string>;
 }
 
 export declare class NetApi {

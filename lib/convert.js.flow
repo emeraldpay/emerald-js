@@ -47,7 +47,7 @@ function toBigNumber(value: string|number|BigNumber, defaultValue: BigNumber = Z
   return new BigNumber(value, 10);
 }
 
-function toHex(val: number | string | BigNumber): string {
+export function toHex(val: number | string | BigNumber): string {
   const hex = new BigNumber(val).toString(16);
   return `0x${(hex.length % 2 !== 0 ? `0${hex}` : hex)}`;
 }
