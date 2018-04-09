@@ -3,6 +3,7 @@ export type CallObject = {
   to: string,
   data: string,
   nonce?: number,
+  gas?: number,
 };
 
 interface SyncingStatus {

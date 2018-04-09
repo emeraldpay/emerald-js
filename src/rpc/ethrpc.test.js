@@ -11,7 +11,7 @@ class FakeTransport implements Transport {
 
 
 describe('EthApi', () => {
-  test('estimateGas should convert nonce to hex', () => {
+  test('estimateGas should convert numbers to hex', () => {
     let args;
 
     const ethRpc = new EthRpc({
@@ -21,8 +21,8 @@ describe('EthApi', () => {
         }
     });
 
-    return ethRpc.eth.estimateGas({nonce: 0})
-      .then(result => expect(args).toEqual([ { nonce: '0x0' }, 'latest' ]));
+    return ethRpc.eth.estimateGas({nonce: 0, gas: 3000})
+      .then(result => expect(args).toEqual([{ nonce: '0x0', gas: '0xbb8' }]));
   })
 });
 

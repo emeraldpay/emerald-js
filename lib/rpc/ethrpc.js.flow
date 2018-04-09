@@ -65,6 +65,7 @@ class EthApi {
     estimateGas(call: CallObject): Promise<number> {
       const txData = {
         ...call,
+        gas: (call.gas !== undefined) ? format.toHex(call.gas) : call.gas,
         nonce: (call.nonce !== undefined) ? format.toHex(call.nonce) : call.nonce,
       };
       return this.rpc.call('eth_estimateGas', [txData]).then(gas => convert.toNumber(gas));
