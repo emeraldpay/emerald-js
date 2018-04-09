@@ -8,6 +8,24 @@ class FakeTransport implements Transport {
   }
 }
 
+
+
+describe('EthApi', () => {
+  test('estimateGas should convert nonce to hex', () => {
+    let args;
+
+    const ethRpc = new EthRpc({
+        call(method: string, params: any) {
+          args = params;
+          return Promise.resolve(0);
+        }
+    });
+
+    return ethRpc.eth.estimateGas({nonce: 0})
+      .then(result => expect(args).toEqual([ { nonce: '0x0' }, 'latest' ]));
+  })
+});
+
 describe('ExtApi', () => {
   test('ExtApi.getTransactions method sends batch request', () => {
     const ethRpc = new EthRpc(new JsonRpc(new FakeTransport()));
