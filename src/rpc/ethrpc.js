@@ -62,12 +62,12 @@ class EthApi {
     /**
      * Executes a message call or transaction and returns the amount of the gas used
      */
-    estimateGas(call: CallObject, blockNumber: number | string = 'latest'): Promise<number> {
+    estimateGas(call: CallObject): Promise<number> {
       const txData = {
         ...call,
         nonce: (call.nonce !== undefined) ? format.toHex(call.nonce) : call.nonce,
       };
-      return this.rpc.call('eth_estimateGas', [txData, blockNumber]).then(gas => convert.toNumber(gas));
+      return this.rpc.call('eth_estimateGas', [txData]).then(gas => convert.toNumber(gas));
     }
 
     /**
