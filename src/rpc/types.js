@@ -2,6 +2,7 @@
 export type CallObject = {
   to: string,
   data: string,
+  nonce?: number,
 };
 
 interface SyncingStatus {
