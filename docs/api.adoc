@@ -399,6 +399,6 @@ Executes a message call transaction, which is directly executed in the VM of the
 .Example
 [source,javascript]
 ----
- ethrpc.eth.getCode('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
-  .then(console.log); // 0x6060604052361561020e5760e060020a600035...
+ ethrpc.eth.call({data: '0xe66f53b7', to: '0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413'})
+  .then(console.log); // 0x000000000000000000000000da4a4626d3e16e094de3225a751aab7128e96526
 ----

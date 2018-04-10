@@ -38,7 +38,7 @@ interface SyncingStatus {
     currentBlock: number;
     highestBlock: number;
 }
-type SyncingResult = false | SyncingStatus;
+export type SyncingResult = false | SyncingStatus;
 
 interface Block {
     number: number | null;

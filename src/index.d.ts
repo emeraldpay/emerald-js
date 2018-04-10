@@ -6,6 +6,7 @@ export {
     BlockWithTxData,
     Transaction,
     TransactionReceipt,
+    SyncingResult,
 } from './rpc';
 
 import * as contracts from './contracts';

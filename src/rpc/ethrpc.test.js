@@ -21,9 +21,9 @@ describe('EthApi', () => {
         }
     });
 
-    return ethRpc.eth.estimateGas({nonce: 0, gas: 3000})
+    return ethRpc.eth.estimateGas({ nonce: 0, gas: 3000 })
       .then(result => expect(args).toEqual([{ nonce: '0x0', gas: '0xbb8' }]));
-  })
+  });
 });
 
 describe('ExtApi', () => {
