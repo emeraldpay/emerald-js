@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gagarin55/emerald-js.git"
+    "url": "git+https://github.com/ETCDEVTeam/emerald-js.git"
   },
   "keywords": [
     "emerald",
@@ -26,9 +26,9 @@
   "author": "gagarin55",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/gagarin55/emerald-js/issues"
+    "url": "https://github.com/ETCDEVTeam/emerald-js/issues"
   },
-  "homepage": "https://github.com/gagarin55/emerald-js#readme",
+  "homepage": "https://github.com/ETCDEVTeam/emerald-js#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
