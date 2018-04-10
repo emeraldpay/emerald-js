@@ -132,8 +132,8 @@ class EthApi {
     /**
      * Creates new message call transaction or a contract creation for signed transactions.
      */
-    sendRawTransaction(signed: string): Promise<any> {
-      return this.rpc.call('eth_sendRawTransaction', [signed]);
+    sendRawTransaction(rawTxData: string): Promise<string> {
+      return this.rpc.call('eth_sendRawTransaction', [rawTxData]);
     }
 
     /**

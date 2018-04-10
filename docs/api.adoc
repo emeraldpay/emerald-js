@@ -402,3 +402,26 @@ Executes a message call transaction, which is directly executed in the VM of the
  ethrpc.eth.call({data: '0xe66f53b7', to: '0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413'})
   .then(console.log); // 0x000000000000000000000000da4a4626d3e16e094de3225a751aab7128e96526
 ----
+
+=== ethrpc.eth.sendRawTransaction()
+```
+ sendRawTransaction(signedTransactionData)
+
+```
+
+Sends an already signed transaction.
+
+
+.Parameters
+
+1. `String` - Signed transaction data in HEX format
+
+.Returns
+`Promise` returns `String` -The 32 Bytes transaction hash as HEX string.
+
+
+.Example
+[source,javascript]
+----
+ // TODO
+----

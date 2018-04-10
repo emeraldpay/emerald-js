@@ -13,24 +13,21 @@ export declare class JsonRpc {
     constructor(transport: Transport)
 }
 
-export interface CallData {
+interface CallTxDataBase {
     to?: string;
-    value?: number | string | BigNumber;
-    gas?: number | string | BigNumber;
-    gasPrice?: number | string | BigNumber;
+    value?: number | string | BigNumber.BigNumber;
+    gas?: number | string | BigNumber.BigNumber;
+    gasPrice?: number | string | BigNumber.BigNumber;
     data?: string;
     nonce?: number;
-    from?: string;
 }
 
-export interface TxData {
+export interface TxData extends CallTxDataBase {
     from: string;
-    to?: string;
-    value?: number | string | BigNumber;
-    gas?: number | string | BigNumber;
-    gasPrice?: number | string | BigNumber;
-    data?: string;
-    nonce?: number;
+}
+
+export interface CallData extends CallTxDataBase {
+    from?: string;
 }
 
 interface SyncingStatus {
@@ -131,6 +128,7 @@ export declare class EthApi {
     getSyncing(): Promise<SyncingResult>;
     call(callData: CallData): Promise<string>;
     sendTransaction(txData: TxData): Promise<string>;
+    sendRawTransaction(rawTxData: string): Promise<string>;
 }
 
 export declare class NetApi {
