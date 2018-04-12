@@ -1,0 +1,427 @@
+= API Reference
+
+:toc:
+
+== ethrpc.web3
+
+=== ethrpc.web3.clientVersion
+
+Returns the current client version.
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `String` :  The current client version.
+
+
+.Example
+[source,javascript]
+----
+ethrpc.web3.clientVersion()
+    .then(console.log)
+> Geth/v4.2.0-c999068/linux/go1.9.2
+----
+
+== ethrpc.net
+
+=== ethrpc.net.version 
+Returns the current network id
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `String` :  The current network id.
+
+* `"1"` - Ethereum Classic mainnet
+* `"2"` - Morden Testnet
+
+.Example
+[source,javascript]
+----
+ethrpc.net.version()
+    .then(console.log)
+> 1
+----
+
+=== ethrpc.net.listening 
+Returns `true` if client is actively listening for network connections.
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `Boolean`
+
+.Example
+[source,javascript]
+----
+ethrpc.net.listening()
+    .then(console.log)
+> true
+----
+
+=== ethrpc.net.peerCount 
+Returns number of peers currently connected to the client.
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `number`
+
+.Example
+[source,javascript]
+----
+ethrpc.net.peerCount()
+    .then(console.log)
+> 33
+----
+
+
+== ethrpc.eth
+
+=== ethrpc.eth.protocolVersion 
+Returns the current Ethereum protocol version
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `String` :  The current ethereum protocol version
+
+.Example
+[source,javascript]
+----
+ethrpc.eth.protocolVersion()
+    .then(console.log)
+> 0x3f
+----
+
+=== ethrpc.eth.getBalance
+```
+getBalance(address, [blockNumber]) 
+```
+
+Returns the balance of the account of given address
+
+
+.Parameters
+1. `String` - The address to get the balance of.
+2. `String | Number` - (optional) Default value `latest`
+
+.Returns
+`Promise` returns `BigNumber` :  The current balance for the given address in wei.
+
+.Example
+[source,javascript]
+----
+ethrpc.eth.getBalance('0x0000000000000000000000000000000000000000')
+  .then(balance => {
+    console.log(balance.toString(10)); // 7226493586402062545566
+    console.log(balance.toNumber()); // 7.226493586402063e+21
+  });
+----
+
+=== ethrpc.eth.gasPrice
+```
+gasPrice() 
+```
+
+Returns the current gas price. The gas price is determined by the last few blocks median gas price.
+
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `BigNumber` :  A BigNumber instance of the current gas price in wei
+
+.Example
+[source,javascript]
+----
+ethrpc.eth.gasPrice()
+  .then(price => {
+    console.log(price.toString(10)); // 20000000000
+  });
+----
+
+=== ethrpc.eth.getSyncing()
+```
+getSyncing() 
+```
+
+Returns an object with data about the sync status or false.
+
+
+.Parameters
+none
+
+.Returns
+`Promise` returns `Object|Boolean` :  A sync object as follows, when the node is currently syncing or `false`
+
+* `startingBlock: Number` - The block number where the sync started.
+* `currentBlock: Number` - The block number where at which block the node currently synced to already.
+* `highestBlock: Number` - The estimated block number to sync to.
+
+
+.Example
+[source,javascript]
+----
+ethrpc.eth.getSyncing()
+  .then(result => {
+  ...
+  });
+----
+
+=== ethrpc.eth.getBlock()
+```
+ getBlock(hashOrNumber [, includeTxs])
+
+```
+
+Returns a block matching the block number or block hash.
+
+
+.Parameters
+
+1. `String|Number` - The block number or hash. Or the string "earliest", "latest" or "pending" as in the default block parameter.
+2. `Boolean` - (optional, default false) If true, the returned block will contain all transactions as objects, if false it will only contains the transaction hashes.
+
+
+.Returns
+`Promise` returns `Object` : The block object
+
+
+* `number: Number` - the block number.
+* `hash: String`, 32 Bytes - hash of the block. `null` when its pending block.
+* `parentHash: String`, 32 Bytes - hash of the parent block.
+* `nonce: String`, 8 Bytes - hash of the generated proof-of-work. `null` when its pending block.
+* `sha3Uncles: String`, 32 Bytes - SHA3 of the uncles data in the block.
+* `logsBloom: String`, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
+* `transactionsRoot: String`, 32 Bytes - the root of the transaction trie of the block
+* `stateRoot: String`, 32 Bytes - the root of the final state trie of the block.
+* `receiptsRoot: String`, 32 Bytes - the root of the transaction's receipts trie.
+* `miner: String`, 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
+* `difficulty: BigNumber` - integer of the difficulty for this block.
+* `totalDifficulty: BigNumber` - integer of the total difficulty of the chain until this block.
+* `extraData: String` - the "extra data" field of this block.
+* `size: Number` - integer the size of this block in bytes.
+* `gasLimit: Number` - the maximum gas allowed in this block.
+* `gasUsed: Number` - the total used gas by all transactions in this block.
+* `timestamp: Number` - the unix timestamp for when the block was collated.
+* `transactions: Array` - Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.
+* `uncles: Array` - Array of uncle hashes.
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getBlock(500002)
+  .then(block => console.log(block));
+----
+
+
+=== ethrpc.eth.getTransactionCount()
+```
+ getTransactionCount(address)
+
+```
+
+Returns the numbers of transactions sent from this address.
+
+
+.Parameters
+
+1. `String` - The address to get the numbers of transactions from.
+2. `Number|String` - (optional) Block number or the string 'latest', 'earliest' or 'pending'
+
+.Returns
+`Promise` returns `Number` : The number of transactions sent from the given address.
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getTransactionCount('0xCf9ae9fa98CCA966260Ddd10d584048Eb25BA6AD')
+  .then(console.log); //
+----
+
+
+=== ethrpc.eth.getTransaction()
+```
+ getTransaction(hash)
+
+```
+
+Returns a transaction matching the given transaction hash.
+
+
+.Parameters
+
+1. `String` - The transaction hash.
+
+.Returns
+`Promise` returns `Object` : A transaction object.
+
+* `hash: String`, 32 Bytes - hash of the transaction.
+* `nonce: Number` - the number of transactions made by the sender prior to this one.
+* `blockHash: String`, 32 Bytes - hash of the block where this transaction was in. `null` when its pending.
+* `blockNumber: Number` - block number where this transaction was in. `null` when its pending.
+* `transactionIndex: Number` - integer of the transactions index position in the block. `null` when its pending.
+* `from: String`, 20 Bytes - address of the sender.
+* `to: String`, 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
+* `value: BigNumber` - value transferred in Wei.
+* `gasPrice: BigNumber` - gas price provided by the sender in Wei.
+* `gas: Number` - gas provided by the sender.
+* `input: String` - the data sent along with the transaction.
+* `replayProtected: Boolean`
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getTransaction('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
+  .then(console.log); 
+  /*
+  { 
+    blockHash: '0xe81984d115ffeffcb4c3ff097caebbc0e1b53cf204307c7533ab10f76b6a1cb7',
+    blockNumber: 52592,
+    from: '0x54daeb3e8a6bbc797e4ad2b0339f134b186e4637',
+    gas: 500000,
+    gasPrice: BigNumber,
+    hash: '0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122',
+    input: '0x',
+    nonce: 772,
+    to: '0xbaa54d6e90c3f4d7ebec11bd180134c7ed8ebb52',
+    transactionIndex: 1,
+    value: BigNumber,
+    replayProtected: false
+  }
+  */
+----
+
+=== ethrpc.eth.getTransactionReceipt()
+```
+ getTransactionReceipt(hash)
+
+```
+
+Returns the receipt of a transaction by transaction hash.
+
+
+.Parameters
+
+1. `String` - The transaction hash.
+
+.Returns
+`Promise` returns `Object` : A transaction receipt object, or `null` when no receipt was found.
+
+
+* `blockHash`: `String`, 32 Bytes - hash of the block where this transaction was in.
+* `blockNumber`: `Number` - block number where this transaction was in.
+* `transactionHash`: `String`, 32 Bytes - hash of the transaction.
+* `transactionIndex`: `Number` - integer of the transactions index position in the block.
+* `from`: `String`, 20 Bytes - address of the sender.
+* `to`: `String`, 20 Bytes - address of the receiver. `null` when its a contract creation transaction.
+* `cumulativeGasUsed`: `Number` - The total amount of gas used when this transaction was executed in the block.
+* `gasUsed`: `Number` - The amount of gas used by this specific transaction alone.
+* `contractAddress`: `String` - 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise null.
+* `logs`: `Array` - Array of log objects, which this transaction generated.
+* `status`: `Number` - 0 indicates transaction failure , 1 indicates transaction succeeded.
+
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getTransactionReceipt('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
+  .then(console.log); 
+  /*
+  { blockHash: '0xe81984d115ffeffcb4c3ff097caebbc0e1b53cf204307c7533ab10f76b6a1cb7',
+    blockNumber: 52592,
+    contractAddress: null,
+    cumulativeGasUsed: 1000000,
+    from: '0x54daeb3e8a6bbc797e4ad2b0339f134b186e4637',
+    gasUsed: 500000,
+    logs: [],
+    root: '79ac68de1971a954f60f1eea9689e1cf4b2a95bf20ae92828cead610888290b6',
+    to: '0xbaa54d6e90c3f4d7ebec11bd180134c7ed8ebb52',
+    transactionHash: '0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122',
+    transactionIndex: 1 }
+  */
+----
+
+=== ethrpc.eth.getCode()
+```
+ getCode(address)
+
+```
+
+Get the code at a specific address.
+
+
+.Parameters
+
+1. `String` - The address to get the code from.
+
+.Returns
+`Promise` returns `String` : The data at given address `address`.
+
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getCode('0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122')
+  .then(console.log); // 0x6060604052361561020e5760e060020a600035...
+----
+
+=== ethrpc.eth.call()
+```
+ call(callObject)
+
+```
+
+Executes a message call transaction, which is directly executed in the VM of the node, but never mined into the blockchain.
+
+
+.Parameters
+
+1. `Object`` - A transaction object see `sendTransaction`, with the difference that for calls the from property is optional as well
+
+.Returns
+`Promise` returns `String` - The returned data of the call, e.g. a codes functions return value
+
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.call({data: '0xe66f53b7', to: '0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413'})
+  .then(console.log); // 0x000000000000000000000000da4a4626d3e16e094de3225a751aab7128e96526
+----
+
+=== ethrpc.eth.sendRawTransaction()
+```
+ sendRawTransaction(signedTransactionData)
+
+```
+
+Sends an already signed transaction.
+
+
+.Parameters
+
+1. `String` - Signed transaction data in HEX format
+
+.Returns
+`Promise` returns `String` -The 32 Bytes transaction hash as HEX string.
+
+
+.Example
+[source,javascript]
+----
+ // TODO
+----

@@ -1,6 +1,6 @@
 # emerald-js
-[![Build Status](https://travis-ci.org/ethereumproject/emerald-js.svg?branch=master)](https://travis-ci.org/ethereumproject/emerald-js)
-[![codecov](https://codecov.io/gh/ethereumproject/emerald-js/branch/master/graph/badge.svg)](https://codecov.io/gh/ethereumproject/emerald-js)
+[![Build Status](https://travis-ci.org/ETCDEVTeam/emerald-js.svg?branch=master)](https://travis-ci.org/ETCDEVTeam/emerald-js)
+[![codecov](https://codecov.io/gh/ETCDEVTeam/emerald-js/branch/master/graph/badge.svg)](https://codecov.io/gh/ETCDEVTeam/emerald-js)
 
 
 
@@ -13,7 +13,7 @@ As long as this is unstable library and there is no npm package you should depen
 Use git tags:
 
 ```
-npm install -S https://github.com/ethereumproject/emerald-js.git#v0.0.4
+npm install -S https://github.com/ETCDEVTeam/emerald-js.git#v0.0.4
 
 ```
 This will link v0.0.4

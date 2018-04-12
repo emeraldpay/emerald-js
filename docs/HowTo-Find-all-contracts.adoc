@@ -1,0 +1,148 @@
+= How to find all smart contracts with particular code
+
+Imagine you've just found critical vulnerability in popular smart contract.
+A bug allows you to withdraw all coins from contract. You did it with your friend's contract
+but you know that there are a plenty of such contracts on the blockchain, a huge bunch of money, right?
+
+How to find them all? Let's try.
+
+Smart contract in Ethereum is just account which holds compiled code.
+So the simplest solution is to check all accounts and build a map `address` to `code`.
+
+We will use `eth_getCode` JSON-RPC method to retrieve code for particular address.
+
+== Local full node
+
+Install you own full node. Without local instance you are on the risk to be banned by remote end point.
+
+Got to http://github.com/ethereumproject/go-ethereum and get latest version.
+
+
+== Requirements
+
+This tutorial uses Typescript. Let's prepare environment.
+
+You need:
+
+* nodejs and npm
+* typescript - `sudo npm install -g typescript`
+* ts-node - `sudo npm install -g ts-node`
+
+== Step 1
+
+Create simple npm project
+
+`mkdir all-contracts`
+
+`cd all-contracts`
+
+`npm init`
+
+Leave all parameters as it suggests.
+
+Create `index.ts` file.
+
+```
+console.log('Hello ETC');
+```
+
+Run it
+
+`ts-node index.ts`
+
+Ok, it works, you are able to run Typescript programs now.
+
+
+Install `emerald-js` package:
+
+`npm install -S https://github.com/ETCDEVTeam/emerald-js.git#ethrpc-api-web3`
+
+
+Create RPC client:
+
+[source,javascript]
+----
+const rpc = new EthRpc(new JsonRpc(new HttpTransport("http://localhost:8545")));
+----
+
+Because emerald-js API methods return promises in most cases we will be using `async/await` pair.
+
+Lets write our `run()` method which obtains number of last known block:
+
+[source,javascript]
+----
+async function run() {
+    const lastBlockNumber = await rpc.eth.getBlockNumber();
+
+    console.log(lastBlockNumber);
+}
+
+run();
+
+----
+
+
+We will be using Immutable JS, let's install it:
+
+`npm install -S immutable`
+
+Install typings for node js:
+
+`npm install -S @types/node`
+
+
+
+full index.ts
+[source,javascript]
+----
+import { EthRpc, JsonRpc, HttpTransport } from 'emerald-js';
+import { Map } from 'immutable';
+
+const rpc = new EthRpc(new JsonRpc(new HttpTransport("https://web3.gastracker.io")));
+
+let contracts = Map<string, string>();
+
+async function run() {
+    const lastBlockNumber = await rpc.eth.getBlockNumber();
+
+    process.stdout.write(`last block: ${lastBlockNumber}\n`);
+
+    // Process every block from genesis
+    for (let i = 0; i <= lastBlockNumber; i++) {
+        process.stdout.write(`processing: ${i} block, found ${contracts.size} addresses\r`);
+        const block = await rpc.eth.getBlock(i, true);
+        if (block.transactions.length === 0) {
+            continue;
+        }
+
+        // process every Tx in block
+        for (let j = 0; j < block.transactions.length; j++) {
+            const tx = block.transactions[j];
+            // check whether we have seen from and to addresses
+            if (contracts.get(tx.from, null) === null) {
+                // try to get contract code
+                const code = await rpc.eth.getCode(tx.from);
+                contracts = contracts.set(tx.from, code);
+            }
+
+            if (tx.to && contracts.get(tx.from, null) === null) {
+                // try to get contract code
+                const code = await rpc.eth.getCode(tx.to);
+                contracts = contracts.set(tx.to, code);
+            }
+        }
+    }
+    console.log(contracts.toJS());
+}
+
+run();
+
+----
+
+Now we have all smart contracts with thier code. We can use text search
+to find particular contract by code. 
+Applying some imagination it is easy to add code which filters contracts by code value.
+
+
+PS. There is another approche to find smart contracts.
+As we know if tx creates contract it has `to` field equal to `null` and reciept contains `contractAddress` field.
