@@ -1,13 +1,13 @@
 // @flow
+import DecompressZip from 'decompress-zip';
 import EventEmitter from 'events';
+import { https } from 'follow-redirects';
+import fs from 'mz/fs';
 import os from 'os';
 import path from 'path';
-import fs from 'mz/fs';
-import { https } from 'follow-redirects';
-import DecompressZip from 'decompress-zip';
-
 import { Verify } from '../pgp';
-import { deleteIfExists, checkExists } from './file';
+import { checkExists, deleteIfExists } from './file';
+
 import type { DownloadConfig } from './config';
 
 const TMP_FILE_NAME = 'dist.zip';
