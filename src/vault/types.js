@@ -12,6 +12,15 @@ export type TxSignRequest = {
 
 }
 
+/**
+ * Address book item
+ */
+export type Address = {
+  address: string,
+  name?: string,
+  description?: string,
+}
+
 export interface IVaultProvider {
     newAccount(passphrase: string, name: string, description: string, chain: string): Promise<string>;
     listAccounts(chain: string, showHidden?: boolean): Promise<Array<Account>>;
@@ -23,6 +32,8 @@ export interface IVaultProvider {
     exportAccount(address: string, chain: string): Promise<any>;
     importContract(address: string, name: string, abi: any, chain: string): Promise<any>;
     listContracts(chain: string): Promise<any>;
+    importAddress(addressItem: Address, chain: string): Promise<any>;
+    listAddresses(chain: string): Promise<Address[]>;
     generateMnemonic(): Promise<string>;
     importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, path: string, chain: string): Promise<string>
 }

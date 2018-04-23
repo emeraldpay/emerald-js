@@ -1,7 +1,7 @@
 // @flow
 import assert from 'assert';
 import JsonRpc from '../../rpc/jsonrpc';
-import type { IVaultProvider, Account, TxSignRequest } from '../types';
+import type { IVaultProvider, Account, TxSignRequest, Address } from '../types';
 
 export default class JsonRpcProvider implements IVaultProvider {
     rpc: JsonRpc;
@@ -73,6 +73,16 @@ export default class JsonRpcProvider implements IVaultProvider {
     listContracts(chain: string): Promise<any> {
       this.notNull(chain, 'chain');
       return this.rpc.call('emerald_listContracts', [{ chain }]);
+    }
+
+    importAddress(item: Address, chain: string): Promise<any> {
+      this.notNull(chain, 'chain');
+      return this.rpc.call('emerald_importAddress', [item, { chain }]);
+    }
+
+    listAddresses(chain: string): Promise<Address[]> {
+      this.notNull(chain, 'chain');
+      return this.rpc.call('emerald_listAddresses', [{ chain }]);
     }
 
     generateMnemonic(): Promise<string> {
