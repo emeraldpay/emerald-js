@@ -85,6 +85,11 @@ export default class JsonRpcProvider implements IVaultProvider {
       return this.rpc.call('emerald_listAddresses', [{ chain }]);
     }
 
+    deleteAddress(address: string, chain: string): Promise<any> {
+      this.notNull(chain, 'chain');
+      return this.rpc.call('emerald_deleteAddress', [address, { chain }]);
+    }
+
     generateMnemonic(): Promise<string> {
       return this.rpc.call('emerald_generateMnemonic', []);
     }

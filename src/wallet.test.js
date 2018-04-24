@@ -15,7 +15,6 @@ test('getAddress() returns address as hex string', () => {
 });
 
 describe('Wallet', () => {
-
   it('should sign tx', () => {
     const wallet = Wallet.fromPrivateKey('0xe331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109');
     const txData = {
