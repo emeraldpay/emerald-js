@@ -1,6 +1,6 @@
 // @flow
 import assert from 'assert';
-import type { IVaultProvider, Account, TxSignRequest } from './types';
+import type { IVaultProvider, Account, TxSignRequest, Contact } from './types';
 
 function notNull(value: any, param: string) {
   return assert(value, `${param} must not be null`);
@@ -71,6 +71,20 @@ export default class Vault {
     listContracts(chain: string): Promise<any> {
       notNull(chain, 'chain');
       return this.provider.listContracts(chain);
+    }
+
+    listAddresses(chain: string): Promise<Contact[]> {
+      notNull(chain, 'chain');
+      return this.provider.listAddresses(chain);
+    }
+
+    importAddress(addressItem: Contact, chain: string): Promise<any> {
+      notNull(chain, 'chain');
+      return this.provider.importAddress(addressItem, chain);
+    }
+
+    deleteAddress(address: string, chain: string): Promise<any> {
+      return this.provider.deleteAddress(address, chain);
     }
 
     generateMnemonic(): Promise<string> {
