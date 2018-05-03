@@ -29,6 +29,9 @@ function block(b: any) {
 }
 
 function transaction(tx: any) {
+  if (!tx) {
+    return tx;
+  }
   return {
     ...tx,
     blockNumber: tx.blockNumber ? convert.toNumber(tx.blockNumber) : tx.blockNumber,
