@@ -15,10 +15,10 @@ describe('EthApi', () => {
     let args;
 
     const ethRpc = new EthRpc({
-        call(method: string, params: any) {
-          args = params;
-          return Promise.resolve(0);
-        }
+      call(method: string, params: any) {
+        args = params;
+        return Promise.resolve(0);
+      }
     });
 
     return ethRpc.eth.estimateGas({ nonce: 0, gas: 3000 })
@@ -47,8 +47,8 @@ describe('ExtApi', () => {
   test('ExtApi.batchCall should bind results by id', () => {
     const ethRpc = new EthRpc(new JsonRpc(new FakeTransport()));
     const batch = [
-      {id: 'id1', to: '1', data: '1'},
-      {id: 'id2', to: '2', data: '2'},
+      { id: 'id1', to: '1', data: '1' },
+      { id: 'id2', to: '2', data: '2' },
     ];
 
     return ethRpc.ext.batchCall(batch).then((results) => {

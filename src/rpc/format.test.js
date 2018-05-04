@@ -35,4 +35,8 @@ describe('format', () => {
 
     expect(formatted.gas).toEqual(500000);
   });
+
+  it('convert null to null', () => {
+    expect(format.transaction(null)).toBeNull();
+  });
 });
