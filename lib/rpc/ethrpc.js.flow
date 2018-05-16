@@ -47,7 +47,7 @@ class EthApi {
           return {
             startingBlock: convert.toNumber(result.startingBlock),
             currentBlock: convert.toNumber(result.currentBlock),
-            highestBlock: convert.toNumber(result.hightestBlock),
+            highestBlock: convert.toNumber(result.highestBlock),
           };
         });
     }
