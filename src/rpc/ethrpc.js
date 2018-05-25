@@ -143,6 +143,29 @@ class EthApi {
       return this.rpc.call('eth_getTransactionByHash', [hash])
         .then(format.transaction);
     }
+
+    getAddressTransactions(
+      address: string,
+      blockNumFloor: number,
+      blockNumCeil: number,
+      toOrFrom: string,
+      standardOrContract: string,
+      beginPageIndex: number,
+      endPageIndex: number,
+      orderByOldest: boolean
+    ): Promise<Array<string>> {
+      return this.rpc.call('geth_getAddressTransactions', [
+        address,
+        blockNumFloor,
+        blockNumCeil,
+        toOrFrom,
+        standardOrContract,
+        beginPageIndex,
+        endPageIndex,
+        orderByOldest
+      ]);
+    }
+
 }
 
 class NetApi {

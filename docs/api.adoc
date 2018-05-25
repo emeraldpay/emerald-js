@@ -302,6 +302,39 @@ Returns a transaction matching the given transaction hash.
   */
 ----
 
+=== ethrpc.eth.getAddressTransactions()
+```
+ getAddressTransactions(address, blockNumFloor, blockNumCeil, toOrFrom, standardOrContract, beginPageIndex, endPageIndex, orderByOldest)
+
+```
+
+Returns transaction hashes matching a given address.
+
+.Parameters
+
+1. `String` - The Address.
+2. `Integer` - block number to filter transactions floor.
+3. Integer - block number to filter transactions ceiling.
+4. String - [t|f|tf|], use t for transactions to the address, f for from, or tf/'' for both.
+5. String - [s|c|sc|], use s for standard transactions, c for contracts, or sc/``''` for both.
+6. Integer - index to begin pagination. Using -1 equivalent to 0.
+7. Integer - index to end pagination. Using -1 equivalent to last transaction n.
+8. Bool [optional] - whether to return transactions in order of oldest first. By default false returns transaction hashes ordered by newest transactions first.
+
+.Returns
+`Promise` returns `Array` of  `String`: The transaction hashes that match the address.
+* `hash: String`, 32 Bytes - hash of the transaction.
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.getAddressTransactions('0x407d73d8a49eeb85d32cf465507dd71d507100c1', 123, 456, 't', '', -1, -1, false)
+  .then(console.log);
+  /*
+  [ '0x1c8655f3ebe6bf2e5a1f99e18c2cc82abd9627cc48b5c0c9efe22178b7828122' ]
+  */
+----
+
 === ethrpc.eth.getTransactionReceipt()
 ```
  getTransactionReceipt(hash)
