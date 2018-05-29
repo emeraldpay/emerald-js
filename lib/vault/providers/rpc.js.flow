@@ -10,6 +10,10 @@ export default class JsonRpcProvider implements IVaultProvider {
       this.rpc = jsonRpc;
     }
 
+    currentVersion(): Promise<string> {
+      return this.rpc.call('emerald_currentVersion', []);
+    }
+
     /**
      * Returns the list of all not hidden (by default) accounts from the keystore.
      * @param chain - chain name
