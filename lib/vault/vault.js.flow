@@ -18,6 +18,13 @@ export default class Vault {
     }
 
     /**
+     * Returns the client current version
+     */
+    currentVersion(): Promise<string> {
+      return this.provider.currentVersion();
+    }
+
+    /**
      * Returns the list of all not hidden (by default) accounts from the keystore.
      * @param chain - chain name
      * @param showHidden - also show hidden accounts

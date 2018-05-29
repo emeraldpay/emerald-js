@@ -7,15 +7,33 @@ import type { CallObject, SyncingResult } from './types';
 
 class EthApi {
     rpc: JsonRpc;
+    compile: object;
 
     constructor(jsonRpc: JsonRpc) {
       this.rpc = jsonRpc;
+      this.compile = {
+        solidity: this.compileSolidity,
+      };
+    }
+
+    /**
+     * Gets a list of available compilers
+     */
+    getCompilers(): Promise<string[]> {
+      return this.rpc.call('eth_getCompilers', []);
+    }
+
+    /**
+     * Returns compiled solidity code
+     */
+    compileSolidity(code): Promise<object> {
+      return this.rpc.call('eth_compileSolidity', [code]);
     }
 
     /**
      * Returns the current Ethereum protocol version
      */
-    protocolVersion(): Promise<String> {
+    protocolVersion(): Promise<string> {
       return this.rpc.call('eth_protocolVersion', []);
     }
 

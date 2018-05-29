@@ -114,6 +114,10 @@ export declare class Web3Api {
 }
 
 export declare class EthApi {
+    getCompilers(): Promise<string[]>;
+    compile: {
+        solidity(code: string): Promise<object>;
+    };
     protocolVersion(): Promise<string>;
     getCode(address: string): Promise<string>;
     getBalance(address: string, blockNumber?: number | string): Promise<BigNumber>;
