@@ -436,6 +436,46 @@ Executes a message call transaction, which is directly executed in the VM of the
   .then(console.log); // 0x000000000000000000000000da4a4626d3e16e094de3225a751aab7128e96526
 ----
 
+
+=== ethrpc.eth.compile.solidity()
+```
+ compile.solidity(sourceCode)
+
+```
+
+Compiles solidity source code.
+
+
+.Parameters
+
+1. `String - The solidity source code
+
+.Returns
+`Promise` returns `Object` - Contract and compiler info
+
+
+
+.Example
+[source,javascript]
+----
+ ethrpc.eth.compile.solidity("pragma solidity ^0.4.0; \r\n contract Test1 {}")
+  .then(console.log);
+
+{ Test1:
+   { code: '0x60606040523415600b57fe5b5b60338060196000396000f30060606040525bfe00a165627a7a72305820717f53fbf506a8461b9ac3b654c31b0cbaa7a772d950803ab3263cdd9b12a89f0029',
+     info:
+      { source: 'pragma solidity ^0.4.0; \r\n contract Test1 {}',
+        language: 'Solidity',
+        languageVersion: '0.4.12',
+        compilerVersion: '0.4.12',
+        compilerOptions: '--bin --abi --userdoc --devdoc --optimize -o /tmp/solc697112006',
+        abiDefinition: [],
+        userDoc: [Object],
+        developerDoc: [Object] } } }
+
+----
+
+
 === ethrpc.eth.sendRawTransaction()
 ```
  sendRawTransaction(signedTransactionData)
