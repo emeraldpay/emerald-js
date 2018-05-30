@@ -36,6 +36,7 @@ export interface IVaultProvider {
     listAddresses(chain: string): Promise<Contact[]>;
     deleteAddress(address: string, chain: string): Promise<any>;
     generateMnemonic(): Promise<string>;
-    importMnemonic(passphrase: string, name: string, description: string, mnemonic: string, path: string, chain: string): Promise<string>
+    importMnemonic(passphrase: string, name: string, description: string,
+      mnemonic: string, path: string, chain: string): Promise<string>
 }
 
