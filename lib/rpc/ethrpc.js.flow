@@ -12,7 +12,7 @@ class EthApi {
     constructor(jsonRpc: JsonRpc) {
       this.rpc = jsonRpc;
       this.compile = {
-        solidity: this.compileSolidity,
+        solidity: this.compileSolidity.bind(this),
       };
     }
 

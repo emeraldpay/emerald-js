@@ -2,7 +2,6 @@
 import Wallet from 'ethereumjs-wallet';
 import ethUtil from 'ethereumjs-util';
 import EthereumTx from 'ethereumjs-tx';
-import { toHex } from './convert';
 
 class WalletWrapper {
     wallet: Wallet;
