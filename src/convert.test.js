@@ -21,6 +21,7 @@ describe('toHex', () => {
   it('convert decimal number to hex', () => {
     expect(toHex(10000000000)).toEqual('0x02540be400');
     expect(toHex('21000')).toEqual('0x5208');
+    expect(toHex('100000000000000000000')).toEqual('0x056bc75e2d63100000');
   });
 
   it('convert BigNumber to hex', () => {
