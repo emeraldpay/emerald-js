@@ -231,6 +231,7 @@ class Web3Api {
     }
 }
 
+const formatBatchBlockResponse = responses => responses.filter(r => r.result).map(r => format.block(r.result));
 /**
  * Extended API
  */
@@ -242,12 +243,25 @@ class ExtApi {
     }
 
     getBlocks(from: number, to: number) {
-      const requests = [];
+      let requests = [];
+
       for (let i = from; i <= to; i += 1) {
         requests.push(this.rpc.newBatchRequest('eth_getBlockByNumber', [format.toHex(i), false]));
       }
-      return this.rpc.batch(requests)
-        .then(responses => responses.filter(r => r.result).map(r => format.block(r.result)));
+
+      return this.rpc.batch(requests).then(formatBatchBlockResponse);
+    }
+
+    getBlocksByNumbers(number: number | string) {
+      let formattedNumber = number;
+      if (typeof number === 'number') {
+        formattedNumber = format.toHex(number);
+      }
+
+      const requests = formattedNumber.map(
+        (blockNumber) => this.rpc.newBatchRequest('eth_getBlockByNumber', [blockNumber, false])
+      )
+      return this.rpc.batch(requests).then(formatBatchBlockResponse);
     }
 
     getBalances(addresses: Array<string>, blockNumber: number | string = 'latest') {
