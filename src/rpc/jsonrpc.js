@@ -54,16 +54,12 @@ export default class JsonRpc {
       const request = this.newRequest(method, params);
 
       return this.transport.request(request).then((json) => {
-        if (json.result || json.result === false || json.result === null) {
-          return json.result;
-        } else if (json.error) {
-          throw new JsonRpcError(json.error);
-        } else {
-          throw new Error(`Unknown JSON RPC response: ${JSON.stringify(json)},
-                     method: ${method},
-                     params: ${JSON.stringify(params)}`);
+        if (json.error) {
+          return Promise.reject(new JsonRpcError(json.error));
         }
-      }).catch((error) => { throw error; });
+
+        return json.result;
+      });
     }
 
     /**
@@ -90,18 +86,16 @@ export default class JsonRpc {
         handlers[r.request.id] = r.handler;
       });
 
-      return this.transport
-        .request(requests.map(r => r.request))
-        .then((responses) => {
-          // call handler associated with request
-          responses.forEach((response) => {
-            if (typeof handlers[response.id] === 'function') {
-              handlers[response.id](response);
-            }
-          });
-          return responses;
-        })
-        .catch((error) => { throw error; });
+      return this.transport.request(requests.map(r => r.request)).then((responses) => {
+        // call handler associated with request
+        responses.forEach((response) => {
+          if (typeof handlers[response.id] === 'function') {
+            handlers[response.id](response);
+          }
+        });
+
+        return responses;
+      });
     }
 
     /**
