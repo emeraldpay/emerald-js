@@ -1,7 +1,7 @@
 import { rlp } from 'ethereumjs-util';
 import * as qs from 'qs';
 
-class TransactionUri {
+export default class TransactionUri {
   constructor(transaction, abi) {
     this.transaction = transaction;
     this.abi = abi;
