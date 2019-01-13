@@ -18,3 +18,4 @@ export { default as Wallet } from './wallet';
 
 export { default as contracts } from './contracts';
 
+export { default as TransactionUri } from './transactionUri.js';
