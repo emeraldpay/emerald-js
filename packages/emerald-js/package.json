@@ -1,11 +1,9 @@
 {
-  "name": "emerald-js",
+  "name": "@emeraldplatform/emerald-js",
   "version": "0.2.0",
   "description": "",
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib/**/*"],
   "types": "src/index.d.ts",
   "scripts": {
     "setup": "npm install && flow-typed install",

@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+		"test": "CI=true lerna run test --stream"
+	},
   "devDependencies": {
     "lerna": "^3.10.5"
   }
