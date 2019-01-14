@@ -8,15 +8,11 @@
 
 
 # How to use
-As long as this is unstable library and there is no npm package you should depend on particular version.
-
-Use git tags:
 
 ```
-npm install -S https://github.com/ETCDEVTeam/emerald-js.git#v0.0.4
+npm install -S @emeraldplatform/emerald-js.git
 
 ```
-This will link v0.0.4
 
 # Test suite
 emerald-js uses [Jest](http://facebook.github.io/jest/) for its test suite. To run tests in the console:
