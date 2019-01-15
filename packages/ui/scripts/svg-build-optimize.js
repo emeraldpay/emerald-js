@@ -134,19 +134,27 @@ const writeIndexFile = (names) => {
   const templ = names.map((name) => {
     return `export { default as ${name} } from './${name}';`
   }).join('\n');
-  const fp = path.resolve(__dirname, '../src/icons3/', 'index.js');
+  const fp = path.resolve(__dirname, '../src/icons/', 'index.js');
+  const ts = path.resolve(__dirname, '../src/icons/', 'index.d.ts');
   fs.writeFile(fp, templ, 'utf8', (err) => {
     if (err) {
       throw err;
     }
-    console.log('DONE');
+    console.log('index.js created');
+  });
+  // Typescript
+  fs.writeFile(ts, templ, 'utf8', (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log('index.d.ts created');
   });
 }
 
 const writeIconFile = (name, content) => {
   // build src/icons3/<IconName>.js
   return new Promise((resolve, reject) => {
-    const fp = path.resolve(__dirname, '../src/icons3/', `${name}.js`);
+    const fp = path.resolve(__dirname, '../src/icons/', `${name}.js`);
     fs.writeFile(fp, content, 'utf8', (err) => {
       if (err) {
         return reject(err);
@@ -158,18 +166,18 @@ const writeIconFile = (name, content) => {
 }
 
 const writeStoriesFile = (names) => {
-  // build stories/icons3/index.js
+  // build stories/icons/index.js
   const imports = [
     'import React from \'react\';',
     'import { storiesOf } from \'@storybook/react\';',
-    `import { \n  ${names.join(',\n  ')} } from '../../src/icons3';`,
+    `import { \n  ${names.join(',\n  ')} } from '../../src/icons';`,
   ].join('\n');
 
   const elements = names.map((name) => {
     return `<${name} />`;
   });
   const storyTemplate = `storiesOf('icons3', module)\n  .add('all', () => (<div>\n    ${elements.join('\n    ')}\n</div>))`;
-  const fp = path.resolve(__dirname, '../stories/icons3/', 'index.js');
+  const fp = path.resolve(__dirname, '../stories/icons/', 'index.js');
   return new Promise((resolve, reject) => {
     fs.writeFile(fp, imports + storyTemplate, 'utf8', (err) => {
       if (err) {

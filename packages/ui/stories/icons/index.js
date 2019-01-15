@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
-import {
+import { 
   AddCircle,
   Add,
   AppleCommand,
@@ -199,11 +198,8 @@ import {
   Women2,
   Wrench,
   ZoomIn,
-  ZoomOut,
-} from '../../src/icons';
-
-storiesOf('icons3', module)
-  .addWithJSX('all', () => (<div>
+  ZoomOut } from '../../src/icons';storiesOf('icons3', module)
+  .add('all', () => (<div>
     <AddCircle />
     <Add />
     <AppleCommand />
@@ -402,4 +398,4 @@ storiesOf('icons3', module)
     <Wrench />
     <ZoomIn />
     <ZoomOut />
-  </div>));
+</div>))
