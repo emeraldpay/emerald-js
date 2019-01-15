@@ -1,9 +1,11 @@
 {
   "private": true,
   "scripts": {
+    "clean:node_modules": "rimraf node_modules packages/*/node_modules",
     "test": "CI=true lerna run test --stream",
     "test:coverage": "CI=true lerna run test:coverage --stream"
-	},
+  },
+  "homepage": "https://emeraldplatform.io",
   "devDependencies": {
     "lerna": "^3.10.5"
   }

@@ -32,7 +32,7 @@
   "bugs": {
     "url": "https://github.com/ETCDEVTeam/emerald-js/issues"
   },
-  "homepage": "https://github.com/ETCDEVTeam/emerald-js#readme",
+  "homepage": "https://emeraldplatform.io",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
