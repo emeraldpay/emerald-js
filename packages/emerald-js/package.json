@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/emerald-js",
-  "version": "0.3.0-alpha.0",
+  "version": "0.3.1-alpha.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
