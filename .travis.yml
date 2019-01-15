@@ -9,6 +9,7 @@ notifications:
 
 install:
   - npm install -g codecov
+  - npm install -g lerna
   - lerna bootstrap
 
 script: npm run test:coverage
