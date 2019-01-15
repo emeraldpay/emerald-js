@@ -15,3 +15,5 @@ export { contracts };
 export {
     Wallet
 } from './wallet';
+
+export { Wei } from './wei';
