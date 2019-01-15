@@ -3,6 +3,7 @@
 node_modules/
 coverage/
 flow-typed/
+lib/
 
 .idea/
 .vscode/
