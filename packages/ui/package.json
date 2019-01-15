@@ -6,8 +6,7 @@
   "types": "lib/index.d.ts",
   "files": [
     "docs/**/*",
-    "lib/**/*",
-    "src/index.d.ts"
+    "lib/**/*"
   ],
   "scripts": {
     "test": "jest",
@@ -84,5 +83,6 @@
     "collectCoverageFrom": [
       "src/**/*.js"
     ]
-  }
+  },
+  "gitHead": "8f92e07d68d83d7262bce7f9d6ca0d67520d9ff2"
 }

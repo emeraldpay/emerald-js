@@ -4,15 +4,14 @@
   "description": "",
   "main": "lib/index.js",
   "files": [
-    "lib/**/*",
-    "src/index.d.ts"
+    "lib/**/*"
   ],
-  "types": "src/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "setup": "npm install && flow-typed install",
     "test": "jest",
     "test:coverage": "jest && codecov",
-    "prepublish": "rimraf lib/ && npm run babel-prepublish && npm run flow-prepublish",
+    "prepublish": "rimraf lib/ && npm run babel-prepublish && npm run flow-prepublish && ./node_modules/.bin/babel-node scripts/copy-files.js",
     "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
     "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i '**/*.test.js'",
     "lint": "eslint src",
@@ -74,5 +73,6 @@
       "src/**/*.js"
     ],
     "collectCoverage": true
-  }
+  },
+  "gitHead": "8f92e07d68d83d7262bce7f9d6ca0d67520d9ff2"
 }
