@@ -4,10 +4,11 @@
     "clean:node_modules": "rimraf node_modules packages/*/node_modules",
     "test": "CI=true lerna run test --stream",
     "prepublish": "lerna run prepublish",
-    "test:coverage": "CI=true lerna run test:coverage --stream"
+    "test:coverage": "CI=true lerna run test:coverage --stream && codecov"
   },
   "homepage": "https://emeraldplatform.io",
   "devDependencies": {
+    "lcov-result-merger": "^3.1.0",
     "lerna": "^3.10.5"
   }
 }
