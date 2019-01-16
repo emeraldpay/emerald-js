@@ -46,7 +46,7 @@ class EmeraldAppBar extends React.Component {
           <Typography className={classes.flex}>
             {subtitle}
           </Typography>
-          {children.map((item, i) => <Typography key={i} className={classes.item}>{item}</Typography>)}
+          {children.map((item, i) => <div key={i} className={classes.item}>{item}</div>)}
         </Toolbar>
       </AppBar>
     );
