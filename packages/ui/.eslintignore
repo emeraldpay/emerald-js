@@ -1,0 +1,7 @@
+lib
+src/icons3
+node_modules
+scripts
+docs
+.storybook
+.git

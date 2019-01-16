@@ -12,4 +12,5 @@ install:
   - npm install -g lerna
   - lerna bootstrap
 
-script: npm run test:coverage
+script:
+  - npm run test:coverage

@@ -5,5 +5,8 @@ coverage/
 flow-typed/
 lib/
 
+npm-debug.log
+lerna-debug.log
+
 .idea/
 .vscode/
