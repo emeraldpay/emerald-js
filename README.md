@@ -11,6 +11,14 @@
 
 
 
+## Typescript/Javascript Packages
+
+
+| Package                                                  | Version                                                                                                                 | Description                                                                                       |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [`@emeraldplatform/emerald-js`](/packages/emerald-js)                               | [![npm](https://img.shields.io/npm/v/@emeraldplatform/emerald-js.svg)](https://www.npmjs.com/package/@emeraldplatform/emerald-js)                                   | Ethereum and other auxiliary functions |
+| [`@emeraldplatform/ui`](/packages/ui) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/ui.svg)](https://www.npmjs.com/package/@emeraldplatform/ui) | React UI library.    |
+
 # How to use
 
 ```
