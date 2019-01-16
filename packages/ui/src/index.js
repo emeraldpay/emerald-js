@@ -22,3 +22,5 @@ export { default as VaultRpc } from './providers/VaultRpc';
 export { default as Contract } from './providers/Contract';
 export { default as TransactionUri } from './providers/TransactionUri';
 
+import * as icons from './icons';
+export { icons };
