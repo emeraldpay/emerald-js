@@ -72,7 +72,6 @@
     "react-dom": "^16.2.0",
     "react-jss": "^8.1.0",
     "react-required-if": "^1.0.3",
-    "rlp": "^2.0.0",
     "storybook-addon-jsx": "^5.4.0"
   },
   "jest": {

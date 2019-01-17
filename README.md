@@ -28,6 +28,12 @@ npm install -S @emeraldplatform/emerald-js.git
 
 # Development
 
+## Build
+
+```
+lerna bootstrap
+```
+
 ## Tests suite
 emerald-js uses [Jest](http://facebook.github.io/jest/) for its test suite. To run tests in the console:
 

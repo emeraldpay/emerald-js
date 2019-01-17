@@ -1,4 +1,4 @@
-import { functionToData, dataToParams } from './index';
+import { functionToData, dataToParams } from '../src/index';
 
 const balanceOfABI = {
   constant: true,

@@ -1,4 +1,3 @@
-import { rlp } from 'ethereumjs-util';
 import * as qs from 'qs';
 
 export default class TransactionUri {

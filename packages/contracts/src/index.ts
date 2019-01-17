@@ -1,6 +1,7 @@
-// @flow
-import ethAbi from 'ethereumjs-abi';
+import { methodID, rawDecode, rawEncode } from 'ethereumjs-abi';
 import BigNumber from 'bignumber.js';
+
+const ethAbi = { methodID, rawDecode, rawEncode };
 /**
  * Converts function input parameters to TX's data field.
  */
