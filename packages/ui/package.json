@@ -33,6 +33,7 @@
   },
   "homepage": "https://emeraldplatform.io",
   "devDependencies": {
+    "@emeraldplatform/svg-icons": "^0.3.4",
     "@storybook/addon-actions": "^3.2.17",
     "@storybook/react": "^3.2.17",
     "babel-cli": "^6.26.0",
@@ -41,7 +42,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
-    "emerald-svg-icons": "git+https://github.com/ETCDEVTeam/emerald-svg-icons.git#0.0.1",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^4.12.1",
@@ -57,6 +57,7 @@
     "raf": "^3.4.0",
     "react-test-renderer": "^16.7.0",
     "rimraf": "^2.6.2",
+    "svgo": "^1.1.1",
     "underscore.string": "^3.3.4"
   },
   "dependencies": {
@@ -72,8 +73,7 @@
     "react-jss": "^8.1.0",
     "react-required-if": "^1.0.3",
     "rlp": "^2.0.0",
-    "storybook-addon-jsx": "^5.4.0",
-    "svgo": "^1.0.5"
+    "storybook-addon-jsx": "^5.4.0"
   },
   "jest": {
     "setupFiles": [

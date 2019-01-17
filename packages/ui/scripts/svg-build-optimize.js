@@ -1,4 +1,4 @@
-// this generates /src/icons3 components from the emerald-svg-icons repository
+// this generates /src/icons components from the emerald-svg-icons repository
 const glob = require('glob');
 const fs = require('fs');
 const path = require('path');
@@ -202,7 +202,7 @@ const ${name} = props => (
 export default ${name};
 `);
 
-const from = path.resolve(__dirname, '../node_modules/emerald-svg-icons/icons/');
+const from = path.resolve(__dirname, '../node_modules/@emeraldplatform/svg-icons/icons/');
 const files = glob.sync(`${from}/*.svg`);
 
 Promise.all(files.map((filename) => {
