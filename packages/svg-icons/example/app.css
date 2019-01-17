@@ -1,0 +1,96 @@
+html {
+  background-color: #F7F9F8;
+  color: #222;
+  font-size: 140%;
+  line-height: 1.6em;
+  font-family: 'Rubik', sans-serif; }
+
+body {
+  margin: 0em 3em; }
+
+section {
+  margin: 2em 0em; }
+
+h1 {
+  font-size: 130%;
+  line-height: 1.6em;
+  font-weight: 400; }
+
+a {
+  color: #00C853; }
+
+p {
+  max-width: 1000px; }
+
+figure {
+  display: inline-block;
+  padding: 0.5em;
+  margin: 0.3em;
+  border: 1px solid #EAEFEC; }
+  figure span {
+    color: #B1BFB7;
+    font-size: 80%;
+    display: none; }
+  figure h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    line-height: 1.5em;
+    margin-top: 1em;
+    display: none; }
+  figure svg {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 64px;
+    height: 64px;
+    stroke: #222;
+    stroke-width: 4px; }
+    figure svg:hover {
+      stroke: #00C853; }
+
+section#iconlist {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start; }
+
+section#controlls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0em;
+  border: 1px solid #EAEFEC; }
+  section#controlls article {
+    margin-right: 2em; }
+  section#controlls label {
+    display: inline;
+    padding: 0em;
+    margin: 0em;
+    font-size: 80%;
+    color: #B1BFB7;
+    font-weight: 300; }
+  section#controlls input {
+    margin: 0em .5em; }
+  section#controlls input[type="text"] {
+    font-size: 100%;
+    padding: 0.5em 0.8em;
+    background-color: transparent;
+    border: 1px solid #B1BFB7;
+    color: #00C853; }
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 120%; } }
+
+@media (max-width: 900px) {
+  html {
+    font-size: 110%; }
+    html body {
+      margin: 1em 2em; } }
+
+@media (max-width: 600px) {
+  html {
+    font-size: 80%; }
+    html body {
+      margin: 0.5em 1em; } }

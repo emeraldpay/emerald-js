@@ -1,0 +1,159 @@
+$coal : #222;
+$snow: #F7F9F8;
+$ash: #B1BFB7;
+$emerald: #00C853;
+$conch : #EAEFEC;
+
+$x:		"(min-width: 1201px)";
+$l:		"(max-width: 1200px)";
+$m:		"(max-width: 900px)";
+$s:		"(max-width: 600px)";
+
+html{
+	background-color: $snow;
+	color: $coal;
+	font-size:140%;
+	line-height: 1.6em;
+	font-family: 'Rubik', sans-serif;	
+}
+
+body{ margin:0em 3em; }
+
+section{
+	margin: 2em 0em;
+}
+
+h1{
+	font-size:130%;
+	line-height:1.6em;
+	font-weight: 400;
+}
+
+a{
+	color: $emerald;
+}
+
+p{
+	max-width: 1000px;
+}
+
+
+
+
+figure{
+	display: inline-block;
+	padding:0.5em;
+	margin:0.3em;
+	border:1px solid $conch;
+
+	span{
+		color: $ash;
+		font-size:80%;
+		display: none;
+	}
+
+	h1{
+		margin:0;
+		padding:0;
+		font-size: 100%;
+		line-height: 1.5em;
+		margin-top:1em;
+		display: none;
+	}
+
+	svg{
+		display: block;
+		margin:0;
+		padding:0;
+		width:64px;
+		height:64px;
+		stroke: $coal;
+		stroke-width:4px;
+
+		&:hover{
+			stroke: $emerald;
+		};
+	}
+
+}
+
+
+
+section#iconlist{
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+
+
+}
+
+
+section#controlls{
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	padding:1em 0em;
+	border:1px solid $conch;
+
+	article{
+		margin-right: 2em;
+	}
+
+	label{
+		display: inline;
+		padding:0em;
+		margin:0em;
+		font-size: 80%;
+		color: $ash;
+		font-weight: 300;
+	}
+
+	input{
+		margin:0em .5em;
+	}
+
+	input[type="text"] {
+		font-size:100%;
+		padding: 0.5em 0.8em;
+		background-color: transparent;
+		border:1px solid $ash;
+		color: $emerald;
+	}
+
+
+}
+
+
+
+section#intro{
+
+}
+
+
+
+
+
+@media #{$l} {
+    html{ 
+    	font-size: 120%; 
+    }
+}
+
+@media #{$m} { 
+    html{  
+    	font-size: 110%;
+    	body{ margin:1em 2em; }
+    }
+}
+
+@media #{$s} { 
+    html{ 
+    	font-size: 80%;
+    	body{ margin:0.5em 1em; }
+    }
+}
+

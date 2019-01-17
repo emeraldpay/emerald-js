@@ -11,7 +11,7 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
-    "prepublish": "rimraf lib/ docs/ && npm run babel-prepublish && npm run flow-prepublish && npm run storybook-static",
+    "prepublish": "rimraf lib/ docs/ && npm run babel-prepublish && npm run flow-prepublish",
     "babel-prepublish": "./node_modules/.bin/babel-node scripts/copy-files.js && ./node_modules/.bin/babel src/ -d lib --ignore test.js",
     "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i '**/*.test.js'",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -19,6 +19,7 @@
     "lint": "eslint .",
     "lint-fix": "npm run lint -- --fix",
     "flow": "flow",
+    "build": "npm run storybook-static",
     "start": "npm run storybook"
   },
   "repository": {
@@ -40,6 +41,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
+    "emerald-svg-icons": "git+https://github.com/ETCDEVTeam/emerald-svg-icons.git#0.0.1",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^4.12.1",
@@ -63,7 +65,6 @@
     "@storybook/addon-knobs": "^3.4.7",
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.8",
-    "emerald-svg-icons": "git+https://github.com/ETCDEVTeam/emerald-svg-icons.git#0.0.1",
     "prop-types": "^15.6.0",
     "qs": "^6.5.2",
     "react": "^16.2.0",
