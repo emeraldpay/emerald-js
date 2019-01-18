@@ -1,0 +1,24 @@
+{
+  "name": "@emeraldplatform/svg-icons",
+  "version": "0.4.0",
+  "description": "Emerald SVG icons",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ETCDEVTeam/emerald-js.git"
+  },
+  "keywords": [
+    "emerald",
+    "svg",
+    "icons",
+    "ethereum",
+    "classic"
+  ],
+  "author": "Richard Schumann <schumanncombo@gmail.com> (http://schumanncombo.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ETCDEVTeam/emerald-svg-icons/issues"
+  },
+  "homepage": "https://emeraldplatform.io"
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+<polygon fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" points="32,8 8,20 8,44 32,56 56,44 56,20 "/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" x1="56" y1="20" x2="32" y2="56"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" x1="56" y1="44" x2="8" y2="44"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" x1="32" y1="56" x2="8" y2="20"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" x1="8" y1="44" x2="32" y2="8"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" x1="8" y1="20" x2="56" y2="20"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" x1="32" y1="8" x2="56" y2="44"/>
+</svg>
