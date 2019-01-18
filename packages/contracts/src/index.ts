@@ -37,3 +37,5 @@ export default {
   functionToData,
   dataToParams,
 };
+
+export { default as Contract } from './Contract';
