@@ -24,7 +24,7 @@ export default class Downloader extends EventEmitter {
     this.config = config;
     this.name = fileName;
     this.tmp = null;
-    this.basedir = dir;
+    this.basedir = path.resolve(dir);
     this.signerKeys = signerKeys;
   }
 
@@ -146,7 +146,7 @@ export default class Downloader extends EventEmitter {
 
   unpack(zip: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      const target = path.join(path.resolve(this.basedir), this.name);
+      const target = path.join(this.basedir, this.name);
 
       this.emit('notify', `Unpacking ${zip} to ${target}`);
 
