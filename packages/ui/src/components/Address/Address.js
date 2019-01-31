@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ToggledIconButton from '../ToggledIconButton';
 import Typography from '@material-ui/core/Typography';
 
-import { Copytoclipboard as CloneIcon, Check1 as CheckCircle } from '../../icons';
+import { Copytoclipboard as CloneIcon, Check1 as CheckCircle } from '@emeraldplatform/ui-icons';
 
 export const getStyles = theme => ({
   container: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Pen3 as EditIcon } from '../../icons';
+import { Pen3 as EditIcon } from '@emeraldplatform/ui-icons';
 import { Account } from './Account';
 import IdentityIcon from '../IdentityIcon';
 import Address from '../Address';

@@ -1,7 +1,6 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { Block as BlockIcon } from '../../icons';
+import { Block as BlockIcon } from '@emeraldplatform/ui-icons';
 import EthRpc from '../../providers/EthRpc';
 
 const styles = theme => ({

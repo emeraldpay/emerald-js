@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Pen3 as EditIcon } from '../../icons';
+import { Pen3 as EditIcon } from '@emeraldplatform/ui-icons';
 import Address from '../Address';
 import IdentityIcon from '../IdentityIcon';
 

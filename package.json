@@ -9,7 +9,6 @@
   "homepage": "https://emeraldplatform.io",
   "devDependencies": {
     "@types/jest": "^23.3.12",
-    "jest": "^23.6.0",
     "lerna": "^3.10.5",
     "typescript": "^3.2.2"
   }

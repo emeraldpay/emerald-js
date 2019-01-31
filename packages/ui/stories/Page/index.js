@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withKnobs, text, boolean, number, array, object } from '@storybook/addon-knobs/react';
 
 import Page from '../../src/components/Page';
-import Back from '../../src/icons/Back';
+import { Back } from '@emeraldplatform/ui-icons';
 
 storiesOf('Page', module)
   .addDecorator(withKnobs)

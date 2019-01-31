@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { EtcSimple } from '../../icons';
+import { EtcSimple } from '@emeraldplatform/ui-icons';
 import EthRpc from '../../providers/EthRpc';
 import { Wei } from '@emeraldplatform/emerald-js';
 

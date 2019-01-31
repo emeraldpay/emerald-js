@@ -1,0 +1,52 @@
+{
+  "name": "@emeraldplatform/ui-icons",
+  "version": "0.4.1",
+  "description": "Emerald icons as a React components",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "",
+    "test:coverage": "",
+    "prepublish": "npm run build",
+    "gen:icons": "node scripts/svg-build-optimize.js",
+    "build": "tsc",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ETCDEVTeam/emerlad-js.git"
+  },
+  "keywords": [
+    "ethereum",
+    "blockchain",
+    "smart contract",
+    "icons"
+  ],
+  "author": "Yuriy Gagarin <gagarin55@protonmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ETCDEVTeam/emerlad-js/issues"
+  },
+  "homepage": "https://emeraldplatform.io",
+  "dependencies": {
+    "@material-ui/core": "^3.9.1",
+    "react": "^16.7.0"
+  },
+  "devDependencies": {
+    "@emeraldplatform/svg-icons": "^0.4.0",
+    "@storybook/react": "^4.1.11",
+    "@types/jest": "^23.3.12",
+    "@types/node": "^10.12.18",
+    "jest": "^23.6.0",
+    "svgo": "^1.1.1",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2",
+    "underscore.string": "^3.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AccountSelect from '../../components/AccountSelect';
 import VaultRpc from '../../providers/VaultRpc';
 
-export default class AccountSelector extends React.Component {
+class AccountSelector extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     account: PropTypes.string,
@@ -20,3 +20,5 @@ export default class AccountSelector extends React.Component {
     )
   }
 }
+
+export default AccountSelector;

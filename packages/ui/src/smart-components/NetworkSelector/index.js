@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Network as NetworkIcon } from '../../icons';
+import { Network as NetworkIcon } from '@emeraldplatform/ui-icons';
 import { Button, Menu, MenuItem, Typography } from '@material-ui/core';
 
 import EthRpc from '../../providers/EthRpc';
