@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Account from '../../src/components/Account';
+import Account from '../../lib/components/Account';
 
 storiesOf('Account', module)
   .add('default', () => (

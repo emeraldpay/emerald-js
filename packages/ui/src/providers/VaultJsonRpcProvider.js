@@ -35,3 +35,5 @@ export class VaultJsonRpcProvider extends React.Component {
     );
   }
 }
+
+export default VaultJsonRpcProvider;

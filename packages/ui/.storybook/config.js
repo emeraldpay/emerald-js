@@ -5,7 +5,7 @@ import {EmeraldProvider} from '../src/providers/EmeraldProvider';
 
 setAddon(JSXAddon);
 
-const req = require.context('../stories/', true, /\.js$/)
+const req = require.context('../stories/', true, /\.tsx$/)
 
 function loadStories() {
   addDecorator((story) => (<EmeraldProvider>{story()}</EmeraldProvider>))

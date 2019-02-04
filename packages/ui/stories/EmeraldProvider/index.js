@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Button, Typography, Divider } from '@material-ui/core';
-import { EmeraldProvider } from '../../src/providers/EmeraldProvider';
-import { EthJsonRpcContext } from '../../src/providers/EthJsonRpcProvider';
+import { EmeraldProvider } from '../../lib/providers/EmeraldProvider';
+import { EthJsonRpcContext } from '../../lib/providers/EthJsonRpcProvider';
 
 storiesOf('EmeraldProvider', module)
   .add('default', () => (

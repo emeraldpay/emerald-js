@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Address from '../../src/components/Address';
+import Address from '../../lib/components/Address';
 
 storiesOf('Address', module)
   .add('default', () => (

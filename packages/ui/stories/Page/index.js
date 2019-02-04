@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Typography from '@material-ui/core/Typography';
 import { withKnobs, text, boolean, number, array, object } from '@storybook/addon-knobs/react';
 
-import Page from '../../src/components/Page';
+import Page from '../../lib/components/Page';
 import { Back } from '@emeraldplatform/ui-icons';
 
 storiesOf('Page', module)

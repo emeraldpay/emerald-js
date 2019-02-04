@@ -34,3 +34,5 @@ export class EthJsonRpcProvider extends React.Component {
     );
   }
 }
+
+export default EthJsonRpcProvider;
