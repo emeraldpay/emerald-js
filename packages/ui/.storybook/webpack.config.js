@@ -1,19 +1,11 @@
-const path = require("path");
-const include = path.resolve(__dirname, '../');
+module.exports = (baseConfig, env, config) => {
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    use: [{
+      loader: require.resolve('awesome-typescript-loader')
+    }]
+  });
 
-module.exports = {
-  // Add '.ts' and '.tsx' as resolvable extensions.
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"]
-  },
-  module: {
-      rules: [
-          {
-            test: /\.tsx/,
-            loader: 'awesome-typescript-loader',
-            exclude: /node_modules/,
-            include
-          }
-      ]
-  }
+  config.resolve.extensions.push('.ts', '.tsx');
+  return config;
 };

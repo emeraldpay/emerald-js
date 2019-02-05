@@ -1,9 +1,10 @@
 {
   "name": "@emeraldplatform/ui-icons",
-  "version": "0.4.1",
+  "version": "0.4.2-alpha.0",
   "description": "Emerald icons as a React components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "module": "lib/index.es.js",
   "files": [
     "lib/**/*"
   ],
@@ -12,7 +13,7 @@
     "test:coverage": "",
     "prepublish": "npm run build",
     "gen:icons": "node scripts/svg-build-optimize.js",
-    "build": "tsc",
+    "build": "tsc && cp src/index.js lib/index.es.js",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "repository": {
