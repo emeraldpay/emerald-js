@@ -88,5 +88,8 @@
     "collectCoverageFrom": [
       "src/**/*.js"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
