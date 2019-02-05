@@ -30,6 +30,7 @@
   },
   "homepage": "https://emeraldplatform.io",
   "devDependencies": {
+    "@material-ui/icons": "^3.0.2",
     "@storybook/addon-actions": "^4.1.11",
     "@storybook/addon-knobs": "^4.1.11",
     "@storybook/react": "^4.1.11",
