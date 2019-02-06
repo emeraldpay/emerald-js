@@ -134,27 +134,19 @@ const writeIndexFile = (names) => {
   const templ = names.map((name) => {
     return `export { default as ${name} } from './${name}';`
   }).join('\n');
-  const fp = path.resolve(__dirname, '../src/', 'index.js');
-  const ts = path.resolve(__dirname, '../src/', 'index.d.ts');
+  const fp = path.resolve(__dirname, '../src/', 'index.ts');
   fs.writeFile(fp, templ, 'utf8', (err) => {
     if (err) {
       throw err;
     }
-    console.log('index.js created');
-  });
-  // Typescript
-  fs.writeFile(ts, templ, 'utf8', (err) => {
-    if (err) {
-      throw err;
-    }
-    console.log('index.d.ts created');
+    console.log('index.ts created');
   });
 }
 
 const writeIconFile = (name, content) => {
   // build src/icons3/<IconName>.js
   return new Promise((resolve, reject) => {
-    const fp = path.resolve(__dirname, '../src/', `${name}.js`);
+    const fp = path.resolve(__dirname, '../src/', `${name}.tsx`);
     fs.writeFile(fp, content, 'utf8', (err) => {
       if (err) {
         return reject(err);
@@ -188,10 +180,10 @@ const writeStoriesFile = (names) => {
   });
 }
 
-const renderSVGIconTemplate = (svgPath, name) => (`import React from 'react';
+const renderSVGIconTemplate = (svgPath, name) => (`import * as React from 'react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-const ${name} = props => (
+const ${name}: React.StatelessComponent<{}> = (props) => (
   <SvgIcon style={{fill:'none'}} stroke="currentColor" fill="none" strokeWidth="4" viewBox="0 0 64 64" {...props} >
     ${svgPath}
   </SvgIcon>

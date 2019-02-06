@@ -268,7 +268,7 @@ import {
   Z8,
   Z9,
   ZoomIn,
-  ZoomOut } from '../../src/';storiesOf('icons', module)
+  ZoomOut } from '../../lib/';storiesOf('icons', module)
   .add('all', () => (<div>
     <AccountAddToken />
     <AccountGenerateFromMnemonic />

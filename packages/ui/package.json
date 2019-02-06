@@ -9,8 +9,8 @@
     "lib/**/*"
   ],
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage && codecov",
+    "test": "jest --env=jsdom",
+    "test:coverage": "jest --env=jsdom --coverage && codecov",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook-static": "build-storybook -c .storybook -o docs",
