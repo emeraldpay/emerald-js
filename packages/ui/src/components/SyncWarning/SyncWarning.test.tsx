@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import SyncWarning from './SyncWarning';
 
 
-describe('Card', () => {
+describe('SyncWarning', () => {
   it('it renders without crash', () => {
     const wrapper = shallow(<SyncWarning />);
   });

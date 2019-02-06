@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -30,16 +29,15 @@ const getIconWithButton = (icon) => {
   );
 };
 
-export class Page extends React.Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    classes: PropTypes.object.isRequired,
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
-    rightIcon: PropTypes.element,
-    leftIcon: PropTypes.element,
-  };
+interface Props {
+  title: string;
+  className?: string;
+  classes: any;
+  rightIcon?: any;
+  leftIcon?: any;
+};
 
+export class Page extends React.Component<Props> {
   static defaultProps = {
     rightIcon: null,
     leftIcon: null,
