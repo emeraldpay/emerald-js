@@ -158,9 +158,9 @@ const writeIconFile = (name, content) => {
 }
 
 const writeStoriesFile = (names) => {
-  // build stories/icons/index.js
+  // build stories/icons/index.tsx
   const imports = [
-    'import React from \'react\';',
+    'import * as React from \'react\';',
     'import { storiesOf } from \'@storybook/react\';',
     `import { \n  ${names.join(',\n  ')} } from '../../src/';`,
   ].join('\n');
@@ -169,7 +169,7 @@ const writeStoriesFile = (names) => {
     return `<${name} />`;
   });
   const storyTemplate = `storiesOf('icons', module)\n  .add('all', () => (<div>\n    ${elements.join('\n    ')}\n</div>))`;
-  const fp = path.resolve(__dirname, '../stories/icons/', 'index.js');
+  const fp = path.resolve(__dirname, '../stories/icons/', 'index.tsx');
   return new Promise((resolve, reject) => {
     fs.writeFile(fp, imports + storyTemplate, 'utf8', (err) => {
       if (err) {

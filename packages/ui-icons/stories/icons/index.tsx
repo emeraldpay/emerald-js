@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { 
   AccountAddToken,
@@ -268,7 +268,7 @@ import {
   Z8,
   Z9,
   ZoomIn,
-  ZoomOut } from '../../lib/';storiesOf('icons', module)
+  ZoomOut } from '../../src/';storiesOf('icons', module)
   .add('all', () => (<div>
     <AccountAddToken />
     <AccountGenerateFromMnemonic />
