@@ -1,17 +1,22 @@
-import React from 'react';
-import { contracts } from '@emeraldplatform/emerald-js';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import contracts from '@emeraldplatform/contracts';
 import EthRpc from './EthRpc';
 
-class ContractProvider extends React.Component {
-  static propTypes = {
-    method: PropTypes.string.isRequired,
-    params: PropTypes.array,
-    abi: PropTypes.object.isRequired,
-    address: PropTypes.string.isRequired,
-    refresh: PropTypes.number
-  };
+interface Props {
+  method: string;
+  params: Array<any>;
+  abi?: any;
+  address: string;
+  refresh: number;
+  children?: any;
+  renderEmpty?: any;
+};
 
+interface State {
+  data: any;
+};
+
+class ContractProvider extends React.Component<Props, State> {
   static defaultProps = {
     method: null,
     params: null,
@@ -19,9 +24,8 @@ class ContractProvider extends React.Component {
     refresh: null
   };
 
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       data: null,
     };

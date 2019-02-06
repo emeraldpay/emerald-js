@@ -1,14 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import * as qs from 'qs';
 
-export default class TransactionButton extends React.Component {
-  static propTypes = {
-    transaction: PropTypes.object,
-  };
+interface Props {
+  transaction: any;
+  primaryText?: string;
+};
 
+interface State {
+  transactionLink?: string;
+}
+
+export default class TransactionButton extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +33,9 @@ export default class TransactionButton extends React.Component {
 
   render() {
     return (
-      <Button primaryText={this.props.primaryText || 'Send Transaction'} href={this.state.transactionLink} variant="contained" />
+      <Button href={this.state.transactionLink} variant="contained">
+        {this.props.primaryText || 'Send Transaction'}
+      </Button>
     );
   }
 }

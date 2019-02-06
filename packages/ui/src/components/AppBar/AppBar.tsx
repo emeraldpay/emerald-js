@@ -1,11 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
 import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
@@ -26,14 +24,16 @@ const styles = theme => ({
   },
 });
 
-class EmeraldAppBar extends React.Component {
-  static propTypes = {};
+interface Props {
+  classes: any;
+  title?: any;
+  subtitle?: any;
+  children?: any;
+};
 
-  static defaultProps = {
-  };
-
+class EmeraldAppBar extends React.Component<Props> {
   render() {
-    const { classes, title, subtitle, balance, symbol, fiatBalance, fiatSymbol, blockNumber } = this.props;
+    const { classes, title, subtitle } = this.props;
     const children = (this.props.children && this.props.children.length && this.props.children.length > 0) ? this.props.children : [this.props.children]
 
     return (

@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -17,8 +16,19 @@ const styles = theme => ({
   },
 });
 
+interface Props {
+  onChange?: any;
+  accounts?: any;
+  classes: any;
+  selectedAccount?: any;
+};
 
-class SimpleListMenu extends React.Component {
+interface State {
+  selectedIndex?: any;
+  anchorEl?: any;
+};
+
+class SimpleListMenu extends React.Component<Props, State> {
   button = null;
 
   constructor(props) {
@@ -97,9 +107,5 @@ class SimpleListMenu extends React.Component {
     );
   }
 }
-
-SimpleListMenu.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(SimpleListMenu);
