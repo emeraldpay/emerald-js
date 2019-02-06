@@ -1,3 +1,10 @@
+# How to use it
+
+`npm i -S @emeraldplatform/ui-icons`
+
+```
+```
+
 # How to re-build icons
 
 `npm run gen:icons`

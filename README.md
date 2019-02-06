@@ -19,6 +19,7 @@
 | [`@emeraldplatform/emerald-js`](/packages/emerald-js)                               | [![npm](https://img.shields.io/npm/v/@emeraldplatform/emerald-js.svg)](https://www.npmjs.com/package/@emeraldplatform/emerald-js)                                   | Ethereum and other auxiliary functions |
 | [`@emeraldplatform/contracts`](/packages/contracts) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/contracts.svg)](https://www.npmjs.com/package/@emeraldplatform/contracts) | Ethereum smart contracts interop.    |
 | [`@emeraldplatform/ui`](/packages/ui) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/ui.svg)](https://www.npmjs.com/package/@emeraldplatform/ui) | React UI library.    |
+| [`@emeraldplatform/ui-icons`](/packages/ui-icons) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/ui-icons.svg)](https://www.npmjs.com/package/@emeraldplatform/ui-icons) | React icons.    |
 | [`@emeraldplatform/svg-icons`](/packages/svg-icons) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/svg-icons.svg)](https://www.npmjs.com/package/@emeraldplatform/svg-icons) | SVG and other raw design.    |
 
 # How to use
