@@ -181,9 +181,9 @@ const writeStoriesFile = (names) => {
 }
 
 const renderSVGIconTemplate = (svgPath, name) => (`import * as React from 'react';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 
-const ${name}: React.StatelessComponent<{}> = (props) => (
+const ${name}: React.ComponentType<SvgIconProps> = (props) => (
   <SvgIcon style={{fill:'none'}} stroke="currentColor" fill="none" strokeWidth="4" viewBox="0 0 64 64" {...props} >
     ${svgPath}
   </SvgIcon>
