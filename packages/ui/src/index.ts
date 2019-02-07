@@ -11,7 +11,7 @@ export { default as AppBar } from './components/AppBar';
 export { default as Theme } from './theme';
 export { default as AccountSelector } from './smart-components/AccountSelector';
 export { default as CurrentBlockNumber } from './smart-components/CurrentBlockNumber';
-export { default as EtcBalance } from './smart-components/EtcBalance';
+export { default as EtcBalance } from './smart-components/Balance';
 export { default as NetworkSelector } from './smart-components/NetworkSelector';
 export { EmeraldProvider } from './providers/EmeraldProvider';
 export { default as EthJsonRpcProvider } from './providers/EthJsonRpcProvider';
