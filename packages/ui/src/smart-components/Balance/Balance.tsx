@@ -1,5 +1,4 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { EtcSimple } from '@emeraldplatform/ui-icons';
 import EthRpc from '../../providers/EthRpc';
@@ -12,7 +11,12 @@ const styles = theme => ({
   }
 });
 
-class EtcBalance extends React.Component {
+interface Props {
+    account?: any;
+    classes: any;
+};
+
+class Balance extends React.Component<Props> {
   render() {
     const { account, classes } = this.props;
     if (!account) {
@@ -30,4 +34,4 @@ class EtcBalance extends React.Component {
   }
 }
 
-export default withStyles(styles, { name: 'EmeraldEtcBalance' })(EtcBalance);
+export default withStyles(styles, { name: 'EmeraldBalance' })(Balance);

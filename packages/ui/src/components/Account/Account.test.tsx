@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import { Pen3 as EditIcon } from '@emeraldplatform/ui-icons';
-import { Account } from './Account';
+import { Account, getStyles } from './Account';
 import IdentityIcon from '../IdentityIcon';
 import Address from '../Address';
-import styles from './styles';
 
 const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
-const classes = Object.keys(styles).reduce(reduceClasses, {});
+const classes = Object.keys(getStyles()).reduce(reduceClasses, {});
 
 describe('Account', () => {
   it('shows Address when address provided', () => {

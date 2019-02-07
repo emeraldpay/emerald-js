@@ -1,23 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { HttpTransport, EthRpc, JsonRpc } from '@emeraldplatform/emerald-js';
 
 import { EthJsonRpcContext } from './EthJsonRpcProvider';
 
-class EthRpcProvider extends React.Component {
-  static propTypes = {
-    method: PropTypes.string.isRequired,
-    params: PropTypes.array,
-    url: PropTypes.string.isRequired,
-  };
+interface Props {
+  method: string;
+  params?: any;
+  url: string;
+  refresh?: any;
+  children?: any;
+};
+
+interface State {
+  intervalId: any;
+  ethrpc?: any;
+  result: any;
+};
+
+class EthRpcProvider extends React.Component<Props, State> {
 
   static defaultProps = {
     method: null,
     params: null,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       ethrpc: null,
@@ -33,7 +41,7 @@ class EthRpcProvider extends React.Component {
   }
 
   setInterval() {
-    if (this.state.invervalId) {
+    if (this.state.intervalId) {
       clearInterval(this.state.intervalId);
     }
     if (this.props.refresh) {
@@ -95,10 +103,17 @@ class EthRpcProvider extends React.Component {
   }
 }
 
-export default ({method, params, refresh, children}) => {
+interface EthRpcProps {
+  method: string;
+  params?: any;
+  refresh?: any;
+  children?: any;
+};
+
+export default ({method, params, refresh, children } : EthRpcProps) => {
   return (
     <EthJsonRpcContext.Consumer>
-      {({ url }) => {
+      {({ url }: { url: any}) => {
          const props = {
            method,
            params,

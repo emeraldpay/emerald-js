@@ -1,6 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import colors from './colors';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { TypographyProps } from '@material-ui/core/Typography';
 
 const spacing = 10;
 
@@ -43,13 +45,13 @@ const theme = {
         borderColor: colors.conch.main,
         paddingLeft: spacing,
         paddingRight: spacing,
-      },
+      } as CSSProperties,
     },
     MuiFormHelperText: {
       root: {
         position: 'absolute',
         bottom: -(spacing * 2),
-      },
+      } as CSSProperties,
     },
     MuiButton: {
       root: {
@@ -135,7 +137,7 @@ const theme = {
   props: {
     MuiTypography: {
       color: 'secondary',
-    },
+    } as Partial<TypographyProps>,
     MuiInput: {
       disableUnderline: true,
     },

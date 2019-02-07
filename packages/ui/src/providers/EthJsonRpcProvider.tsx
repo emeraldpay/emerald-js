@@ -1,9 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-export const EthJsonRpcContext = React.createContext();
+export const EthJsonRpcContext = React.createContext({});
 
-export class EthJsonRpcProvider extends React.Component {
+interface Props {
+  url: string;
+};
+
+interface State {
+
+};
+
+export class EthJsonRpcProvider extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {

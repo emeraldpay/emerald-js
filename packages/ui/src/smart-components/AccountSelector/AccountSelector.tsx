@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import AccountSelect from '../../components/AccountSelect';
 import VaultRpc from '../../providers/VaultRpc';
 
-class AccountSelector extends React.Component {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-    account: PropTypes.string,
-  }
+interface Props {
+  onChange?: any;
+  account?: string;
+};
+
+class AccountSelector extends React.Component<Props> {
   render() {
     const { onChange, account } = this.props;
     return (

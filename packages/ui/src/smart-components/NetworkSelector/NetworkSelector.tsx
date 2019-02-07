@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Network as NetworkIcon } from '@emeraldplatform/ui-icons';
 import { Button, Menu, MenuItem, Typography } from '@material-ui/core';
@@ -30,7 +29,15 @@ const networks = [
   }
 ];
 
-class NetworkSelector extends React.Component {
+interface Props {
+    classes: any;
+};
+
+interface State {
+
+};
+
+class NetworkSelector extends React.Component<Props, State> {
 
   state = {
     anchorEl: null,
@@ -41,7 +48,7 @@ class NetworkSelector extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleMenuItemClick = (event, index) => {
+  handleMenuItemClick = (event?: any, index?: any) => {
     this.setState({ anchorEl: null });
   };
 
@@ -55,7 +62,7 @@ class NetworkSelector extends React.Component {
 
     return (
       <EthJsonRpcContext.Consumer>
-        {({ url, changeUrl }) => {
+        {({ url, changeUrl }: { url: any; changeUrl: any; }) => {
            const selectedNetwork = networks.find(network => network.url === url);
 
            return (

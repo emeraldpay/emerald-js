@@ -6,7 +6,7 @@ import Address from '../Address';
 import IdentityIcon from '../IdentityIcon';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
-const getStyles = (theme?: any) => ({
+export const getStyles = (theme?: any) => ({
   root: {
     display: 'flex',
     width: '100%',

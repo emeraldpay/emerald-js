@@ -1,23 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { HttpTransport, JsonRpc, VaultJsonRpcProvider, Vault } from '@emeraldplatform/emerald-js';
 
 import { VaultJsonRpcContext } from './VaultJsonRpcProvider';
 
-class VaultRpcProvider extends React.Component {
-  static propTypes = {
-    method: PropTypes.string.isRequired,
-    params: PropTypes.array,
-    url: PropTypes.string.isRequired,
-  };
+interface Props {
+  method: string;
+  params: any;
+  url: string;
+  children?: any;
+};
 
+interface State {
+  vault?: any;
+  ethrpc?: any;
+  result?: any;
+};
+
+class VaultRpcProvider extends React.Component<Props, State> {
   static defaultProps = {
     method: null,
     params: null,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       ethrpc: null,
@@ -67,10 +73,17 @@ class VaultRpcProvider extends React.Component {
   }
 }
 
-export default ({method, params, refresh, children}) => {
+interface VaultRpcProps {
+  method: string;
+  params?: any;
+  refresh?: any;
+  children?: any;
+};
+
+export default ({method, params, refresh, children}: VaultRpcProps) => {
   return (
     <VaultJsonRpcContext.Consumer>
-      {({ url }) => {
+      {({ url }: { url?: string; }) => {
          const props = {
            method,
            params,

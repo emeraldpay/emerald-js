@@ -1,11 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { HttpTransport, EthRpc, JsonRpc } from '@emeraldplatform/emerald-js';
+import * as React from 'react';
 
-export const VaultJsonRpcContext = React.createContext();
+export const VaultJsonRpcContext = React.createContext({});
 
-export class VaultJsonRpcProvider extends React.Component {
+interface Props {
+  url: string;
+};
 
+interface State {
+
+};
+
+export class VaultJsonRpcProvider extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {

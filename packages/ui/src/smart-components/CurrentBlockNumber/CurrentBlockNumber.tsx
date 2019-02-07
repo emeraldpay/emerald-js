@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Block as BlockIcon } from '@emeraldplatform/ui-icons';
 import EthRpc from '../../providers/EthRpc';
@@ -10,7 +10,11 @@ const styles = theme => ({
   }
 });
 
-class CurrentBlockNumber extends React.Component {
+interface Props {
+  classes: any;
+};
+
+class CurrentBlockNumber extends React.Component<Props> {
   render() {
     const { classes } = this.props;
     return (
