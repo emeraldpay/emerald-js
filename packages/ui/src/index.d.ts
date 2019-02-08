@@ -3,6 +3,7 @@ export { default as Address } from './components/Address';
 export { default as IdentityIcon } from './components/IdentityIcon';
 export { default as SyncWarning } from './components/SyncWarning';
 export { default as Input } from './components/Input';
+export { default as Checkbox } from './components/Checkbox';
 export { Warning, WarningHeader, WarningText } from './components/Warning';
 export { default as Page } from './components/Page';
 export { default as ToggledIconButton } from './components/ToggledIconButton';

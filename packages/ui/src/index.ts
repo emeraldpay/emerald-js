@@ -4,6 +4,7 @@ export { default as IdentityIcon } from './components/IdentityIcon';
 export { default as SyncWarning } from './components/SyncWarning';
 export { Warning, WarningHeader, WarningText } from './components/Warning';
 export { default as Input } from './components/Input';
+export { default as Checkbox } from './components/Checkbox';
 export { default as Page } from './components/Page';
 export { default as ToggledIconButton } from './components/ToggledIconButton';
 export { default as TransactionButton } from './components/TransactionButton';
