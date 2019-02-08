@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Input from '../../src/components/Input';
-import ArrowDown from '../../src/icons/ArrowDown';
+import { ArrowDown } from '@emeraldplatform/ui-icons';
+import Input from '../../lib/components/Input';
 
 storiesOf('Input', module)
   .add('all', () => (

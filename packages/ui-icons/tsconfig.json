@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["es2015", "dom"],
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "jsx": "react",
+        "outDir": "./lib",
+        "declaration": true,
+    },
+
+    "include": ["src/**/*.ts", "src/**/*.js"]
+ }

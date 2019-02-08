@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Warning, WarningHeader, WarningText } from '../../src/components/Warning';
+import { Warning, WarningHeader, WarningText } from '../../lib/components/Warning';
 
 storiesOf('Warning', module)
   .add('default', () => (

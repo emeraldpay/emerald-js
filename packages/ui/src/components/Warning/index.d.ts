@@ -1,1 +1,0 @@
-export { Warning, WarningHeader, WarningText } from './Warning';

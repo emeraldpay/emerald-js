@@ -1,0 +1,11 @@
+
+
+node_modules/
+coverage/
+lib/
+
+npm-debug.log
+lerna-debug.log
+
+.idea/
+.vscode/

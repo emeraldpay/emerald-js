@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import Button from '@material-ui/core/Button';
 
-import { TransactionButton } from '../../src';
+import { TransactionButton } from '../../lib';
 
 
 storiesOf('Buttons', module)

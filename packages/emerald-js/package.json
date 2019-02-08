@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/emerald-js",
-  "version": "0.4.1",
+  "version": "0.4.2-alpha.5.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -15,7 +15,8 @@
     "babel-prepublish": "./node_modules/.bin/babel src/ -d lib --ignore test.js",
     "flow-prepublish": "./node_modules/.bin/flow-copy-source src lib -i '**/*.test.js'",
     "lint": "eslint src",
-    "flow": "flow"
+    "flow": "flow",
+    "build": "rimraf lib/ && npm run babel-prepublish && npm run flow-prepublish && ./node_modules/.bin/babel-node scripts/copy-files.js"
   },
   "repository": {
     "type": "git",
