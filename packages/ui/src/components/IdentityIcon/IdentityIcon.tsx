@@ -34,9 +34,12 @@ export class IdentityIcon extends React.Component<Props> {
 
     const seed = id.toLowerCase();
     const icon = blockies.create({ seed }).toDataURL();
+    const iconSize = Number.isInteger(size) ? size : 40;
 
     const mainStyle = {
-      height: `100%`,
+      height: `${iconSize}px`,
+      width: `${iconSize}px`,
+      minWidth: `${iconSize}px`,
       background: `url(${icon})`,
       borderRadius: '50%',
       position: 'relative',
