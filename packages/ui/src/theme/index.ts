@@ -119,11 +119,11 @@ const theme = {
         lineHeight: `${spacing * 2}px`,
         marginLeft: spacing / 2,
         height: 'auto',
+        "&$selected": {
+          marginLeft: '0',
+          borderLeft: `${spacing / 2}px solid ${colors.emerald.main}`,
+        }
       },
-      selected: {
-        marginLeft: '0',
-        borderLeft: `${spacing / 2}px solid ${colors.emerald.main}`,
-      }
     },
     MuiTypography: {
       gutterBottom: {
