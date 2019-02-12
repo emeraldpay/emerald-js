@@ -1,9 +1,9 @@
 
-import React from 'react';
+import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import IdentityIcon from '../../lib/components/IdentityIcon';
+import IdentityIcon from '../../src/components/IdentityIcon';
 
 const addr = '0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98';
 storiesOf('IdentityIcon', module)

@@ -26,8 +26,8 @@ beforeEach(() => {
 });
 
 describe('IdentityIcon', () => {
-  it('does not show div with plus icon', () => {
+  it('has default size 40', () => {
     const component = shallow(<IdentityIcon classes={classes} id="0x1234567890" />);
-    expect(component.find('div').children().find('div')).toHaveLength(0);
+    expect(component.props().style.height).toEqual('40px');
   });
 });

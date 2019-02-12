@@ -116,14 +116,14 @@ const theme = {
         cursor: 'pointer',
         padding: `${spacing / 2}px ${spacing * 8}px ${spacing / 2}px ${spacing * 4}px`,
         border: 'none',
-        lineHeight: spacing * 2,
+        lineHeight: `${spacing * 2}px`,
         marginLeft: spacing / 2,
         height: 'auto',
+        "&$selected": {
+          marginLeft: '0',
+          borderLeft: `${spacing / 2}px solid ${colors.emerald.main}`,
+        }
       },
-      selected: {
-        marginLeft: '0',
-        borderLeft: `${spacing / 2}px solid ${colors.emerald.main}`,
-      }
     },
     MuiTypography: {
       gutterBottom: {
