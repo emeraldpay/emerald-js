@@ -1,10 +1,10 @@
 import * as React from 'react';
-import contracts from '@emeraldplatform/contracts';
+import contracts, { InputValues } from '@emeraldplatform/contracts';
 import EthRpc from './EthRpc';
 
 interface Props {
   method: string;
-  params: Array<any>;
+  params: InputValues;
   abi?: any;
   address: string;
   refresh: number;
@@ -48,7 +48,7 @@ class ContractProvider extends React.Component<Props, State> {
 
   setData() {
     const func = this.props.abi.find((f) => f.name === this.props.method);
-    const data = contracts.functionToData(func, this.props.params);
+    const data = contracts.functionToData(func, this.props.params as InputValues);
     this.setState({data});
   }
 
