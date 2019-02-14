@@ -5,4 +5,8 @@ module.exports = {
     "<rootDir>/lib/",
     "<rootDir>/node_modules/"
   ],
+  coverageDirectory: "./coverage/",
+  collectCoverageFrom: [
+    "src/**/*.ts"
+  ],
 };
