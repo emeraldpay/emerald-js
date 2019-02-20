@@ -166,7 +166,7 @@ const writeStoriesFile = (names) => {
   ].join('\n');
 
   const elements = names.map((name) => {
-    return `<${name} />`;
+    return `<span title=\'${name}\'><${name} /></span>`;
   });
   const storyTemplate = `storiesOf('icons', module)\n  .add('all', () => (<div>\n    ${elements.join('\n    ')}\n</div>))`;
   const fp = path.resolve(__dirname, '../stories/icons/', 'index.tsx');

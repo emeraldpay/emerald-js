@@ -21,7 +21,7 @@ export default class EthRpc {
       this.web3 = new Web3Api(jsonRpc);
       this.ext = new ExtApi(jsonRpc);
     }
-
+cd 
     raw(method: string, params: any): Promise<any> {
       return this.rpc.call(method, params);
     }
