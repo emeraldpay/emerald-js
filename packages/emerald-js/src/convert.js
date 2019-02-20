@@ -52,30 +52,8 @@ export function toHex(val: number | string | BigNumber): string {
   return `0x${(hex.length % 2 !== 0 ? `0${hex}` : hex)}`;
 }
 
-
-/**
- * Convert amount to smallest denomination of token or any currency
- * For example, amount 1 ether with 18 decimal places will be converted into 1*10^18 base units
- * (i.e. 1*10^18 wei)
- */
-function toBaseUnits(amount: BigNumber, decimals: number): BigNumber {
-  const unit = new BigNumber(10).pow(decimals);
-  return amount.times(unit);
-}
-
-/**
- * Convert from smallest denomination (base units) to amount of token
- * For example, 1 wei will be converted to 0.000000000000000001 ether
- */
-function fromBaseUnits(amount: BigNumber, decimals: number): BigNumber {
-  const unit = new BigNumber(10).pow(decimals);
-  return amount.div(unit);
-}
-
 export default {
   toNumber,
   toHex,
   toBigNumber,
-  toBaseUnits,
-  fromBaseUnits,
 };

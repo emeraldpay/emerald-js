@@ -65,7 +65,10 @@
   "dependencies": {
     "@emeraldplatform/contracts": "^0.4.2",
     "@emeraldplatform/emerald-js": "^0.4.3",
+    "@emeraldplatform/eth-rpc": "^0.4.2",
+    "@emeraldplatform/rpc": "^0.4.2",
     "@emeraldplatform/ui-icons": "^0.4.3",
+    "@emeraldplatform/vault": "^0.4.2",
     "@material-ui/core": "^3.9.1",
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.8",

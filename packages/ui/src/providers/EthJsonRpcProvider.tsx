@@ -14,7 +14,7 @@ export class EthJsonRpcProvider extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      url: props.url || 'https://web3.gastracker.io/',
+      url: props.url,
       changeUrl: url => {
         this.setState({
           ...this.state,

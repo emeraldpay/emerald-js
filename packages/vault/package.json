@@ -1,7 +1,7 @@
 {
-  "name": "@emeraldplatform/eth-account",
+  "name": "@emeraldplatform/vault",
   "version": "0.4.2",
-  "description": "Ethereum account management",
+  "description": "Emerald Vault utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -19,6 +19,7 @@
   },
   "keywords": [
     "ethereum",
+    "full node",
     "wallet",
     "blockchain",
     "smart contract"
@@ -31,7 +32,7 @@
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
     "@emeraldplatform/core": "^0.4.2",
-    "ethereumjs-tx": "^1.3.7",
+    "@emeraldplatform/rpc": "^0.4.2",
     "ethereumjs-wallet": "^0.6.3"
   },
   "devDependencies": {

@@ -13,6 +13,7 @@ declare module 'ethereumjs-wallet' {
 }
 
 declare module 'ethereumjs-wallet/hdkey' {
+  import { Buffer } from 'safe-buffer'
 
   class Wallet {
     static fromPrivateKey(key: Buffer): Wallet

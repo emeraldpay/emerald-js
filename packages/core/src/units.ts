@@ -1,5 +1,15 @@
 import BigNumber from 'bignumber.js';
 
+export class Units {
+  amount: BigNumber;
+  decimals: number;
+
+  constructor(amount: BigNumber, decimals: number) {
+    this.amount = amount;
+    this.decimals = decimals;
+  }
+};
+
 /**
  * Convert amount to smallest denomination of token or any currency
  * For example, amount 1 ether with 18 decimal places will be converted into 1*10^18 base units

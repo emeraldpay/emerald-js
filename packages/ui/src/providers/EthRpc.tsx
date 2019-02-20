@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { HttpTransport, EthRpc, JsonRpc } from '@emeraldplatform/emerald-js';
+import { HttpTransport, JsonRpc } from '@emeraldplatform/rpc';
+import { EthRpc } from '@emeraldplatform/eth-rpc';
 
 import { EthJsonRpcContext } from './EthJsonRpcProvider';
 

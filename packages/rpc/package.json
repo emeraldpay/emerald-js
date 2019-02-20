@@ -1,7 +1,7 @@
 {
-  "name": "@emeraldplatform/eth-account",
+  "name": "@emeraldplatform/rpc",
   "version": "0.4.2",
-  "description": "Ethereum account management",
+  "description": "Json RPC utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -18,10 +18,8 @@
     "url": "git+https://github.com/ETCDEVTeam/emerlad-js.git"
   },
   "keywords": [
-    "ethereum",
-    "wallet",
-    "blockchain",
-    "smart contract"
+    "rpc",
+    "json"
   ],
   "author": "Yuriy Gagarin <gagarin55@protonmail.com>",
   "license": "Apache-2.0",
@@ -30,9 +28,7 @@
   },
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
-    "@emeraldplatform/core": "^0.4.2",
-    "ethereumjs-tx": "^1.3.7",
-    "ethereumjs-wallet": "^0.6.3"
+    "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",

@@ -14,7 +14,7 @@ const styles = theme => ({
   }
 });
 
-const networks = [
+const defaultNetworks = [
   {
     url: 'https://web3.gastracker.io/morden',
     name: 'Gastracker',
@@ -31,6 +31,7 @@ const networks = [
 
 interface Props {
     classes: any;
+    networks?: Array<any>;
 };
 
 interface State {
@@ -59,7 +60,7 @@ class NetworkSelector extends React.Component<Props, State> {
   render() {
     const { anchorEl } = this.state;
     const { classes } = this.props;
-
+    const networks = this.props.networks || defaultNetworks;
     return (
       <EthJsonRpcContext.Consumer>
         {({ url, changeUrl }: { url: any; changeUrl: any; }) => {

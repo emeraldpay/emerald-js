@@ -1,4 +1,3 @@
-// @flow
 import * as Wallet from 'ethereumjs-wallet';
 import * as ethUtil from 'ethereumjs-util';
 import * as EthereumTx from 'ethereumjs-tx';

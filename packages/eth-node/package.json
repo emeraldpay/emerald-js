@@ -1,7 +1,7 @@
 {
-  "name": "@emeraldplatform/eth-account",
+  "name": "@emeraldplatform/eth-node",
   "version": "0.4.2",
-  "description": "Ethereum account management",
+  "description": "Ethereum and Ethereum classic full node management",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -19,6 +19,7 @@
   },
   "keywords": [
     "ethereum",
+    "full node",
     "wallet",
     "blockchain",
     "smart contract"
@@ -31,8 +32,8 @@
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
     "@emeraldplatform/core": "^0.4.2",
-    "ethereumjs-tx": "^1.3.7",
-    "ethereumjs-wallet": "^0.6.3"
+    "@emeraldplatform/eth-rpc": "^0.4.2",
+    "@emeraldplatform/rpc": "^0.4.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",
