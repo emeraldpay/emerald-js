@@ -8,9 +8,10 @@ notifications:
     on_success: never
 
 install:
+  - npm install -g yarn
   - npm install -g codecov
   - npm install -g lerna
   - lerna bootstrap
 
 script:
-  - npm run test:coverage
+  - yarn test:coverage
