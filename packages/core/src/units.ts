@@ -8,7 +8,7 @@ export class Units {
     this.amount = amount;
     this.decimals = decimals;
   }
-};
+}
 
 /**
  * Convert amount to smallest denomination of token or any currency
