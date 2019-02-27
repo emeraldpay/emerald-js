@@ -3,7 +3,7 @@ import { JsonRpc } from '@emeraldplatform/rpc';
 export default class Web3Api {
   rpc: JsonRpc;
 
-  constructor(jsonRpc) {
+  constructor(jsonRpc: JsonRpc) {
     this.rpc = jsonRpc;
   }
 

@@ -1,14 +1,17 @@
 import { JsonRpc } from '@emeraldplatform/rpc';
 import format from '../format';
 
-const formatBatchBlockResponse = responses => responses.filter(r => r.result).map(r => format.block(r.result));
+const formatBatchBlockResponse = (responses: any) => responses
+  .filter((r: any) => r.result)
+  .map((r: any) => format.block(r.result));
+
 /**
  * Extended API
  */
 export default class ExtApi {
     rpc: JsonRpc;
 
-    constructor(jsonRpc) {
+    constructor(jsonRpc: JsonRpc) {
       this.rpc = jsonRpc;
     }
 
@@ -35,7 +38,7 @@ export default class ExtApi {
     }
 
     getBalances(addresses: Array<string>, blockNumber: number | string = 'latest') {
-      const balances = {};
+      const balances: { [key:string]: any } = {};
       const requests = addresses.map(a =>
         this.rpc.newBatchRequest('eth_getBalance', [a, blockNumber], (resp) => { balances[a] = resp.result; }));
 
@@ -57,8 +60,8 @@ export default class ExtApi {
      * Many calls in one request
      */
     batchCall(calls: Array<{id: string, to: string, data: string}>, blockNumber: number | string = 'latest'): Promise<any> {
-      const results = {};
-      const responseHandler = id => (resp) => { results[id] = resp; };
+      const results: { [key: string] : any } = {};
+      const responseHandler = (id:string) => (resp:any) => { results[id] = resp; };
 
       const requests = calls.map(c =>
         this.rpc.newBatchRequest(

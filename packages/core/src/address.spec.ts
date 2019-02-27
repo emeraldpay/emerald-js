@@ -21,6 +21,5 @@ describe('EthAddress', () => {
 
   test('empty hashes are not valid', () => {
     expect(new EthAddress('').isValid()).toBeFalsy();
-    expect(new EthAddress(null).isValid()).toBeFalsy();
   });
 });

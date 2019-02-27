@@ -2,7 +2,6 @@ import { JsonRpc } from '@emeraldplatform/rpc';
 import { convert } from '@emeraldplatform/core';
 import BigNumber from 'bignumber.js';
 import format from '../format';
-
 import { CallObject, SyncingResult } from '../types';
 
 export default class EthApi {
@@ -26,7 +25,7 @@ export default class EthApi {
   /**
    * Returns compiled solidity code
    */
-  compileSolidity(code): Promise<object> {
+  compileSolidity(code: string): Promise<object> {
     return this.rpc.call('eth_compileSolidity', [code]);
   }
 
@@ -73,7 +72,7 @@ export default class EthApi {
   /**
    * Executes a new message call immediately without creating a transaction on the block chain
    */
-  call(callData, blockNumber: number | string = 'latest'): Promise<any> {
+  call(callData: CallObject, blockNumber: number | string = 'latest'): Promise<any> {
     return this.rpc.call('eth_call', [{ to: callData.to, data: callData.data }, blockNumber]);
   }
 
