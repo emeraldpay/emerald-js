@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CSSProperties } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import blockies from './blockies';
 
-const blockies = require('./blockies');
 
 const getStyles = (theme?:any) => ({
   clickable: {

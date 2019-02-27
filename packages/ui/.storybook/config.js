@@ -8,7 +8,7 @@ setAddon(JSXAddon);
 const req = require.context('../stories/', true, /\.tsx$/)
 
 function loadStories() {
-  addDecorator((story) => (<EmeraldProvider>{story()}</EmeraldProvider>))
+  // addDecorator((story) => (<EmeraldProvider>{story()}</EmeraldProvider>));
   req.keys().forEach((filename) => req(filename))
 }
 

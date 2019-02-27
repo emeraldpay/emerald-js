@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Account from '../../lib/components/Account';
+import Account from '../../src/components/Account';
 
 storiesOf('Account', module)
   .add('default', () => (
@@ -27,7 +27,12 @@ storiesOf('Account', module)
   .add('without Name', () => (
     <Account
       address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      onAddressClick={action('address-click')}
+    />
+  ))
+  .add('with onClick handler', () => (
+    <Account
+      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
+      onClick={action('address-click')}
     />
   ))
   .add('Identity Icon', () => (
