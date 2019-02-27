@@ -2,10 +2,21 @@ import { methodID, rawDecode, rawEncode } from 'ethereumjs-abi';
 import BigNumber from 'bignumber.js';
 
 const ethAbi = { methodID, rawDecode, rawEncode };
+
+export interface InputValues {
+  [name: string]: string | number;
+}
+
+export interface OutputValue {
+  type: string;
+  name: string;
+  value: string | number;
+}
+
 /**
  * Converts function input parameters to TX's data field.
  */
-export function functionToData(func, inputs): string {
+export function functionToData(func: any, inputs: InputValues): string {
   if (func) {
     const types = [];
     const values = [];
@@ -21,8 +32,7 @@ export function functionToData(func, inputs): string {
   throw new Error(`Invalid function ABI: ${func}`);
 }
 
-
-export function dataToParams(func, data) {
+export function dataToParams(func: any, data: string): Array<OutputValue> {
   const buffer = Buffer.from(data.replace('0x', ''), 'hex');
   const types = func.outputs.map(output => output.type);
   const params = ethAbi.rawDecode(types, buffer);

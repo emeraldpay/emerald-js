@@ -41,7 +41,7 @@ lerna bootstrap
 emerald-js uses [Jest](http://facebook.github.io/jest/) for its test suite. To run tests in the console:
 
 ```
-npm run test
+yarn test
 ```
 
 ## Tests coverage

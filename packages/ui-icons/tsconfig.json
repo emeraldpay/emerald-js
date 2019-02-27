@@ -6,7 +6,7 @@
         "module": "commonjs",
         "jsx": "react",
         "outDir": "./lib",
-        "declaration": true,
+        "declaration": true
     },
 
     "include": ["src/**/*.ts", "src/**/*.js"]

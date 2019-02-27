@@ -2,15 +2,20 @@ import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Pen3 as EditIcon } from '@emeraldplatform/ui-icons';
+import cx from 'classnames';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
+
 import Address from '../Address';
 import IdentityIcon from '../IdentityIcon';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 export const getStyles = (theme?: any) => ({
   root: {
     display: 'flex',
     width: '100%',
     alignItems: 'center',
+  },
+  clickable: {
+    cursor: 'pointer',
   },
   nameEditIcon: {
     width: '13px',
@@ -59,7 +64,7 @@ export interface Props {
   editable?: boolean,
   onClick?: any,
   onEditClick?: any,
-};
+}
 
 export class Account extends React.Component<Props> {
   static defaultProps = {
@@ -130,10 +135,10 @@ export class Account extends React.Component<Props> {
       ...this.props.addressProps,
     };
 
-    const { addressWidth, classes } = this.props;
-
+    const { addressWidth, classes, onClick } = this.props;
+    const isClickable = (typeof onClick == 'function' && onClick != noop);
     return (
-      <div onClick={this.props.onClick} className={classes.root}>
+      <div onClick={onClick} className={cx(classes.root, {[classes.clickable]: isClickable})}>
         {this.getIdentityIcon()}
 
         <div className={classes.accountContainer} style={{ width: addressWidth }}>

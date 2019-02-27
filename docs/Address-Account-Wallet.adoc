@@ -1,0 +1,17 @@
+= What is Address, Account, Wallet and Key Pair
+
+== Key Pair
+
+'Private key' an 'Public key'
+
+== Address
+
+'Address' derived from 'Public key'
+
+== Account
+
+Contains one key pair ('Private key', 'Public key'). As consequance contains 'Address' too.
+
+== Wallet
+
+Application or storage which contains 1..N of 'Accounts'
