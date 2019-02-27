@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/eth-rpc",
-  "version": "0.5.0",
+  "version": "0.5.0-beta.0",
   "description": "Ethereum RPC client",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,8 +10,8 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
-    "prepublish": "npm run build",
-    "build": "tsc"
+    "prepublish": "yarn build",
+    "build": "rimraf lib/ && tsc"
   },
   "repository": {
     "type": "git",
@@ -30,14 +30,15 @@
   },
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
-    "@emeraldplatform/core": "^0.5.0",
-    "@emeraldplatform/rpc": "^0.5.0",
+    "@emeraldplatform/core": "^0.5.0-beta.0",
+    "@emeraldplatform/rpc": "^0.5.0-beta.0",
     "bignumber.js": "^8.0.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",
     "@types/node": "^10.12.26",
     "jest": "^23.6.0",
+    "rimraf": "^2.6.3",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"
   },

@@ -3,14 +3,14 @@ import EthRpc from './ethrpc';
 import { CallObject } from './types';
 
 class FakeTransport implements Transport {
-  request(req) {
+  request(req: any) {
     return Promise.resolve(req);
   }
 }
 
 describe('EthApi', () => {
   test('estimateGas should convert numbers to hex', () => {
-    let args;
+    let args: any;
 
     const ethRpc = new EthRpc({
       call(method: string, params: any) {

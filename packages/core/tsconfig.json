@@ -1,8 +1,14 @@
 {
-    "compilerOptions": {
-        "outDir": "./lib",
-        "declaration": true,
-    },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
- }
+  "compilerOptions": {
+    "outDir": "./lib",
+    "declaration": true,
+    "strict": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

@@ -4,7 +4,7 @@ import { convert } from '@emeraldplatform/core';
 export default class NetApi {
   rpc: JsonRpc;
 
-  constructor(jsonRpc) {
+  constructor(jsonRpc: JsonRpc) {
     this.rpc = jsonRpc;
   }
 
