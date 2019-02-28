@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/ui-icons",
-  "version": "0.5.0-beta.0",
+  "version": "0.5.0-beta.1",
   "description": "Emerald icons as a React components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ETCDEVTeam/emerlad-js.git"
+    "url": "git+https://github.com/ETCDEVTeam/emerald-js.git"
   },
   "keywords": [
     "ethereum",
@@ -28,7 +28,7 @@
   "author": "Yuriy Gagarin <gagarin55@protonmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ETCDEVTeam/emerlad-js/issues"
+    "url": "https://github.com/ETCDEVTeam/emerald-js/issues"
   },
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
