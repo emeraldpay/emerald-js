@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/vault",
-  "version": "0.5.0-beta.0",
+  "version": "0.5.0-beta.1",
   "description": "Emerald Vault utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -31,8 +31,8 @@
   },
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
-    "@emeraldplatform/core": "^0.5.0-beta.0",
-    "@emeraldplatform/rpc": "^0.5.0-beta.0",
+    "@emeraldplatform/core": "^0.5.0-beta.1",
+    "@emeraldplatform/rpc": "^0.5.0-beta.1",
     "ethereumjs-wallet": "^0.6.3"
   },
   "devDependencies": {

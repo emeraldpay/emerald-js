@@ -1,5 +1,4 @@
 import * as React from 'react';
-import requiredIf from 'react-required-if';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
