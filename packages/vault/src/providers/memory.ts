@@ -47,7 +47,7 @@ export default class InMemoryProvider implements IVaultProvider {
       return Promise.resolve(result);
     }
 
-    signTransaction(tx: TxSignRequest, passphrase: string, chain: string): Promise<any> {
+    signTransaction(tx: TxSignRequest, passphrase: string, chain: string): Promise<string> {
       return Promise.reject(new Error('NOT IMPLEMENTED'));
     }
 
