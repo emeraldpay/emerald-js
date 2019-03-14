@@ -32,7 +32,7 @@
   "dependencies": {
     "@emeraldplatform/core": "^0.5.0-beta.1",
     "@emeraldplatform/rpc": "^0.5.0-beta.1",
-    "bignumber.js": "^8.0.2"
+    "bignumber.js": "8.0.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",

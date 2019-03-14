@@ -76,8 +76,7 @@
     "qs": "^6.5.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-jss": "^8.1.0",
-    "react-required-if": "^1.0.3"
+    "react-jss": "^8.1.0"
   },
   "jest": {
     "preset": "ts-jest",
