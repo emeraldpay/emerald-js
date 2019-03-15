@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Pen3 as EditIcon } from '@emeraldplatform/ui-icons';
 import { Account, getStyles } from './Account';
 import IdentityIcon from '../IdentityIcon';
@@ -9,6 +9,11 @@ const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
 const classes = Object.keys(getStyles()).reduce(reduceClasses, {});
 
 describe('Account', () => {
+  it('should render nested components', () => {
+    const component = mount(<Account classes={classes} identity={true} address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98" />);
+    expect(component).toBeDefined();
+  });
+
   it('shows Address when address provided', () => {
     const accountAddr = shallow(<Account classes={classes} address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98" />);
     expect(accountAddr.find(Address).props().id).toEqual('0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98');

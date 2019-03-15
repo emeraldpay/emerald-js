@@ -83,17 +83,11 @@ export class Account extends React.Component<Props> {
   }
 
   getIdentityIcon() {
-    const { identity, name, classes, address } = this.props;
+    const { identity, classes, address } = this.props;
 
     if (!identity) { return null; }
 
     let className = classes.identityIcon;
-
-    if (name === null) {
-      className += ` ${classes.identityIconShort}`;
-    } else {
-      className += ` ${classes.identityIconRegular}`;
-    }
 
     return (
       <div className={className}>
