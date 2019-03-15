@@ -18,7 +18,7 @@ export default class Wei {
     // private member
     let value: BigNumber = ZERO;
     value = convert.toBigNumber(val);
-    if (value.lessThan(1)) {
+    if (value.isLessThan(1)) {
       value = ZERO;
     }
 
@@ -54,10 +54,10 @@ export default class Wei {
     const rate = (r === null || typeof r === 'undefined') ?
       ZERO :
       new BigNumber(r.toString());
-    return this.value().dividedBy(ETHER).mul(rate).toFixed(decimals);
+    return this.value().dividedBy(ETHER).multipliedBy(rate).toFixed(decimals);
   }
 
   equals(another: Wei): Wei {
-    return this.value().equals(another.value());
+    return this.value().isEqualTo(another.value());
   }
 }

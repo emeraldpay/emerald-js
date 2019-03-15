@@ -34,7 +34,7 @@ export default class Vault {
       return this.provider.listAccounts(chain, showHidden);
     }
 
-    signTransaction(tx: TxSignRequest, passphrase: string, chain: string) {
+    signTransaction(tx: TxSignRequest, passphrase: string, chain: string): Promise<string> {
       notNull(chain, 'chain');
       return this.provider.signTransaction(tx, passphrase, chain);
     }

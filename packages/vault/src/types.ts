@@ -23,7 +23,7 @@ export type Contact = {
 export interface IVaultProvider {
     newAccount(passphrase: string, name: string, description: string, chain: string): Promise<string>;
     listAccounts(chain: string, showHidden?: boolean): Promise<Array<Account>>;
-    signTransaction(tx: TxSignRequest, passphrase: string, chain: string): Promise<any>;
+    signTransaction(tx: TxSignRequest, passphrase: string, chain: string): Promise<string>;
     importAccount(data, chain: string): Promise<any>;
     hideAccount(address: string, chain: string): Promise<any>;
     unhideAccount(address: string, chain: string): Promise<any>;
