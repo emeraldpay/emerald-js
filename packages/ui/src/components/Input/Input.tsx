@@ -42,7 +42,7 @@ const getMultilineProps = ({ multiline, rows, rowsMax }) => {
 };
 
 interface Props {
-  classes: any;
+  classes?: any;
   value?: string | number;
   multiline?: boolean;
   rowsMax?: number;
@@ -53,7 +53,7 @@ interface Props {
   placeholder?: string;
   onChange?: any;
   errorText?:any;
-};
+}
 
 export class Input extends React.Component<Props> {
 
