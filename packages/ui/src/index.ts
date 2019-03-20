@@ -1,4 +1,5 @@
 export { default as Account } from './components/Account';
+export { default as AccountSelect } from './components/AccountSelect';
 export { default as Address } from './components/Address';
 export { default as ButtonGroup } from './components/ButtonGroup';
 export { default as IdentityIcon } from './components/IdentityIcon';

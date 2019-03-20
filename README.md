@@ -22,7 +22,8 @@
 | [`@emeraldplatform/ui-icons`](/packages/ui-icons) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/ui-icons.svg)](https://www.npmjs.com/package/@emeraldplatform/ui-icons) | React icons.    |
 | [`@emeraldplatform/svg-icons`](/packages/svg-icons) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/svg-icons.svg)](https://www.npmjs.com/package/@emeraldplatform/svg-icons) | SVG and other raw design.    |
 | [`@emeraldplatform/rpc`](/packages/rpc) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/rpc.svg)](https://www.npmjs.com/package/@emeraldplatform/rpc) | JSON RPC client.    |
-| [`@emeraldplatform/rpc`](/packages/eth-rpc) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/eth-rpc.svg)](https://www.npmjs.com/package/@emeraldplatform/eth-rpc) | Ethereum JSON RPC client.    |
+| [`@emeraldplatform/eth-rpc`](/packages/eth-rpc) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/eth-rpc.svg)](https://www.npmjs.com/package/@emeraldplatform/eth-rpc) | Ethereum JSON RPC client.    |
+| [`@emeraldplatform/eth-node`](/packages/eth-node) | [![npm](https://img.shields.io/npm/v/@emeraldplatform/eth-node.svg)](https://www.npmjs.com/package/@emeraldplatform/eth-node) | Ethereum node util.    |
 
 # How to use
 

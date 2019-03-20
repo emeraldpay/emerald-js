@@ -91,7 +91,8 @@
     ],
     "coverageDirectory": "./coverage/",
     "collectCoverageFrom": [
-      "src/**/*.ts"
+      "src/**/*.ts",
+      "src/**/*.tsx"
     ]
   },
   "publishConfig": {

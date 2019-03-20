@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Button from '@material-ui/core/Button';
 
-import { TransactionButton } from '../../lib';
+import TransactionButton from '../../src/components/TransactionButton';
 
 
 storiesOf('Buttons', module)
   .add('Default', () => (
-    <Fragment>
+    <React.Fragment>
       <div>
         <h1>Primary Colors</h1>
         <Button>Button</Button>
@@ -19,11 +19,11 @@ storiesOf('Buttons', module)
         <Button color="secondary">Button</Button>
         <Button color="secondary" disabled>Disabled Button</Button>
       </div>
-    </Fragment>
+    </React.Fragment>
   ))
 
   .add('Contained', () => (
-    <Fragment>
+    <React.Fragment>
       <div>
         <h1>Primary Colors</h1>
         <Button variant="contained">Button</Button>
@@ -34,11 +34,11 @@ storiesOf('Buttons', module)
         <Button variant="contained" color="secondary">Button</Button>
         <Button variant="contained" color="secondary" disabled>Disabled Button</Button>
       </div>
-    </Fragment>
+    </React.Fragment>
   ))
 
   .add('Transaction', () => (
-    <Fragment>
+    <React.Fragment>
       <TransactionButton transaction={{ to: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8', from: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8', value: 150, gas: 21000 }} />
-    </Fragment>
+    </React.Fragment>
   ));
