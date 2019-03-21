@@ -8,6 +8,9 @@ class InputDataDecoder {
   }
 
   decodeConstructor (data: string) {
+    if (typeof data !== 'string') {
+      data = ''
+    }
     data = data.trim();
 
     for (let i = 0; i < this.abi.length; i++) {
@@ -23,7 +26,7 @@ class InputDataDecoder {
       data = data.slice(-256);
 
       if (data.length !== 256) {
-        throw new Error()
+        throw new Error('Invalid data')
       }
 
       if (data.indexOf('0x') !== 0) {
@@ -40,10 +43,13 @@ class InputDataDecoder {
       }
     }
 
-    throw new Error('not found')
+    throw new Error('Constructor not found')
   }
 
   decodeData (data: string) {
+    if (typeof data !== 'string') {
+      data = ''
+    }
     data = data.trim();
     const dataBuf = Buffer.from(data.replace(/^0x/, ''), 'hex');
     const methodId = Buffer.from(dataBuf.subarray(0, 4)).toString('hex');

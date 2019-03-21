@@ -18,6 +18,10 @@ const theme = {
     action: {
       selected: colors.snow,
       hover: 'none'
+    },
+    text: {
+      primary: colors.coal,
+      secondary: colors.ash.main,
     }
   },
   spacing: {

@@ -24,7 +24,7 @@ interface State {
   anchorEl?: any;
 }
 
-class AccountSelect extends React.Component<Props, State> {
+export class AccountSelect extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     const selectedIndex = props.accounts.indexOf(props.selectedAccount);
@@ -41,7 +41,9 @@ class AccountSelect extends React.Component<Props, State> {
 
   handleMenuItemClick = (event, index) => {
     this.setState({ selectedIndex: index, anchorEl: null });
-    this.props.onChange(this.props.accounts[index]);
+    if (this.props.onChange) {
+      this.props.onChange(this.props.accounts[index]);
+    }
   };
 
   handleClose = () => {
@@ -71,6 +73,9 @@ class AccountSelect extends React.Component<Props, State> {
         onClick={this.handleClickListItem}
         address={this.props.accounts[this.state.selectedIndex]}
         addressWidth="200px"
+        addressProps={{
+          shortened: false,
+        }}
       />
     )
   }

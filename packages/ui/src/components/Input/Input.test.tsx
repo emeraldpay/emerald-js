@@ -13,10 +13,15 @@ describe("Input", () => {
     const component = build();
     expect(component).toBeDefined();
   });
-  
+
   it('should wrap TextField', () => {
     const wrapper = build();
     expect(wrapper.text()).toContain('TextField');
   });
+
+  it('should has type prop', () => {
+    const component = shallow(<Input type="number" classes={classes} />);
+    expect(component).toBeDefined();
+  })
 });
 
