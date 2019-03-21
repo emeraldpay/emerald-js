@@ -53,6 +53,7 @@ interface Props {
   placeholder?: string;
   onChange?: any;
   errorText?:any;
+  type?: string;
 }
 
 export class Input extends React.Component<Props> {
@@ -76,8 +77,10 @@ export class Input extends React.Component<Props> {
 
     return (
       <TextField
+        type={this.props.type}
         value={this.props.value}
         fullWidth
+        margin="normal"
         rows={this.props.rows}
         rowsMax={this.props.rowsMax}
         disabled={this.props.disabled}

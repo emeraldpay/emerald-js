@@ -8,6 +8,10 @@ storiesOf('Input', module)
   .add('all', () => (
     <div style={{ width: '300px' }}>
       <div>
+        <h1>Number</h1>
+        <Input type="number" />
+      </div>
+      <div>
         <h1>Plain Jane</h1>
         <Input onChange={action('onChange')} />
       </div>

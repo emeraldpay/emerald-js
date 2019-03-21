@@ -14,7 +14,7 @@ interface Props {
   toggledIcon: any;
   toggleDuration: number;
   classes: any;
-};
+}
 
 interface State {
   toggled: boolean;
