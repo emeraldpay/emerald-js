@@ -36,4 +36,7 @@ storiesOf('Input', module)
         <Input errorText="Big ol error" onChange={action('onChange')} />
       </div>
     </div>
+  ))
+  .add('Number with min and max', () => (
+   <Input type="number" min={0.5} max={1.5} onChange={action('onChange')} />
   ));
