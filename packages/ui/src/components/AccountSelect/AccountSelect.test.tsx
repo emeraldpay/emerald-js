@@ -17,7 +17,7 @@ describe('AccountSelect', () => {
   });
 
   it('should handle empty address list and selected address', () => {
-    const component = mount(<AccountSelect classes={classes} accounts={[]} />);
+    const component = mount(<AccountSelect classes={classes} />);
     expect(component).toBeDefined();
   })
 });

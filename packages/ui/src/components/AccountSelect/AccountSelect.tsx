@@ -14,7 +14,7 @@ const styles = theme => ({
 
 interface Props {
   onChange?: any;
-  accounts: Array<string>;
+  accounts?: Array<string>;
   classes: any;
   selectedAccount?: any;
 }
@@ -27,7 +27,8 @@ interface State {
 export class AccountSelect extends React.Component<Props, State> {
   constructor(props) {
     super(props);
-    const selectedIndex = props.accounts.indexOf(props.selectedAccount);
+    const accounts = props.accounts || [];
+    const selectedIndex = accounts.indexOf(props.selectedAccount);
     this.state = {
       anchorEl: null,
       selectedIndex: (selectedIndex >= 0) ? selectedIndex : 0,
@@ -41,7 +42,7 @@ export class AccountSelect extends React.Component<Props, State> {
 
   handleMenuItemClick = (event, index) => {
     this.setState({ selectedIndex: index, anchorEl: null });
-    if (this.props.onChange) {
+    if (this.props.onChange && this.props.accounts) {
       this.props.onChange(this.props.accounts[index]);
     }
   };
@@ -51,7 +52,8 @@ export class AccountSelect extends React.Component<Props, State> {
   };
 
   renderAccounts() {
-    return this.props.accounts.map((account, index) => (
+    const accounts = this.props.accounts || [];
+    return accounts.map((account, index) => (
       <MenuItem
         key={account}
         selected={index === this.state.selectedIndex}
@@ -67,7 +69,11 @@ export class AccountSelect extends React.Component<Props, State> {
   }
 
   renderSelected() {
-    const selected = this.props.accounts[this.state.selectedIndex];
+    const accounts = this.props.accounts || [];
+    if (accounts.length == 0) {
+      return (<div>No accounts provided</div>);
+    }
+    const selected = accounts[this.state.selectedIndex];
     if (!selected) {
       return null;
     }
