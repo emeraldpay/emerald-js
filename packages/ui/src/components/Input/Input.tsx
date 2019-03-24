@@ -54,6 +54,8 @@ interface Props {
   onChange?: any;
   errorText?:any;
   type?: string;
+  min?: number | string;
+  max?: number | string;
 }
 
 export class Input extends React.Component<Props> {
@@ -86,6 +88,10 @@ export class Input extends React.Component<Props> {
         disabled={this.props.disabled}
         placeholder={this.props.placeholder}
         onChange={this.props.onChange}
+        inputProps={{
+          min: this.props.min,
+          max: this.props.max,
+        }}
         {...inputProps}
         {...errorProps}
         {...multilineProps}
