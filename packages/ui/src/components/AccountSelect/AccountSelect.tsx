@@ -67,11 +67,15 @@ export class AccountSelect extends React.Component<Props, State> {
   }
 
   renderSelected() {
+    const selected = this.props.accounts[this.state.selectedIndex];
+    if (!selected) {
+      return null;
+    }
     return (
       <Account
         identity
         onClick={this.handleClickListItem}
-        address={this.props.accounts[this.state.selectedIndex]}
+        address={selected}
         addressWidth="200px"
         addressProps={{
           shortened: false,

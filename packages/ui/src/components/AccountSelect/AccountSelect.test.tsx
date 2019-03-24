@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import {AccountSelect} from './AccountSelect';
 
 const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
@@ -15,4 +15,9 @@ describe('AccountSelect', () => {
     const component = shallow<AccountSelect>(<AccountSelect classes={classes} accounts={['0x1']} />);
     component.instance().handleMenuItemClick(null, 0);
   });
+
+  it('should handle empty address list and selected address', () => {
+    const component = mount(<AccountSelect classes={classes} accounts={[]} />);
+    expect(component).toBeDefined();
+  })
 });
