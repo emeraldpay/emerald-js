@@ -38,8 +38,8 @@ export default class Wei {
     return this.value().dividedBy(MWEI).toFixed(5);
   }
 
-  mul(bigNumber: BigNumber): Wei {
-    return new Wei(this.value().mul(bigNumber));
+  mul(another: Wei): Wei {
+    return new Wei(this.value().multipliedBy(another.value()));
   }
 
   plus(another: Wei): Wei {
@@ -47,7 +47,7 @@ export default class Wei {
   }
 
   sub(another: Wei): Wei {
-    return new Wei(this.value().sub(another.value()));
+    return new Wei(this.value().minus(another.value()));
   }
 
   getFiat(r: number, decimals: number = 2): string {
