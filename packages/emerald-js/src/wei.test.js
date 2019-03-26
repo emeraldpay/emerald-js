@@ -28,3 +28,11 @@ test('equals() compares values', () => {
   expect(new Wei(0).equals(Wei.ZERO)).toBeTruthy();
 });
 
+test('sub', () => {
+  expect(new Wei(5).sub(new Wei(1)).value().toFixed()).toEqual("4");
+});
+
+test('mul', () => {
+  expect(new Wei(5).mul(new Wei(2)).value().toFixed()).toEqual("10");
+});
+
