@@ -1,9 +1,6 @@
 import { JsonRpc } from '@emeraldplatform/rpc';
 import format from '../format';
-
-const formatBatchBlockResponse = (responses: any) => responses
-  .filter((r: any) => r.result)
-  .map((r: any) => format.block(r.result));
+import { DefaultBatch } from "@emeraldplatform/rpc";
 
 /**
  * Extended API
@@ -15,34 +12,46 @@ export default class ExtApi {
       this.rpc = jsonRpc;
     }
 
-    getBlocks(from: number, to: number) {
-      let requests = [];
+    getBlocks(from: number, to: number): Promise<Array<any>> {
+      let batch = new DefaultBatch();
+      let results: Array<Promise<any>> = [];
 
       for (let i = from; i <= to; i += 1) {
-        requests.push(this.rpc.newBatchRequest('eth_getBlockByNumber', [format.toHex(i), false]));
+        results.push(batch.addCall('eth_getBlockByNumber', [format.toHex(i), false]));
       }
 
-      return this.rpc.batch(requests).then(formatBatchBlockResponse);
+      return this.rpc.execute(batch)
+        .then((_) => Promise.all(results))
+        .then((data) => data.map(format.block));
     }
 
-    getBlocksByNumbers(number: number | string | Array<any>) {
+    getBlocksByNumbers(number: number | string | Array<any>): Promise<Array<any>> {
       let formattedNumber = number;
       if (typeof number === 'number') {
         formattedNumber = format.toHex(number);
       }
+      let batch = new DefaultBatch();
 
-      const requests = (formattedNumber as Array<any>).map(
-        (blockNumber) => this.rpc.newBatchRequest('eth_getBlockByNumber', [blockNumber, false])
-      )
-      return this.rpc.batch(requests).then(formatBatchBlockResponse);
+      const requests = (formattedNumber as Array<any>).map((blockNumber) =>
+        batch.addCall('eth_getBlockByNumber', [blockNumber, false])
+      );
+
+      return this.rpc.execute(batch)
+        .then((_) =>  Promise.all(requests))
+        .then((blocks) => blocks.map(format.block));
     }
 
-    getBalances(addresses: Array<string>, blockNumber: number | string = 'latest') {
+    getBalances(addresses: Array<string>, blockNumber: number | string = 'latest'): Promise<{ [key:string]: any }> {
       const balances: { [key:string]: any } = {};
-      const requests = addresses.map(a =>
-        this.rpc.newBatchRequest('eth_getBalance', [a, blockNumber], (resp) => { balances[a] = resp.result; }));
+      let batch = new DefaultBatch();
 
-      return this.rpc.batch(requests).then(() => balances);
+      const requests = addresses.map(a =>
+        batch.addCall('eth_getBalance', [a, blockNumber])
+          .then((resp) => { balances[a] = resp; })
+      );
+      return this.rpc.execute(batch)
+        .then((_) => Promise.all(requests))
+        .then((_) => balances);
     }
 
     /**
@@ -50,25 +59,15 @@ export default class ExtApi {
      * @param hashes
      * @returns {Promise.<any>}
      */
-    getTransactions(hashes: Array<string>): Promise<any> {
+    getTransactions(hashes: Array<string>): Promise<Array<any>> {
+      let batch = new DefaultBatch();
+
       const requests = hashes.map(h =>
-        this.rpc.newBatchRequest('eth_getTransactionByHash', [h]));
-      return this.rpc.batch(requests);
+        batch.addCall('eth_getTransactionByHash', [h])
+      );
+
+      return this.rpc.execute(batch)
+        .then((_) => Promise.all(requests));
     }
 
-    /**
-     * Many calls in one request
-     */
-    batchCall(calls: Array<{id: string, to: string, data: string}>, blockNumber: number | string = 'latest'): Promise<any> {
-      const results: { [key: string] : any } = {};
-      const responseHandler = (id:string) => (resp:any) => { results[id] = resp; };
-
-      const requests = calls.map(c =>
-        this.rpc.newBatchRequest(
-          'eth_call',
-          [{ to: c.to, data: c.data }, blockNumber],
-          responseHandler(c.id),
-        ));
-      return this.rpc.batch(requests).then(() => results);
-    }
 }

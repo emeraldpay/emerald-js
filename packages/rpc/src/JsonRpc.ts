@@ -1,3 +1,5 @@
+import {Batch, BatchItem, DefaultBatch, RawBatchResponse} from './Batch';
+
 export type JsonRpcRequest = {
     jsonrpc: string,
     method: string,
@@ -11,15 +13,8 @@ export type JsonRpcResponse = {
     error?: any,
 }
 
-export type ResponseHandler = (response: JsonRpcResponse) => void;
-
-export type BatchRequest = {
-    request: JsonRpcRequest,
-    handler?: ResponseHandler,
-}
-
 export interface Transport {
-    request(req: JsonRpcRequest | Array<JsonRpcRequest>): Promise<any>;
+    request(req: Array<JsonRpcRequest>): Promise<Array<any>>;
 }
 
 export class JsonRpcError extends Error {
@@ -32,99 +27,76 @@ export class JsonRpcError extends Error {
     }
 }
 
-export default class JsonRpc {
-    requestSeq: number;
+export interface JsonRpc {
+    execute(batch: Batch): Promise<RawBatchResponse>;
+    call(method: string, params: any): Promise<any>;
+    batch(): Batch;
+}
+
+export abstract class AbstractJsonRpc implements JsonRpc {
+  execute(batch: Batch): Promise<RawBatchResponse> {
+    throw new Error('Not implemented');
+  }
+  call(method: string, params: any): Promise<any> {
+    let batch = new DefaultBatch();
+    let promise = batch.addCall(method, params);
+    return this.execute(batch)
+      .then((_) => promise);
+  }
+  batch(): Batch {
+    return new DefaultBatch();
+  }
+}
+
+export class DefaultJsonRpc extends AbstractJsonRpc implements JsonRpc {
     transport: Transport;
 
     constructor(transport: Transport) {
+      super();
       this.transport = transport;
-      this.requestSeq = 1;
     }
 
-    /**
-     * This call analyses JSON RPC response.
-     * It returns promise which resolves whether 'result' field found
-     * or reject in case 'error' field found.
-     *
-     * @returns {Promise}
-     */
-    call(method: string, params: any): Promise<any> {
-      const request = this.newRequest(method, params);
-
-      return this.transport.request(request).then((json) => {
-        if (json.result || json.result === false || json.result === null) {
-          return json.result;
-        } else if (json.error) {
-          throw new JsonRpcError(json.error);
-        } else {
-          throw new Error(`Unknown JSON RPC response: ${JSON.stringify(json)},
-                     method: ${method},
-                     params: ${JSON.stringify(params)}`);
-        }
-      }).catch((error) => { throw error; });
-    }
-
-    /**
-     * Batch JSON RPC request.
-     *
-     * --> [
-     *      {"foo": "boo"},
-     *      {"jsonrpc": "2.0", "method": "foo.get", "params": {"name": "myself"}, "id": "5"},
-     *     ]
-     * <-- [
-     *      {"jsonrpc": "2.0", "error": {"code": -32601, "message": "Method not found"}, "id": "5"},
-     *      {"jsonrpc": "2.0", "result": ["hello", 5], "id": "9"}
-     *     ]
-     * @param requests
-     * @returns {Promise.<any>}
-     */
-    batch(requests: Array<BatchRequest>): Promise<Array<any>> {
+    execute(batch: Batch): Promise<RawBatchResponse> {
+      let requests = batch.getItems();
       if (requests && requests.length === 0) {
-        return Promise.resolve([]);
+        return Promise.resolve(new RawBatchResponse([], batch));
       }
       // build map id -> handler
-      const handlers = {};
+      const handlers: Map<number, BatchItem> = new Map();
+      let i = 1;
       requests.forEach((r) => {
-        handlers[r.request.id] = r.handler;
+        r.request.id = i;
+        handlers.set(i, r);
+        i++;
       });
 
-      return this.transport
-        .request(requests.map(r => r.request))
-        .then((responses) => {
-          // call handler associated with request
-          responses.forEach((response) => {
-            if (typeof handlers[response.id] === 'function') {
-              handlers[response.id](response);
-            }
+      return new Promise<RawBatchResponse>((resolve, reject) => {
+        this.transport
+          .request(requests.map(r => r.request))
+          .then((responses) => {
+            // call handler associated with request
+            responses.forEach((response) => {
+              let item = handlers.get(response.id);
+              if (item) {
+                item.response = response;
+              }
+            });
+            batch.resolve();
+            resolve(new RawBatchResponse(responses, batch));
+          })
+          .catch((error) => {
+            batch.reject(error);
+            reject(error);
           });
-          return responses;
-        })
-        .catch((error) => { throw error; });
+      })
     }
+}
 
-    /**
-     * Creates new JSON RPC request with associated handler which can be used in batch request
-     *
-     * @param method
-     * @param params
-     * @param handler
-     * @returns {{request: JsonRpcRequest, handler: ResponseHandler}}
-     */
-    newBatchRequest(method: string, params: any, handler?: ResponseHandler): BatchRequest {
-      return {
-        request: this.newRequest(method, params),
-        handler,
-      };
-    }
+export class FailingJsonRpc extends AbstractJsonRpc implements JsonRpc {
 
-    newRequest(method: string, params: any): JsonRpcRequest {
-      const request = {
-        jsonrpc: '2.0',
-        method,
-        params,
-        id: this.requestSeq,
-      };
-      this.requestSeq += 1;
-      return request;
-    }
+  execute(batch: Batch): Promise<RawBatchResponse> {
+    batch.reject('Always Fail');
+    return Promise.reject(new Error('Always Fail'));
+  }
+
 }
