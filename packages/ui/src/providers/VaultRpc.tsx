@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HttpTransport, JsonRpc } from '@emeraldplatform/rpc';
+import { HttpTransport, DefaultJsonRpc } from '@emeraldplatform/rpc';
 import { Vault, JsonRpcProvider } from '@emeraldplatform/vault';
 
 import { VaultJsonRpcContext } from './VaultJsonRpcProvider';
@@ -52,7 +52,7 @@ class VaultRpcProvider extends React.Component<Props, State> {
   }
 
   setVaultRpc() {
-    const jsonRpc = new JsonRpc(new HttpTransport(this.props.url));
+    const jsonRpc = new DefaultJsonRpc(new HttpTransport(this.props.url));
     const vaultRpc = new JsonRpcProvider(jsonRpc);
     const vault = new Vault(vaultRpc);
 

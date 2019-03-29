@@ -70,4 +70,17 @@ export default class ExtApi {
         .then((_) => Promise.all(requests));
     }
 
+    /**
+     * Many calls in one request
+     */
+    batchCall(calls: Array<{id: string, to: string, data: string}>, blockNumber: number | string = 'latest'): Promise<any> {
+      let batch = new DefaultBatch();
+      calls.forEach((c) => {
+        batch.addCall("eth_call", [{to: c.to, data: c.data}, blockNumber])
+      });
+      return this.rpc.execute(batch).then((_) => {
+        return Promise.all(batch.resolve());
+      });
+    }
+
 }
