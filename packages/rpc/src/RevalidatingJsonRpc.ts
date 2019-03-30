@@ -30,7 +30,7 @@ export class RevalidatingJsonRpc extends AbstractJsonRpc {
   }
 
   start() {
-    this._timeoutId = setInterval(this.revalidate, this._interval);
+    this._timeoutId = setInterval(this.revalidate.bind(this), this._interval);
   }
 
   stop() {
