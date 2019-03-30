@@ -104,6 +104,9 @@ export class VerifyBlockHash implements Verifier {
   responseForHeight?: Promise<string>;
 
   constructor(block: number, hash: string) {
+    if (block < 0) {
+      throw new Error(`Invalid block number: ${block}`)
+    }
     this.block = block;
     this.hash = hash;
   }
