@@ -22,17 +22,19 @@ export default class RotatingJsonRpc extends AbstractJsonRpc implements JsonRpc 
         batch.reject(err);
         return;
       }
-      n[0].execute(new UnresolvableBatch(batch)).then((result) => {
-        batch.resolve();
-        resolve(result);
-      }).catch((err) => {
-        if (n.length > 1) {
-          delegate(n.slice(1), resolve, reject);
-        } else {
-          batch.reject(err);
-          reject(err);
-        }
-      });
+      n[0].execute(new UnresolvableBatch(batch))
+        .then((result) => {
+          batch.resolve();
+          resolve(result);
+        })
+        .catch((err) => {
+          if (n.length > 1) {
+            delegate(n.slice(1), resolve, reject);
+          } else {
+            batch.reject(err);
+            reject(err);
+          }
+        });
     }
     return new Promise<RawBatchResponse>((resolve, reject) => delegate(this.delegates, resolve, reject));
   }

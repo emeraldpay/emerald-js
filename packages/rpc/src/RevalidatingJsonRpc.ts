@@ -69,13 +69,14 @@ export class RevalidatingJsonRpc extends AbstractJsonRpc {
   revalidate(): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
       let batch = new DefaultBatch();
-      this.execute(batch, true).then((_) => {
-        this.update(true);
-        resolve(true);
-      }).catch((_) => {
-        this.update(false);
-        resolve(false);
-      })
+      this.execute(batch, true)
+        .then((_) => {
+          this.update(true);
+          resolve(true);
+        }).catch((_) => {
+          this.update(false);
+          resolve(false);
+        })
     })
   }
 

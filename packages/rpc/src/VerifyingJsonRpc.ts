@@ -41,7 +41,7 @@ export default class VerifyingJsonRpc extends AbstractJsonRpc implements JsonRpc
           .then((results) => {
             if (results.every((v) => v)) {
               batch.resolve();
-              resolve(raw);
+              resolve(new RawBatchResponse(raw.results, batch));
             } else {
               const err = new Error('Batch validation failed');
               batch.getItems().forEach((i) => i.response = null);
@@ -53,7 +53,7 @@ export default class VerifyingJsonRpc extends AbstractJsonRpc implements JsonRpc
             batch.reject(err);
             reject(err);
           });
-      });
+      }).catch(reject);
     });
   }
 }
