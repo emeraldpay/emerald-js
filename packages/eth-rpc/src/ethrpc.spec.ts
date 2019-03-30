@@ -49,7 +49,7 @@ describe('ExtApi', () => {
     ];
 
     return ethRpc.ext.batchCall(batch).then((results) => {
-      return expect(results).toEqual(['call1', 'call2']);
+      return expect(results).toEqual( {"id1": {"result": "call1"}, "id2": {"result": "call2"}});
     });
   });
 
