@@ -1,8 +1,8 @@
-// ==========================================================================================
-// VerifyMinPeers
-
 import {VerifyBlockHash, VerifyGenesis, VerifyMinPeers, VerifyNotSyncing} from "./verify";
 import {DefaultBatch} from "@emeraldplatform/rpc";
+
+// ==========================================================================================
+// VerifyMinPeers
 
 test('VerifyMinPeers: fails on negative number', () => {
   expect(() => new VerifyMinPeers(-1)).toThrow();
