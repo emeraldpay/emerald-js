@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HttpTransport, JsonRpc } from '@emeraldplatform/rpc';
+import { HttpTransport, DefaultJsonRpc} from '@emeraldplatform/rpc';
 import { EthRpc } from '@emeraldplatform/eth-rpc';
 
 import { EthJsonRpcContext } from './EthJsonRpcProvider';
@@ -79,7 +79,7 @@ class EthRpcProvider extends React.Component<Props, State> {
   }
 
   setEthRpc() {
-    const jsonRpc = new JsonRpc(new HttpTransport(this.props.url));
+    const jsonRpc = new DefaultJsonRpc(new HttpTransport(this.props.url));
     const ethrpc = new EthRpc(jsonRpc);
 
     this.setState({ ethrpc });

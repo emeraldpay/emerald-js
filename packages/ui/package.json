@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/ui",
-  "version": "0.5.0-beta.7",
+  "version": "0.5.0-beta.8",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -66,10 +66,10 @@
   "dependencies": {
     "@emeraldplatform/contracts": "^0.5.0-beta.4",
     "@emeraldplatform/emerald-js": "^0.5.0-beta.7",
-    "@emeraldplatform/eth-rpc": "^0.5.0-beta.6",
-    "@emeraldplatform/rpc": "^0.5.0-beta.1",
-    "@emeraldplatform/ui-icons": "^0.5.0-beta.6",
-    "@emeraldplatform/vault": "^0.5.0-beta.6",
+    "@emeraldplatform/eth-rpc": "^0.5.0-beta.8",
+    "@emeraldplatform/rpc": "^0.5.0-beta.8",
+    "@emeraldplatform/ui-icons": "^0.5.0-beta.8",
+    "@emeraldplatform/vault": "^0.5.0-beta.8",
     "@material-ui/core": "3.9.3",
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.0.8",
