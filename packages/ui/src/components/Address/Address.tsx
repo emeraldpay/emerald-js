@@ -65,7 +65,12 @@ export class Address extends React.Component<Props> {
     return (
       <div className={classes.container}>
         <Typography className={addressClassname}>{this.id}</Typography>
-        {hideCopy ? null : <ToggledIconButton className={classes.toggledIcon} onClick={this.onCopyClick} icon={<CloneIcon color="secondary"/>} toggledIcon={<CheckCircle color="primary"/>} />}
+        {hideCopy ? null : (
+          <ToggledIconButton
+            onClick={this.onCopyClick}
+            icon={<CloneIcon color="secondary"/>}
+            toggledIcon={<CheckCircle color="primary"/>}
+          />)}
       </div>
     );
   }

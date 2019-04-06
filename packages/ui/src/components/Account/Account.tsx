@@ -58,7 +58,7 @@ export interface Props {
   address: string,
   name?: string,
   addressWidth?: string,
-  classes: any,
+  classes?: any,
   identity?: boolean,
   identityProps?: any,
   editable?: boolean,

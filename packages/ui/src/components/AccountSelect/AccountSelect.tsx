@@ -60,7 +60,9 @@ export class AccountSelect extends React.Component<Props, State> {
       >
         <Account
           identity
-          hideCopy
+          addressProps={{
+            hideCopy: true,
+          }}
           address={account}
           onClick={event => this.handleMenuItemClick(event, index)}
         />

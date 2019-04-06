@@ -31,7 +31,7 @@ interface Props {
   currentBlock: number;
   highestBlock: number;
   classes: any;
-};
+}
 
 class SyncWarning extends React.Component<Props> {
   static defaultProps = {};
@@ -46,7 +46,7 @@ class SyncWarning extends React.Component<Props> {
   }
 
   getProgress() {
-    const { startingBlock, currentBlock, highestBlock, classes } = this.props;
+    const { startingBlock, currentBlock, highestBlock } = this.props;
 
     if (startingBlock && currentBlock && highestBlock) {
       return `About ${highestBlock - currentBlock} blocks left.`

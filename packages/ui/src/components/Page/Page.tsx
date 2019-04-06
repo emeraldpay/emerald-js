@@ -51,7 +51,7 @@ export class Page extends React.Component<Props> {
       <Paper className={classes.root}>
         <Toolbar className={classes.toolbar}>
           {getIconWithButton(leftIcon)}
-          <Typography variant="title" color="inherit" className={classes.typography}>{title}</Typography>
+          <Typography variant="h6" color="inherit" className={classes.typography}>{title}</Typography>
           {getIconWithButton(rightIcon)}
         </Toolbar>
 
