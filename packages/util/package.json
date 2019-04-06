@@ -36,12 +36,12 @@
     "os": "0.1.1"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
+    "@types/jest": "^24.0.11",
     "@types/mz": "0.0.32",
     "@types/node": "^10.12.18",
-    "jest": "^23.6.0",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "jest": "^24.7.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "3.4.2"
   },
   "publishConfig": {
     "access": "public"

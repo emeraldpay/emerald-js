@@ -68,6 +68,5 @@
       "src/**/*.js"
     ],
     "collectCoverage": true
-  },
-  "gitHead": "8f92e07d68d83d7262bce7f9d6ca0d67520d9ff2"
+  }
 }

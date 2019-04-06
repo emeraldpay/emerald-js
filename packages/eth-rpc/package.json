@@ -35,12 +35,13 @@
     "bignumber.js": "8.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
+    "@types/jest": "^24.0.11",
     "@types/node": "^10.12.26",
-    "jest": "^23.6.0",
+    "jest": "^24.7.1",
     "rimraf": "^2.6.3",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "ts-jest": "^24.0.2",
+    "typescript": "3.4.2"
+
   },
   "publishConfig": {
     "access": "public"

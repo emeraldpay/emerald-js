@@ -1,8 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-
-import colors from './colors';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import { TypographyProps } from '@material-ui/core/Typography';
+import createSpacing from "@material-ui/core/styles/createSpacing";
+
+import colors from './colors';
 
 const spacing = 10;
 
@@ -24,9 +25,7 @@ const theme = {
       secondary: colors.ash.main,
     }
   },
-  spacing: {
-    unit: spacing
-  },
+  spacing: createSpacing(spacing),
   typography: {
     fontSize: 16,
     fontWeightLight: 300,

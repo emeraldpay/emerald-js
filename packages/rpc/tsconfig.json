@@ -4,11 +4,7 @@
     "declaration": true,
     "target": "es2015",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "typeRoots": [
-      "./typings",
-      "node_modules/@types"
-    ]
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*.ts"

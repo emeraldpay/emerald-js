@@ -1,13 +1,12 @@
-// @flow
 import * as React from 'react';
-import injectSheet from 'react-jss';
+import withStyles from '@material-ui/core/styles/withStyles';
 import styles from './styles';
 
 interface Props {
   children?: Array<any>;
   classes: any;
   style?: any;
-};
+}
 
 export const ButtonGroup = ({ classes, children, style }: Props) => {
   if (!children) {
@@ -29,4 +28,4 @@ export const ButtonGroup = ({ classes, children, style }: Props) => {
 };
 
 
-export default injectSheet(styles)(ButtonGroup);
+export default withStyles(styles)(ButtonGroup);

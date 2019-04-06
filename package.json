@@ -8,7 +8,9 @@
   },
   "homepage": "https://emeraldplatform.io",
   "devDependencies": {
-    "@types/jest": "^23.3.12",
-    "typescript": "^3.2.2"
-  }
+
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

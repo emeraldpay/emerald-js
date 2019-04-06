@@ -15,8 +15,8 @@ describe("Input", () => {
   });
 
   it('should wrap TextField', () => {
-    const wrapper = build();
-    expect(wrapper.text()).toContain('TextField');
+    const wrapper = shallow(<Input classes={classes} />);
+    expect(wrapper.first().name()).toContain('TextField');
   });
 
   it('should has type prop', () => {

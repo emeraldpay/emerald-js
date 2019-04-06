@@ -1,3 +1,5 @@
+import {CSSProperties} from "@material-ui/core/styles/withStyles";
+
 const styles = {
   container: {
     maxWidth: '580px',
@@ -10,13 +12,13 @@ const styles = {
     paddingLeft: '20px',
     paddingRight: '20px',
     paddingBottom: '10px',
-  },
+  } as CSSProperties,
   header: {
     fontWeight: 'bold',
-  },
+  } as CSSProperties,
   text: {
     paddingBottom: '10px',
-  },
+  } as CSSProperties,
 };
 
 export default styles;
