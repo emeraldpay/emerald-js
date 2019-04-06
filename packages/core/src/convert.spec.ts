@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js';
 import * as convert from './convert';
 
 const {
-  toNumber, toHex, toBigNumber,
+  toNumber, toHex, toBigNumber, quantitiesToHex,
 } = convert;
 
 test('toNumber should convert hex string to number', () => {
@@ -15,6 +15,13 @@ test('toNumber should convert number to number', () => {
   expect(toNumber(1)).toBe(1);
   expect(toNumber(0)).toBe(0);
   expect(toNumber(15)).toBe(15);
+});
+
+describe('quantitiesToHex', () => {
+  it('converts without leading zeros', () => {
+    expect(quantitiesToHex(1024)).toEqual('0x400');
+    expect(quantitiesToHex(0)).toEqual('0x0');
+  });
 });
 
 describe('toHex', () => {
