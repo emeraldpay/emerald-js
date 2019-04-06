@@ -55,7 +55,7 @@ describe('ExtApi', () => {
 
   test('EthApi.getBlock converts block attributes', () => {
     const transport = {
-      request: (_) => Promise.resolve([{
+      request: (_: any) => Promise.resolve([{
         jsonrpc: '2.0',
         id: 1,
         result: {
@@ -85,7 +85,7 @@ describe('ExtApi', () => {
     const ethRpc = new EthRpc(new DefaultJsonRpc(transport));
     expect.assertions(5);
     return ethRpc.eth.getBlock('0xdc0818cf78f21a8e70579cb46a43643f78291264dda342ae31049421c82d21ae')
-      .then((b) => {
+      .then((b: any) => {
         expect(b.gasUsed).toEqual(0);
         expect(b.gasLimit).toEqual(5000);
         expect(b.number).toEqual(436);

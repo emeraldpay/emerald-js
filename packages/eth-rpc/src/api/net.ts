@@ -27,6 +27,6 @@ export default class NetApi {
    */
   peerCount(): Promise<number> {
     return this.rpc.call('net_peerCount', [])
-      .then(result => convert.toNumber(result));
+      .then((result: any) => convert.toNumber(result));
   }
 }

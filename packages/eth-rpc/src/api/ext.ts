@@ -21,8 +21,8 @@ export default class ExtApi {
       }
 
       return this.rpc.execute(batch)
-        .then((_) => Promise.all(results))
-        .then((data) => data.map(format.block));
+        .then((_: any) => Promise.all(results))
+        .then((data: any) => data.map(format.block));
     }
 
     getBlocksByNumbers(number: number | string | Array<any>): Promise<Array<any>> {
@@ -37,8 +37,8 @@ export default class ExtApi {
       );
 
       return this.rpc.execute(batch)
-        .then((_) =>  Promise.all(requests))
-        .then((blocks) => blocks.map(format.block));
+        .then((_:any) =>  Promise.all(requests))
+        .then((blocks: any) => blocks.map(format.block));
     }
 
     getBalances(addresses: Array<string>, blockNumber: number | string = 'latest'): Promise<{ [key:string]: any }> {
@@ -47,11 +47,11 @@ export default class ExtApi {
 
       const requests = addresses.map(a =>
         batch.addCall('eth_getBalance', [a, blockNumber])
-          .then((resp) => { balances[a] = resp; })
+          .then((resp: any) => { balances[a] = resp; })
       );
       return this.rpc.execute(batch)
-        .then((_) => Promise.all(requests))
-        .then((_) => balances);
+        .then((_: any) => Promise.all(requests))
+        .then((_: any) => balances);
     }
 
     /**
@@ -67,7 +67,7 @@ export default class ExtApi {
       );
 
       return this.rpc.execute(batch)
-        .then((_) => Promise.all(requests));
+        .then((_: any) => Promise.all(requests));
     }
 
     /**
@@ -78,10 +78,10 @@ export default class ExtApi {
       let mapping: any = {};
       calls.forEach((c) => {
         batch.addCall("eth_call", [{to: c.to, data: c.data}, blockNumber])
-          .then((data) => mapping[c.id] = {result: data})
-          .catch((err) => mapping[c.id] = {result: null, error: err})
+          .then((data: any) => mapping[c.id] = {result: data})
+          .catch((err: any) => mapping[c.id] = {result: null, error: err})
       });
-      return this.rpc.execute(batch).then((_) => {
+      return this.rpc.execute(batch).then((_: any) => {
         return Promise.all(batch.resolve())
           .then(() => mapping);
       });
