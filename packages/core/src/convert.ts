@@ -51,3 +51,6 @@ export function toHex(val: number | string | BigNumber): string {
   return `0x${(hex.length % 2 !== 0 ? `0${hex}` : hex)}`;
 }
 
+export function quantitiesToHex(val: number | string): string {
+  return `0x${new BigNumber(val).toString(16)}`;
+}

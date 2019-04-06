@@ -14,4 +14,3 @@ lerna-debug.log
 .settings/
 
 .project
-yarn.lock
