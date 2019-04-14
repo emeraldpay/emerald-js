@@ -17,7 +17,7 @@ import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { EtcSimple } from '@emeraldplatform/ui-icons';
 import EthRpc from '../../providers/EthRpc';
-import { Wei } from '@emeraldplatform/emerald-js';
+import { Wei } from '@emeraldplatform/eth';
 
 const styles = theme => ({
   root: {},

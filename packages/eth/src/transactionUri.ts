@@ -13,4 +13,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export { Wei } from './wei';
+import * as qs from 'qs';
+
+export type TxDetails = {
+  to: string,
+  value?: string
+}
+
+export default class TransactionUri {
+  private transaction: TxDetails;
+
+  constructor(transaction: TxDetails) {
+    this.transaction = transaction;
+  }
+
+  toString() {
+    return `ethereum:${this.transaction.to}?${qs.stringify(this.transaction)}`;
+  }
+}
