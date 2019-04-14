@@ -1,3 +1,18 @@
+/*
+Copyright 2019 ETCDEV GmbH
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 // this generates /src/icons components from the emerald-svg-icons repository
 const glob = require('glob');
 const fs = require('fs');
@@ -5,6 +20,22 @@ const path = require('path');
 const SVGO = require('svgo');
 const camelize = require('underscore.string/camelize');
 const capitalize = require('underscore.string/capitalize');
+
+const license = "/*\n" +
+  "Copyright 2019 ETCDEV GmbH\n" +
+  "\n" +
+  "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
+  "you may not use this file except in compliance with the License.\n" +
+  "You may obtain a copy of the License at\n" +
+  "\n" +
+  "    http://www.apache.org/licenses/LICENSE-2.0\n" +
+  "\n" +
+  "Unless required by applicable law or agreed to in writing, software\n" +
+  "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
+  "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
+  "See the License for the specific language governing permissions and\n" +
+  "limitations under the License.\n" +
+  "*/\n";
 
 const config = {
   plugins: [
@@ -135,7 +166,7 @@ const writeIndexFile = (names) => {
     return `export { default as ${name} } from './${name}';`
   }).join('\n');
   const fp = path.resolve(__dirname, '../src/', 'index.ts');
-  fs.writeFile(fp, templ, 'utf8', (err) => {
+  fs.writeFile(fp, license + templ, 'utf8', (err) => {
     if (err) {
       throw err;
     }
@@ -147,7 +178,7 @@ const writeIconFile = (name, content) => {
   // build src/icons3/<IconName>.js
   return new Promise((resolve, reject) => {
     const fp = path.resolve(__dirname, '../src/', `${name}.tsx`);
-    fs.writeFile(fp, content, 'utf8', (err) => {
+    fs.writeFile(fp, license + content, 'utf8', (err) => {
       if (err) {
         return reject(err);
       }
@@ -171,7 +202,7 @@ const writeStoriesFile = (names) => {
   const storyTemplate = `storiesOf('icons', module)\n  .add('all', () => (<div>\n    ${elements.join('\n    ')}\n</div>))`;
   const fp = path.resolve(__dirname, '../stories/icons/', 'index.tsx');
   return new Promise((resolve, reject) => {
-    fs.writeFile(fp, imports + storyTemplate, 'utf8', (err) => {
+    fs.writeFile(fp, license + imports + storyTemplate, 'utf8', (err) => {
       if (err) {
         return reject(err);
       }
