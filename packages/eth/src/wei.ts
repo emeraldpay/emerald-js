@@ -13,7 +13,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-// @flow
 import BigNumber from 'bignumber.js';
 import convert from './convert';
 
@@ -45,7 +44,10 @@ export default class Wei {
     return this.getValue();
   }
 
-  getEther(decimals: number = 5): string {
+  getEther(decimals: number | null = 5): string {
+    if (typeof decimals === 'undefined' || decimals == null) {
+      decimals = 5
+    }
     return this.value().dividedBy(ETHER).toFixed(decimals);
   }
 
@@ -65,14 +67,14 @@ export default class Wei {
     return new Wei(this.value().minus(another.value()));
   }
 
-  getFiat(r: number, decimals: number = 2): string {
+  getFiat(r?: number | null, decimals: number = 2): string {
     const rate = (r === null || typeof r === 'undefined') ?
       ZERO :
       new BigNumber(r.toString());
     return this.value().dividedBy(ETHER).multipliedBy(rate).toFixed(decimals);
   }
 
-  equals(another: Wei): Wei {
+  equals(another: Wei): boolean {
     return this.value().isEqualTo(another.value());
   }
 }

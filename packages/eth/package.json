@@ -1,0 +1,48 @@
+{
+  "name": "@emeraldplatform/eth",
+  "version": "0.5.0-gamma.0",
+  "description": "Ethereum Core components",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage && codecov",
+    "prepublish": "yarn build",
+    "build": "rimraf lib/ && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ETCDEVTeam/emerald-js.git"
+  },
+  "keywords": [
+    "ethereum",
+    "wallet",
+    "blockchain",
+    "smart contract"
+  ],
+  "author": "Yuriy Gagarin <gagarin55@protonmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ETCDEVTeam/emerald-js/issues"
+  },
+  "homepage": "https://emeraldplatform.io",
+  "dependencies": {
+    "bignumber.js": "8.0.2",
+    "qs": "6.7.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^10.12.26",
+    "@types/qs": "6.5.3",
+    "jest": "^24.7.1",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "typescript": "3.4.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

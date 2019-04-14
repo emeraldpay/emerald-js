@@ -17,7 +17,7 @@ import BigNumber from 'bignumber.js';
 import convert from './convert';
 
 const {
-  toNumber, toHex, toBigNumber, toBaseUnits, fromBaseUnits,
+  toNumber, toHex, toBigNumber,
 } = convert;
 
 test('toNumber should convert hex string to number', () => {

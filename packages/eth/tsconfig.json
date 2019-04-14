@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "strict": true,
+    "declaration": true,
+    "target": "es2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./typings",
+      "node_modules/@types",
+      "../../node_modules/@types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

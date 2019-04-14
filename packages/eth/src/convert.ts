@@ -13,7 +13,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-// @flow
 import BigNumber from 'bignumber.js';
 
 /**
@@ -31,9 +30,6 @@ function toNumber(value: string | number): number {
     return value;
   }
 
-  if (typeof value !== 'string') {
-    throw new Error(`Invalid argument type ${typeof value}`);
-  }
   if (value === '0x') {
     return 0;
   }
@@ -44,7 +40,7 @@ const ZERO = new BigNumber(0);
 /**
  * Converts number, string or hex string into BigNumber
  */
-function toBigNumber(value: string|number|BigNumber, defaultValue: BigNumber = ZERO): BigNumber {
+function toBigNumber(value?: string|number|BigNumber, defaultValue: BigNumber = ZERO): BigNumber {
   if (!value) {
     return defaultValue;
   }
