@@ -16,65 +16,132 @@ limitations under the License.
 import BigNumber from 'bignumber.js';
 import convert from './convert';
 
-const ETHER = new BigNumber(10).pow(18);
-const MWEI = new BigNumber(10).pow(6);
-const ZERO = new BigNumber(0);
+export type Unit = {
+  name: string,
+  weis: BigNumber
+}
+
+export const Units = {
+  ETHER: {name: 'Ether', weis: new BigNumber(10).pow(18)} as Unit,
+  MILLI: {name: 'Milliether', weis: new BigNumber(10).pow(15)} as Unit,
+  MICRO: {name: 'Microether', weis: new BigNumber(10).pow(12)} as Unit,
+  GWEI: {name: 'Gwei', weis: new BigNumber(10).pow(9)} as Unit,
+  MWEI: {name: 'Mwei', weis: new BigNumber(10).pow(6)} as Unit,
+  KWEI: {name: 'Kwei', weis: new BigNumber(10).pow(3)} as Unit,
+  WEI: {name: 'Wei', weis: new BigNumber(10).pow(0)} as Unit,
+};
+
+const ALL_UNITS: Unit[] = [
+  Units.ETHER,
+  Units.MILLI,
+  Units.MICRO,
+  Units.GWEI,
+  Units.MWEI,
+  Units.KWEI,
+  Units.WEI,
+];
+
+const ZERO_NUM = new BigNumber(0);
+
+BigNumber.config({ EXPONENTIAL_AT: 30 });
 
 /**
  * Immutable Wei value
  */
 export default class Wei {
-  getValue: () => BigNumber;
+  value: BigNumber;
 
   static ZERO: Wei = new Wei(0);
 
-  constructor(val: number | string | BigNumber) {
-    // private member
-    let value: BigNumber = ZERO;
-    value = convert.toBigNumber(val);
-    if (value.isLessThan(1)) {
-      value = ZERO;
+  constructor(val: number | string | BigNumber, unit: Unit = Units.WEI) {
+    let value = convert.toBigNumber(val);
+    if (unit === Units.WEI) {
+      if (value.isLessThan(1)) {
+        value = ZERO_NUM;
+      }
+    } else {
+      value = value.multipliedBy(unit.weis).decimalPlaces(0, BigNumber.ROUND_DOWN);
     }
-
-    // privileged getter
-    this.getValue = () => value;
+    this.value = value;
   }
 
-  value(): BigNumber {
-    return this.getValue();
+  mul(another: number | BigNumber): Wei {
+    return new Wei(this.value.multipliedBy(another));
   }
 
-  getEther(decimals: number | null = 5): string {
-    if (typeof decimals === 'undefined' || decimals == null) {
-      decimals = 5
-    }
-    return this.value().dividedBy(ETHER).toFixed(decimals);
-  }
-
-  getMwei(): string {
-    return this.value().dividedBy(MWEI).toFixed(5);
-  }
-
-  mul(another: Wei): Wei {
-    return new Wei(this.value().multipliedBy(another.value()));
+  divide(another: number | BigNumber): Wei {
+    return new Wei(this.value.dividedToIntegerBy(another));
   }
 
   plus(another: Wei): Wei {
-    return new Wei(this.value().plus(another.value()));
+    return new Wei(this.value.plus(another.value));
   }
 
   sub(another: Wei): Wei {
-    return new Wei(this.value().minus(another.value()));
+    return new Wei(this.value.minus(another.value));
   }
 
+  minus(another: Wei): Wei {
+    return this.sub(another);
+  }
+
+  getUnit(digits: number = 0, accepted: Unit[] = ALL_UNITS): Unit {
+    if (this.value.isEqualTo(ZERO_NUM)) {
+      return Units.ETHER;
+    }
+    const del = new BigNumber(10).pow(digits);
+    let unit = accepted.find( (u) => this.value.isGreaterThanOrEqualTo(u.weis.dividedBy(del)));
+    return unit ? unit : Units.WEI;
+  }
+
+  /**
+   * @deprecated
+   * @param decimals
+   */
+  getEther(decimals: number | null = 5): string {
+    return this.toEther(decimals);
+  }
+
+  toEther(decimals: number | null = 5): string {
+    if (typeof decimals === 'undefined' || decimals == null) {
+      decimals = 5
+    }
+    return this.toUnit(Units.ETHER).toFixed(decimals);
+  }
+
+  toHex(): string {
+    return '0x' + this.value.toString(16);
+  }
+
+  toUnit(unit: Unit): BigNumber {
+    return this.value.dividedBy(unit.weis);
+  }
+
+  toString(unit: Unit = Units.ETHER, decimals: number = 5, showUnit: boolean = false): string {
+    const num: string = this.toUnit(unit).toFixed(decimals, BigNumber.ROUND_HALF_UP);
+    if (showUnit) {
+      return num + ' ' + unit.name;
+    }
+    return num;
+  }
+
+  /**
+   * @deprecated
+   * @param r
+   * @param decimals
+   */
   getFiat(r?: number | null, decimals: number = 2): string {
     const rate = (r === null || typeof r === 'undefined') ?
-      ZERO :
+      ZERO_NUM :
       new BigNumber(r.toString());
-    return this.value().dividedBy(ETHER).multipliedBy(rate).toFixed(decimals);
+    return this.toExchange(rate, decimals);
+  }
+
+  toExchange(rate: number | BigNumber = 0, decimals: number = 2): string {
+    return this.toUnit(Units.ETHER).multipliedBy(rate).toFixed(decimals);
   }
 
   equals(another: Wei): boolean {
-    return this.value().isEqualTo(another.value());
+    return this.value.isEqualTo(another.value);
   }
 }
