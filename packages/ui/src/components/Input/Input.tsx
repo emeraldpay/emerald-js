@@ -47,10 +47,10 @@ const getInputProps = props => ({
 });
 
 const getMultilineProps = ({ multiline, rows, rowsMax }) => {
-  let props: any = { multiline };
+  let props: any = {};
 
   if (multiline) {
-    props = { rows, rowsMax };
+    props = { rows, rowsMax, multiline };
   }
 
   return props;

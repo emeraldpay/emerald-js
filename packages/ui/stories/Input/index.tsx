@@ -54,4 +54,7 @@ storiesOf('Input', module)
   ))
   .add('Number with min and max', () => (
    <Input type="number" min={0.5} max={1.5} onChange={action('onChange')} />
+  ))
+  .add('Multiline', () => (
+    <Input multiline={true} rowsMax={4} rows={4} value={"line1 \n\r line2"}/>
   ));
