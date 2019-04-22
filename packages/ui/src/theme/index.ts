@@ -25,6 +25,9 @@ const spacing = 10;
 const theme = {
   emeraldColors: colors,
   palette: {
+    error: {
+      main: '#F41A2D'
+    },
     primary: colors.emerald,
     secondary: colors.ash,
     divider: colors.conch.main,
