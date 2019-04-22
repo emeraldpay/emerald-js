@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/ui-icons",
-  "version": "0.5.0-gamma.0",
+  "version": "0.5.0-rc.0",
   "description": "Emerald icons as a React components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
