@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/ui",
-  "version": "0.5.0-rc.0",
+  "version": "0.5.0-rc.1",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

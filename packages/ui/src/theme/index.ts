@@ -99,7 +99,7 @@ const theme = {
     },
     MuiInput: {
       root: {
-        height: spacing * 5
+        minHeight: spacing * 5
       }
     },
     MuiAppBar: {
