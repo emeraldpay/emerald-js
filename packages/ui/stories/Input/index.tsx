@@ -56,5 +56,5 @@ storiesOf('Input', module)
    <Input type="number" min={0.5} max={1.5} onChange={action('onChange')} />
   ))
   .add('Multiline', () => (
-    <Input multiline={true} rowsMax={4} rows={4} value={"line1 \n\r line2"}/>
+    <Input multiline={true} rowsMax={4} rows={4} value={"line1\n\rline2\n\rline3\n\rline4"}/>
   ));
