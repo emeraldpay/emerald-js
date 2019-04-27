@@ -14,6 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 export { default as convert } from './convert';
-export { default as Wei } from './wei';
+export { default as Wei, Units, Unit } from './wei';
 
 export { default as TransactionUri } from './transactionUri.js';
