@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import Wei, {Units} from './wei';
+import BigNumber from "bignumber.js";
 
 test('construct from Wei', () => {
   expect(new Wei(123456789).value.toString()).toBe('123456789');
@@ -53,9 +54,17 @@ test("find unit Wei", () => {
 
 
 test("toEther", () => {
-  expect(new Wei(10, Units.ETHER).toEther()).toBe('10.00000');
-  expect(new Wei(10.125, Units.ETHER).toEther()).toBe('10.12500');
-  expect(new Wei(10.1234567, Units.ETHER).toEther()).toBe('10.12346');
+  expect(new Wei(10, Units.ETHER).toEther()).toBe('10');
+  expect(new Wei(10, Units.ETHER).toEther(null, true)).toBe('10.00000');
+  expect(new Wei(10.125, Units.ETHER).toEther()).toBe('10.125');
+  expect(new Wei(10.125, Units.ETHER).toEther(null, true)).toBe('10.12500');
+  expect(new Wei(10.1234567, Units.ETHER).toEther()).toBe('10.1234567');
+  expect(new Wei(10.1234567, Units.ETHER).toEther(null, true)).toBe('10.12346');
+  expect(new Wei(10.1234567, Units.ETHER).toEther(2, true)).toBe('10.12');
+});
+
+test("toWei", () => {
+  expect(new Wei(10.125, Units.ETHER).toWei().toString()).toBe('10125000000000000000');
 });
 
 test("toHex", () => {
@@ -75,15 +84,16 @@ test('toString uses 5 decimals as default', () => {
 });
 
 test('toString convert to Milli', () => {
-  expect(new Wei(1000010000000000000).toString(Units.MILLI)).toEqual('1000.01000');
+  expect(new Wei(1000010000000000000).toString(Units.MILLI)).toEqual('1000.01');
+  expect(new Wei(1000010000000000000).toString(Units.MILLI, 5, false, true)).toEqual('1000.01000');
 });
 
 test('toString shows 3 decimals', () => {
-  expect(new Wei(1000010000000000000).toString(Units.MILLI, 3)).toEqual('1000.010');
+  expect(new Wei(1000010000000000000).toString(Units.MILLI, 3)).toEqual('1000.01');
 });
 
 test('toString shows unit', () => {
-  expect(new Wei(1000010000000000000).toString(Units.MILLI, 3, true)).toEqual('1000.010 Milliether');
+  expect(new Wei(1000010000000000000).toString(Units.MILLI, 3, true)).toEqual('1000.01 Milliether');
 });
 
 test('toExchange() default rate is 0', () => {
@@ -107,6 +117,10 @@ test('mul', () => {
   expect(new Wei(5).mul(2).value.toFixed()).toEqual("10");
 });
 
+test('mul bignum', () => {
+  expect(new Wei(5).mul(new BigNumber(2)).value.toFixed()).toEqual("10");
+});
+
 test("math operations", () => {
   expect(
     new Wei("5", Units.ETHER)
@@ -114,5 +128,5 @@ test("math operations", () => {
       .divide(4)
       .minus(new Wei(1, Units.ETHER))
       .toString()
-  ).toBe('1.50000');
+  ).toBe('1.5');
 });
