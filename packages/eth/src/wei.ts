@@ -66,10 +66,16 @@ export default class Wei {
   }
 
   mul(another: number | BigNumber): Wei {
+    if (typeof another === 'number') {
+      another = new BigNumber(another);
+    }
     return new Wei(this.value.multipliedBy(another));
   }
 
   divide(another: number | BigNumber): Wei {
+    if (typeof another === 'number') {
+      another = new BigNumber(another);
+    }
     return new Wei(this.value.dividedToIntegerBy(another));
   }
 
@@ -98,15 +104,23 @@ export default class Wei {
    * @deprecated
    * @param decimals
    */
-  getEther(decimals: number | null = 5): string {
+  getEther(decimals: number | null = 3): string {
     return this.toEther(decimals);
   }
 
-  toEther(decimals: number | null = 5): string {
+  toEther(decimals: number | null = 3, fixed: boolean = false): string {
     if (typeof decimals === 'undefined' || decimals == null) {
       decimals = 5
     }
-    return this.toUnit(Units.ETHER).toFixed(decimals);
+    let bn = this.toUnit(Units.ETHER);
+    if (fixed) {
+      return bn.toFixed(decimals);
+    }
+    return bn.toString();
+  }
+
+  toWei(): BigNumber {
+    return this.toUnit(Units.WEI);
   }
 
   toHex(): string {
@@ -114,11 +128,15 @@ export default class Wei {
   }
 
   toUnit(unit: Unit): BigNumber {
+    if (unit === Units.WEI) {
+      return this.value;
+    }
     return this.value.dividedBy(unit.weis);
   }
 
-  toString(unit: Unit = Units.ETHER, decimals: number = 5, showUnit: boolean = false): string {
-    const num: string = this.toUnit(unit).toFixed(decimals, BigNumber.ROUND_HALF_UP);
+  toString(unit: Unit = Units.ETHER, decimals: number = 3, showUnit: boolean = false, fixed: boolean = false): string {
+    let bn = this.toUnit(unit);
+    const num: string = fixed ? bn.toFixed(decimals, BigNumber.ROUND_HALF_UP) : bn.toString();
     if (showUnit) {
       return num + ' ' + unit.name;
     }
