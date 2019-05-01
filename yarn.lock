@@ -1349,15 +1349,15 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/yargs" "^12.0.9"
 
-"@material-ui/core@^4.0.0-alpha.6":
-  version "4.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.0.0-alpha.6.tgz#8f7893fe6e20035c2e502a3693cc1c10f884f93b"
-  integrity sha512-X2tHOJDzuG7/TYBhmd7C+OysUpJPP0oMXKJ4MJlFwsWTAqxL2sXRIcaQVDPzgUEn34ApL4Xham3qYHGAjpCPeg==
+"@material-ui/core@^4.0.0-beta.0":
+  version "4.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.0.0-beta.0.tgz#8a10d1e6a4850492fb57c3f028ff1f9b09d93c5c"
+  integrity sha512-yEgo5wsaOzIOWzJBCvEjKudz2Jh5XHPu0g2w+pyZJryOf7RCCfzyBV3fWv7goJyEOhiSAs50JFaKDQi2BLxp2Q==
   dependencies:
     "@babel/runtime" "^7.2.0"
-    "@material-ui/styles" "^4.0.0-alpha.6"
-    "@material-ui/system" "^4.0.0-alpha.0"
-    "@material-ui/utils" "^4.0.0-alpha.4"
+    "@material-ui/styles" "^4.0.0-beta.0"
+    "@material-ui/system" "^4.0.0-beta.0"
+    "@material-ui/utils" "^4.0.0-beta.0"
     "@types/react-transition-group" "^2.0.16"
     clsx "^1.0.2"
     csstype "^2.5.2"
@@ -1369,17 +1369,17 @@
     popper.js "^1.14.1"
     prop-types "^15.7.2"
     react-event-listener "^0.6.6"
-    react-transition-group "^2.5.3"
+    react-transition-group "^4.0.0"
     warning "^4.0.1"
 
-"@material-ui/styles@^4.0.0-alpha.6":
-  version "4.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.0.0-alpha.6.tgz#f6ec3655865bbb9a8439cb70f620e0260b32508e"
-  integrity sha512-h6BDQb/F212xNwAjq6FCyJji6GLd5NJH8JdzO1/ZAE3LWMS3EH0Fs65pKMb1oq6daLCksSsB3UFwAU0cd6uLwQ==
+"@material-ui/styles@^4.0.0-beta.0":
+  version "4.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.0.0-beta.0.tgz#81954873523f8a255410fe085fe0e082e6eafed3"
+  integrity sha512-UXexmJk2fNMPkrWbPaWM1yBNrkHxVRqgKBrY3u1t65Smpyk3I5aVqQ1QfTSxoMOfHMUEljKs7zsriHtUovF6qg==
   dependencies:
     "@babel/runtime" "^7.2.0"
     "@emotion/hash" "^0.7.1"
-    "@material-ui/utils" "^4.0.0-alpha.4"
+    "@material-ui/utils" "^4.0.0-beta.0"
     clsx "^1.0.2"
     deepmerge "^3.0.0"
     hoist-non-react-statics "^3.2.1"
@@ -1394,20 +1394,20 @@
     prop-types "^15.7.2"
     warning "^4.0.1"
 
-"@material-ui/system@^4.0.0-alpha.0":
-  version "4.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@material-ui/system/-/system-4.0.0-alpha.0.tgz#9972a797f04e1b96b84ad462243086fe89038f73"
-  integrity sha512-qJLLx+rBmj1AsnuOLja9eN0x/ajZWM6FgCUVV08ecQ2FHEb+TT5QK6b+Lcw5TNnHxakGC8wkmUkIYafwcqGA5g==
+"@material-ui/system@^4.0.0-beta.0":
+  version "4.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/system/-/system-4.0.0-beta.0.tgz#288c22294df71e4d8c4d28cf5739e4df4c153d1e"
+  integrity sha512-ky8sIq7YZWMhSy1bHHHuiZsRa5aIncwdioypj/gywXTtWOdwnLylWQJ56VZzbD4uqrsJhbwrCOfhMXbAuN25Tw==
   dependencies:
     "@babel/runtime" "^7.2.0"
     deepmerge "^3.0.0"
-    prop-types "^15.6.0"
+    prop-types "^15.7.2"
     warning "^4.0.1"
 
-"@material-ui/utils@^4.0.0-alpha.4":
-  version "4.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@material-ui/utils/-/utils-4.0.0-alpha.4.tgz#3966ec0c7fc2d42594092799bf464faf3d6d8633"
-  integrity sha512-bS94IM50JL6ujmNv4cOMOcYv9CYkLwCXvkcJ0rXN/EDsx9qHq8Oir7yxEn8iBd8LMi92dDwiCazsln8/eYMBNw==
+"@material-ui/utils@^4.0.0-beta.0":
+  version "4.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/utils/-/utils-4.0.0-beta.0.tgz#29f9c29cefbae3b7b7ef5b90a97e22dbe1af88f1"
+  integrity sha512-2rha1tPVIavAm4+eGY6TdgqOIrffgBRIFerSLvMPsAi242U5IgVNWn8oDRxy80DMXYD4Shnm8Idm8WXB7sgCcQ==
   dependencies:
     "@babel/runtime" "^7.2.0"
     prop-types "^15.7.2"
@@ -9184,7 +9184,7 @@ react-textarea-autosize@^7.0.4:
     "@babel/runtime" "^7.1.2"
     prop-types "^15.6.0"
 
-react-transition-group@^2.0.0, react-transition-group@^2.5.3:
+react-transition-group@^2.0.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
   integrity sha512-+HzNTCHpeQyl4MJ/bdE0u6XRMe9+XG/+aL4mCxVN4DnPBQ0/5bfHWPDuOZUzYdMj94daZaZdCCc1Dzt9R/xSSg==
@@ -9193,6 +9193,15 @@ react-transition-group@^2.0.0, react-transition-group@^2.5.3:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
+
+react-transition-group@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.0.0.tgz#1d82b20d78aa09eac6268ceef0349307146942c6"
+  integrity sha512-b+uvkr15Pb80mqcsz5WAB+d53zS8/pTp3wDEsOiqpea93G8BqfsMFcPv2XZR0owqU13BJWoJvd17VjOPEY/9aA==
+  dependencies:
+    dom-helpers "^3.4.0"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
 
 react-treebeard@3.1.0, react-treebeard@^3.1.0:
   version "3.1.0"
