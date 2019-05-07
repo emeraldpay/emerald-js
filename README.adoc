@@ -71,7 +71,8 @@ lerna bootstrap
 ----
 
 === Tests suite
-emerald-js uses [Jest](http://facebook.github.io/jest/) for its test suite. To run tests in the console:
+
+emerald-js uses http://facebook.github.io/jest/[Jest] for its test suite. To run tests in the console:
 
 ----
 yarn test
