@@ -1,0 +1,21 @@
+{
+  "greenLicenses": [
+    "Apache-2.0",
+    "MIT",
+    "BSD-3-Clause",
+    "BSD-2-Clause",
+    "MPL-2.0",
+    "ISC",
+    "Zlib",
+    "private"
+  ],
+  "packageWhitelist": [
+    "coinstring", //MIT
+    "bs58", //MIT
+    "buffers", //MIT
+    "bzip-deflate", //CC
+    "keybase-ecurve", //MIT
+    "tweetnacl", //Unlicense
+    "progress" //MIT
+  ]
+}
