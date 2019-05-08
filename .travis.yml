@@ -14,5 +14,6 @@ install:
   - lerna bootstrap
 
 script:
+  - yarn verify:license
   - yarn build
   - yarn test:coverage
