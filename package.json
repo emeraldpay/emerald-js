@@ -4,13 +4,9 @@
     "clean:node_modules": "rimraf node_modules packages/*/node_modules",
     "test": "CI=true lerna run test --stream",
     "build": "CI=true lerna run build --stream",
-    "test:coverage": "CI=true lerna run test:coverage --stream && codecov",
-    "verify:license": "node node_modules/js-green-licenses/build/src/cli.js --local ."
+    "test:coverage": "CI=true lerna run test:coverage --stream && codecov"
   },
   "homepage": "https://emeraldplatform.io",
-  "devDependencies": {
-    "js-green-licenses": "https://github.com/google/js-green-licenses.git#494a457"
-  },
   "workspaces": [
     "packages/*"
   ]

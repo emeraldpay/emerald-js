@@ -11,9 +11,10 @@ install:
   - npm install -g yarn
   - npm install -g codecov
   - npm install -g lerna
+  - npm install -g https://github.com/google/js-green-licenses.git\#494a457
   - lerna bootstrap
 
 script:
-  - yarn verify:license
+  - jsgl --local .
   - yarn build
   - yarn test:coverage
