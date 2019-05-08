@@ -9,7 +9,7 @@
   },
   "homepage": "https://emeraldplatform.io",
   "devDependencies": {
-    "js-green-licenses": "git+https://github.com/google/js-green-licenses.git#494a457"
+    "js-green-licenses": "https://github.com/google/js-green-licenses.git#494a457"
   },
   "workspaces": [
     "packages/*"
