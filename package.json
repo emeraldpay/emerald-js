@@ -7,6 +7,9 @@
     "test:coverage": "CI=true lerna run test:coverage --stream && codecov"
   },
   "homepage": "https://emeraldplatform.io",
+  "devDependencies": {
+
+  },
   "workspaces": [
     "packages/*"
   ]
