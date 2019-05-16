@@ -35,8 +35,8 @@ export default class ExtApi {
         results.push(batch.addCall('eth_getBlockByNumber', [format.toHex(i), false]));
       }
 
-      return this.rpc.execute(batch)
-        .then((_: any) => Promise.all(results))
+      this.rpc.execute(batch).catch(() => {});
+      return Promise.all(results)
         .then((data: any) => data.map(format.block));
     }
 
@@ -51,8 +51,8 @@ export default class ExtApi {
         batch.addCall('eth_getBlockByNumber', [blockNumber, false])
       );
 
-      return this.rpc.execute(batch)
-        .then((_:any) =>  Promise.all(requests))
+      this.rpc.execute(batch).catch(() => {});
+      return Promise.all(requests)
         .then((blocks: any) => blocks.map(format.block));
     }
 
@@ -64,8 +64,9 @@ export default class ExtApi {
         batch.addCall('eth_getBalance', [a, blockNumber])
           .then((resp: any) => { balances[a] = resp; })
       );
-      return this.rpc.execute(batch)
-        .then((_: any) => Promise.all(requests))
+
+      this.rpc.execute(batch).catch(() => {});
+      return Promise.all(requests)
         .then((_: any) => balances);
     }
 
@@ -81,8 +82,8 @@ export default class ExtApi {
         batch.addCall('eth_getTransactionByHash', [h])
       );
 
-      return this.rpc.execute(batch)
-        .then((_: any) => Promise.all(requests));
+      this.rpc.execute(batch).catch(() => {});
+      return Promise.all(requests)
     }
 
     /**
@@ -96,10 +97,9 @@ export default class ExtApi {
           .then((data: any) => mapping[c.id] = {result: data})
           .catch((err: any) => mapping[c.id] = {result: null, error: err})
       });
-      return this.rpc.execute(batch).then((_: any) => {
-        return Promise.all(batch.resolve())
-          .then(() => mapping);
-      });
+      this.rpc.execute(batch).catch(() => {});
+      return Promise.all(batch.getItems().map(it => it.promise ))
+        .then(() => mapping);
     }
 
 }
