@@ -55,8 +55,10 @@ export abstract class AbstractJsonRpc implements JsonRpc {
   call(method: string, params: any): Promise<any> {
     let batch = new DefaultBatch();
     let promise = batch.addCall(method, params);
-    return this.execute(batch)
-      .then((_) => promise);
+    this.execute(batch)
+      .then((_) => {})
+      .catch((_) => {});
+    return promise;
   }
   batch(): Batch {
     return new DefaultBatch();
