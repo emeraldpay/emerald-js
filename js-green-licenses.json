@@ -11,6 +11,8 @@
   ],
   "packageWhitelist": [
     "@emeraldplatform/rpc",
+    "@emeraldplatform/eth-rpc",
+    "@emeraldplatform/vault",
     "coinstring", //MIT
     "bs58", //MIT
     "buffers", //MIT
