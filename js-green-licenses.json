@@ -16,6 +16,7 @@
     "@emeraldplatform/ui-smart",
     "@emeraldplatform/ui-icons",
     "@emeraldplatform/ui",
+    "@emeraldplatform/eth-node",
     "coinstring", //MIT
     "bs58", //MIT
     "buffers", //MIT
