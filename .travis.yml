@@ -15,6 +15,6 @@ install:
   - lerna bootstrap
 
 script:
-  - jsgl --local .
   - yarn build
+  - jsgl --local .
   - yarn test:coverage
