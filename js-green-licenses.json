@@ -13,6 +13,9 @@
     "@emeraldplatform/rpc",
     "@emeraldplatform/eth-rpc",
     "@emeraldplatform/vault",
+    "@emeraldplatform/ui-smart",
+    "@emeraldplatform/ui-icons",
+    "@emeraldplatform/ui",
     "coinstring", //MIT
     "bs58", //MIT
     "buffers", //MIT
