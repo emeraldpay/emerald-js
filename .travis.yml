@@ -16,5 +16,5 @@ install:
 
 script:
   - yarn build
-  - jsgl --local .
+  # - jsgl --local .
   - yarn test:coverage

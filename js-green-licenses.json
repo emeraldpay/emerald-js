@@ -10,13 +10,6 @@
     "private"
   ],
   "packageWhitelist": [
-    "@emeraldplatform/rpc",
-    "@emeraldplatform/eth-rpc",
-    "@emeraldplatform/vault",
-    "@emeraldplatform/ui-smart",
-    "@emeraldplatform/ui-icons",
-    "@emeraldplatform/ui",
-    "@emeraldplatform/eth-node",
     "coinstring", //MIT
     "bs58", //MIT
     "buffers", //MIT
