@@ -10,6 +10,7 @@
     "private"
   ],
   "packageWhitelist": [
+    "@emeraldplatform/rpc",
     "coinstring", //MIT
     "bs58", //MIT
     "buffers", //MIT
