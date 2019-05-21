@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import * as React from 'react';
-import AccountSelect from '../../components/AccountSelect';
+import {AccountSelect} from '@emeraldplatform/ui';
 import VaultRpc from '../../providers/VaultRpc';
 
 interface Props {
