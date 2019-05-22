@@ -175,6 +175,4 @@ const theme = {
   },
 };
 
-const muiTheme = createMuiTheme(theme);
-
-export default muiTheme;
+export default createMuiTheme(theme);
