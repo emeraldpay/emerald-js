@@ -30,6 +30,20 @@ test('toNumber should convert number to number', () => {
   expect(toNumber(1)).toBe(1);
   expect(toNumber(0)).toBe(0);
   expect(toNumber(15)).toBe(15);
+  expect(toNumber(-1)).toBe(-1);
+  expect(toNumber(-15)).toBe(-15);
+});
+
+test('toNumber should accept empty', () => {
+  // @ts-ignore
+  expect(toNumber(null)).toBe(0);
+  // @ts-ignore
+  expect(toNumber(undefined)).toBe(0);
+
+  // @ts-ignore
+  expect(toNumber(null, -1)).toBe(-1);
+  // @ts-ignore
+  expect(toNumber(undefined, 10)).toBe(10);
 });
 
 describe('quantitiesToHex', () => {
