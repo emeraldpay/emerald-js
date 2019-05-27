@@ -19,11 +19,12 @@ import BigNumber from 'bignumber.js';
  * Convert hex string to number
  *
  * @param value
+ * @param defaultValue
  * @returns {number}
  */
-export function toNumber(value: string | number): number {
-  if (value === null) {
-    return 0;
+export function toNumber(value: string | number, defaultValue = 0): number {
+  if (!value) {
+    return defaultValue;
   }
 
   if (typeof value === 'number') {
