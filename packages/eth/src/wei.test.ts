@@ -100,6 +100,7 @@ test('toString convert to Milli', () => {
 
 test('toString shows 3 decimals', () => {
   expect(new Wei(1000010000000000000).toString(Units.MILLI, 3)).toEqual('1000.01');
+  expect(new Wei(-1000010000000000000).toString(Units.MILLI, 3)).toEqual('-1000.01');
 });
 
 test('toString shows unit', () => {
@@ -121,14 +122,23 @@ test('equals() compares values', () => {
 
 test('sub', () => {
   expect(new Wei(5).sub(new Wei(1)).value.toFixed()).toEqual("4");
+  expect(new Wei(5).sub(new Wei(6)).value.toFixed()).toEqual("-1");
+});
+
+test('plus', () => {
+  expect(new Wei(5).plus(new Wei(1)).value.toFixed()).toEqual("6");
+  expect(new Wei(5).plus(new Wei(-6)).value.toFixed()).toEqual("-1");
+  expect(new Wei(-5).plus(new Wei(6)).value.toFixed()).toEqual("1");
 });
 
 test('mul', () => {
   expect(new Wei(5).mul(2).value.toFixed()).toEqual("10");
+  expect(new Wei(5).mul(-2).value.toFixed()).toEqual("-10");
 });
 
 test('mul bignum', () => {
   expect(new Wei(5).mul(new BigNumber(2)).value.toFixed()).toEqual("10");
+  expect(new Wei(5).mul(new BigNumber(-2)).value.toFixed()).toEqual("-10");
 });
 
 test("math operations", () => {
