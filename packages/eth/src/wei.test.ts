@@ -137,6 +137,41 @@ test("math operations", () => {
       .mul(2)
       .divide(4)
       .minus(new Wei(1, Units.ETHER))
+      .plus(new Wei(0.25, Units.ETHER))
       .toString()
-  ).toBe('1.5');
+  ).toBe('1.75');
+});
+
+test("comparison", () => {
+  expect(new Wei(1, Units.ETHER).isGreaterThan(new Wei(0.99, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isGreaterThan(new Wei(1.01, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isGreaterThan(new Wei(1, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isGreaterThanOrEqualTo(new Wei(1, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isGreaterThanOrEqualTo(new Wei(1.01, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isGreaterThanOrEqualTo(new Wei(0.99, Units.ETHER))).toBeTruthy();
+
+  expect(new Wei(1, Units.ETHER).isLessThan(new Wei(0.99, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isLessThan(new Wei(1.01, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isLessThan(new Wei(1, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isLessThanOrEqualTo(new Wei(0.99, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isLessThanOrEqualTo(new Wei(1.01, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isLessThanOrEqualTo(new Wei(1.00, Units.ETHER))).toBeTruthy();
+
+  expect(new Wei(1, Units.ETHER).compareTo(new Wei(0.99, Units.ETHER))).toBe(1);
+  expect(new Wei(1, Units.ETHER).compareTo(new Wei(1.01, Units.ETHER))).toBe(-1);
+  expect(new Wei(1, Units.ETHER).compareTo(new Wei(1, Units.ETHER))).toBe(0);
+});
+
+test("checks", () => {
+  expect(new Wei(1, Units.ETHER).isPositive()).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isNegative()).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isZero()).toBeFalsy();
+
+  expect(new Wei(-1, Units.ETHER).isPositive()).toBeFalsy();
+  expect(new Wei(-1, Units.ETHER).isNegative()).toBeTruthy();
+  expect(new Wei(-1, Units.ETHER).isZero()).toBeFalsy();
+
+  expect(new Wei(0, Units.ETHER).isPositive()).toBeFalsy();
+  expect(new Wei(0, Units.ETHER).isNegative()).toBeFalsy();
+  expect(new Wei(0, Units.ETHER).isZero()).toBeTruthy();
 });

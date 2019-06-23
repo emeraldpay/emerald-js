@@ -159,4 +159,37 @@ export default class Wei {
   equals(another: Wei): boolean {
     return this.value.isEqualTo(another.value);
   }
+
+  compareTo(another: Wei): number {
+    return this.value.comparedTo(another.value);
+  }
+
+  isPositive(): boolean {
+    return this.value.isPositive() && !this.isZero();
+  }
+
+  isNegative(): boolean {
+    return this.value.isNegative() && !this.isZero();
+  }
+
+  isZero(): boolean {
+    return this.value.isZero();
+  }
+
+  isLessThan(another: Wei): boolean {
+    return this.value.isLessThan(another.value);
+  }
+
+  isLessThanOrEqualTo(another: Wei): boolean {
+    return this.value.isLessThanOrEqualTo(another.value);
+  }
+
+  isGreaterThan(another: Wei): boolean {
+    return this.value.isGreaterThan(another.value);
+  }
+
+  isGreaterThanOrEqualTo(another: Wei): boolean {
+    return this.value.isGreaterThanOrEqualTo(another.value);
+  }
+
 }
