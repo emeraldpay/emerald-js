@@ -55,13 +55,10 @@ export default class Wei {
 
   constructor(val: number | string | BigNumber, unit: Unit = Units.WEI) {
     let value = convert.toBigNumber(val);
-    if (unit === Units.WEI) {
-      if (value.isLessThan(1)) {
-        value = ZERO_NUM;
-      }
-    } else {
-      value = value.multipliedBy(unit.weis).decimalPlaces(0, BigNumber.ROUND_DOWN);
+    if (unit !== Units.WEI) {
+      value = value.multipliedBy(unit.weis).decimalPlaces(0, BigNumber.ROUND_HALF_DOWN);
     }
+    value = value.integerValue(BigNumber.ROUND_HALF_DOWN);
     this.value = value;
   }
 

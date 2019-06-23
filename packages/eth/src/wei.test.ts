@@ -21,9 +21,19 @@ test('construct from Wei', () => {
   expect(new Wei(123456789, Units.WEI).value.toString()).toBe('123456789');
 });
 
+test('constructor accept negative values', () => {
+  expect(new Wei(-1).value.toString()).toBe('-1');
+  expect(new Wei("-0.123456789123456789123", Units.ETHER).value.toString()).toBe('-123456789123456789');
+});
+
 test('constructor ignores sub-wei values', () => {
   // expect(new Wei(0.123456789).value.toString()).toBe('0');
   expect(new Wei("0.123456789123456789123", Units.ETHER).value.toString()).toBe('123456789123456789');
+  expect(new Wei("0.000000000000000000123", Units.ETHER).value.toString()).toBe('0');
+  expect(new Wei("0.123", Units.WEI).value.toString()).toBe('0');
+  expect(new Wei("-0.123", Units.WEI).value.toString()).toBe('0');
+  expect(new Wei("0.567", Units.WEI).value.toString()).toBe('1');
+  expect(new Wei("-0.567", Units.WEI).value.toString()).toBe('-1');
 });
 
 test('construct from Ether', () => {
