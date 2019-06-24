@@ -21,9 +21,19 @@ test('construct from Wei', () => {
   expect(new Wei(123456789, Units.WEI).value.toString()).toBe('123456789');
 });
 
+test('constructor accept negative values', () => {
+  expect(new Wei(-1).value.toString()).toBe('-1');
+  expect(new Wei("-0.123456789123456789123", Units.ETHER).value.toString()).toBe('-123456789123456789');
+});
+
 test('constructor ignores sub-wei values', () => {
   // expect(new Wei(0.123456789).value.toString()).toBe('0');
   expect(new Wei("0.123456789123456789123", Units.ETHER).value.toString()).toBe('123456789123456789');
+  expect(new Wei("0.000000000000000000123", Units.ETHER).value.toString()).toBe('0');
+  expect(new Wei("0.123", Units.WEI).value.toString()).toBe('0');
+  expect(new Wei("-0.123", Units.WEI).value.toString()).toBe('0');
+  expect(new Wei("0.567", Units.WEI).value.toString()).toBe('1');
+  expect(new Wei("-0.567", Units.WEI).value.toString()).toBe('-1');
 });
 
 test('construct from Ether', () => {
@@ -71,6 +81,7 @@ test("toHex", () => {
   expect(new Wei(10.125, Units.ETHER).toHex()).toBe('0x8c8339dafed48000');
   expect(new Wei(1, Units.WEI).toHex()).toBe('0x1');
   expect(new Wei(16, Units.WEI).toHex()).toBe('0x10');
+  expect(new Wei(-16, Units.WEI).toHex()).toBe('-0x10');
 });
 
 
@@ -90,6 +101,7 @@ test('toString convert to Milli', () => {
 
 test('toString shows 3 decimals', () => {
   expect(new Wei(1000010000000000000).toString(Units.MILLI, 3)).toEqual('1000.01');
+  expect(new Wei(-1000010000000000000).toString(Units.MILLI, 3)).toEqual('-1000.01');
 });
 
 test('toString shows unit', () => {
@@ -111,14 +123,23 @@ test('equals() compares values', () => {
 
 test('sub', () => {
   expect(new Wei(5).sub(new Wei(1)).value.toFixed()).toEqual("4");
+  expect(new Wei(5).sub(new Wei(6)).value.toFixed()).toEqual("-1");
+});
+
+test('plus', () => {
+  expect(new Wei(5).plus(new Wei(1)).value.toFixed()).toEqual("6");
+  expect(new Wei(5).plus(new Wei(-6)).value.toFixed()).toEqual("-1");
+  expect(new Wei(-5).plus(new Wei(6)).value.toFixed()).toEqual("1");
 });
 
 test('mul', () => {
   expect(new Wei(5).mul(2).value.toFixed()).toEqual("10");
+  expect(new Wei(5).mul(-2).value.toFixed()).toEqual("-10");
 });
 
 test('mul bignum', () => {
   expect(new Wei(5).mul(new BigNumber(2)).value.toFixed()).toEqual("10");
+  expect(new Wei(5).mul(new BigNumber(-2)).value.toFixed()).toEqual("-10");
 });
 
 test("math operations", () => {
@@ -127,6 +148,41 @@ test("math operations", () => {
       .mul(2)
       .divide(4)
       .minus(new Wei(1, Units.ETHER))
+      .plus(new Wei(0.25, Units.ETHER))
       .toString()
-  ).toBe('1.5');
+  ).toBe('1.75');
+});
+
+test("comparison", () => {
+  expect(new Wei(1, Units.ETHER).isGreaterThan(new Wei(0.99, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isGreaterThan(new Wei(1.01, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isGreaterThan(new Wei(1, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isGreaterThanOrEqualTo(new Wei(1, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isGreaterThanOrEqualTo(new Wei(1.01, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isGreaterThanOrEqualTo(new Wei(0.99, Units.ETHER))).toBeTruthy();
+
+  expect(new Wei(1, Units.ETHER).isLessThan(new Wei(0.99, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isLessThan(new Wei(1.01, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isLessThan(new Wei(1, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isLessThanOrEqualTo(new Wei(0.99, Units.ETHER))).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isLessThanOrEqualTo(new Wei(1.01, Units.ETHER))).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isLessThanOrEqualTo(new Wei(1.00, Units.ETHER))).toBeTruthy();
+
+  expect(new Wei(1, Units.ETHER).compareTo(new Wei(0.99, Units.ETHER))).toBe(1);
+  expect(new Wei(1, Units.ETHER).compareTo(new Wei(1.01, Units.ETHER))).toBe(-1);
+  expect(new Wei(1, Units.ETHER).compareTo(new Wei(1, Units.ETHER))).toBe(0);
+});
+
+test("checks", () => {
+  expect(new Wei(1, Units.ETHER).isPositive()).toBeTruthy();
+  expect(new Wei(1, Units.ETHER).isNegative()).toBeFalsy();
+  expect(new Wei(1, Units.ETHER).isZero()).toBeFalsy();
+
+  expect(new Wei(-1, Units.ETHER).isPositive()).toBeFalsy();
+  expect(new Wei(-1, Units.ETHER).isNegative()).toBeTruthy();
+  expect(new Wei(-1, Units.ETHER).isZero()).toBeFalsy();
+
+  expect(new Wei(0, Units.ETHER).isPositive()).toBeFalsy();
+  expect(new Wei(0, Units.ETHER).isNegative()).toBeFalsy();
+  expect(new Wei(0, Units.ETHER).isZero()).toBeTruthy();
 });

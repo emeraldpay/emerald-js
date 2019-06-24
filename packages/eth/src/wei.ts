@@ -55,13 +55,10 @@ export default class Wei {
 
   constructor(val: number | string | BigNumber, unit: Unit = Units.WEI) {
     let value = convert.toBigNumber(val);
-    if (unit === Units.WEI) {
-      if (value.isLessThan(1)) {
-        value = ZERO_NUM;
-      }
-    } else {
-      value = value.multipliedBy(unit.weis).decimalPlaces(0, BigNumber.ROUND_DOWN);
+    if (unit !== Units.WEI) {
+      value = value.multipliedBy(unit.weis).decimalPlaces(0, BigNumber.ROUND_HALF_DOWN);
     }
+    value = value.integerValue(BigNumber.ROUND_HALF_DOWN);
     this.value = value;
   }
 
@@ -124,7 +121,7 @@ export default class Wei {
   }
 
   toHex(): string {
-    return '0x' + this.value.toString(16);
+    return `${this.isNegative() ? '-' : ''}0x${this.value.abs().toString(16)}`;
   }
 
   toUnit(unit: Unit): BigNumber {
@@ -162,4 +159,37 @@ export default class Wei {
   equals(another: Wei): boolean {
     return this.value.isEqualTo(another.value);
   }
+
+  compareTo(another: Wei): number {
+    return this.value.comparedTo(another.value);
+  }
+
+  isPositive(): boolean {
+    return this.value.isPositive() && !this.isZero();
+  }
+
+  isNegative(): boolean {
+    return this.value.isNegative() && !this.isZero();
+  }
+
+  isZero(): boolean {
+    return this.value.isZero();
+  }
+
+  isLessThan(another: Wei): boolean {
+    return this.value.isLessThan(another.value);
+  }
+
+  isLessThanOrEqualTo(another: Wei): boolean {
+    return this.value.isLessThanOrEqualTo(another.value);
+  }
+
+  isGreaterThan(another: Wei): boolean {
+    return this.value.isGreaterThan(another.value);
+  }
+
+  isGreaterThanOrEqualTo(another: Wei): boolean {
+    return this.value.isGreaterThanOrEqualTo(another.value);
+  }
+
 }
