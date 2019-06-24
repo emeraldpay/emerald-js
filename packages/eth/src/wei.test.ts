@@ -81,6 +81,7 @@ test("toHex", () => {
   expect(new Wei(10.125, Units.ETHER).toHex()).toBe('0x8c8339dafed48000');
   expect(new Wei(1, Units.WEI).toHex()).toBe('0x1');
   expect(new Wei(16, Units.WEI).toHex()).toBe('0x10');
+  expect(new Wei(-16, Units.WEI).toHex()).toBe('-0x10');
 });
 
 

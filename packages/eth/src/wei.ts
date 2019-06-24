@@ -121,7 +121,7 @@ export default class Wei {
   }
 
   toHex(): string {
-    return '0x' + this.value.toString(16);
+    return `${this.isNegative() ? '-' : ''}0x${this.value.abs().toString(16)}`;
   }
 
   toUnit(unit: Unit): BigNumber {
