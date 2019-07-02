@@ -109,11 +109,7 @@ export default class Wei {
     if (typeof decimals === 'undefined' || decimals == null) {
       decimals = 5
     }
-    let bn = this.toUnit(Units.ETHER);
-    if (fixed) {
-      return bn.toFixed(decimals);
-    }
-    return bn.toString();
+    return this.toString(Units.ETHER, decimals, false, fixed);
   }
 
   toWei(): BigNumber {
@@ -133,7 +129,20 @@ export default class Wei {
 
   toString(unit: Unit = Units.ETHER, decimals: number = 3, showUnit: boolean = false, fixed: boolean = false): string {
     let bn = this.toUnit(unit);
-    const num: string = fixed ? bn.toFixed(decimals, BigNumber.ROUND_HALF_UP) : bn.toString();
+    let num = bn.toFixed(decimals, BigNumber.ROUND_HALF_UP);
+    const point = num.indexOf(".");
+    if (!fixed && point > 0) {
+      let i = num.length;
+      while (num[i - 1] === '0' && i > point) {
+        i--;
+      }
+      if (i < num.length) {
+        num = num.substring(0, i);
+        if (num.endsWith('.')) {
+          num = num.substring(0, num.length - 1);
+        }
+      }
+    }
     if (showUnit) {
       return num + ' ' + unit.name;
     }
