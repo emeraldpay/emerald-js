@@ -29,7 +29,21 @@ export const getStyles = (theme? : any) => ({
     alignItems: 'center',
     width: '100%',
   },
+  fullAddress: {
+    fontFamily: [
+      '"Roboto Mono"',
+      "monospace"
+    ].join(','),
+    fontSize: '15px',
+    fontWeight: 500,
+  },
   shortenedAddress: {
+    fontFamily: [
+      '"Roboto Mono"',
+      "monospace"
+    ].join(','),
+    fontSize: '15px',
+    fontWeight: 500,
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     width: '100%',
@@ -75,7 +89,7 @@ export class Address extends React.Component<Props> {
   render() {
     const { classes, shortened, hideCopy } = this.props;
 
-    const addressClassname = shortened ? classes.shortenedAddress : '';
+    const addressClassname = shortened ? classes.shortenedAddress : classes.fullAddress;
 
     return (
       <div className={classes.container}>
