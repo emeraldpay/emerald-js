@@ -68,9 +68,26 @@ test("toEther", () => {
   expect(new Wei(10, Units.ETHER).toEther(null, true)).toBe('10.00000');
   expect(new Wei(10.125, Units.ETHER).toEther()).toBe('10.125');
   expect(new Wei(10.125, Units.ETHER).toEther(null, true)).toBe('10.12500');
-  expect(new Wei(10.1234567, Units.ETHER).toEther()).toBe('10.1234567');
+  expect(new Wei(10.1234567, Units.ETHER).toEther()).toBe('10.123');
   expect(new Wei(10.1234567, Units.ETHER).toEther(null, true)).toBe('10.12346');
   expect(new Wei(10.1234567, Units.ETHER).toEther(2, true)).toBe('10.12');
+  expect(new Wei(10.1234567, Units.ETHER).toEther(null, false)).toBe('10.12346');
+  expect(new Wei(10.1234567, Units.ETHER).toEther(2, false)).toBe('10.12');
+  expect(new Wei(10.1200051, Units.ETHER).toEther(4, false)).toBe('10.12');
+  expect(new Wei(10.1200051, Units.ETHER).toEther(4, true)).toBe('10.1200');
+});
+
+test.each([true, false])("toEther fixed=%s", (fixed) => {
+  expect(new Wei("0.12778876400805407339", Units.ETHER).toEther(2, fixed)).toBe('0.13');
+  expect(new Wei("0.12478876400805407339", Units.ETHER).toEther(2, fixed)).toBe('0.12');
+  expect(new Wei("0.12778876400805407339", Units.ETHER).toEther(3, fixed)).toBe('0.128');
+  expect(new Wei("0.12738876400805407339", Units.ETHER).toEther(3, fixed)).toBe('0.127');
+  expect(new Wei("0.12778876400805407339", Units.ETHER).toEther(4, fixed)).toBe('0.1278');
+  expect(new Wei("0.12772876400805407339", Units.ETHER).toEther(4, fixed)).toBe('0.1277');
+  expect(new Wei("0.12778876400805407339", Units.ETHER).toEther(5, fixed)).toBe('0.12779');
+  expect(new Wei("0.12778176400805407339", Units.ETHER).toEther(5, fixed)).toBe('0.12778');
+  expect(new Wei("0.12778876400805407339", Units.ETHER).toEther(6, fixed)).toBe('0.127789');
+  expect(new Wei("0.12778806400805407339", Units.ETHER).toEther(6, fixed)).toBe('0.127788');
 });
 
 test("toWei", () => {
@@ -90,8 +107,8 @@ test('toString returns string', () => {
   expect(typeof v).toEqual('string');
 });
 
-test('toString uses 5 decimals as default', () => {
-  expect(new Wei(1000010000000000000).toString()).toEqual('1.00001');
+test('toString uses 3 decimals as default', () => {
+  expect(new Wei(1001000000000000000).toString()).toEqual('1.001');
 });
 
 test('toString convert to Milli', () => {
@@ -99,9 +116,48 @@ test('toString convert to Milli', () => {
   expect(new Wei(1000010000000000000).toString(Units.MILLI, 5, false, true)).toEqual('1000.01000');
 });
 
-test('toString shows 3 decimals', () => {
+test('toString trims zero', () => {
   expect(new Wei(1000010000000000000).toString(Units.MILLI, 3)).toEqual('1000.01');
   expect(new Wei(-1000010000000000000).toString(Units.MILLI, 3)).toEqual('-1000.01');
+});
+
+test('toString respects decimals (selected)', () => {
+  expect(new Wei("0.12778806400805407339", Units.ETHER).toString(Units.MILLI, 3)).toEqual('127.788');
+  expect(new Wei("0.12778806400805407339", Units.ETHER).toString(Units.MILLI, 3, false)).toEqual('127.788');
+  expect(new Wei("0.12778806400805407339", Units.ETHER).toString(Units.MILLI, 3, true)).toEqual('127.788 Milliether');
+  expect(new Wei("12.7", Units.ETHER).toString(Units.ETHER, 3)).toEqual('12.7');
+  expect(new Wei("12.70", Units.ETHER).toString(Units.ETHER, 3)).toEqual('12.7');
+  expect(new Wei("12.75", Units.ETHER).toString(Units.ETHER, 3)).toEqual('12.75');
+});
+
+test.each([
+  [4, false, false, "1.277"],
+  [4, false, true, "1.2770"],
+  [4, true, false, "1.277 Ether"],
+  [4, true, true, "1.2770 Ether"],
+])('toString respects decimals dec=%i, unit=%s, fixed=%s', (d, u, f, expected) => {
+  // @ts-ignore
+  expect(new Wei("1.27700064008", Units.ETHER).toString(Units.ETHER, d, u, f)).toEqual(expected);
+});
+
+test.each([
+  [4, false, false, "12"],
+  [4, false, true, "12.0000"],
+  [4, true, false, "12 Ether"],
+  [4, true, true, "12.0000 Ether"],
+])('toString for positive integer dec=%i, unit=%s, fixed=%s', (d, u, f, expected) => {
+  // @ts-ignore
+  expect(new Wei("12", Units.ETHER).toString(Units.ETHER, d, u, f)).toEqual(expected);
+});
+
+test.each([
+  [4, false, false, "-12"],
+  [4, false, true, "-12.0000"],
+  [4, true, false, "-12 Ether"],
+  [4, true, true, "-12.0000 Ether"],
+])('toString for negative integer dec=%i, unit=%s, fixed=%s', (d, u, f, expected) => {
+  // @ts-ignore
+  expect(new Wei("-12", Units.ETHER).toString(Units.ETHER, d, u, f)).toEqual(expected);
 });
 
 test('toString shows unit', () => {
