@@ -11,11 +11,11 @@ image:https://img.shields.io/gitter/room/etcdev-public/Lobby.svg["Gitter", link=
 |===
 |Package | Version | Description
 
-| link:/packages/eth[`@emeraldplatform/contracts`]
+| link:/packages/contracts[`@emeraldplatform/contracts`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/contracts.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/contract"]
 | Ethereum smart contracts interop.
 
-| link:/packages/eth[`@emeraldplatform/core`]
+| link:/packages/core[`@emeraldplatform/core`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/core.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/core"]
 | Common data structures and functions
 
@@ -23,40 +23,40 @@ image:https://img.shields.io/gitter/room/etcdev-public/Lobby.svg["Gitter", link=
 | image:https://img.shields.io/npm/v/@emeraldplatform/eth.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/eth"]
 | Ethereum data structures and functions
 
-| link:/packages/eth[`@emeraldplatform/eth-account`]
+| link:/packages/eth-account[`@emeraldplatform/eth-account`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/eth-account.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/eth-account"]
 | Operate Ethereum PK JSON
 
-| link:/packages/eth[`@emeraldplatform/eth-node`]
+| link:/packages/eth-node[`@emeraldplatform/eth-node`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/eth-node.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/eth-node"]
 | Ethereum node util
 
-| link:/packages/eth[`@emeraldplatform/eth-rpc`]
+| link:/packages/eth-rpc[`@emeraldplatform/eth-rpc`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/eth-rpc.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/eth-rpc"]
 | Ethereum JSON RPC client
 
-| link:/packages/eth[`@emeraldplatform/rpc`]
+| link:/packages/rpc[`@emeraldplatform/rpc`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/rpc.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/rpc"]
 | JSON RPC client
 
 
-| link:/packages/eth[`@emeraldplatform/svg-icons`]
+| link:/packages/svg-icons[`@emeraldplatform/svg-icons`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/svg-icons.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/svg-icons"]
 | SVG and other raw design
 
-| link:/packages/eth[`@emeraldplatform/ui`]
+| link:/packages/ui[`@emeraldplatform/ui`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/ui.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/ui"]
 | React UI library
 
-| link:/packages/eth[`@emeraldplatform/ui-icons`]
+| link:/packages/ui-icons[`@emeraldplatform/ui-icons`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/ui-icons.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/ui-icons"]
 | React icons
 
-| link:/packages/eth[`@emeraldplatform/util`]
+| link:/packages/util[`@emeraldplatform/util`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/util.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/util"]
 | Other utility functions
 
-| link:/packages/eth[`@emeraldplatform/vault`]
+| link:/packages/vault[`@emeraldplatform/vault`]
 | image:https://img.shields.io/npm/v/@emeraldplatform/vault.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/vault"]
 | Access to Emerald Console API server
 
