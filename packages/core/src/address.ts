@@ -13,7 +13,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { isValidAddress } from 'ethereumjs-util';
 import { Address } from './types';
 
 export class EthAddress implements Address {
@@ -22,14 +21,18 @@ export class EthAddress implements Address {
   }
 
   static fromHexString(hex: string): Address {
-    if (!isValidAddress(hex)) {
+    if (!EthAddress.isValidAddress(hex)) {
       throw new Error('Invalid address');
     }
     return new EthAddress(hex);
   }
-  
+
   isValid(): boolean {
-    return isValidAddress(this.address);
+    return EthAddress.isValidAddress(this.address);
+  }
+
+  static isValidAddress(address: string): boolean {
+    return /^0x[0-9a-fA-F]{40}$/.test(address);
   }
 
 }

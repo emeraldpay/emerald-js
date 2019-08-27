@@ -30,8 +30,7 @@
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
     "bignumber.js": "8.0.2",
-    "ethereumjs-abi": "0.6.7",
-    "ethereumjs-util": "6.1.0"
+    "ethereumjs-abi": "0.6.7"
   },
   "devDependencies": {
     "@types/bn.js": "^4.11.4",
