@@ -26,20 +26,22 @@ const styles = theme => ({
   typography: {},
   toolbar: {
     background: 'transparent',
-    height: theme.spacing.unit * 10,
+    height: theme && theme.spacing(10),
     flex: 1,
     justifyContent: 'space-between',
   },
   childWrapper: {
-    padding: theme.spacing.unit * 4,
+    padding: theme && theme.spacing(4),
   },
 });
 
-const getIconWithButton = (icon) => {
+const getIconWithButton = (icon: React.ReactElement) => {
   if (!icon) { return <div />; }
+  // move onClick handler from icon to IconButton
+  const onClickHandler = icon.props.onClick || undefined;
   return (
-    <IconButton>
-      {icon}
+    <IconButton onClick={onClickHandler}>
+      {React.cloneElement(icon, {...icon.props, onClick: undefined})}
     </IconButton>
   );
 };
@@ -50,7 +52,7 @@ interface Props {
   classes: any;
   rightIcon?: any;
   leftIcon?: any;
-};
+}
 
 export class Page extends React.Component<Props> {
   static defaultProps = {

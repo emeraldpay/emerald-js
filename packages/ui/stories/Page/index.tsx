@@ -17,7 +17,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Typography from '@material-ui/core/Typography';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
-
+import { action } from '@storybook/addon-actions';
 import Page from '../../src/components/Page';
 import { Back } from '@emeraldplatform/ui-icons';
 
@@ -25,7 +25,14 @@ storiesOf('Page', module)
   .addDecorator(withKnobs)
   .add('default', () => (
     <div>
-      <Page title={text('title', 'Title Here')} leftIcon={<Back />}>
+      <Page title={text('title', 'Title Here')} leftIcon={<Back onClick={action('Left Icon onClick')}/>}>
+        <Typography>Im a page content supsup</Typography>
+      </Page>
+    </div>
+  ))
+  .add('without left icon', () => (
+    <div>
+      <Page title={text('title', 'Without left icon')}>
         <Typography>Im a page content supsup</Typography>
       </Page>
     </div>
