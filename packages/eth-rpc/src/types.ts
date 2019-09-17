@@ -15,7 +15,7 @@ limitations under the License.
 */
 export type CallObject = {
   to: string,
-  data: string,
+  data?: string,
   nonce?: number,
   gas?: number,
 };
