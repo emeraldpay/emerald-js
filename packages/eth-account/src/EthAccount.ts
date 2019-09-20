@@ -54,6 +54,10 @@ export class EthAccount {
       return this.wallet.getAddressString();
     }
 
+    getPrivateKeyString(): string {
+      return this.wallet.getPrivateKeyString();
+    }
+
     /**
      * Returns RLP encoded signed transaction
      */

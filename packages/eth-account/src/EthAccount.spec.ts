@@ -26,12 +26,17 @@ test('fromPrivateKey', () => {
   expect(() => EthAccount.fromPrivateKey('0x12')).toThrowError();
 });
 
-test('getAddress() returns address as hex string', () => {
-  const wallet = EthAccount.fromPrivateKey('0x09b055edb6b45e461d55f50bc5590e69ba6c480b47254afe8884b236c706a2e6');
-  expect(wallet.getAddress()).toEqual('0x5b06c264bf2cd877a2b85d03d720674566231fa0');
-});
+describe('EthAccount', () => {
+  it('getAddress() returns address as hex string', () => {
+    const wallet = EthAccount.fromPrivateKey('0x09b055edb6b45e461d55f50bc5590e69ba6c480b47254afe8884b236c706a2e6');
+    expect(wallet.getAddress()).toEqual('0x5b06c264bf2cd877a2b85d03d720674566231fa0');
+  });
 
-describe('Wallet', () => {
+  it('should return private key as string', () => {
+    const wallet = EthAccount.fromPrivateKey('0x09b055edb6b45e461d55f50bc5590e69ba6c480b47254afe8884b236c706a2e6');
+    expect(wallet.getPrivateKeyString()).toEqual('0x09b055edb6b45e461d55f50bc5590e69ba6c480b47254afe8884b236c706a2e6');
+  });
+
   it('should sign tx', () => {
     const wallet = EthAccount.fromPrivateKey('0xe331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109');
     const txData = {
