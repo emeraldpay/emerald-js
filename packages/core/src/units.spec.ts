@@ -24,6 +24,10 @@ describe('toBaseUnits / fromBaseUnits', () => {
   it('convert from base units', () => {
     expect(fromBaseUnits(new BigNumber('1000000000000000000'), 18).toString()).toEqual('1');
   });
+  it('supports strings as argument', () => {
+    expect(fromBaseUnits('1000000000000000000', 18).toString()).toEqual('1');
+    expect(toBaseUnits('0.01', 8).toString()).toEqual('1000000');
+  })
 });
 
 describe('Units', () => {
