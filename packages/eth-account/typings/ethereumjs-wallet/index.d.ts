@@ -18,6 +18,7 @@ declare module 'ethereumjs-wallet' {
     static fromPrivateKey(key: Buffer): Wallet
     static fromV3(json: string, password: string): Wallet
     getPrivateKey(): Buffer
+    getPrivateKeyString(): string
     getAddressString(): string
     toV3String(password: string, opts?: any): string;
   }
