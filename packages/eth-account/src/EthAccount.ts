@@ -27,10 +27,10 @@ export interface EthTxData {
 }
 
 export class EthAccount {
-    wallet: Wallet;
+    private wallet: Wallet;
 
-    static fromV3(input, password: string) {
-      return Wallet.fromV3(input, password);
+    static fromV3(input, password: string): EthAccount {
+      return new EthAccount(Wallet.fromV3(input, password));
     }
 
     static toV3(privateKey: string, password: string): string {
