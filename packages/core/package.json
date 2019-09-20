@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/core",
-  "version": "0.5.2",
+  "version": "0.5.4",
   "description": "Emerald platform core components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
