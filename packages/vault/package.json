@@ -11,7 +11,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
     "prepublish": "npm run build",
-    "build": "tsc"
+    "build": "rimraf lib/ && tsc"
   },
   "repository": {
     "type": "git",

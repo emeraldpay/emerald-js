@@ -15,7 +15,7 @@ limitations under the License.
 */
 import * as Wallet from 'ethereumjs-wallet';
 import * as ethUtil from 'ethereumjs-util';
-import * as EthereumTx from 'ethereumjs-tx';
+import { Transaction as EthereumTx } from 'ethereumjs-tx';
 
 export interface EthTxData {
   nonce: number;
@@ -62,13 +62,13 @@ export class EthAccount {
      * Returns RLP encoded signed transaction
      */
     signTx(txData: EthTxData): string {
-      const tx = new EthereumTx(null);
-      tx.gasLimit = txData.gasLimit;
-      tx.gasPrice = txData.gasPrice;
-      tx.nonce = txData.nonce;
-      tx.value = txData.value;
-      tx.data = txData.data;
-      tx.chainId = txData.chainId;
+      const tx = new EthereumTx(txData);
+      // tx.gasLimit = txData.gasLimit;
+      // tx.gasPrice = txData.gasPrice;
+      // tx.nonce = txData.nonce;
+      // tx.value = txData.value;
+      // tx.data = txData.data;
+      // tx.chainId = txData.chainId;
       tx.sign(this.wallet.getPrivateKey());
       return `0x${tx.serialize().toString('hex')}`;
     }
