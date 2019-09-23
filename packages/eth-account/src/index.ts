@@ -14,8 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import EthAccount, { EthTxData } from './EthAccount';
+import { Transaction } from 'ethereumjs-tx';
 
 export {
   EthAccount,
   EthTxData,
+  Transaction
 };

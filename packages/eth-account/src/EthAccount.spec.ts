@@ -14,13 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import * as utils from 'ethereumjs-util';
-// import EthereumTx from 'ethereumjs-tx';
+import * as rlp from 'rlp';
+import {Transaction as EthereumTx } from 'ethereumjs-tx';
 
 import EthAccount from './EthAccount';
-
-const EthereumTx = require('ethereumjs-tx');
-
-const { rlp } = utils;
 
 test('fromPrivateKey', () => {
   expect(() => EthAccount.fromPrivateKey('0x12')).toThrowError();
@@ -48,7 +45,7 @@ describe('EthAccount', () => {
       data: '0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820af38ce82c3a099c3efae04c6a69a94c77ed4d313b65cb39426e4bad43298d98a0029',
     };
     const rlpTx = wallet.signTx(txData);
-    const decoded = new EthereumTx(rlp.decode(rlpTx));
+    const decoded = new EthereumTx(rlp.decode(utils.toBuffer(rlpTx)));
     expect(decoded.value.toString('hex')).toEqual('');
     expect(decoded.gasLimit.toString('hex')).toEqual('03e8');
     expect(decoded.data.toString('hex')).toEqual(txData.data.substring(2));

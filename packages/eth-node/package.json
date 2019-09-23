@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/eth-node",
-  "version": "0.5.4",
+  "version": "0.5.7",
   "description": "Ethereum and Ethereum classic full node management",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,7 +11,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
     "prepublish": "npm run build",
-    "build": "tsc"
+    "build": "rimraf lib/ && tsc"
   },
   "repository": {
     "type": "git",

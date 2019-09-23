@@ -7,7 +7,9 @@
     "test:coverage": "CI=true lerna run test:coverage --stream && codecov"
   },
   "homepage": "https://emeraldplatform.io",
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^3.0.0"
+  },
   "workspaces": [
     "packages/*"
   ]

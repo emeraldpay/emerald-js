@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/vault",
-  "version": "0.5.4",
+  "version": "0.5.7",
   "description": "Emerald Vault utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,7 +11,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
     "prepublish": "npm run build",
-    "build": "tsc"
+    "build": "rimraf lib/ && tsc"
   },
   "repository": {
     "type": "git",
