@@ -35,4 +35,12 @@ export class EthAddress implements Address {
     return /^0x[0-9a-fA-F]{40}$/.test(address);
   }
 
+  public equals (another: Address): boolean {
+    return (this.address.toLowerCase() === another.toString().toLowerCase());
+  };
+
+  public toString (): string {
+    return this.address;
+  }
+
 }

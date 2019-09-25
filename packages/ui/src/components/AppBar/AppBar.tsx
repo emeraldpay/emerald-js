@@ -21,7 +21,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 
-const styles = theme => ({
+const styles = (theme: any) => ({
   title: {
     color: theme.palette.primary
   },
@@ -32,7 +32,7 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: `${theme.spacing.unit * 3}px`,
+    marginRight: `${theme.spacing(3)}px`,
     '&:last-child': {
       marginRight: '0px'
     }

@@ -15,10 +15,12 @@ limitations under the License.
 */
 export interface Address {
   isValid(): boolean;
+  equals: (another: Address) => boolean;
+  toString: () => string;
 }
 
 export interface Transaction {
-  
+
 }
 
 /**
