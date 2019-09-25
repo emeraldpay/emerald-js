@@ -37,4 +37,10 @@ describe('EthAddress', () => {
   test('empty hashes are not valid', () => {
     expect(new EthAddress('').isValid()).toBeFalsy();
   });
+
+  it('should compare by value', () => {
+    const a1 = new EthAddress('0x6ebeb2af2e734fbba2b58c5b922628af442527');
+    const a2 = new EthAddress('0x6ebeb2af2e734fbba2b58c5b922628af442527');
+    expect(a1.equals(a2)).toBeTruthy();
+  });
 });
