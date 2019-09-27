@@ -14,11 +14,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import * as React from 'react';
-import { shallow } from 'enzyme';
 import Page from './Page';
+import { render } from '@testing-library/react';
 
 describe('Page', () => {
-  it('it renders without crash', () => {
-    const wrapper = shallow(<Page title="Title" />);
+  it('it renders without crash with string title', () => {
+    const wrapper = render(<Page title="Title" />);
+    expect(wrapper).toBeDefined();
   });
+  it('it renders without crash with component title', () => {
+    const wrapper = render(<Page title={<div>title</div>} />);
+    expect(wrapper).toBeDefined();
+  });
+
 });

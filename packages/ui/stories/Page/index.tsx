@@ -18,8 +18,8 @@ import { storiesOf } from '@storybook/react';
 import Typography from '@material-ui/core/Typography';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
-import Page from '../../src/components/Page';
-import { Back } from '@emeraldplatform/ui-icons';
+import Page, { PageTitle } from '../../src/components/Page';
+import { Back, Box } from '@emeraldplatform/ui-icons';
 
 storiesOf('Page', module)
   .addDecorator(withKnobs)
@@ -36,4 +36,10 @@ storiesOf('Page', module)
         <Typography>Im a page content supsup</Typography>
       </Page>
     </div>
+  ))
+  .add('title component', () => (
+    <Page title={(<div style={{display:'flex'}}><Box /><PageTitle>Title with icon</PageTitle></div>)}>
+      <Typography>Im a page content supsup</Typography>
+    </Page>
+
   ));

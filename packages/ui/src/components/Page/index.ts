@@ -16,4 +16,5 @@ limitations under the License.
 import Page from './Page';
 export default Page;
 
+export { PageTitle } from './Page'
 
