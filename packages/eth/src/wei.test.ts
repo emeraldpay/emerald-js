@@ -19,6 +19,8 @@ import BigNumber from "bignumber.js";
 test('construct from Wei', () => {
   expect(new Wei(123456789).value.toString()).toBe('123456789');
   expect(new Wei(123456789, Units.WEI).value.toString()).toBe('123456789');
+  expect(new Wei('1000000000000000').toString()).toEqual('0.001');
+  expect(new Wei('100000000000000').toString()).toEqual('0.0001');
 });
 
 test('constructor accept negative values', () => {

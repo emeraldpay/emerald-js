@@ -127,7 +127,7 @@ export default class Wei {
     return this.value.dividedBy(unit.weis);
   }
 
-  toString(unit: Unit = Units.ETHER, decimals: number = 3, showUnit: boolean = false, fixed: boolean = false): string {
+  toString(unit: Unit = Units.ETHER, decimals: number = 18, showUnit: boolean = false, fixed: boolean = false): string {
     let bn = this.toUnit(unit);
     let num = bn.toFixed(decimals, BigNumber.ROUND_HALF_UP);
     const point = num.indexOf(".");

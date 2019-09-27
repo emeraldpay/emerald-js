@@ -32,7 +32,7 @@ const styles = theme => ({
   },
   childWrapper: {
     padding: theme && theme.spacing(4),
-  },
+  }
 });
 
 const getIconWithButton = (icon: React.ReactElement) => {
@@ -47,11 +47,21 @@ const getIconWithButton = (icon: React.ReactElement) => {
 };
 
 interface Props {
-  title: string;
+  title: React.ReactElement | string;
   className?: string;
   classes: any;
   rightIcon?: any;
   leftIcon?: any;
+}
+
+export interface IPageTile {
+  children: React.ReactElement | string;
+}
+
+export function PageTitle (props: IPageTile) {
+  return (
+    <Typography variant="h6" color="inherit">{props.children}</Typography>
+  )
 }
 
 export class Page extends React.Component<Props> {
@@ -64,11 +74,13 @@ export class Page extends React.Component<Props> {
     const {
       title, leftIcon, rightIcon, classes,
     } = this.props;
+    const isTitleString = (typeof title === 'string');
     return (
       <Paper className={classes.root}>
         <Toolbar className={classes.toolbar}>
           {getIconWithButton(leftIcon)}
-          <Typography variant="h6" color="inherit" className={classes.typography}>{title}</Typography>
+          {isTitleString && (<PageTitle>{title}</PageTitle>)}
+          {!isTitleString && title}
           {getIconWithButton(rightIcon)}
         </Toolbar>
 
