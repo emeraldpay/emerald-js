@@ -77,4 +77,18 @@ storiesOf('Account', module)
       identity
       addressWidth="200px"
     />
+  ))
+  .add('Same identity icon w/o 0x prefix', () => (
+    <React.Fragment>
+      <Account
+        identity={true}
+        address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
+        name="account1"
+      />
+      <Account
+        identity={true}
+        address="FBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
+        name="account1"
+      />
+    </React.Fragment>
   ));

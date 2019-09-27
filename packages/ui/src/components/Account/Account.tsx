@@ -99,22 +99,24 @@ export class Account extends React.Component<Props> {
 
   getIdentityIcon() {
     const { identity, classes, address } = this.props;
-
-    if (!identity) { return null; }
+    if (!identity) {
+      return null;
+    }
 
     let className = classes.identityIcon;
-
+    const id = address.startsWith('0x') ? address : `0x${address}`
     return (
       <div className={className}>
-        <IdentityIcon id={address} />
+        <IdentityIcon id={id} />
       </div>
     );
   }
 
   getNameEditIcon() {
     const { editable, classes, onEditClick } = this.props;
-
-    if (editable === false) { return null; }
+    if (editable === false) {
+      return null;
+    }
 
     return (
       <div className={classes.editNameIconContainer} onClick={onEditClick}>
@@ -125,8 +127,9 @@ export class Account extends React.Component<Props> {
 
   getNameField() {
     const { name, classes } = this.props;
-
-    if (name === null) { return null; }
+    if (name === null) {
+      return null;
+    }
 
     return (
       <div className={classes.accountNameContainer}>
