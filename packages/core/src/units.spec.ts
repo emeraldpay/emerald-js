@@ -28,6 +28,9 @@ describe('toBaseUnits / fromBaseUnits', () => {
     expect(fromBaseUnits('1000000000000000000', 18).toString()).toEqual('1');
     expect(toBaseUnits('0.01', 8).toString()).toEqual('1000000');
   })
+  it('with zero decimals', () => {
+    expect(fromBaseUnits('350000', 0).toString(10)).toEqual('350000');
+  })
 });
 
 describe('Units', () => {

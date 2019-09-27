@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/ui-smart",
-  "version": "0.5.10",
+  "version": "0.5.11",
   "description": "ui smart components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -62,11 +62,11 @@
   "dependencies": {
     "@emeraldplatform/contracts": "^0.5.1",
     "@emeraldplatform/eth": "^0.5.10",
-    "@emeraldplatform/eth-rpc": "^0.5.8",
+    "@emeraldplatform/eth-rpc": "^0.5.11",
     "@emeraldplatform/rpc": "^0.5.1",
-    "@emeraldplatform/ui": "^0.5.10",
+    "@emeraldplatform/ui": "^0.5.11",
     "@emeraldplatform/ui-icons": "^0.5.2",
-    "@emeraldplatform/vault": "^0.5.8",
+    "@emeraldplatform/vault": "^0.5.11",
     "@material-ui/core": "^4.3.3",
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.0.8",

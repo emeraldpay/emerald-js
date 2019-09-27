@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/eth-account",
-  "version": "0.5.8",
+  "version": "0.5.11",
   "description": "Ethereum account management",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -30,7 +30,7 @@
   },
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
-    "@emeraldplatform/core": "^0.5.8",
+    "@emeraldplatform/core": "^0.5.11",
     "ethereumjs-tx": "2.1.1",
     "ethereumjs-wallet": "0.6.3",
     "rlp": "^2.2.3"
