@@ -56,10 +56,6 @@ image:https://img.shields.io/gitter/room/etcdev-public/Lobby.svg["Gitter", link=
 | image:https://img.shields.io/npm/v/@emeraldplatform/util.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/util"]
 | Other utility functions
 
-| link:/packages/vault[`@emeraldplatform/vault`]
-| image:https://img.shields.io/npm/v/@emeraldplatform/vault.svg["npm (scoped)", link="https://www.npmjs.com/package/@emeraldplatform/vault"]
-| Access to Emerald Console API server
-
 |===
 
 == Development
