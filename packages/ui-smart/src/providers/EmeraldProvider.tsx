@@ -17,7 +17,6 @@ import * as React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {Theme} from '@emeraldplatform/ui';
 import { EthJsonRpcProvider } from './EthJsonRpcProvider';
-import { VaultJsonRpcProvider } from './VaultJsonRpcProvider';
 
 import {ThemeProvider} from '@material-ui/styles';
 
@@ -32,9 +31,7 @@ export class EmeraldProvider extends React.Component<Props> {
       <ThemeProvider theme={Theme}>
         <CssBaseline />
         <EthJsonRpcProvider url={this.props.ethUrl}>
-          <VaultJsonRpcProvider url={this.props.vaultUrl}>
             {this.props.children}
-          </VaultJsonRpcProvider>
         </EthJsonRpcProvider>
       </ThemeProvider>
     );
