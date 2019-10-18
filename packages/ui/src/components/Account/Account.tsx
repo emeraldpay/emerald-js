@@ -81,7 +81,7 @@ export interface Props {
   onEditClick?: any,
 }
 
-export class Account extends React.Component<Props> {
+export class Account extends React.PureComponent<Props> {
   static defaultProps = {
     editable: false,
     addressWidth: 'auto',

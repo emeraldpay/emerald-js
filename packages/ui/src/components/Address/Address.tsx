@@ -62,7 +62,7 @@ export interface Props {
   muiTheme?: any;
 }
 
-export class Address extends React.Component<Props> {
+export class Address extends React.PureComponent<Props> {
 
   static defaultProps = {
     hideCopy: false,
@@ -81,19 +81,15 @@ export class Address extends React.Component<Props> {
     this.props.onCopyClick(this.props.id);
   }
 
-  get id() {
-    const idProp = this.props.id;
-    return (idProp.startsWith('0x') ? idProp : `0x${idProp}`);
-  }
-
   render() {
     const { classes, shortened, hideCopy } = this.props;
-
     const addressClassname = shortened ? classes.shortenedAddress : classes.fullAddress;
+    const idProp = this.props.id;
+    const id = (idProp.startsWith('0x') ? idProp : `0x${idProp}`);
 
     return (
       <div className={classes.container}>
-        <Typography className={addressClassname}>{this.id}</Typography>
+        <Typography className={addressClassname}>{id}</Typography>
         {hideCopy ? null : (
           <ToggledIconButton
             onClick={this.onCopyClick}

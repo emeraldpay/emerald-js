@@ -36,7 +36,7 @@ interface Props {
   classes: any;
 }
 
-export class IdentityIcon extends React.Component<Props> {
+export class IdentityIcon extends React.PureComponent<Props> {
   static defaultProps = {
     size: 40,
     onClick: noop,
@@ -50,7 +50,6 @@ export class IdentityIcon extends React.Component<Props> {
     const seed = id.toLowerCase();
     const icon = blockies.create({ seed }).toDataURL();
     const iconSize = Number.isInteger(size) ? size : 40;
-
     const mainStyle = {
       height: `${iconSize}px`,
       width: `${iconSize}px`,
