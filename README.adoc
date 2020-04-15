@@ -56,10 +56,17 @@ image:https://img.shields.io/gitter/room/etcdev-public/Lobby.svg["Gitter", link=
 
 == Development
 
+=== Requirements
+
+To install common packages run `yarn` from root folder
+----
+yarn
+----
+
 === Build
 
 ----
-lerna bootstrap
+yarn lerna bootstrap
 ----
 
 === Tests suite
