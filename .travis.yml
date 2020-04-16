@@ -10,9 +10,9 @@ notifications:
 install:
   - npm install -g yarn
   - npm install -g codecov
-  - npm install -g lerna
   - npm install -g https://github.com/google/js-green-licenses.git\#494a457
-  - lerna bootstrap
+  - yarn
+  - yarn lerna bootstrap
 
 script:
   - yarn build
