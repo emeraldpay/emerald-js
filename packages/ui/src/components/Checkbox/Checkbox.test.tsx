@@ -13,14 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import { shallow } from 'enzyme';
-import { Checkbox } from './Checkbox';
+import * as React from 'react';
+import { Checkbox, ICheckboxProps } from './Checkbox';
 
 describe('Checkbox', () => {
   it('changes state when handleCheck called', () => {
-    const wrapper = shallow(<Checkbox />);
-    wrapper.instance()["handleCheck"](null, true);
-    expect(wrapper.state()["checked"]).toBeTruthy();
+    const wrapper = shallow<Checkbox, ICheckboxProps>(<Checkbox />);
+    wrapper.instance().handleCheck(null, true);
+    expect(wrapper.state().checked).toBeTruthy();
   });
 });

@@ -13,17 +13,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import { shallow } from 'enzyme';
+import * as React from 'react';
 import { Input } from './Input';
 
-
-const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
+const reduceClasses = (prev, curr) => ({...prev,  [curr]: curr});
 const classes = Object.keys({}).reduce(reduceClasses, {});
 const build = () => shallow(<Input classes={classes} />);
 
-
-describe("Input", () => {
+describe('Input', () => {
   it('Renders', () => {
     const component = build();
     expect(component).toBeDefined();
@@ -35,8 +33,7 @@ describe("Input", () => {
   });
 
   it('should has type prop', () => {
-    const component = shallow(<Input type="number" classes={classes} />);
+    const component = shallow(<Input type='number' classes={classes} />);
     expect(component).toBeDefined();
-  })
+  });
 });
-

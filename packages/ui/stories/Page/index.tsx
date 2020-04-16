@@ -13,13 +13,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import Typography from '@material-ui/core/Typography';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
-import { action } from '@storybook/addon-actions';
-import Page, { PageTitle } from '../../src/components/Page';
 import { Back, Box } from '@emeraldplatform/ui-icons';
+import Typography from '@material-ui/core/Typography';
+import { action } from '@storybook/addon-actions';
+import { text, withKnobs } from '@storybook/addon-knobs/react';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import Page, { PageTitle } from '../../src/components/Page';
 
 storiesOf('Page', module)
   .addDecorator(withKnobs)
@@ -38,7 +38,7 @@ storiesOf('Page', module)
     </div>
   ))
   .add('title component', () => (
-    <Page title={(<div style={{display:'flex'}}><Box /><PageTitle>Title with icon</PageTitle></div>)}>
+    <Page title={(<div style={{ display: 'flex' }}><Box /><PageTitle>Title with icon</PageTitle></div>)}>
       <Typography>Im a page content supsup</Typography>
     </Page>
 

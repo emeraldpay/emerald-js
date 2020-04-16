@@ -13,23 +13,23 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
+import * as React from 'react';
 import Account from '../Account';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     width: '100%',
     backgroundColor: theme.palette.background.paper,
-    cursor: 'pointer',
-  },
+    cursor: 'pointer'
+  }
 });
 
 interface Props {
   onChange?: any;
-  accounts?: Array<string>;
+  accounts?: string[];
   classes: any;
   selectedAccount?: any;
 }
@@ -40,33 +40,33 @@ interface State {
 }
 
 export class AccountSelect extends React.Component<Props, State> {
-  constructor(props) {
+  constructor (props) {
     super(props);
     const accounts = props.accounts || [];
     const selectedIndex = accounts.indexOf(props.selectedAccount);
     this.state = {
       anchorEl: null,
-      selectedIndex: (selectedIndex >= 0) ? selectedIndex : 0,
+      selectedIndex: (selectedIndex >= 0) ? selectedIndex : 0
     };
     this.renderAccounts = this.renderAccounts.bind(this);
   }
 
-  handleClickListItem = event => {
+  public handleClickListItem = (event) => {
     this.setState({ anchorEl: event.currentTarget });
-  };
+  }
 
-  handleMenuItemClick = (event, index) => {
+  public handleMenuItemClick = (event, index) => {
     this.setState({ selectedIndex: index, anchorEl: null });
     if (this.props.onChange && this.props.accounts) {
       this.props.onChange(this.props.accounts[index]);
     }
-  };
+  }
 
-  handleClose = () => {
+  public handleClose = () => {
     this.setState({ anchorEl: null });
-  };
+  }
 
-  renderAccounts() {
+  public renderAccounts () {
     const accounts = this.props.accounts || [];
     return accounts.map((account, index) => (
       <MenuItem
@@ -74,18 +74,18 @@ export class AccountSelect extends React.Component<Props, State> {
         selected={index === this.state.selectedIndex}
       >
         <Account
-          identity
+          identity={true}
           addressProps={{
-            hideCopy: true,
+            hideCopy: true
           }}
           address={account}
-          onClick={event => this.handleMenuItemClick(event, index)}
+          onClick={(event) => this.handleMenuItemClick(event, index)}
         />
       </MenuItem>
-    ))
+    ));
   }
 
-  renderSelected() {
+  public renderSelected () {
     const accounts = this.props.accounts || [];
     if (accounts.length == 0) {
       return (<div>No accounts provided</div>);
@@ -96,18 +96,18 @@ export class AccountSelect extends React.Component<Props, State> {
     }
     return (
       <Account
-        identity
+        identity={true}
         onClick={this.handleClickListItem}
         address={selected}
-        addressWidth="200px"
+        addressWidth='200px'
         addressProps={{
-          shortened: false,
+          shortened: false
         }}
       />
-    )
+    );
   }
 
-  render() {
+  public render () {
     const { classes } = this.props;
     const { anchorEl } = this.state;
 

@@ -13,61 +13,50 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { CSSProperties } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import * as React from 'react';
 import blockies from './blockies';
 
-
-const getStyles = (theme?:any) => ({
+const getStyles = {
   clickable: {
     '&:hover': {
-      cursor: 'pointer',
-    },
-  },
-});
+      cursor: 'pointer'
+    }
+  }
+};
 
-const noop = () => {};
-
-interface Props {
+interface IIdentityIconProps {
   id: string;
-  size: number;
-  onClick: any;
+  size?: number;
+  onClick?: any;
   classes: any;
 }
 
-export class IdentityIcon extends React.PureComponent<Props> {
-  static defaultProps = {
-    size: 40,
-    onClick: noop,
-  }
+export function IdentityIcon (props: IIdentityIconProps) {
+  const {
+    id, size, onClick, classes
+  } = props;
 
-  render() {
-    const {
-      id, size, onClick, classes,
-    } = this.props;
+  const seed = id.toLowerCase();
+  const icon = blockies.create({ seed }).toDataURL();
+  const iconSize = Number.isInteger(size) ? size : 40;
+  const mainStyle = {
+    height: `${iconSize}px`,
+    width: `${iconSize}px`,
+    minWidth: `${iconSize}px`,
+    background: `url(${icon})`,
+    borderRadius: '50%',
+    position: 'relative'
+  };
 
-    const seed = id.toLowerCase();
-    const icon = blockies.create({ seed }).toDataURL();
-    const iconSize = Number.isInteger(size) ? size : 40;
-    const mainStyle = {
-      height: `${iconSize}px`,
-      width: `${iconSize}px`,
-      minWidth: `${iconSize}px`,
-      background: `url(${icon})`,
-      borderRadius: '50%',
-      position: 'relative',
-    } as CSSProperties;
+  const identIconProps = {
+    onClick,
+    className: onClick ? classes.clickable : ''
+  };
 
-    const identiconProps = {
-      onClick,
-      className: onClick === noop ? '' : classes.clickable,
-    };
-
-    return (
-      <div style={mainStyle} {...identiconProps} />
-    );
-  }
+  return (
+    <div style={mainStyle as React.CSSProperties} {...identIconProps} />
+  );
 }
 
 export default withStyles(getStyles)(IdentityIcon);

@@ -13,10 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import { shallow } from 'enzyme';
+import * as React from 'react';
 import SyncWarning from './SyncWarning';
-
 
 describe('SyncWarning', () => {
   it('it renders without crash', () => {

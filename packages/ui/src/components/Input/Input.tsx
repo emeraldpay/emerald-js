@@ -13,9 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import * as React from 'react';
 
 const getErrorProps = ({ errorText }) => {
   const propsToAdd: any = {};
@@ -32,18 +32,18 @@ const getAdornments = ({ rightIcon, leftIcon }) => {
   const adornments: any = {};
 
   if (leftIcon) {
-    adornments.startAdornment = (<InputAdornment position="start"> { leftIcon } </InputAdornment>);
+    adornments.startAdornment = (<InputAdornment position='start'> {leftIcon} </InputAdornment>);
   }
 
   if (rightIcon) {
-    adornments.endAdornment = (<InputAdornment position="end">{ rightIcon }</InputAdornment>);
+    adornments.endAdornment = (<InputAdornment position='end'>{rightIcon}</InputAdornment>);
   }
 
   return adornments;
 };
 
-const getInputProps = props => ({
-  InputProps: { ...getAdornments(props) },
+const getInputProps = (props) => ({
+  InputProps: { ...getAdornments(props) }
 });
 
 const getMultilineProps = ({ multiline, rows, rowsMax }) => {
@@ -67,7 +67,7 @@ interface Props {
   leftIcon?: any;
   placeholder?: string;
   onChange?: any;
-  errorText?:any;
+  errorText?: any;
   type?: string;
   min?: number | string;
   max?: number | string;
@@ -75,7 +75,7 @@ interface Props {
 
 export class Input extends React.Component<Props> {
 
-  static defaultProps = {
+  public static defaultProps = {
     value: '',
     multiline: false,
     rowsMax: null,
@@ -84,10 +84,10 @@ export class Input extends React.Component<Props> {
     rightIcon: null,
     leftIcon: null,
     placeholder: '',
-    onChange: () => {},
+    onChange: () => {}
   };
 
-  render() {
+  public render () {
     const multilineProps = getMultilineProps(this.props as { multiline: any, rows: any, rowsMax: any });
     const errorProps = getErrorProps(this.props as {errorText: any});
     const inputProps = getInputProps(this.props);
@@ -96,8 +96,8 @@ export class Input extends React.Component<Props> {
       <TextField
         type={this.props.type}
         value={this.props.value}
-        fullWidth
-        margin="normal"
+        fullWidth={true}
+        margin='normal'
         rows={this.props.rows}
         rowsMax={this.props.rowsMax}
         disabled={this.props.disabled}
@@ -105,7 +105,7 @@ export class Input extends React.Component<Props> {
         onChange={this.props.onChange}
         inputProps={{
           min: this.props.min,
-          max: this.props.max,
+          max: this.props.max
         }}
         {...inputProps}
         {...errorProps}

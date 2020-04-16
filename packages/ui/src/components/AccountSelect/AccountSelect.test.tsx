@@ -13,12 +13,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import { mount, shallow } from 'enzyme';
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
-import {AccountSelect} from './AccountSelect';
+import { AccountSelect } from './AccountSelect';
 
-const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
-const classes = Object.keys({root: {}}).reduce(reduceClasses, {});
+const reduceClasses = (prev, curr) => ({ ...prev,  [curr]: curr });
+const classes = Object.keys({ root: {} }).reduce(reduceClasses, {});
 
 describe('AccountSelect', () => {
   it('should renders without crash', () => {
@@ -34,5 +34,5 @@ describe('AccountSelect', () => {
   it('should handle empty address list and selected address', () => {
     const component = mount(<AccountSelect classes={classes} />);
     expect(component).toBeDefined();
-  })
+  });
 });

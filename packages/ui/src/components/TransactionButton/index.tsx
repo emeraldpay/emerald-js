@@ -13,28 +13,28 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import * as qs from 'qs';
+import * as React from 'react';
 
 interface Props {
   transaction: any;
   primaryText?: string;
-};
+}
 
 interface State {
   transactionLink?: string;
 }
 
 export default class TransactionButton extends React.Component<Props, State> {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       transactionLink: this.encodeURI(props.transaction)
-    }
+    };
   }
 
-  componentDidUpdate(prevProps) {
+  public componentDidUpdate (prevProps) {
     if (prevProps.transaction !== this.props.transaction) {
       this.setState({
         transactionLink: this.encodeURI(this.props.transaction)
@@ -42,13 +42,13 @@ export default class TransactionButton extends React.Component<Props, State> {
     }
   }
 
-  encodeURI(obj) {
+  public encodeURI (obj) {
     return `ethereum:${obj.to}?${qs.stringify(obj)}`;
   }
 
-  render() {
+  public render () {
     return (
-      <Button href={this.state.transactionLink} variant="contained">
+      <Button href={this.state.transactionLink} variant='contained'>
         {this.props.primaryText || 'Send Transaction'}
       </Button>
     );

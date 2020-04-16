@@ -13,9 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import {CSSProperties} from "@material-ui/core/styles/withStyles";
+import { createStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = createStyles({
   container: {
     maxWidth: '580px',
     borderRadius: '1px',
@@ -26,14 +26,14 @@ const styles = {
     paddingTop: '14px',
     paddingLeft: '20px',
     paddingRight: '20px',
-    paddingBottom: '10px',
-  } as CSSProperties,
+    paddingBottom: '10px'
+  },
   header: {
-    fontWeight: 'bold',
-  } as CSSProperties,
+    fontWeight: 'bold'
+  },
   text: {
-    paddingBottom: '10px',
-  } as CSSProperties,
-};
+    paddingBottom: '10px'
+  }
+});
 
 export default styles;

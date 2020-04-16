@@ -13,13 +13,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { Spinner1 as Spinner } from '@emeraldplatform/ui-icons';
-import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import Typography from '@material-ui/core/Typography';
+import * as React from 'react';
 
-const getStyles = (theme? : any) => ({
+const getStyles = (theme?: any) => ({
   container: {
     width: '100%',
     backgroundColor: '#F9F2F2',
@@ -29,16 +29,16 @@ const getStyles = (theme? : any) => ({
     zIndex: -1,
     alignItems: 'center',
     paddingLeft: '5px',
-    paddingTop: '5px',
+    paddingTop: '5px'
   } as CSSProperties,
   errorText: {
-    color: theme.palette.error.light,
+    color: theme.palette.error.light
   },
   text: {
     color: '#CF3B3B',
     zIndex: 1,
-    marginLeft: '5px',
-  } as CSSProperties,
+    marginLeft: '5px'
+  } as CSSProperties
 });
 
 interface Props {
@@ -49,28 +49,28 @@ interface Props {
 }
 
 class SyncWarning extends React.Component<Props> {
-  static defaultProps = {};
+  public static defaultProps = {};
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.getProgress = this.getProgress.bind(this);
   }
 
-  shouldComponentUpdate({ currentBlock, highestBlock }) {
+  public shouldComponentUpdate ({ currentBlock, highestBlock }) {
     return currentBlock && highestBlock && (highestBlock - currentBlock >= 20);
   }
 
-  getProgress() {
+  public getProgress () {
     const { startingBlock, currentBlock, highestBlock } = this.props;
 
     if (startingBlock && currentBlock && highestBlock) {
-      return `About ${highestBlock - currentBlock} blocks left.`
+      return `About ${highestBlock - currentBlock} blocks left.`;
     } else {
       return '';
     }
   }
 
-  render() {
+  public render () {
     const { classes } = this.props;
 
     return (
@@ -78,13 +78,13 @@ class SyncWarning extends React.Component<Props> {
         <div>
           <Spinner className={classes.text.color} />
         </div>
-        <Typography color="error">
+        <Typography color='error'>
           You are currently syncing. Balances may be incorrect until complete. {this.getProgress()}
 
         </Typography>
       </div>
     );
   }
-};
+}
 
 export default withStyles(getStyles)(SyncWarning);

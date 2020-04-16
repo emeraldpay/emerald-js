@@ -15,4 +15,3 @@ limitations under the License.
 */
 import IdentityIcon from './IdentityIcon';
 export default IdentityIcon;
-

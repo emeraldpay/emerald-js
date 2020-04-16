@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { createMuiTheme } from '@material-ui/core/styles';
+import createSpacing from '@material-ui/core/styles/createSpacing';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import { TypographyProps } from '@material-ui/core/Typography';
-import createSpacing from "@material-ui/core/styles/createSpacing";
 
 import colors from './colors';
 
@@ -40,7 +40,7 @@ const theme = {
     },
     text: {
       primary: colors.coal,
-      secondary: colors.ash.main,
+      secondary: colors.ash.main
     }
   },
   spacing: createSpacing(spacing),
@@ -52,7 +52,7 @@ const theme = {
     fontFamily: [
       '"Rubik"',
       '"Roboto"',
-      "sans-serif"
+      'sans-serif'
     ].join(',')
   },
   overrides: {
@@ -65,26 +65,26 @@ const theme = {
         borderWidth: '1px',
         borderColor: colors.conch.main,
         paddingLeft: spacing,
-        paddingRight: spacing,
-      } as CSSProperties,
+        paddingRight: spacing
+      } as CSSProperties
     },
     MuiFormHelperText: {
       root: {
         position: 'absolute',
-        bottom: -(spacing * 2),
-      } as CSSProperties,
+        bottom: -(spacing * 2)
+      } as CSSProperties
     },
     MuiButton: {
       root: {
         color: colors.emerald.main,
         borderRadius: 0,
-        minHeight: spacing * 4,
+        minHeight: spacing * 4
       },
       contained: {
         color: colors.white.main,
         backgroundColor: colors.emerald.main,
-        boxShadow: 'none',
-      },
+        boxShadow: 'none'
+      }
     },
     MuiToolbar: {
       gutters: {
@@ -112,7 +112,7 @@ const theme = {
     },
     MuiList: {
       root: {
-        borderTop: `1px solid ${colors.conch.main}`,
+        borderTop: `1px solid ${colors.conch.main}`
       },
       padding: {
         paddingTop: 0,
@@ -129,22 +129,22 @@ const theme = {
     },
     MuiPaper: {
       root: {
-        border: `1px solid ${colors.conch.main}`,
-      },
+        border: `1px solid ${colors.conch.main}`
+      }
     },
     MuiMenuItem: {
       root: {
-        cursor: 'pointer',
-        padding: `${spacing / 2}px ${spacing * 8}px ${spacing / 2}px ${spacing * 4}px`,
-        border: 'none',
-        lineHeight: `${spacing * 2}px`,
-        marginLeft: spacing / 2,
-        height: 'auto',
-        "&$selected": {
+        'cursor': 'pointer',
+        'padding': `${spacing / 2}px ${spacing * 8}px ${spacing / 2}px ${spacing * 4}px`,
+        'border': 'none',
+        'lineHeight': `${spacing * 2}px`,
+        'marginLeft': spacing / 2,
+        'height': 'auto',
+        '&$selected': {
           marginLeft: '0',
-          borderLeft: `${spacing / 2}px solid ${colors.emerald.main}`,
+          borderLeft: `${spacing / 2}px solid ${colors.emerald.main}`
         }
-      },
+      }
     },
     MuiTypography: {
       gutterBottom: {
@@ -157,22 +157,22 @@ const theme = {
   },
   props: {
     MuiTypography: {
-      color: 'secondary',
+      color: 'secondary'
     } as Partial<TypographyProps>,
     MuiInput: {
-      disableUnderline: true,
+      disableUnderline: true
     },
     MuiFormHelperText: {
-      error: true,
+      error: true
     },
     MuiPaper: {
       square: true,
-      elevation: 0,
+      elevation: 0
     },
     MuiList: {
       disablePadding: true
     }
-  },
+  }
 };
 
 export default createMuiTheme(theme);

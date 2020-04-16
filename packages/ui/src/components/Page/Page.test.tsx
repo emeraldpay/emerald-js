@@ -13,13 +13,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import { render } from '@testing-library/react';
 import * as React from 'react';
 import Page from './Page';
-import { render } from '@testing-library/react';
 
 describe('Page', () => {
   it('it renders without crash with string title', () => {
-    const wrapper = render(<Page title="Title" />);
+    const wrapper = render(<Page title='Title' />);
     expect(wrapper).toBeDefined();
   });
   it('it renders without crash with component title', () => {

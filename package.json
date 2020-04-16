@@ -4,12 +4,19 @@
     "clean:node_modules": "rimraf node_modules packages/*/node_modules",
     "test": "CI=true lerna run test --stream",
     "build": "CI=true lerna run build --stream",
-    "test:coverage": "CI=true lerna run test:coverage --stream && codecov"
+    "test:coverage": "CI=true lerna run test:coverage --stream && codecov",
+    "lint:ts": "tslint 'packages/**/*.ts{,x}' -c tslint.json"
   },
   "homepage": "https://emeraldplatform.io",
   "devDependencies": {
+    "jest": "25.3.0",
     "lerna": "3.20.2",
-    "rimraf": "^3.0.0"
+    "rimraf": "^3.0.0",
+    "ts-jest": "25.3.0",
+    "tslint": "5.20.1",
+    "tslint-config-standard": "8.0.1",
+    "tslint-react": "4.1.0",
+    "typescript": "3.8.3"
   },
   "workspaces": [
     "packages/*"

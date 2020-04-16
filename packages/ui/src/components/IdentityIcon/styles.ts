@@ -32,14 +32,14 @@ const styles = {
       backgroundColor: 'white',
       borderRadius: '50%',
       textAlign: 'center',
-      border: '1px solid #FFFFFF',
-    },
+      border: '1px solid #FFFFFF'
+    }
   },
   clickAble: {
     '&:hover': {
-      cursor: 'pointer',
-    },
-  },
+      cursor: 'pointer'
+    }
+  }
 };
 
 export default styles;

@@ -13,9 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 import Address from '../../src/components/Address';
 
 storiesOf('Address', module)
@@ -23,24 +23,34 @@ storiesOf('Address', module)
     <Address
       onClick={action('onClick')}
       onCopyClick={action('onCopyclick')}
-      id="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
+      id='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
     />
   ))
   .add('Auto fit container', () => (
-    <div style={{ width: '200px' }}>
-      <Address
-        shortened={true}
-        onClick={action('onClick')}
-        onCopyClick={action('onCopyclick')}
-        id="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      />
-    </div>
+    <React.Fragment>
+      <div style={{ width: '200px' }}>
+        <Address
+          shortened={true}
+          onClick={action('onClick')}
+          onCopyClick={action('onCopyclick')}
+          id='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+        />
+      </div>
+      <div style={{ width: '600px' }}>
+        <Address
+          shortened={true}
+          onClick={action('onClick')}
+          onCopyClick={action('onCopyclick')}
+          id='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+        />
+      </div>
+    </React.Fragment>
   ))
-  .add("Hide copy", () => (
+  .add('Hide copy', () => (
     <Address
       onClick={action('onClick')}
       onCopyClick={action('onCopyclick')}
-      id="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      hideCopy="true"
-      />
+      id='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      hideCopy={true}
+    />
   ));
