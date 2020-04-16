@@ -13,13 +13,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 
 import Button from '@material-ui/core/Button';
 
 import TransactionButton from '../../src/components/TransactionButton';
-
 
 storiesOf('Buttons', module)
   .add('Default', () => (
@@ -27,12 +26,12 @@ storiesOf('Buttons', module)
       <div>
         <h1>Primary Colors</h1>
         <Button>Button</Button>
-        <Button disabled>Disabled Button</Button>
+        <Button disabled={true}>Disabled Button</Button>
       </div>
       <div>
         <h1>Secondary Colors</h1>
-        <Button color="secondary">Button</Button>
-        <Button color="secondary" disabled>Disabled Button</Button>
+        <Button color='secondary'>Button</Button>
+        <Button color='secondary' disabled={true}>Disabled Button</Button>
       </div>
     </React.Fragment>
   ))
@@ -41,13 +40,13 @@ storiesOf('Buttons', module)
     <React.Fragment>
       <div>
         <h1>Primary Colors</h1>
-        <Button variant="contained">Button</Button>
-        <Button variant="contained" disabled>Disabled Button</Button>
+        <Button variant='contained'>Button</Button>
+        <Button variant='contained' disabled={true}>Disabled Button</Button>
       </div>
       <div>
         <h1>Secondary Colors</h1>
-        <Button variant="contained" color="secondary">Button</Button>
-        <Button variant="contained" color="secondary" disabled>Disabled Button</Button>
+        <Button variant='contained' color='secondary'>Button</Button>
+        <Button variant='contained' color='secondary' disabled={true}>Disabled Button</Button>
       </div>
     </React.Fragment>
   ))

@@ -13,62 +13,48 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import * as React from 'react';
 
-const styles = (theme? : any) => ({
+const styles = (theme?: any) => ({
   toggledIcon: {
     cursor: 'pointer',
-    marginLeft: '4px',
-  },
+    marginLeft: '4px'
+  }
 });
 
-interface Props {
+interface IProps {
   onClick: any;
   icon: any;
   toggledIcon: any;
-  toggleDuration: number;
+  toggleDuration?: number;
   classes: any;
 }
 
-interface State {
-  toggled: boolean;
-}
+function ToggledIconButton (props: IProps) {
+  const { classes, toggledIcon, icon, onClick } = props;
+  const toggleDuration = props.toggleDuration || 1000;
+  const [ toggled, setToggled ] = React.useState(false);
 
-class ToggledIconButton extends React.Component<Props, State> {
+  React.useEffect(() => {
+    if (toggled) {
+      const timeout = setTimeout(() => setToggled(false), toggleDuration);
+      return () => clearTimeout(timeout);
+    }
+  });
 
-  static defaultProps = {
-    toggleDuration: 1000,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = { toggled: false };
-    this.toggle = this.toggle.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+  function handleClick () {
+    if (onClick) {
+      onClick();
+    }
+    setToggled(true);
   }
 
-  toggle() {
-    this.setState({ toggled: !this.state.toggled });
-  }
-
-  handleClick() {
-    this.props.onClick();
-    this.setState({ toggled: true });
-
-    setTimeout(this.toggle, this.props.toggleDuration);
-  }
-
-  render() {
-    const { classes, toggledIcon, icon } = this.props;
-    const { toggled } = this.state;
-
-    return (
-      <div className={classes.toggledIcon} onClick={this.handleClick}>
-        { this.state.toggled ? toggledIcon : icon }
-      </div>
-    );
-  }
+  return (
+    <div className={classes.toggledIcon} onClick={handleClick}>
+      {toggled ? toggledIcon : icon}
+    </div>
+  );
 }
 
 export default withStyles(styles)(ToggledIconButton);

@@ -15,4 +15,3 @@ limitations under the License.
 */
 import SyncWarning from './SyncWarning';
 export default SyncWarning;
-

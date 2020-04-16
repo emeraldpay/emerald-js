@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/eth",
-  "version": "0.5.10",
+  "version": "0.6.0",
   "description": "Ethereum Core components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -34,13 +34,9 @@
     "qs": "6.7.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.11",
     "@types/node": "^10.12.26",
     "@types/qs": "6.5.3",
-    "jest": "^24.7.1",
-    "rimraf": "^2.6.3",
-    "ts-jest": "^24.0.2",
-    "typescript": "3.4.2"
+    "rimraf": "^2.6.3"
   },
   "publishConfig": {
     "access": "public"

@@ -14,21 +14,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 const white = {
-  main: '#FFFFFF',
+  main: '#FFFFFF'
 };
 
 const emerald = {
   main: '#00C853',
-  contrastText: white.main,
+  contrastText: white.main
 };
 
 const ash = {
   main: '#B1BFB7',
-  contrastText: white.main,
+  contrastText: white.main
 };
 
 const conch = {
-  main: '#EAEFEC',
+  main: '#EAEFEC'
 };
 
 const colors = {
@@ -38,7 +38,7 @@ const colors = {
   conch,
   snow: '#F7F9F8',
   ruby: '#F41A2D',
-  coal: '#222222',
+  coal: '#222222'
 };
 
 export default colors;

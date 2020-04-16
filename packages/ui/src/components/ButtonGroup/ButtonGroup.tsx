@@ -13,12 +13,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
+import * as React from 'react';
 import styles from './styles';
 
 interface Props {
-  children?: Array<any>;
+  children?: any[];
   classes: any;
   style?: any;
 }
@@ -31,16 +31,15 @@ export const ButtonGroup = ({ classes, children, style }: Props) => {
   return (
     <div className={classes.container} style={style}>
       { children.map((btn) => {
-          const item = (
+        const item = (
             <div key={key} className={(key === 0) ? classes.firstItem : classes.item}>
-              { btn }
+              {btn}
             </div>);
-          key += 1;
-          return item;
+        key += 1;
+        return item;
       })}
     </div>
   );
 };
-
 
 export default withStyles(styles)(ButtonGroup);

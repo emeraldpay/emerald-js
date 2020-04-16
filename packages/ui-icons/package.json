@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/ui-icons",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Emerald icons as a React components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -23,6 +23,7 @@
     "ethereum",
     "blockchain",
     "smart contract",
+    "react",
     "icons"
   ],
   "author": "Yuriy Gagarin <gagarin55@protonmail.com>",
@@ -32,19 +33,14 @@
   },
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
-    "@material-ui/core": "^4.3.3",
-    "react": "^16.8.6"
+    "@material-ui/core": "^4.9.0",
+    "react": "^16.9.0"
   },
   "devDependencies": {
-    "@emeraldplatform/svg-icons": "^0.5.1",
+    "@emeraldplatform/svg-icons": "^0.6.0",
     "@storybook/react": "^4.1.11",
-    "@types/jest": "^24.0.11",
     "@types/node": "^10.12.18",
-    "awesome-typescript-loader": "^5.2.1",
-    "jest": "^24.7.1",
     "svgo": "^1.1.1",
-    "ts-jest": "^24.0.2",
-    "typescript": "3.4.2",
     "underscore.string": "^3.3.5"
   },
   "publishConfig": {

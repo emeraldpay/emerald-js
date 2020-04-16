@@ -13,26 +13,31 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import { fireEvent, render } from '@testing-library/react';
 import * as React from 'react';
-import {shallow, mount} from 'enzyme';
-import {AccountSelect} from './AccountSelect';
+import { AccountSelect } from './AccountSelect';
 
-const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
-const classes = Object.keys({root: {}}).reduce(reduceClasses, {});
+const reduceClasses = (prev, curr) => ({ ...prev, [curr]: curr });
+const classes = Object.keys({ root: {} }).reduce(reduceClasses, {});
 
 describe('AccountSelect', () => {
   it('should renders without crash', () => {
-    const component = shallow(<AccountSelect classes={classes} accounts={[]} />);
+    const component = render(<AccountSelect classes={classes} accounts={[]} />);
     expect(component).toBeDefined();
   });
 
   it('should work without onChange prop', () => {
-    const component = shallow<AccountSelect>(<AccountSelect classes={classes} accounts={['0x1']} />);
-    component.instance().handleMenuItemClick(null, 0);
+    const component = render(<AccountSelect classes={classes} accounts={['0x1987']} />);
+    const node = component.getByText('0x1987');
+    // click to pop up menu
+    fireEvent.click(node.parentNode.parentNode);
+    const nodes = component.getAllByText('0x1987');
+    // click on popup menu item
+    fireEvent.click(nodes[1].parentNode.parentNode.parentNode);
   });
 
   it('should handle empty address list and selected address', () => {
-    const component = mount(<AccountSelect classes={classes} />);
+    const component = render(<AccountSelect classes={classes} />);
     expect(component).toBeDefined();
-  })
+  });
 });

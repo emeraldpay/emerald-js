@@ -13,10 +13,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import { ArrowDown } from '@emeraldplatform/ui-icons';
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 import Input from '../../src/components/Input';
 
 storiesOf('Input', module)
@@ -24,7 +24,7 @@ storiesOf('Input', module)
     <div style={{ width: '300px' }}>
       <div>
         <h1>Number</h1>
-        <Input type="number" />
+        <Input type='number' />
       </div>
       <div>
         <h1>Plain Jane</h1>
@@ -36,7 +36,7 @@ storiesOf('Input', module)
       </div>
       <div>
         <h1>With placeholder</h1>
-        <Input placeholder="hint text" onChange={action('onChange')} />
+        <Input placeholder='hint text' onChange={action('onChange')} />
       </div>
       <div>
         <h1>With Left Icon</h1>
@@ -48,13 +48,13 @@ storiesOf('Input', module)
       </div>
       <div>
         <h1>With Error</h1>
-        <Input errorText="Big ol error" onChange={action('onChange')} />
+        <Input errorText='Big ol error' onChange={action('onChange')} />
       </div>
     </div>
   ))
   .add('Number with min and max', () => (
-   <Input type="number" min={0.5} max={1.5} onChange={action('onChange')} />
+   <Input type='number' min={0.5} max={1.5} onChange={action('onChange')} />
   ))
   .add('Multiline', () => (
-    <Input multiline={true} rowsMax={4} rows={4} value={"line1\n\rline2\n\rline3\n\rline4"}/>
+    <Input multiline={true} rowsMax={4} rows={4} value={'line1\n\rline2\n\rline3\n\rline4'}/>
   ));

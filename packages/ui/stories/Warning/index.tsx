@@ -13,9 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 import { Warning, WarningHeader, WarningText } from '../../src/components/Warning';
 
 storiesOf('Warning', module)
@@ -27,7 +27,7 @@ storiesOf('Warning', module)
         <WarningText>Second message</WarningText>
       </Warning>
       <br />
-      <Warning fullWidth>
+      <Warning fullWidth={true}>
         <WarningHeader>Full width Attention</WarningHeader>
         <WarningText>This is warning message</WarningText>
       </Warning>

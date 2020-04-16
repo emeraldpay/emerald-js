@@ -13,13 +13,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import { shallow } from 'enzyme';
+import * as React from 'react';
 
 import { IdentityIcon } from './IdentityIcon';
 import styles from './styles';
 
-const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
+const reduceClasses = (prev, curr) => ({...prev,  [curr]: curr});
 const classes = Object.keys(styles).reduce(reduceClasses, {});
 
 beforeEach(() => {
@@ -32,8 +32,8 @@ beforeEach(() => {
           fillStyle: null,
           fillRect: jest.fn(),
           drawImage: jest.fn(),
-          getImageData: jest.fn(),
-        })),
+          getImageData: jest.fn()
+        }))
       };
     }
     return createElement(tagName);
@@ -42,7 +42,7 @@ beforeEach(() => {
 
 describe('IdentityIcon', () => {
   it('has default size 40', () => {
-    const component = shallow(<IdentityIcon classes={classes} id="0x1234567890" />);
+    const component = shallow(<IdentityIcon classes={classes} id='0x1234567890' />);
     expect(component.props().style.height).toEqual('40px');
   });
 });

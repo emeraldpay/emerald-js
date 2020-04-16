@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/rpc",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Json RPC utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -31,11 +31,7 @@
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/node": "^10.12.26",
-    "jest": "^24.7.1",
-    "ts-jest": "^24.0.2",
-    "typescript": "3.4.2"
+    "@types/node": "^10.12.26"
   },
   "publishConfig": {
     "access": "public"

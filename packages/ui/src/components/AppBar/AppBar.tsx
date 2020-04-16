@@ -13,13 +13,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
+import { withStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import * as React from 'react';
 
 const styles = (theme: any) => ({
   title: {
@@ -29,14 +29,14 @@ const styles = (theme: any) => ({
     flexGrow: 1
   },
   item: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: `${theme.spacing(3)}px`,
+    'display': 'flex',
+    'justifyContent': 'center',
+    'alignItems': 'center',
+    'marginRight': `${theme.spacing(3)}px`,
     '&:last-child': {
       marginRight: '0px'
     }
-  },
+  }
 });
 
 interface Props {
@@ -44,17 +44,17 @@ interface Props {
   title?: any;
   subtitle?: any;
   children?: any;
-};
+}
 
 class EmeraldAppBar extends React.Component<Props> {
-  render() {
+  public render () {
     const { classes, title, subtitle } = this.props;
-    const children = (this.props.children && this.props.children.length && this.props.children.length > 0) ? this.props.children : [this.props.children]
+    const children = (this.props.children && this.props.children.length && this.props.children.length > 0) ? this.props.children : [this.props.children];
 
     return (
-      <AppBar position="static" color="default">
+      <AppBar position='static' color='default'>
         <Toolbar>
-          <Typography color="primary">
+          <Typography color='primary'>
             {title}
           </Typography>
           &nbsp;

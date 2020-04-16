@@ -16,14 +16,14 @@ limitations under the License.
 const styles = {
   container: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   item: {
-    marginLeft: '10px',
+    marginLeft: '10px'
   },
   firstItem: {
-    marginLeft: '0px',
-  },
+    marginLeft: '0px'
+  }
 };
 
 export default styles;

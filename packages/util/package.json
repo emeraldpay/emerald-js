@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/util",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A collection of useful utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -31,17 +31,13 @@
   "dependencies": {
     "decompress-zip": "0.3.1",
     "follow-redirects": "^1.6.1",
-    "kbpgp": "2.0.82",
+    "kbpgp": "2.1.15",
     "mz": "2.7.0",
     "os": "0.1.1"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.11",
     "@types/mz": "0.0.32",
-    "@types/node": "^10.12.18",
-    "jest": "^24.7.1",
-    "ts-jest": "^24.0.2",
-    "typescript": "3.4.2"
+    "@types/node": "^10.12.18"
   },
   "publishConfig": {
     "access": "public"

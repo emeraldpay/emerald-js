@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/contracts",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Ethereum contracts interop",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -33,11 +33,7 @@
     "ethereumjs-abi": "0.6.7"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/node": "^10.12.18",
-    "jest": "^24.7.1",
-    "ts-jest": "^24.0.2",
-    "typescript": "3.4.2"
+    "@types/node": "^10.12.18"
   },
   "publishConfig": {
     "access": "public"

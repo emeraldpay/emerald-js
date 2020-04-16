@@ -13,14 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
 import { shallow } from 'enzyme';
+import * as React from 'react';
 import Checkbox from '../Checkbox';
 import { ButtonGroup } from './ButtonGroup';
 
 import styles from './styles';
 
-const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
+const reduceClasses = (prev, curr) => ({...prev,  [curr]: curr});
 const classes = Object.keys(styles).reduce(reduceClasses, {});
 
 test('Empty children list', () => {

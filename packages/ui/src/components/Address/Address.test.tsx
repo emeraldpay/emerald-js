@@ -13,16 +13,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { shallow, mount, render } from 'enzyme';
 import Typography from '@material-ui/core/Typography';
+import { mount, render, shallow } from 'enzyme';
+import * as React from 'react';
 import { Address, getStyles } from './Address';
 
-const reduceClasses = (prev, curr) => Object.assign({}, prev, { [curr]: curr });
+const reduceClasses = (prev, curr) => ({...prev,  [curr]: curr});
 const classes = Object.keys(getStyles()).reduce(reduceClasses, {});
 
 const mockMuiTheme = {
-  palette: {},
+  palette: {}
 };
 
 describe('Address', () => {
@@ -33,7 +33,7 @@ describe('Address', () => {
   // });
 
   it('shows address', () => {
-    const accountAddr = shallow(<Address classes={classes} id="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98" muiTheme={mockMuiTheme} />);
+    const accountAddr = shallow(<Address classes={classes} id='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98' muiTheme={mockMuiTheme} />);
 
     expect(accountAddr.find(Typography).props().children)
       .toEqual('0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98');
@@ -48,13 +48,12 @@ describe('Address', () => {
   // });
 
   it('has showCheck == false by default', () => {
-    const accountAddr = shallow(<Address classes={classes} id="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98" muiTheme={mockMuiTheme} />);
+    const accountAddr = shallow(<Address classes={classes} id='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98' muiTheme={mockMuiTheme} />);
     expect(accountAddr.props().showCheck).toBeFalsy();
   });
 
   it('shows sanitized hex', () => {
-    const accountAddr = shallow(<Address classes={classes} shortened id="FBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98" muiTheme={mockMuiTheme} />);
+    const accountAddr = shallow(<Address classes={classes} shortened={true} id='FBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98' muiTheme={mockMuiTheme} />);
     expect(accountAddr.find(Typography).props().className).toEqual('shortenedAddress');
   });
 });
-

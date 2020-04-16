@@ -25,7 +25,7 @@ import { EthJsonRpcProvider, EthJsonRpcContext } from '../../providers/EthJsonRp
 const styles = theme => ({
   root: {},
   networkIcon: {
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing(1)
   }
 });
 

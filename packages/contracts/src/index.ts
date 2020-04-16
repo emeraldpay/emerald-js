@@ -13,8 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { methodID, rawDecode, rawEncode } from 'ethereumjs-abi';
 import BigNumber from 'bignumber.js';
+import { methodID, rawDecode, rawEncode } from 'ethereumjs-abi';
 
 const ethAbi = { methodID, rawDecode, rawEncode };
 
@@ -31,7 +31,7 @@ export interface OutputValue {
 /**
  * Converts function input parameters to TX's data field.
  */
-export function functionToData(func: any, inputs: InputValues): string {
+export function functionToData (func: any, inputs: InputValues): string {
   if (func) {
     const types = [];
     const values = [];
@@ -47,20 +47,20 @@ export function functionToData(func: any, inputs: InputValues): string {
   throw new Error(`Invalid function ABI: ${func}`);
 }
 
-export function dataToParams(func: any, data: string): Array<OutputValue> {
+export function dataToParams (func: any, data: string): OutputValue[] {
   const buffer = Buffer.from(data.replace('0x', ''), 'hex');
-  const types = func.outputs.map(output => output.type);
+  const types = func.outputs.map((output) => output.type);
   const params = ethAbi.rawDecode(types, buffer);
   return func.outputs.map((o, i) => ({
     type: o.type,
     name: o.name,
-    value: (params[i] instanceof BigNumber) ? params[i].toString() : params[i],
+    value: (params[i] instanceof BigNumber) ? params[i].toString() : params[i]
   }));
 }
 
 export default {
   functionToData,
-  dataToParams,
+  dataToParams
 };
 
 export { default as Contract } from './Contract';
