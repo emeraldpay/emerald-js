@@ -13,19 +13,18 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import AppBar from '../../lib/components/AppBar';
-import CurrentBlockNumber from '../../lib/smart-components/CurrentBlockNumber';
-import NetworkSelector from '../../lib/smart-components/NetworkSelector';
-import AccountSelector from '../../lib/smart-components/AccountSelector';
-import EtcBalance from '../../lib/smart-components/EtcBalance';
-import { withKnobs, text, boolean, number, array, object } from '@storybook/addon-knobs/react';
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import AppBar from "../../lib/components/AppBar";
+import CurrentBlockNumber from "../../lib/smart-components/CurrentBlockNumber";
+import NetworkSelector from "../../lib/smart-components/NetworkSelector";
+import AccountSelector from "../../lib/smart-components/AccountSelector";
+import EtcBalance from "../../lib/smart-components/EtcBalance";
+import { withKnobs, text, boolean, number, array, object } from "@storybook/addon-knobs/react";
 
-
-storiesOf('AppBar', module)
+storiesOf("AppBar", module)
   .addDecorator(withKnobs)
-  .addWithJSX('AppBar', () => {
+  .addWithJSX("AppBar", () => {
     class AppBarApp extends React.Component {
       constructor(props) {
         super(props);
@@ -34,20 +33,20 @@ storiesOf('AppBar', module)
           changeAccount: account => {
             this.setState({
               ...this.state,
-              account
+              account,
             });
-          }
-        }
+          },
+        };
       }
       render() {
         return (
-          <AppBar title={text('title', 'Emerald')} subtitle={text('subtitle', 'AppBar')}>
+          <AppBar title={text("title", "Emerald")} subtitle={text("subtitle", "AppBar")}>
             <NetworkSelector />
             <CurrentBlockNumber />
             <AccountSelector account={this.state.account} onChange={this.state.changeAccount}/>
             <EtcBalance account={this.state.account}/>
           </AppBar>
-        )
+        );
       }
     }
     return <AppBarApp />;

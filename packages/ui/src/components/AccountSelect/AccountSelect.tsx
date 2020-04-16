@@ -27,19 +27,19 @@ const styles = (theme) => ({
   }
 });
 
-interface Props {
+interface IAccountSelectProps {
   onChange?: any;
   accounts?: string[];
   classes: any;
   selectedAccount?: any;
 }
 
-interface State {
+interface IState {
   selectedIndex?: any;
   anchorEl?: any;
 }
 
-export class AccountSelect extends React.Component<Props, State> {
+export class AccountSelect extends React.Component<IAccountSelectProps, IState> {
   constructor (props) {
     super(props);
     const accounts = props.accounts || [];
@@ -87,7 +87,7 @@ export class AccountSelect extends React.Component<Props, State> {
 
   public renderSelected () {
     const accounts = this.props.accounts || [];
-    if (accounts.length == 0) {
+    if (accounts.length === 0) {
       return (<div>No accounts provided</div>);
     }
     const selected = accounts[this.state.selectedIndex];

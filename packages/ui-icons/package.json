@@ -34,7 +34,7 @@
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
     "@material-ui/core": "^4.9.0",
-    "react": "^16.8.6"
+    "react": "^16.9.0"
   },
   "devDependencies": {
     "@emeraldplatform/svg-icons": "^0.5.1",

@@ -13,17 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 import Checkbox from '../../src/components/Checkbox';
 
 storiesOf('Checkbox', module)
   .add('default', () => (<Checkbox />))
-  .add('default labeled', () => (<Checkbox label="Label Text" />))
-  .add('default disabled with label', () => (<Checkbox disabled label="checked label"/>))
-  .add('checked labeled', () => (<Checkbox checked label="Checked labeled" />))
-  .add('checked disabled', () => (<Checkbox checked disabled />))
-  .add('checked disabled with label', () => (<Checkbox checked disabled label="checked label"/>))
+  .add('default labeled', () => (<Checkbox label='Label Text' />))
+  .add('default disabled with label', () => (<Checkbox disabled={true} label='checked label'/>))
+  .add('checked labeled', () => (<Checkbox checked={true} label='Checked labeled' />))
+  .add('checked disabled', () => (<Checkbox checked={true} disabled={true} />))
+  .add('checked disabled with label', () => (<Checkbox checked={true} disabled={true} label='checked label'/>))
   .add('with onCheck handler', () => (<Checkbox onCheck={action('check-click')} />))
-  .add('disabled', () => (<Checkbox disabled />));
+  .add('disabled', () => (<Checkbox disabled={true} />));

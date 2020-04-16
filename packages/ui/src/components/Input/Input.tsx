@@ -17,7 +17,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 
-const getErrorProps = ({ errorText }) => {
+const getErrorProps = ({errorText}) => {
   const propsToAdd: any = {};
 
   if (errorText) {
@@ -28,7 +28,7 @@ const getErrorProps = ({ errorText }) => {
   return propsToAdd;
 };
 
-const getAdornments = ({ rightIcon, leftIcon }) => {
+const getAdornments = ({rightIcon, leftIcon}) => {
   const adornments: any = {};
 
   if (leftIcon) {
@@ -43,20 +43,20 @@ const getAdornments = ({ rightIcon, leftIcon }) => {
 };
 
 const getInputProps = (props) => ({
-  InputProps: { ...getAdornments(props) }
+  InputProps: {...getAdornments(props)}
 });
 
-const getMultilineProps = ({ multiline, rows, rowsMax }) => {
+const getMultilineProps = ({multiline, rows, rowsMax}) => {
   let props: any = {};
 
   if (multiline) {
-    props = { rows, rowsMax, multiline };
+    props = {rows, rowsMax, multiline};
   }
 
   return props;
 };
 
-interface Props {
+interface IInputProps {
   classes?: any;
   value?: string | number;
   multiline?: boolean;
@@ -73,46 +73,44 @@ interface Props {
   max?: number | string;
 }
 
-export class Input extends React.Component<Props> {
+export function Input(props: IInputProps) {
 
-  public static defaultProps = {
-    value: '',
-    multiline: false,
-    rowsMax: null,
-    rows: null,
-    disabled: false,
-    rightIcon: null,
-    leftIcon: null,
-    placeholder: '',
-    onChange: () => {}
-  };
+  // public static defaultProps = {
+  //   value: '',
+  //   multiline: false,
+  //   rowsMax: null,
+  //   rows: null,
+  //   disabled: false,
+  //   rightIcon: null,
+  //   leftIcon: null,
+  //   placeholder: '',
+  //   onChange: () => {}
+  // };
 
-  public render () {
-    const multilineProps = getMultilineProps(this.props as { multiline: any, rows: any, rowsMax: any });
-    const errorProps = getErrorProps(this.props as {errorText: any});
-    const inputProps = getInputProps(this.props);
+  const multilineProps = getMultilineProps(props as { multiline: any, rows: any, rowsMax: any });
+  const errorProps = getErrorProps(props as { errorText: any });
+  const inputProps = getInputProps(props);
 
-    return (
-      <TextField
-        type={this.props.type}
-        value={this.props.value}
-        fullWidth={true}
-        margin='normal'
-        rows={this.props.rows}
-        rowsMax={this.props.rowsMax}
-        disabled={this.props.disabled}
-        placeholder={this.props.placeholder}
-        onChange={this.props.onChange}
-        inputProps={{
-          min: this.props.min,
-          max: this.props.max
-        }}
-        {...inputProps}
-        {...errorProps}
-        {...multilineProps}
-      />
-    );
-  }
+  return (
+    <TextField
+      type={props.type}
+      value={props.value || ''}
+      fullWidth={true}
+      margin='normal'
+      rows={props.rows}
+      rowsMax={props.rowsMax}
+      disabled={props.disabled || false}
+      placeholder={props.placeholder || ''}
+      onChange={props.onChange}
+      inputProps={{
+        min: props.min,
+        max: props.max
+      }}
+      {...inputProps}
+      {...errorProps}
+      {...multilineProps}
+    />
+  );
 }
 
 export default Input;

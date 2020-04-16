@@ -31,7 +31,7 @@
   "dependencies": {
     "decompress-zip": "0.3.1",
     "follow-redirects": "^1.6.1",
-    "kbpgp": "2.0.82",
+    "kbpgp": "2.1.15",
     "mz": "2.7.0",
     "os": "0.1.1"
   },

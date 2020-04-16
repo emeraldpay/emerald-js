@@ -14,18 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Pen3 as EditIcon } from '@emeraldplatform/ui-icons';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 import Address from '../Address';
 import IdentityIcon from '../IdentityIcon';
 import { Account, getStyles } from './Account';
 
-const reduceClasses = (prev, curr) => ({...prev,  [curr]: curr});
+const reduceClasses = (prev, curr) => ({ ...prev, [curr]: curr });
 const classes = Object.keys(getStyles()).reduce(reduceClasses, {});
 
 describe('Account', () => {
   it('should render nested components', () => {
-    const component = mount(<Account classes={classes} identity={true} address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98' />);
+    const component = render(<Account classes={classes} identity={true} address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98' />);
     expect(component).toBeDefined();
   });
 

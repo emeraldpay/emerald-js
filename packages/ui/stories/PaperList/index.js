@@ -13,36 +13,36 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { storiesOf } from '@storybook/react';
+import React from "react";
+import PropTypes from "prop-types";
+import { storiesOf } from "@storybook/react";
 
-import Page from '../../src/components/Page';
+import Page from "../../src/components/Page";
 
-import Card from '@material-ui/core/Card';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import Card from "@material-ui/core/Card";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListSubheader from "@material-ui/core/ListSubheader";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 
 const styles2 = theme => ({
   root: {
-    width: '100%',
+    width: "100%",
     backgroundColor: theme.palette.background.paper,
-    position: 'relative',
-    overflow: 'auto',
-    maxHeight: '500px',
-    maxWidth: '500px',
+    position: "relative",
+    overflow: "auto",
+    maxHeight: "500px",
+    maxWidth: "500px",
   },
   listSection: {
-    backgroundColor: 'inherit',
+    backgroundColor: "inherit",
   },
   ul: {
-    backgroundColor: 'inherit',
+    backgroundColor: "inherit",
     padding: 0,
   },
 });
@@ -76,8 +76,7 @@ PinnedSubheaderList.propTypes = {
 
 const Boo = withStyles(styles2)(PinnedSubheaderList);
 
-storiesOf('PaperList', module)
-  .add('Default', () => (
+storiesOf("PaperList", module)
+  .add("Default", () => (
     <Boo />
   ));
-

@@ -13,14 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 import ToggledIconButton from '../../src/components/ToggledIconButton';
 
 import {
-  Copytoclipboard as CloneIcon,
-  Check1 as CheckCircle
+  Check1 as CheckCircle,
+  Copytoclipboard as CloneIcon
 } from '@emeraldplatform/ui-icons';
 
 storiesOf('ToggledIconButton', module)

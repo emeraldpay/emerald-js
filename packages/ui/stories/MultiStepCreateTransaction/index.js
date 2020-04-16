@@ -23,15 +23,15 @@ limitations under the License.
  * import CreateTransaction from '../../src/components/CreateTransaction';
  * import Page from '../../src/components/Page';
  * import Back from '../../src/icons3/Back';
- * 
+ *
  * const PAGES = {
  *   TX: 1,
  *   SIGN: 2,
  *   DETAILS: 3,
  * };
- * 
+ *
  * const DEFAULT_GAS_LIMIT = '21000';
- * 
+ *
  * class _CreateTransaction extends React.Component {
  *   static propTypes = {
  *     currency: PropTypes.string.isRequired,
@@ -45,7 +45,7 @@ limitations under the License.
  *     toAddress: PropTypes.string,
  *     onEmptyAddressBookClick: PropTypes.func.isRequired,
  *   };
- * 
+ *
  *   constructor() {
  *     super();
  *     this.onChangeFrom = this.onChangeFrom.bind(this);
@@ -56,37 +56,37 @@ limitations under the License.
  *     this.getPage = this.getPage.bind(this);
  *     this.state = { gasLimit: DEFAULT_GAS_LIMIT, amount: '0', page: PAGES.TX };
  *   }
- * 
+ *
  *   onChangeFrom(from) {
  *     this.setState({ from });
  *     action('onChangeFrom')(from);
  *   }
- * 
+ *
  *   onChangeTo(to) {
  *     this.setState({ to });
  *     action('onChangeTo')(to);
  *   }
- * 
+ *
  *   onChangeToken(token) {
  *     this.setState({ token });
  *     action('onChangeToken')(token);
  *   }
- * 
+ *
  *   onChangeGasLimit(value) {
  *     this.setState({ gasLimit: value || DEFAULT_GAS_LIMIT });
  *   }
- * 
+ *
  *   onChangeAmount(amount) {
  *     this.setState({ amount });
  *   }
- * 
+ *
  *   componentDidMount() {
  *     this.setState({
  *       token: this.props.tokenSymbols[0],
  *       to: this.props.toAddress,
  *     });
  *   }
- * 
+ *
  *   getPage() {
  *     switch (this.state.page) {
  *       case PAGES.TX:
@@ -106,7 +106,7 @@ limitations under the License.
  *       default: return null;
  *     }
  *   }
- * 
+ *
  *   render() {
  *     return (
  *       <div style={{ padding: '20px' }}>
@@ -117,10 +117,10 @@ limitations under the License.
  *     );
  *   }
  * }
- * 
+ *
  * const ThemedCreateTransaction = muiThemeable()(_CreateTransaction);
- * 
- * 
+ *
+ *
  * storiesOf('Create Transaction', module)
  *   .addDecorator(muiTheme([theme]))
  *   .addDecorator(withKnobs)

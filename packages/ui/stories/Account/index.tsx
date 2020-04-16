@@ -13,82 +13,82 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import * as React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 import Account from '../../src/components/Account';
 
 storiesOf('Account', module)
   .add('default', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      name="account1"
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      name='account1'
     />
   ))
   .add('editable', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      name="account1"
-      editable
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      name='account1'
+      editable={true}
     />
   ))
   .add('with empty name', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      name=""
-      identity
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      name=''
+      identity={true}
     />
   ))
   .add('without Name', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
     />
   ))
   .add('with onClick handler', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
       onClick={action('address-click')}
     />
   ))
   .add('Identity Icon', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      identity
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      identity={true}
     />
   ))
   .add('Identity Icon with name', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      name="account1"
-      identity
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      name='account1'
+      identity={true}
     />
   ))
   .add('Identity Icon with editable name', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      editable
-      name="account1"
-      identity
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      editable={true}
+      name='account1'
+      identity={true}
     />
   ))
   .add('Shortened', () => (
     <Account
-      address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-      identity
-      addressWidth="200px"
+      address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+      identity={true}
+      addressWidth='200px'
     />
   ))
   .add('Same identity icon w/o 0x prefix', () => (
     <React.Fragment>
       <Account
         identity={true}
-        address="0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-        name="account1"
+        address='0xFBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+        name='account1'
       />
       <Account
         identity={true}
-        address="FBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98"
-        name="account1"
+        address='FBb1b73C4f0BDa4f67dcA266ce6Ef42f520fBB98'
+        name='account1'
       />
     </React.Fragment>
   ));

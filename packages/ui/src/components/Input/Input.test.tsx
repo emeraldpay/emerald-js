@@ -17,7 +17,7 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 import { Input } from './Input';
 
-const reduceClasses = (prev, curr) => ({...prev,  [curr]: curr});
+const reduceClasses = (prev, curr) => ({ ...prev, [curr]: curr });
 const classes = Object.keys({}).reduce(reduceClasses, {});
 const build = () => shallow(<Input classes={classes} />);
 
