@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/eth",
-  "version": "0.5.10",
+  "version": "0.6.0",
   "description": "Ethereum Core components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/ui-smart",
-  "version": "0.5.12",
+  "version": "0.6.0",
   "description": "ui smart components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -51,12 +51,12 @@
     "storybook-addon-jsx": "^6.0.0"
   },
   "dependencies": {
-    "@emeraldplatform/contracts": "^0.5.1",
-    "@emeraldplatform/eth": "^0.5.10",
-    "@emeraldplatform/eth-rpc": "^0.5.11",
-    "@emeraldplatform/rpc": "^0.5.1",
-    "@emeraldplatform/ui": "^0.5.12",
-    "@emeraldplatform/ui-icons": "^0.5.2",
+    "@emeraldplatform/contracts": "^0.6.0",
+    "@emeraldplatform/eth": "^0.6.0",
+    "@emeraldplatform/eth-rpc": "^0.6.0",
+    "@emeraldplatform/rpc": "^0.6.0",
+    "@emeraldplatform/ui": "^0.6.0",
+    "@emeraldplatform/ui-icons": "^0.6.0",
     "@material-ui/core": "^4.9.0",
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.0.8",

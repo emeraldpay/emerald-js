@@ -1,6 +1,6 @@
 {
   "name": "@emeraldplatform/eth-node",
-  "version": "0.5.11",
+  "version": "0.6.0",
   "description": "Ethereum and Ethereum classic full node management",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -31,9 +31,9 @@
   },
   "homepage": "https://emeraldplatform.io",
   "dependencies": {
-    "@emeraldplatform/core": "^0.5.11",
-    "@emeraldplatform/eth-rpc": "^0.5.11",
-    "@emeraldplatform/rpc": "^0.5.1"
+    "@emeraldplatform/core": "^0.6.0",
+    "@emeraldplatform/eth-rpc": "^0.6.0",
+    "@emeraldplatform/rpc": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "^10.12.26"
