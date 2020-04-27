@@ -26,20 +26,28 @@ storiesOf('Page', module)
   .add('default', () => (
     <div>
       <Page title={text('title', 'Title Here')} leftIcon={<Back onClick={action('Left Icon onClick')}/>}>
-        <Typography>Im a page content supsup</Typography>
+        <Typography>Im a page content</Typography>
       </Page>
     </div>
   ))
   .add('without left icon', () => (
     <div>
       <Page title={text('title', 'Without left icon')}>
-        <Typography>Im a page content supsup</Typography>
+        <Typography>Im a page content</Typography>
       </Page>
     </div>
   ))
   .add('title component', () => (
     <Page title={(<div style={{ display: 'flex' }}><Box /><PageTitle>Title with icon</PageTitle></div>)}>
-      <Typography>Im a page content supsup</Typography>
+      <Typography>Im a page content</Typography>
     </Page>
-
+  ))
+  .add('left and right icons', () => (
+    <Page
+      title={(<div>Page title component</div>)}
+      leftIcon={<Back onClick={action('onBack')}/>}
+      rightIcon={<Back />}
+    >
+      <Typography>Im a page content</Typography>
+    </Page>
   ));

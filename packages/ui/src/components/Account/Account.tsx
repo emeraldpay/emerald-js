@@ -14,8 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Pen3 as EditIcon } from '@emeraldplatform/ui-icons';
-import { withStyles } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { createStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import cx from 'classnames';
 import * as React from 'react';
@@ -23,7 +22,7 @@ import * as React from 'react';
 import Address from '../Address';
 import IdentityIcon from '../IdentityIcon';
 
-export const getStyles = (theme?: any) => ({
+export const getStyles = (theme?: any) => createStyles({
   root: {
     display: 'flex',
     width: '100%',
@@ -52,7 +51,7 @@ export const getStyles = (theme?: any) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'
-  } as CSSProperties,
+  },
   identityIcon: {
     marginRight: '10px'
   },

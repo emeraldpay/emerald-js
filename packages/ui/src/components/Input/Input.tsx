@@ -17,7 +17,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 
-const getErrorProps = ({errorText}) => {
+const getErrorProps = ({ errorText }) => {
   const propsToAdd: any = {};
 
   if (errorText) {
@@ -28,7 +28,7 @@ const getErrorProps = ({errorText}) => {
   return propsToAdd;
 };
 
-const getAdornments = ({rightIcon, leftIcon}) => {
+const getAdornments = ({ rightIcon, leftIcon }) => {
   const adornments: any = {};
 
   if (leftIcon) {
@@ -43,14 +43,14 @@ const getAdornments = ({rightIcon, leftIcon}) => {
 };
 
 const getInputProps = (props) => ({
-  InputProps: {...getAdornments(props)}
+  InputProps: { ...getAdornments(props) }
 });
 
-const getMultilineProps = ({multiline, rows, rowsMax}) => {
+const getMultilineProps = ({ multiline, rows, rowsMax }) => {
   let props: any = {};
 
   if (multiline) {
-    props = {rows, rowsMax, multiline};
+    props = { rows, rowsMax, multiline };
   }
 
   return props;
@@ -73,7 +73,7 @@ interface IInputProps {
   max?: number | string;
 }
 
-export function Input(props: IInputProps) {
+export function Input (props: IInputProps) {
 
   // public static defaultProps = {
   //   value: '',

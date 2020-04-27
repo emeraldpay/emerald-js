@@ -13,17 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core';
 import * as React from 'react';
 import styles from './styles';
 
-interface Props {
+interface IButtonGroupProps {
   children?: any[];
   classes: any;
   style?: any;
 }
 
-export const ButtonGroup = ({ classes, children, style }: Props) => {
+export const ButtonGroup = ({ classes, children, style }: IButtonGroupProps) => {
   if (!children) {
     return null;
   }
@@ -34,7 +34,8 @@ export const ButtonGroup = ({ classes, children, style }: Props) => {
         const item = (
             <div key={key} className={(key === 0) ? classes.firstItem : classes.item}>
               {btn}
-            </div>);
+            </div>
+        );
         key += 1;
         return item;
       })}
