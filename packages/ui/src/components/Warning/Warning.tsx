@@ -13,31 +13,32 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
 import styles from './styles';
 
-interface Props {
+interface IProps {
   classes?: any;
   children?: any;
 }
 
-export const WarningHeader = withStyles(styles)((props: Props) => (
+export const WarningHeader = withStyles(styles)((props: IProps) => (
   <div className={props.classes.header}>
     {props.children}
-  </div>));
+  </div>
+));
 
-export const WarningText = withStyles(styles)((props: Props) => (
+export const WarningText = withStyles(styles)((props: IProps) => (
   <div className={props.classes.text}>
     {props.children}
   </div>
 ));
 
-interface WarningProps extends Props {
+interface IWarningProps extends IProps {
   fullWidth?: any;
 }
 
-export const Warning = withStyles(styles)((props: WarningProps) => {
+export const Warning = withStyles(styles)((props: IWarningProps) => {
   const { fullWidth, classes } = props;
   const style: {width?: string, maxWidth?: string} = {};
   if (fullWidth) {
@@ -48,7 +49,8 @@ export const Warning = withStyles(styles)((props: WarningProps) => {
   return (
     <div className={classes.container} style={style}>
       {props.children}
-    </div>);
+    </div>
+  );
 });
 
 export default Warning;

@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:latest", "tslint-react", "tslint-config-standard"],
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-standard", "tslint-react-hooks"],
   "linterOptions": {
     "exclude": ["**/node_modules/**", "**/lib/**"]
   },

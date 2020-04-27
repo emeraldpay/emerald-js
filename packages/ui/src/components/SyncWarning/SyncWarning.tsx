@@ -14,12 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Spinner1 as Spinner } from '@emeraldplatform/ui-icons';
-import { withStyles } from '@material-ui/core/styles';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { createStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import * as React from 'react';
 
-const getStyles = (theme?: any) => ({
+const getStyles = (theme?: any) => createStyles({
   container: {
     width: '100%',
     backgroundColor: '#F9F2F2',
@@ -30,7 +29,7 @@ const getStyles = (theme?: any) => ({
     alignItems: 'center',
     paddingLeft: '5px',
     paddingTop: '5px'
-  } as CSSProperties,
+  },
   errorText: {
     color: theme.palette.error.light
   },
@@ -38,17 +37,17 @@ const getStyles = (theme?: any) => ({
     color: '#CF3B3B',
     zIndex: 1,
     marginLeft: '5px'
-  } as CSSProperties
+  }
 });
 
-interface Props {
+interface ISyncWarningProps {
   startingBlock: number;
   currentBlock: number;
   highestBlock: number;
   classes: any;
 }
 
-class SyncWarning extends React.Component<Props> {
+class SyncWarning extends React.Component<ISyncWarningProps> {
   public static defaultProps = {};
 
   constructor (props) {
